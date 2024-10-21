@@ -28,75 +28,113 @@ void goWork()
   }
 };
 
+class Unit
+{
+public:
+  Unit(int n);
+  virtual void print() {};
+  string str;
+  string type;
+  int number;
 
-class Unit {
-    public:
-    Unit(int n);
-    virtual void print(){};
-    string str;
-    string type;
-    int number;
-
-    private:
+private:
 };
 
-class Peon : public Unit {
-    public:
-    Peon(int n): Unit(n) {
-    }
-    void print() override {
-      console.log("I em Pion !!!");
-    };
+class Peon : public Unit
+{
+public:
+  Peon(int n) : Unit(n)
+  {
+  }
+  void print() override
+  {
+    console.log("I em Pion !!!");
+  };
 
-    private:
+private:
 };
 
-class Troll : public Unit {
-    public:
-        Troll(int n): Unit(n) {
-    }
-    void print() override {
-      console.log("I em Troll !!!");
-    };
+class Troll : public Unit
+{
+public:
+  Troll(int n) : Unit(n)
+  {
+  }
+  void print() override
+  {
+    console.log("I em Troll !!!");
+  };
 
-    private:
+private:
 };
-
 
 int main()
 {
   srand(time(0));
 
+  // console.log("papa loh");
+  Array<Unit *> *test = new Array<Unit *>(100);
 
- // console.log("papa loh");
- Array<Unit*>* test = new Array<Unit*>(100);
-
-  for (int i = 0; i < 10; i++ ) {
+  for (int i = 0; i < 10; i++)
+  {
     // Unit *el = test->getElem(i);
-     if (test->getElem(i) == nullptr) {
-        if (i % 2 == 0) {
-                Peon* peon = new Peon(1);
+    if (test->getElem(i) == nullptr)
+    {
+      if (i % 2 == 0)
+      {
+        Peon *peon = new Peon(1);
+        peon->str = "i em pion";
         test->add(peon);
-        } else {
-                Troll* troll = new Troll(2);
-                
+      }
+      else
+      {
+        Troll *troll = new Troll(2);
+
         test->add(troll);
-        }
-     }
- };
+      }
+    }
+  };
 
+  // console.log(to_string(test->length));
 
-  for (int i = 0; i < test->getSize(); i++ ) {
-     Unit *el = test->getElem(i);
-     if (el != nullptr) {
-        el->print();
-     }
- };
+  // rapid<Unit*>* rap = new rapid<Unit*>;
+  // rap->backForce(10);
+  // rap->push(new Troll(2));
+  // rap->forEach([](Unit *unit, int i){
+  //  // unit->print();
+  //  console.log(unit->str);
+  // });
 
+  test->forEach([](Unit *item, int i, Unit **arr)
+                {
+                   Unit *el = item;
+                  //  delete el;
+                  //  el = nullptr;
+                  //  arr[i] = nullptr;
+                     el->str = "i em changed";
+                     console.log(el->str); });
 
- delete test;
- test = nullptr;
- //rapid<string> *strArr = new rapid<string>; // ok
+  Troll *troll = new Troll(46);
+   test->add(troll);
+   console.log(to_string(test->findIndex([](Unit *item){
+    if (item->number == 46) {
+      return true;
+    }
+    return false;
+   })));
+
+ // console.log(to_string(test->length));
+
+  //   for (int i = 0; i < test->getSize(); i++ ) {
+  //      Unit *el = test->getElem(i);
+  //      if (el != nullptr) {
+  //         el->print();
+  //      }
+  //  };
+
+  delete test;
+  test = nullptr;
+  // rapid<string> *strArr = new rapid<string>; // ok
 
   ctx.getFont();
 

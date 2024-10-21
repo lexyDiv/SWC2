@@ -1,7 +1,7 @@
 #pragma once
 #include "rand.h"
 
-using namespace std;
+
 
 template <typename T>
 class rapid
