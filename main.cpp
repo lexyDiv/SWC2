@@ -95,7 +95,7 @@ int main()
     }
   };
 
- // console.log(to_string(test->length));
+  // console.log(to_string(test->length));
 
   // rapid<Unit*>* rap = new rapid<Unit*>;
   // rap->backForce(10);
@@ -112,12 +112,18 @@ int main()
                   //  el = nullptr;
                   //  arr[i] = nullptr;
                      el->str = "i em changed";
-                     console.log(el->str);
-                   });
-                   test->clear();
-                   console.log(to_string(test->length));
+                     console.log(el->str); });
 
-              
+  Troll *troll = new Troll(46);
+   test->add(troll);
+   console.log(to_string(test->findIndex([](Unit *item){
+    if (item->number == 46) {
+      return true;
+    }
+    return false;
+   })));
+
+ // console.log(to_string(test->length));
 
   //   for (int i = 0; i < test->getSize(); i++ ) {
   //      Unit *el = test->getElem(i);

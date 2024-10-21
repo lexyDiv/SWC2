@@ -34,6 +34,10 @@ public:
     int getSize();
     void add(T el);
     void forEach(function<void(T item, int index, T *arr)> fn);
+    void forEach(function<void(T item, int index)> fn);
+    void forEach(function<void(T item)> fn);
+    int indexOf(T el);
+    int findIndex(function<bool(T item)> fn);
     void clear();
     T getElem(int index);
 
@@ -74,6 +78,88 @@ inline void Array<T>::add(T el)
         {
             element = el;
             this->length++;
+            break;
+        }
+    }
+}
+
+template <typename T>
+inline void Array<T>::forEach(function<void(T item)>
+                                  fn)
+{
+    int l = this->length;
+    for (int i = 0; i < this->size; i++)
+    {
+        if (l)
+        {
+            T &el = this->arr[i];
+            if (el != nullptr)
+            {
+                fn(el);
+                l--;
+                if (el == nullptr)
+                {
+                    this->length--;
+                }
+            }
+        }
+        else
+        {
+            break;
+        }
+    }
+}
+
+template <typename T>
+inline int Array<T>::indexOf(T el)
+{
+    for (int i = 0; i < this->size; i++)
+    {
+        T &element = this->arr[i];
+        if (element != nullptr && el == element)
+        {
+            return i;
+        }
+    }
+    return -1;
+}
+
+template <typename T>
+inline int Array<T>::findIndex(function<bool(T item)> fn)
+{
+    for (int i = 0; i < this->size; i++)
+    {
+        T &el = this->arr[i];
+        if (el != nullptr && fn(el))
+        {
+            return i;
+        }
+    }
+    return -1;
+}
+
+template <typename T>
+inline void Array<T>::forEach(function<void(T item, int index)>
+                                  fn)
+{
+    int l = this->length;
+    for (int i = 0; i < this->size; i++)
+    {
+        if (l)
+        {
+            T &el = this->arr[i];
+            if (el != nullptr)
+            {
+                fn(el, i);
+                l--;
+                if (el == nullptr)
+                {
+                    this->length--;
+                }
+            }
+        }
+        else
+        {
             break;
         }
     }
