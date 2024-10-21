@@ -23,21 +23,25 @@
 
 #include <SDL2/SDL_mixer.h>
 
+using namespace std;
+
 template <typename T>
 class Array
 {
-    public:
+public:
     Array(int size);
     ~Array();
     int getSize();
     void add(T el);
+    void forEach(function<void(T item, int index, T *arr)> fn);
+    void clear();
     T getElem(int index);
-    
 
-    private:
+    int length = 0;
+
+private:
     int size = 0;
-    T* arr;
-    
+    T *arr;
 };
 
 template <typename T>
@@ -63,13 +67,53 @@ inline int Array<T>::getSize()
 template <typename T>
 inline void Array<T>::add(T el)
 {
-    for (int i = 0; i < this->size; i++) {
+    for (int i = 0; i < this->size; i++)
+    {
         T &element = this->arr[i];
-        if (element == nullptr) {
+        if (element == nullptr)
+        {
             element = el;
+            this->length++;
             break;
         }
     }
+}
+
+template <typename T>
+inline void Array<T>::forEach(function<void(T item, int index, T *arr)>
+                                  fn)
+{
+    int l = this->length;
+    for (int i = 0; i < this->size; i++)
+    {
+        if (l)
+        {
+            T &el = this->arr[i];
+            if (el != nullptr)
+            {
+                fn(el, i, this->arr);
+                l--;
+                if (el == nullptr)
+                {
+                    this->length--;
+                }
+            }
+        }
+        else
+        {
+            break;
+        }
+    }
+}
+
+template <typename T>
+inline void Array<T>::clear()
+{
+    this->forEach([](T el, int i, T *arr)
+                  {
+        delete el;
+        el = nullptr;
+        arr[i] = nullptr; });
 }
 
 template <typename T>
