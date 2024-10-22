@@ -1,17 +1,17 @@
 // g++ main.cpp -I./include -o program `sdl2-config --cflags --libs` -lSDL2 -lSDL2_mixer -lSDL2_image -lSDL2_ttf -I./GLM/
-#include "Listenner.h"
-
+#include "body/game/functions/getIndex.cpp"
 
 class Unit
 {
 public:
-  Unit(){};
+  Unit() {};
   Unit(int n);
   virtual void print() {};
   string str;
   string type;
   int number;
   bool isProc = false;
+    bool isActive = false;
 
 private:
 };
@@ -33,6 +33,7 @@ private:
 class Troll : public Unit
 {
 public:
+
   Troll(int n) : Unit(n)
   {
   }
@@ -44,12 +45,10 @@ public:
 private:
 };
 
-  Array<Unit *> *test = new Array<Unit *>(100);
-
 /////////////////////////////////
 
 bool quit = false;
-
+int tik = 0;
 
 void hard()
 {
@@ -75,27 +74,23 @@ void goWork()
 
     mouse.defaultKeys();
 
-
-
     this_thread::sleep_for(chrono::milliseconds(25));
   }
 };
 
 
-
 int main()
 {
+
+ProtoObj *proto = new ProtoObj;
+
+console.log("size Proto : " +  to_string(sizeof(*proto)));
+
+
+
   srand(time(0));
 
-  // console.log("papa loh");
-
-
-
-
-
-
-
-
+  console.log("papa loh");
 
   ctx.getFont();
 
@@ -105,20 +100,31 @@ int main()
 
   while (!quit)
   {
+
+    tik++;
+
     ctx.CreateDrawZone(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT);
     ctx.FillRect(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT, "white");
+
+    ctx.CreateDrawZone(0, 68, 700, 700);
+    ctx.FillRect(0, 68, 700, 700, "yellow");
+
+    ctx.CreateDrawZone(0, 0, 700, 68);
+    ctx.FillRect(0, 0, 700, 68, "green");
+
+    ctx.CreateDrawZone(700, 0, 324, ctx.SCREEN_HEIGHT);
+    ctx.FillRect(700, 0, 324, ctx.SCREEN_HEIGHT, "black");
+
+    ctx.CreateDrawZone(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT);
+
     console.draw();
     ctx.End();
   }
-
-  delete test;
-  test = nullptr;
 
   ctx.Close();
 
   th_h.join();
   th.join();
-
 
   return 0;
 }
