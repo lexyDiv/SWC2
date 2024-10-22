@@ -38,6 +38,10 @@ public:
     void forEach(function<void(T item)> fn);
     int indexOf(T el);
     int findIndex(function<bool(T item)> fn);
+    T find(function<bool(T item)> fn);
+
+
+
     void clear();
     T getElem(int index);
 
@@ -139,6 +143,20 @@ inline int Array<T>::findIndex(function<bool(T item)> fn)
 }
 
 template <typename T>
+inline T Array<T>::find(function<bool(T item)> fn)
+{
+    for (int i = 0; i < this->size; i++)
+    {
+        T &el = this->arr[i];
+        if (el != nullptr && fn(el))
+        {
+            return el;
+        }
+    }
+    return nullptr;
+}
+
+template <typename T>
 inline void Array<T>::forEach(function<void(T item, int index)>
                                   fn)
 {
@@ -192,6 +210,13 @@ inline void Array<T>::forEach(function<void(T item, int index, T *arr)>
     }
 }
 
+// template <typename T>
+// inline Array<int *> *Array<T>::map(function<int *(T item, int index, T *arr)> fn)
+// {
+//     Array<int*> *array = new Array<int*>(this->size);
+//     return array;
+// }
+
 template <typename T>
 inline void Array<T>::clear()
 {
@@ -207,3 +232,11 @@ inline T Array<T>::getElem(int index)
 {
     return this->arr[index];
 }
+
+// template <typename T>
+// template <typename T2>
+// inline Array<T2> *Array<T>::hz(T a, T2 b)
+// {
+//     return nullptr;
+// }
+
