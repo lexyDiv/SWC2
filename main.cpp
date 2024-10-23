@@ -11,7 +11,7 @@ public:
   string type;
   int number;
   bool isProc = false;
-    bool isActive = false;
+  bool isActive = false;
 
 private:
 };
@@ -33,7 +33,6 @@ private:
 class Troll : public Unit
 {
 public:
-
   Troll(int n) : Unit(n)
   {
   }
@@ -50,11 +49,41 @@ private:
 bool quit = false;
 int tik = 0;
 
+vector<ProtoObj *> *vec = new vector<ProtoObj *>;
+
 void hard()
 {
+
+  for (int i = 0; i < 10000000; i++)
+  {
+    ProtoObj *pr = new ProtoObj;
+    float rand = (float)intRand(0, 100);
+    pr->x = rand;
+    vec->push_back(pr);
+  }
+
+
+  for (int i = 0; i < vec->size(); i++)
+  {
+    ProtoObj *p = vec->at(i);
+    delete p;
+    p = nullptr;
+  }
+  delete vec;
+  vec = nullptr;
+
+  // vec->erase(remove_if(vec->begin(), vec->end(), [](ProtoObj *el)
+  //                      { return el == nullptr; }),
+  //            vec->end()); // delete all by if
+  // vec->erase(vec->begin() + 0); // удаление элемента по индексу
+  // vec->erase(find(vec->begin(),vec->end(), pr)); // удаление эл по элементу
+  // sort(vec->begin(), vec->end(), [](ProtoObj* a, ProtoObj *b){
+  //   return a->x < b->x;
+  // }); // sort 
+
+
   while (!quit)
   {
-
     this_thread::sleep_for(chrono::milliseconds(25));
   }
 }
@@ -78,15 +107,8 @@ void goWork()
   }
 };
 
-
 int main()
 {
-
-ProtoObj *proto = new ProtoObj;
-
-console.log("size Proto : " +  to_string(sizeof(*proto)));
-
-
 
   srand(time(0));
 
@@ -101,7 +123,7 @@ console.log("size Proto : " +  to_string(sizeof(*proto)));
   while (!quit)
   {
 
-    tik++;
+    //  console.log(to_string(sizeof(*vec)));
 
     ctx.CreateDrawZone(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT);
     ctx.FillRect(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT, "white");
@@ -120,6 +142,15 @@ console.log("size Proto : " +  to_string(sizeof(*proto)));
     console.draw();
     ctx.End();
   }
+
+  for (int i = 0; i < vec->size(); i++)
+  {
+    ProtoObj *p = vec->at(i);
+    delete p;
+    p = nullptr;
+  }
+  delete vec;
+  vec = nullptr;
 
   ctx.Close();
 

@@ -17,6 +17,8 @@
 #include <fstream>
 #include <list>
 #include <vector>
+#include <iterator>
+#include <ranges>
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>

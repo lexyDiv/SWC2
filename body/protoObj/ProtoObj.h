@@ -4,7 +4,7 @@ class ProtoObj
 {
 public:
     ProtoObj();
-    ~ProtoObj();
+   virtual ~ProtoObj();
     virtual void draw();
 
     // all
