@@ -1,5 +1,7 @@
 #include "../../Listenner.h"
 
+class GameField;
+
 class ProtoObj
 {
 public:

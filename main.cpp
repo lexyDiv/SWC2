@@ -1,5 +1,5 @@
 // g++ main.cpp -I./include -o program `sdl2-config --cflags --libs` -lSDL2 -lSDL2_mixer -lSDL2_image -lSDL2_ttf -I./GLM/
-#include "body/game/functions/getIndex.cpp"
+#include "body/game/gameField/GameField.cpp"
 
 // class Unit
 // {
@@ -49,28 +49,28 @@
 bool quit = false;
 int tik = 0;
 
-vector<ProtoObj *> *vec = new vector<ProtoObj *>;
+//vector<ProtoObj *> *vec = new vector<ProtoObj *>;
 
 void hard()
 {
 
-  for (int i = 0; i < 10000000; i++)
-  {
-    ProtoObj *pr = new ProtoObj;
-    float rand = (float)intRand(0, 100);
-    pr->x = rand;
-    vec->push_back(pr);
-  }
+  // for (int i = 0; i < 10000000; i++)
+  // {
+  //   ProtoObj *pr = new ProtoObj;
+  //   float rand = (float)intRand(0, 100);
+  //   pr->x = rand;
+  //   vec->push_back(pr);
+  // }
 
 
-  for (int i = 0; i < vec->size(); i++)
-  {
-    ProtoObj *p = vec->at(i);
-    delete p;
-    p = nullptr;
-  }
-  delete vec;
-  vec = nullptr;
+  // for (int i = 0; i < vec->size(); i++)
+  // {
+  //   ProtoObj *p = vec->at(i);
+  //   delete p;
+  //   p = nullptr;
+  // }
+  // delete vec;
+  // vec = nullptr;
 
   // vec->erase(remove_if(vec->begin(), vec->end(), [](ProtoObj *el)
   //                      { return el == nullptr; }),
@@ -143,14 +143,14 @@ int main()
     ctx.End();
   }
 
-  for (int i = 0; i < vec->size(); i++)
-  {
-    ProtoObj *p = vec->at(i);
-    delete p;
-    p = nullptr;
-  }
-  delete vec;
-  vec = nullptr;
+  // for (int i = 0; i < vec->size(); i++)
+  // {
+  //   ProtoObj *p = vec->at(i);
+  //   delete p;
+  //   p = nullptr;
+  // }
+  // delete vec;
+  // vec = nullptr;
 
   ctx.Close();
 
