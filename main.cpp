@@ -49,7 +49,7 @@
 bool quit = false;
 int tik = 0;
 
-//vector<ProtoObj *> *vec = new vector<ProtoObj *>;
+// vector<ProtoObj *> *vec = new vector<ProtoObj *>;
 
 void hard()
 {
@@ -61,7 +61,6 @@ void hard()
   //   pr->x = rand;
   //   vec->push_back(pr);
   // }
-
 
   // for (int i = 0; i < vec->size(); i++)
   // {
@@ -79,8 +78,7 @@ void hard()
   // vec->erase(find(vec->begin(),vec->end(), pr)); // удаление эл по элементу
   // sort(vec->begin(), vec->end(), [](ProtoObj* a, ProtoObj *b){
   //   return a->x < b->x;
-  // }); // sort 
-
+  // }); // sort
 
   while (!quit)
   {
@@ -107,6 +105,8 @@ void goWork()
   }
 };
 
+Image *miniMap = new Image(64, 64);
+
 int main()
 {
 
@@ -119,6 +119,8 @@ int main()
   thread th_h(hard);
   thread th(goWork);
   //  SDL_Event e;
+
+  int ver = 0;
 
   while (!quit)
   {
@@ -137,7 +139,43 @@ int main()
     ctx.CreateDrawZone(700, 0, 324, ctx.SCREEN_HEIGHT);
     ctx.FillRect(700, 0, 324, ctx.SCREEN_HEIGHT, "black");
 
+    /////////////////////////////////
+
+    ctx.PixelHendler(miniMap, 0, ver, 64, 1, [ver](Uint32 *pixelsArr, SDL_PixelFormat *pixelFormat)
+                     { 
+              // arr->getItem(ver)->forEach([pixelsArr, pixelFormat](Cell *cell, int index)
+							// 						  {
+							// 							  pixelsArr;
+							// 							  pixelFormat;
+							// 							  Color color = cell->color;
+							// 							  Uint8 r = color.R;
+							// 							  Uint8 g = color.G;
+							// 							  Uint8 b = color.B;
+							// 							  Uint8 a = cell->A;
+							// 							  Uint32 hzRes = SDL_MapRGBA(pixelFormat, r, g, b, a);
+							// 							  pixelsArr[index] = hzRes; }); 
+              for (int i = 0; i < 64; i++) {
+                	pixelsArr;
+							 		pixelFormat;
+                  						Uint8 r = 255;
+														  Uint8 g = 255;
+														  Uint8 b = 255;
+														  Uint8 a = 255;
+                              Uint32 hzRes = SDL_MapRGBA(pixelFormat, r, g, b, a);
+														  pixelsArr[i] = hzRes;
+              } 
+              });
+              		ver++;
+		if (ver == 64)
+		{
+			ver = 0;
+		}
+       ctx.DrawImage(miniMap, 0, 0, 64, 64, 720, 100, 285, 285);
+    /////////////////////////////////////////
+
     ctx.CreateDrawZone(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT);
+  //  ctx.FillRect(100, 100, 200, 200, "black");
+ 
 
     console.draw();
     ctx.End();
@@ -151,6 +189,9 @@ int main()
   // }
   // delete vec;
   // vec = nullptr;
+
+  delete miniMap;
+  miniMap = nullptr;
 
   ctx.Close();
 
