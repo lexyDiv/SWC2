@@ -1,48 +1,48 @@
 // g++ main.cpp -I./include -o program `sdl2-config --cflags --libs` -lSDL2 -lSDL2_mixer -lSDL2_image -lSDL2_ttf -I./GLM/
 #include "body/game/functions/getIndex.cpp"
 
-class Unit
-{
-public:
-  Unit() {};
-  Unit(int n);
-  virtual void print() {};
-  string str;
-  string type;
-  int number;
-  bool isProc = false;
-  bool isActive = false;
+// class Unit
+// {
+// public:
+//   Unit() {};
+//   Unit(int n);
+//   virtual void print() {};
+//   string str;
+//   string type;
+//   int number;
+//   bool isProc = false;
+//   bool isActive = false;
 
-private:
-};
+// private:
+// };
 
-class Peon : public Unit
-{
-public:
-  Peon(int n) : Unit(n)
-  {
-  }
-  void print() override
-  {
-    console.log("I em Pion !!!");
-  };
+// class Peon : public Unit
+// {
+// public:
+//   Peon(int n) : Unit(n)
+//   {
+//   }
+//   void print() override
+//   {
+//     console.log("I em Pion !!!");
+//   };
 
-private:
-};
+// private:
+// };
 
-class Troll : public Unit
-{
-public:
-  Troll(int n) : Unit(n)
-  {
-  }
-  void print() override
-  {
-    console.log("I em Troll !!!");
-  };
+// class Troll : public Unit
+// {
+// public:
+//   Troll(int n) : Unit(n)
+//   {
+//   }
+//   void print() override
+//   {
+//     console.log("I em Troll !!!");
+//   };
 
-private:
-};
+// private:
+// };
 
 /////////////////////////////////
 
@@ -160,10 +160,10 @@ int main()
   return 0;
 }
 
-Unit::Unit(int n)
-{
-  this->number = n;
-}
+// Unit::Unit(int n)
+// {
+//   this->number = n;
+// }
 
 // void Unit::print()
 // {

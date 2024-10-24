@@ -37,12 +37,4 @@ void ProtoObj::draw()
 {
 }
 
-class Unit2 : public ProtoObj {
-   public:
-   Unit2() : ProtoObj(){
-        this->myCells = new vector<ProtoObj*>;
-   }
-   ~Unit2() {
-        console.log("dlete Unit");
-   }
-};
+
