@@ -33,22 +33,22 @@ public:
     int armor = 0;
     int mana = 0;
     ProtoObj *cell = nullptr;
-    vector<ProtoObj *> *enemys = nullptr;
-    vector<ProtoObj *> *myWay = nullptr;
-    vector<ProtoObj *> *cells2X2 = nullptr;
-    vector<ProtoObj *> *contactCells = nullptr;
+    Array<ProtoObj *>  enemys;
+    Array<ProtoObj *>  myWay;
+    Array<ProtoObj *>  cells2X2;
+    Array<ProtoObj *>  contactCells;
 
     // cells
 
     ProtoObj *groundUnit = nullptr;
     ProtoObj *flyUnit = nullptr;
-    vector<ProtoObj *> *aroundCells = nullptr;
-    vector<ProtoObj *> *drawCells = nullptr;
-    vector<ProtoObj *> *ripUnits = nullptr;
-    vector<ProtoObj *> *landDecorationObjs = nullptr;
-    vector<ProtoObj *> *guardCells = nullptr;
-    vector<ProtoObj *> *booms = nullptr;
-    vector<ProtoObj *> *bullets = nullptr;
+    Array<ProtoObj *>  aroundCells;
+    Array<ProtoObj *>  drawCells;
+    Array<ProtoObj *>  ripUnits;
+    Array<ProtoObj *>  landDecorationObjs;
+    Array<ProtoObj *>  guardCells;
+    Array<ProtoObj *>  booms;
+    Array<ProtoObj *>  bullets;
     ProtoObj *continent = nullptr;
 
     // bullets
@@ -59,7 +59,7 @@ public:
     // sea units
 
     // buildings
-    vector<ProtoObj *> *myCells = nullptr;
+    Array<ProtoObj *>  myCells;
 
     // land objects
 
