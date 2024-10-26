@@ -31,115 +31,161 @@ template <typename T>
 class Array
 {
 public:
-    Array(int size);
+    Array();
     ~Array();
-    int getSize();
-    void add(T el);
-    void forEach(function<void(T item, int index, T *arr)> fn);
+    //  T &operator[] (int i) { return this->vec[i]; }
+    T getItem(int i);
+    void push(T el);
+    void unshift(T el);
+    T pop();
+    T shift();
+    void changeEl(T item, int i);
+    void forEachDel(function<bool(T item, int index, vector<T> vec)> fn);
+    void forEach(function<void(T item, int index, vector<T> vec)> fn);
     void forEach(function<void(T item, int index)> fn);
     void forEach(function<void(T item)> fn);
     int indexOf(T el);
-    int findIndex(function<bool(T item)> fn);
     T find(function<bool(T item)> fn);
-
-
+    void splice(int index, int count, T el);
+    void splice(int index, int count);
+    void filterSelf(function<bool(T item)> fn);
+    void sort(function<bool(T a, T b)> fn);
 
     void clear();
-    T getElem(int index);
 
     int length = 0;
 
 private:
-    int size = 0;
-    T *arr;
+    vector<T> vec;
 };
 
 template <typename T>
-inline Array<T>::Array(int size)
+inline Array<T>::Array()
 {
-    this->size = size;
-    this->arr = new T[size]{nullptr};
 }
 
 template <typename T>
 inline Array<T>::~Array()
 {
-    delete[] this->arr;
-    this->arr = nullptr;
+    // delete vec;
+    // vec = nullptr;
 }
 
 template <typename T>
-inline int Array<T>::getSize()
+inline T Array<T>::getItem(int i)
 {
-    return this->size;
+    return this->vec.at(i);
 }
 
 template <typename T>
-inline void Array<T>::add(T el)
+inline void Array<T>::push(T el)
 {
-    for (int i = 0; i < this->size; i++)
+    this->vec.push_back(el);
+    this->length = vec.size();
+}
+
+template <typename T>
+inline void Array<T>::unshift(T el)
+{
+    this->vec.insert(this->vec.begin(), el);
+    this->length = vec.size();
+}
+
+template <typename T>
+inline T Array<T>::pop()
+{
+    if (this->length)
     {
-        T &element = this->arr[i];
-        if (element == nullptr)
+        int lastIndex = vec.size() - 1;
+        T el = vec.at(lastIndex);
+        vec.erase(vec.begin() + lastIndex);
+        this->length = vec.size();
+        return el;
+    }
+    return T();
+}
+
+template <typename T>
+inline T Array<T>::shift()
+{
+    if (this->length)
+    {
+        int lastIndex = 0;
+        T el = vec.at(lastIndex);
+        vec.erase(vec.begin() + lastIndex);
+        this->length = vec.size();
+        return el;
+    }
+    return T();
+}
+
+template <typename T>
+inline void Array<T>::changeEl(T item, int i)
+{
+    this->vec[i] = item;
+}
+
+template <typename T>
+inline void Array<T>::forEachDel(function<bool(T item, int index, vector<T> vec)> fn)
+{
+    int size = this->vec.size();
+    for (int i = 0; i < size; i++)
+    {
+        T item = this->vec[i];
+        bool del = fn(item, i, this->vec);
+        if (del)
         {
-            element = el;
-            this->length++;
-            break;
+            vec.erase(vec.begin() + i);
+            i--;
+            size--;
         }
+    }
+    this->length = vec.size();
+}
+
+template <typename T>
+inline void Array<T>::forEach(function<void(T item, int index, vector<T> vec)> fn)
+{
+    int size = this->vec.size();
+    for (int i = 0; i < size; i++)
+    {
+        T item = this->vec[i];
+        fn(item, i, this->vec);
     }
 }
 
 template <typename T>
-inline void Array<T>::forEach(function<void(T item)>
-                                  fn)
+inline void Array<T>::forEach(function<void(T item, int index)> fn)
 {
-    int l = this->length;
-    for (int i = 0; i < this->size; i++)
+    int size = this->vec.size();
+    for (int i = 0; i < size; i++)
     {
-        if (l)
-        {
-            T &el = this->arr[i];
-            if (el != nullptr)
-            {
-                fn(el);
-                l--;
-                if (el == nullptr)
-                {
-                    this->length--;
-                }
-            }
-        }
-        else
-        {
-            break;
-        }
+        T item = this->vec[i];
+        fn(item, i);
+    }
+}
+
+template <typename T>
+inline void Array<T>::forEach(function<void(T item)> fn)
+{
+    int size = this->vec.size();
+    for (int i = 0; i < size; i++)
+    {
+        T item = this->vec[i];
+        fn(item);
     }
 }
 
 template <typename T>
 inline int Array<T>::indexOf(T el)
 {
-    for (int i = 0; i < this->size; i++)
+    auto begin = this->vec.begin();
+    auto end = this->vec.end();
+    auto it = std::find(begin, end, el);
+    if (it != end)
     {
-        T &element = this->arr[i];
-        if (element != nullptr && el == element)
-        {
-            return i;
-        }
-    }
-    return -1;
-}
-
-template <typename T>
-inline int Array<T>::findIndex(function<bool(T item)> fn)
-{
-    for (int i = 0; i < this->size; i++)
-    {
-        T &el = this->arr[i];
-        if (el != nullptr && fn(el))
-        {
-            return i;
-        }
+        int index = it - begin;
+        return index;
     }
     return -1;
 }
@@ -147,10 +193,11 @@ inline int Array<T>::findIndex(function<bool(T item)> fn)
 template <typename T>
 inline T Array<T>::find(function<bool(T item)> fn)
 {
-    for (int i = 0; i < this->size; i++)
+    int size = this->vec.size();
+    for (int i = 0; i < size; i++)
     {
-        T &el = this->arr[i];
-        if (el != nullptr && fn(el))
+        T el = this->vec[i];
+        if (fn(el))
         {
             return el;
         }
@@ -159,86 +206,47 @@ inline T Array<T>::find(function<bool(T item)> fn)
 }
 
 template <typename T>
-inline void Array<T>::forEach(function<void(T item, int index)>
-                                  fn)
+inline void Array<T>::splice(int index, int count, T el)
 {
-    int l = this->length;
-    for (int i = 0; i < this->size; i++)
+    if (count)
     {
-        if (l)
-        {
-            T &el = this->arr[i];
-            if (el != nullptr)
-            {
-                fn(el, i);
-                l--;
-                if (el == nullptr)
-                {
-                    this->length--;
-                }
-            }
-        }
-        else
-        {
-            break;
-        }
+        int finI = index + count;
+        this->vec.erase(this->vec.begin() + index, this->vec.begin() + finI);
     }
+    this->vec.insert(std::next(this->vec.begin(), index), std::move(el));
+    this->length = this->vec.size();
 }
 
 template <typename T>
-inline void Array<T>::forEach(function<void(T item, int index, T *arr)>
-                                  fn)
+inline void Array<T>::splice(int index, int count)
 {
-    int l = this->length;
-    for (int i = 0; i < this->size; i++)
+    if (count)
     {
-        if (l)
-        {
-            T &el = this->arr[i];
-            if (el != nullptr)
-            {
-                fn(el, i, this->arr);
-                l--;
-                if (el == nullptr)
-                {
-                    this->length--;
-                }
-            }
-        }
-        else
-        {
-            break;
-        }
+        int finI = index + count;
+        this->vec.erase(this->vec.begin() + index, this->vec.begin() + finI);
     }
+    this->length = this->vec.size();
 }
 
-// template <typename T>
-// inline Array<int *> *Array<T>::map(function<int *(T item, int index, T *arr)> fn)
-// {
-//     Array<int*> *array = new Array<int*>(this->size);
-//     return array;
-// }
+template <typename T>
+inline void Array<T>::filterSelf(function<bool(T item)> fn)
+{
+    this->vec.erase(remove_if(this->vec.begin(), this->vec.end(), [fn](T el)
+                              { return fn(el); }),
+                    this->vec.end());
+    this->length = this->vec.size();
+}
+
+template <typename T>
+inline void Array<T>::sort(function<bool(T a, T b)> fn)
+{
+    std::sort(this->vec.begin(), this->vec.end(), [fn](T a, T b)
+              { return fn(a, b); });
+}
 
 template <typename T>
 inline void Array<T>::clear()
 {
-    this->forEach([](T el, int i, T *arr)
-                  {
-        delete el;
-        el = nullptr;
-        arr[i] = nullptr; });
+    this->vec.clear();
+    this->length = this->vec.size();
 }
-
-template <typename T>
-inline T Array<T>::getElem(int index)
-{
-    return this->arr[index];
-}
-
-// template <typename T>
-// template <typename T2>
-// inline Array<T2> *Array<T>::hz(T a, T2 b)
-// {
-//     return nullptr;
-// }
-

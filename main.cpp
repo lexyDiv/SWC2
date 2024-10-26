@@ -1,20 +1,22 @@
 // g++ main.cpp -I./include -o program `sdl2-config --cflags --libs` -lSDL2 -lSDL2_mixer -lSDL2_image -lSDL2_ttf -I./GLM/
 #include "body/game/gameField/GameField.cpp"
 
-// class Unit
-// {
-// public:
-//   Unit() {};
-//   Unit(int n);
-//   virtual void print() {};
-//   string str;
-//   string type;
-//   int number;
-//   bool isProc = false;
-//   bool isActive = false;
+class Unit
+{
+public:
+  Unit(string* s) {
+    this->str = *s;
+  };
+  Unit(int n);
+  virtual void print() {};
+  string str;
+  string type;
+  int number;
+  bool isProc = false;
+  bool isActive = false;
 
-// private:
-// };
+private:
+};
 
 // class Peon : public Unit
 // {
@@ -80,10 +82,18 @@ void hard()
   //   return a->x < b->x;
   // }); // sort
 
+
+
+
   while (!quit)
   {
+
+
+
     this_thread::sleep_for(chrono::milliseconds(25));
   }
+
+
 }
 
 void goWork()
@@ -106,6 +116,7 @@ void goWork()
 };
 
 Image *miniMap = new Image(64, 64);
+
 
 int main()
 {
