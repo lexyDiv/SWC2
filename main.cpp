@@ -1,22 +1,22 @@
 // g++ main.cpp -I./include -o program `sdl2-config --cflags --libs` -lSDL2 -lSDL2_mixer -lSDL2_image -lSDL2_ttf -I./GLM/
 #include "body/game/gameField/GameField.cpp"
 
-class Unit
-{
-public:
-  Unit(string* s) {
-    this->str = *s;
-  };
-  Unit(int n);
-  virtual void print() {};
-  string str;
-  string type;
-  int number;
-  bool isProc = false;
-  bool isActive = false;
+// class Unit
+// {
+// public:
+//   Unit(string* s) {
+//     this->str = *s;
+//   };
+//   Unit(int n);
+//   virtual void print() {};
+//   string str;
+//   string type;
+//   int number;
+//   bool isProc = false;
+//   bool isActive = false;
 
-private:
-};
+// private:
+// };
 
 // class Peon : public Unit
 // {
@@ -50,39 +50,14 @@ private:
 
 bool quit = false;
 int tik = 0;
+ string path = "levels/test_1.txt";
+// mapWrite(&path, testMap);
+ GameField *gameField = new GameField(&path, 1);
 
 // vector<ProtoObj *> *vec = new vector<ProtoObj *>;
 
 void hard()
 {
-
-  // for (int i = 0; i < 10000000; i++)
-  // {
-  //   ProtoObj *pr = new ProtoObj;
-  //   float rand = (float)intRand(0, 100);
-  //   pr->x = rand;
-  //   vec->push_back(pr);
-  // }
-
-  // for (int i = 0; i < vec->size(); i++)
-  // {
-  //   ProtoObj *p = vec->at(i);
-  //   delete p;
-  //   p = nullptr;
-  // }
-  // delete vec;
-  // vec = nullptr;
-
-  // vec->erase(remove_if(vec->begin(), vec->end(), [](ProtoObj *el)
-  //                      { return el == nullptr; }),
-  //            vec->end()); // delete all by if
-  // vec->erase(vec->begin() + 0); // удаление элемента по индексу
-  // vec->erase(find(vec->begin(),vec->end(), pr)); // удаление эл по элементу
-  // sort(vec->begin(), vec->end(), [](ProtoObj* a, ProtoObj *b){
-  //   return a->x < b->x;
-  // }); // sort
-
-
 
 
   while (!quit)
@@ -108,14 +83,13 @@ void goWork()
     // {
     //     game->prog();
     // }
-
+    
     mouse.defaultKeys();
-
+    
     this_thread::sleep_for(chrono::milliseconds(25));
   }
 };
 
-Image *miniMap = new Image(64, 64);
 
 
 int main()
@@ -150,59 +124,21 @@ int main()
     ctx.CreateDrawZone(700, 0, 324, ctx.SCREEN_HEIGHT);
     ctx.FillRect(700, 0, 324, ctx.SCREEN_HEIGHT, "black");
 
-    /////////////////////////////////
 
-    ctx.PixelHendler(miniMap, 0, ver, 64, 1, [ver](Uint32 *pixelsArr, SDL_PixelFormat *pixelFormat)
-                     { 
-              // arr->getItem(ver)->forEach([pixelsArr, pixelFormat](Cell *cell, int index)
-							// 						  {
-							// 							  pixelsArr;
-							// 							  pixelFormat;
-							// 							  Color color = cell->color;
-							// 							  Uint8 r = color.R;
-							// 							  Uint8 g = color.G;
-							// 							  Uint8 b = color.B;
-							// 							  Uint8 a = cell->A;
-							// 							  Uint32 hzRes = SDL_MapRGBA(pixelFormat, r, g, b, a);
-							// 							  pixelsArr[index] = hzRes; }); 
-              for (int i = 0; i < 64; i++) {
-                	pixelsArr;
-							 		pixelFormat;
-                  						Uint8 r = 255;
-														  Uint8 g = 255;
-														  Uint8 b = 255;
-														  Uint8 a = 255;
-                              Uint32 hzRes = SDL_MapRGBA(pixelFormat, r, g, b, a);
-														  pixelsArr[i] = hzRes;
-              } 
-              });
-              		ver++;
-		if (ver == 64)
-		{
-			ver = 0;
-		}
-       ctx.DrawImage(miniMap, 0, 0, 64, 64, 720, 100, 285, 285);
-    /////////////////////////////////////////
+
+       gameField->miniMapDraw();
 
     ctx.CreateDrawZone(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT);
-  //  ctx.FillRect(100, 100, 200, 200, "black");
+
  
 
     console.draw();
     ctx.End();
   }
 
-  // for (int i = 0; i < vec->size(); i++)
-  // {
-  //   ProtoObj *p = vec->at(i);
-  //   delete p;
-  //   p = nullptr;
-  // }
-  // delete vec;
-  // vec = nullptr;
 
-  delete miniMap;
-  miniMap = nullptr;
+  delete gameField;
+  gameField = nullptr;
 
   ctx.Close();
 

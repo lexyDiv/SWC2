@@ -1,6 +1,6 @@
 #include "FS.h"
 
-FS fs;
+
 
 
 template<typename T>
