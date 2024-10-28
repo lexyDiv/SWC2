@@ -1,5 +1,5 @@
 // g++ main.cpp -I./include -o program `sdl2-config --cflags --libs` -lSDL2 -lSDL2_mixer -lSDL2_image -lSDL2_ttf -I./GLM/
-#include "body/game/gameField/GameField.cpp"
+#include "body/game/gameField/miniMapDraw.cpp"
 
 // class Unit
 // {
@@ -49,7 +49,6 @@
 /////////////////////////////////
 
 bool quit = false;
-int tik = 0;
  string path = "levels/test_1.txt";
 // mapWrite(&path, testMap);
  GameField *gameField = new GameField(&path, 1);

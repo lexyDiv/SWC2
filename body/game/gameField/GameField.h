@@ -1,7 +1,5 @@
 #include "../cell/Cell.cpp"
 
-
-
 vector<string> testMap = {
 
     "00000000000000s0000000000000000000000000000tttttttttttttttttttttt",
@@ -70,25 +68,24 @@ vector<string> testMap = {
     "00000000000000000000000000000000000000000001111111111111111111111",
     "000000000000000000000000000000000000000000t1111111111111111111111"};
 
-
 class GameField
 {
 public:
-   GameField(string *path, int type);
-   ~GameField();
-   void create();
-   void mapInit(Array<string> array);
-   void getFieldImage();
-   void miniMapUpdate();
-   void miniMapDraw();
-   
-   Color getDefaultColor(char lit);
-   Array<Array<ProtoObj *>> field;
-   Image *miniMap = nullptr;
-   string path;
-   int type;
-   int miniMapUpdateVer = 0;
-   int gabarit = 0;
+    GameField(string *path, int type);
+    ~GameField();
+    void create();
+    void mapInit(Array<string> array);
+    void getFieldImage();
+    void miniMapUpdate();
+    void miniMapDraw();
+
+    Color getDefaultColor(char lit);
+    Array<Array<ProtoObj *>> field;
+    Image *miniMap = nullptr;
+    string path;
+    int type;
+    int miniMapUpdateVer = 0;
+    int gabarit = 0;
 
 private:
 };
