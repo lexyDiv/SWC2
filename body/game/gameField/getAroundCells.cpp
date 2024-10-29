@@ -1,5 +1,6 @@
 #include "cellsIteration.cpp"
 
+
 void GameField::getAroundCells(int wing, bool selfCell, function<void(ProtoObj *focusCell, ProtoObj *cellToPush)> fn)
 {
     this->cellsIteration([this, wing, selfCell, fn](ProtoObj *cell)

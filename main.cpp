@@ -1,5 +1,5 @@
 // g++ main.cpp -I./include -o program `sdl2-config --cflags --libs` -lSDL2 -lSDL2_mixer -lSDL2_image -lSDL2_ttf -I./GLM/
-#include "body/game/gameField/miniMapDraw.cpp"
+#include "body/game/gameField/offsetControl.cpp"
 
 // class Unit
 // {
@@ -78,11 +78,9 @@ void goWork()
 
     listenner(e, quit);
     console.proc(mouse.x, mouse.y, mouse.leftKey);
-    // if (!game->pause)
-    // {
-    //     game->prog();
-    // }
-    
+
+     gameField->offsetControl();
+
     mouse.defaultKeys();
     
     this_thread::sleep_for(chrono::milliseconds(25));
@@ -108,16 +106,15 @@ int main()
 
   while (!quit)
   {
-    //console.log(to_string(gameField->field.getItem(0).length));
-     console.log(to_string(gameField->field.getItem(20).getItem(20)->drawCells.length));
-    //  console.log(to_string(sizeof(*vec)));
+    
 
     ctx.CreateDrawZone(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT);
     ctx.FillRect(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT, "white");
 
-    ctx.CreateDrawZone(0, 68, 700, 700);
-    ctx.FillRect(0, 68, 700, 700, "yellow");
+    ctx.CreateDrawZone(gameField->x, gameField->y, gameField->screenWidth, gameField->screenHeight);
+    ctx.FillRect(gameField->x, gameField->y, gameField->screenHeight, gameField->screenHeight, "white");
 
+    
 
 
 

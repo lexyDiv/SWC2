@@ -80,6 +80,7 @@ public:
     void miniMapDraw();
     void cellsIteration(function<void(ProtoObj *cell)> fn);
     void getAroundCells(int wing, bool selfCell, function<void(ProtoObj *focusCell, ProtoObj *cellToPush)> fn);
+    void offsetControl();
 
     Color getDefaultColor(char lit);
     Array<Array<ProtoObj *>> field;
@@ -89,6 +90,17 @@ public:
     int miniMapUpdateVer = 0;
     int gabarit = 0;
     int cellSize = 50;
+    int screenWidth = 700;
+    int screenHeight = 700;
+    int x = 0;
+    int y = 68;
+    int centerX = this->screenWidth / 2;
+    int centerY = this->screenHeight / 2;
+    int offsetX = 0;
+    int offsetY = 0;
+    int width = 0;
+    int height = 0;
+    int offsetStep = 10;
 
 private:
 };
