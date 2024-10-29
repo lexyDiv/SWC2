@@ -78,8 +78,8 @@ public:
     void getFieldImage();
     void miniMapUpdate();
     void miniMapDraw();
-    void cellsIteration(function<void(ProtoObj* cell)> fn);
-    void getAroundCells(int wing);
+    void cellsIteration(function<void(ProtoObj *cell)> fn);
+    void getAroundCells(int wing, bool selfCell, function<void(ProtoObj *focusCell, ProtoObj *cellToPush)> fn);
 
     Color getDefaultColor(char lit);
     Array<Array<ProtoObj *>> field;

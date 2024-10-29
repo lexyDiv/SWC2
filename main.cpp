@@ -109,7 +109,7 @@ int main()
   while (!quit)
   {
     //console.log(to_string(gameField->field.getItem(0).length));
-     console.log(to_string(gameField->field.getItem(0).getItem(1)->aroundCells.length));
+     console.log(to_string(gameField->field.getItem(20).getItem(20)->drawCells.length));
     //  console.log(to_string(sizeof(*vec)));
 
     ctx.CreateDrawZone(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT);

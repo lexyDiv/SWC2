@@ -1,8 +1,8 @@
 #include "cellsIteration.cpp"
 
-void GameField::getAroundCells(int wing)
+void GameField::getAroundCells(int wing, bool selfCell, function<void(ProtoObj *focusCell, ProtoObj *cellToPush)> fn)
 {
-    this->cellsIteration([this, wing](ProtoObj *cell)
+    this->cellsIteration([this, wing, selfCell, fn](ProtoObj *cell)
                          {
       int minVer = cell->ver - wing;
       int maxVer = cell->ver + wing;
@@ -15,12 +15,15 @@ void GameField::getAroundCells(int wing)
             ver < this->gabarit &&
             hor >= 0 &&
             hor < this->gabarit) {
-               // console.log("here");
                 ProtoObj *pushedCell = this->field.getItem(ver).getItem(hor);
-                if (cell != pushedCell) {
-                    cell->aroundCells.push(pushedCell);
+                if (!selfCell) {
+                    if (cell != pushedCell) {
+                    fn(cell, pushedCell);
+                    }
+                } else {
+                   fn(cell, pushedCell);
                 }
-        }
+            }
         }
       } });
 }
