@@ -1,4 +1,4 @@
-#include "GameField.cpp"
+#include "getAroundCells.cpp"
 
 Color GameField::getDefaultColor(char lit)
 {

@@ -2,13 +2,17 @@
 
 void GameField::mapInit(Array<string> array)
 {
-    array.forEach([this](string str)
+    array.forEach([this](string str, int ver)
                   {
         Array<ProtoObj *> arr;
-        for (int i = 0; i < str.size(); i++) {
-            char lit = str[i];
+        for (int hor = 0; hor < str.size(); hor++) {
+            char lit = str[hor];
             Cell *cell = new Cell;
             cell->mapColor = this->getDefaultColor(lit);
+            cell->ver = ver;
+            cell->hor = hor;
+            cell->x = hor * this->cellSize;
+            cell->y = ver * this->cellSize;
             arr.push(cell);
         } 
         this->field.push(arr); });

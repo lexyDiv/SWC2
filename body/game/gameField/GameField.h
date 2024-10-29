@@ -78,6 +78,8 @@ public:
     void getFieldImage();
     void miniMapUpdate();
     void miniMapDraw();
+    void cellsIteration(function<void(ProtoObj* cell)> fn);
+    void getAroundCells(int wing);
 
     Color getDefaultColor(char lit);
     Array<Array<ProtoObj *>> field;
@@ -86,6 +88,7 @@ public:
     int type;
     int miniMapUpdateVer = 0;
     int gabarit = 0;
+    int cellSize = 50;
 
 private:
 };
