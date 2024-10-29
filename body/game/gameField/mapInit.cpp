@@ -13,6 +13,8 @@ void GameField::mapInit(Array<string> array)
             cell->hor = hor;
             cell->x = hor * this->cellSize;
             cell->y = ver * this->cellSize;
+            cell->gabX = this->cellSize;
+            cell->gabY = this->cellSize;
             arr.push(cell);
         } 
         this->field.push(arr); });

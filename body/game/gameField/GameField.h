@@ -1,4 +1,4 @@
-#include "../cell/Cell.cpp"
+#include "../cell/draw.cpp"
 
 vector<string> testMap = {
 
