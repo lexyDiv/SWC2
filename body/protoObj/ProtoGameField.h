@@ -41,6 +41,7 @@ class ProtoGameField {
     int offsetStep = 10;
     bool init = false;
     // this->miniMap, 0, 0, this->gabarit, this->gabarit, 732, 100, 285, 285
+    ////////////////////////////// => miniMap
     float miniMapX = 732;
     float miniMapY = 48;
     float miniMapGab = 285;
@@ -49,6 +50,9 @@ class ProtoGameField {
     bool miniMapClick = false;
     float miniMapWinGab = 0;
     float mcs = 0.0f;
+    int dx = 0;
+    int dy = 0;
+    //////////////////////////// <= miniMap
 
 private:
 };
