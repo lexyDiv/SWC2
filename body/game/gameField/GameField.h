@@ -68,42 +68,43 @@ vector<string> testMap = {
     "00000000000000000000000000000000000000000001111111111111111111111",
     "000000000000000000000000000000000000000000t1111111111111111111111"};
 
-class GameField
+class GameField : public ProtoGameField
 {
 public:
-    GameField(string *path, int type);
+    GameField(string *path, int type) : ProtoGameField(path, type) {};
     ~GameField();
-    void create();
-    void mapInit(Array<string> array);
-    void getFieldImage();
-    void miniMapUpdate();
-    void miniMapDraw();
-    void cellsIteration(function<void(ProtoObj *cell)> fn);
-    void getAroundCells(int wing, bool selfCell, function<void(ProtoObj *focusCell, ProtoObj *cellToPush)> fn);
+    void create() override;
+    void mapInit(Array<string> array) override;
+    void getFieldImage() override;
+    void miniMapUpdate() override;
+    void miniMapDraw() override;
+    void cellsIteration(function<void(ProtoObj *cell)> fn) override;
+    void getAroundCells(int wing, bool selfCell, function<void(ProtoObj *focusCell, ProtoObj *cellToPush)> fn) override;
     void offsetControl();
 
-    Color getDefaultColor(char lit);
-    Array<Array<ProtoObj *>> field;
-    Image *miniMap = nullptr;
-    ProtoObj *drawCell = nullptr;
-    string path;
-    int type;
-    int miniMapUpdateVer = 0;
-    int gabarit = 0;
-    int cellSize = 50;
-    int screenWidth = 700;
-    int screenHeight = 700;
-    int x = 0;
-    int y = 68;
-    int centerX = this->screenWidth / 2 + this->x;
-    int centerY = this->screenHeight / 2 + this->y;
-    int offsetX = 0;
-    int offsetY = 0;
-    int drawOffsetX = 0;
-    int drawOffsetY = 0;
-    int width = 0;
-    int height = 0;
-    int offsetStep = 10;
+     Color getDefaultColor(char lit) override;
+//     Array<Array<ProtoObj *>> field;
+//     Image *miniMap = nullptr;
+//     ProtoObj *drawCell = nullptr;
+//     string path;
+//     int type;
+//     int miniMapUpdateVer = 0;
+//     int gabarit = 0;
+//     int cellSize = 50;
+//     int screenWidth = 700;
+//     int screenHeight = 700;
+//     int x = 0;
+//     int y = 68;
+//     int centerX = this->screenWidth / 2 + this->x;
+//     int centerY = this->screenHeight / 2 + this->y;
+//     int offsetX = 0;
+//     int offsetY = 0;
+//     int drawOffsetX = 0;
+//     int drawOffsetY = 0;
+//     int width = 0;
+//     int height = 0;
+//     int offsetStep = 10;
+//     bool init = false;
 
-private:
+// private:
 };

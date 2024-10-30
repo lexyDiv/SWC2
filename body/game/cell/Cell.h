@@ -6,7 +6,7 @@ class Cell : public ProtoObj
     public:
     Cell() : ProtoObj() {};
     ~Cell();
-    void draw(int offsetX, int offsetY) override;
+    void draw() override;
     Color getMapColor() override;
 
 };

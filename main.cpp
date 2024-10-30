@@ -49,9 +49,10 @@
 /////////////////////////////////
 
 bool quit = false;
+int tik = 0;
  string path = "levels/test_1.txt";
 // mapWrite(&path, testMap);
- GameField *gameField = new GameField(&path, 1);
+ ProtoGameField *gameField = new GameField(&path, 1);
 
 // vector<ProtoObj *> *vec = new vector<ProtoObj *>;
 
@@ -72,6 +73,9 @@ void hard()
 
 void goWork()
 {
+
+
+
   SDL_Event e;
   while (!quit)
   {
@@ -79,7 +83,10 @@ void goWork()
     listenner(e, quit);
     console.proc(mouse.x, mouse.y, mouse.leftKey);
 
-     gameField->offsetControl();
+     
+     if (gameField->init) {
+      gameField->offsetControl();
+     }
 
     mouse.defaultKeys();
     
@@ -104,6 +111,8 @@ int main()
 
   int ver = 0;
 
+  gameField->create();
+
   while (!quit)
   {
     
@@ -111,17 +120,19 @@ int main()
     ctx.CreateDrawZone(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT);
     ctx.FillRect(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT, "white");
 
-    ctx.CreateDrawZone(gameField->x, 0, gameField->screenWidth, 900);
+    if (gameField->init) {
+          ctx.CreateDrawZone(gameField->x, 0, gameField->screenWidth, 900);
     ctx.FillRect(gameField->x, gameField->y, gameField->screenHeight, gameField->screenHeight, "white");
     
     if (gameField->drawCell != nullptr) {
 
          gameField->drawCell->drawCells.forEach([](ProtoObj *cell){
-          cell->draw(gameField->drawOffsetX, gameField->drawOffsetY);
+          cell->draw();
          });
 
-          ctx.FillRect(gameField->drawCell->x - gameField->drawOffsetX, 
-          (gameField->drawCell->y - gameField->drawOffsetY), 50, 50, "red");
+          // ctx.FillRect(gameField->drawCell->x - gameField->drawOffsetX, 
+          // (gameField->drawCell->y - gameField->drawOffsetY), 50, 50, "red");
+    }
     }
     
     ctx.FillRect(350, 418, 3, 3, "black");
@@ -135,8 +146,11 @@ int main()
     ctx.FillRect(700, 0, 324, ctx.SCREEN_HEIGHT, "black");
 
 
+         if (gameField->init) {
+          gameField->miniMapDraw();
+         }
+      
 
-       gameField->miniMapDraw();
 
     ctx.CreateDrawZone(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT);
 

@@ -5,7 +5,7 @@ void GameField::offsetControl()
     int mx = mouse.x;
     int my = mouse.y;
     int maxOffsetX = this->width - this->centerX;
-    int maxOffsetY = (this->height - this->centerY) + this->y;
+    int maxOffsetY = (this->height - this->centerY);
     if (mx <= 0 && this->offsetX > 0)
     {
         this->offsetX -= this->offsetStep;
@@ -31,7 +31,7 @@ void GameField::offsetControl()
     {
         this->offsetX = maxOffsetX;
     }
-
+/////////////////////////////////////////
     if (this->offsetY < 0)
     {
         this->offsetY = 0;

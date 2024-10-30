@@ -1,11 +1,11 @@
 #include "GameField.h"
 
-GameField::GameField(string *path, int type)
-{
-    this->path = *path;
-    this->type = type;
-    this->create();
-}
+// GameField::GameField(string *path, int type)
+// {
+//     this->path = *path;
+//     this->type = type;
+//   //  this->create();
+// }
 
 GameField::~GameField()
 {

@@ -1,17 +1,17 @@
-#include "../../Listenner.h"
+#include "ProtoGameField.cpp"
 
-class GameField;
+
 
 class ProtoObj
 {
 public:
     ProtoObj();
     virtual ~ProtoObj();
-    virtual void draw(int offsetX, int offsetY);
+    virtual void draw();
     virtual Color getMapColor();
 
     // all
-
+    ProtoGameField *gf = nullptr;
 
     string type;
     float x = 0.0f;

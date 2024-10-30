@@ -10,7 +10,7 @@ ProtoObj::~ProtoObj()
 
 }
 
-void ProtoObj::draw(int offsetX, int offsetY)
+void ProtoObj::draw()
 {
 }
 

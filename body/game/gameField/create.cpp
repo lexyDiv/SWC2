@@ -13,4 +13,5 @@ void GameField::create()
         this->getAroundCells(7, true, [](ProtoObj *focusCell, ProtoObj *pushedCell){
        focusCell->drawCells.push(pushedCell);
     });
+    this->init = true;
 }
