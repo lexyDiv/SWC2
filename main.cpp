@@ -111,15 +111,25 @@ int main()
     ctx.CreateDrawZone(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT);
     ctx.FillRect(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT, "white");
 
-    ctx.CreateDrawZone(gameField->x, gameField->y, gameField->screenWidth, gameField->screenHeight);
+    ctx.CreateDrawZone(gameField->x, 0, gameField->screenWidth, 900);
     ctx.FillRect(gameField->x, gameField->y, gameField->screenHeight, gameField->screenHeight, "white");
-
     
+    if (gameField->drawCell != nullptr) {
+
+         gameField->drawCell->drawCells.forEach([](ProtoObj *cell){
+          cell->draw(gameField->drawOffsetX, gameField->drawOffsetY);
+         });
+
+          ctx.FillRect(gameField->drawCell->x - gameField->drawOffsetX, 
+          (gameField->drawCell->y - gameField->drawOffsetY), 50, 50, "red");
+    }
+    
+    ctx.FillRect(350, 418, 3, 3, "black");
 
 
 
-    ctx.CreateDrawZone(0, 0, 700, 68);
-    ctx.FillRect(0, 0, 700, 68, "green");
+    // ctx.CreateDrawZone(0, 0, 700, 68);
+    // ctx.FillRect(0, 0, 700, 68, "blue");
 
     ctx.CreateDrawZone(700, 0, 324, ctx.SCREEN_HEIGHT);
     ctx.FillRect(700, 0, 324, ctx.SCREEN_HEIGHT, "black");

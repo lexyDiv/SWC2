@@ -5,7 +5,7 @@ void GameField::offsetControl()
     int mx = mouse.x;
     int my = mouse.y;
     int maxOffsetX = this->width - this->centerX;
-    int maxOffsetY = this->height - this->centerY;
+    int maxOffsetY = (this->height - this->centerY) + this->y;
     if (mx <= 0 && this->offsetX > 0)
     {
         this->offsetX -= this->offsetStep;
@@ -41,6 +41,15 @@ void GameField::offsetControl()
         this->offsetY = maxOffsetY;
     }
 
+   this->drawOffsetX = this->x + this->offsetX;
+   this->drawOffsetY = this->y + this->offsetY;
+
+    int offsetIndexX = (this->drawOffsetX + this->centerX) / this->cellSize;
+    int offsetIndexY = (this->drawOffsetY + this->centerY) / this->cellSize;
+
+   // console.log(to_string(offsetIndexX));
+    this->drawCell = this->field.getItem(offsetIndexY).getItem(offsetIndexX);
+   // console.log(to_string(this->drawCell->x));
    // console.log(to_string(this->offsetY));
     // console.log("mouse.x = " + to_string(mouse.x) + "screen.width = " + to_string(ctx.SCREEN_WIDTH));
 }

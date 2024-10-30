@@ -7,10 +7,12 @@ class ProtoObj
 public:
     ProtoObj();
     virtual ~ProtoObj();
-    virtual void draw();
+    virtual void draw(int offsetX, int offsetY);
     virtual Color getMapColor();
 
     // all
+
+
     string type;
     float x = 0.0f;
     float y = 0.0f;

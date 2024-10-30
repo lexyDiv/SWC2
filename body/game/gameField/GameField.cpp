@@ -9,6 +9,8 @@ GameField::GameField(string *path, int type)
 
 GameField::~GameField()
 {
+    this->drawCell = nullptr;
+    
     if (this->miniMap != nullptr)
     {
         delete this->miniMap;
