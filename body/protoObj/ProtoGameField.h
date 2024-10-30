@@ -44,10 +44,11 @@ class ProtoGameField {
     float miniMapX = 732;
     float miniMapY = 48;
     float miniMapGab = 285;
-    int miniMapClickX = 0;
-    int miniMapClickY = 0;
+    float miniMapClickX = 0;
+    float miniMapClickY = 0;
     bool miniMapClick = false;
     float miniMapWinGab = 0;
+    float mcs = 0.0f;
 
 private:
 };

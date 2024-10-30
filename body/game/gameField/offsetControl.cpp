@@ -52,4 +52,13 @@ void GameField::offsetControl()
     int offsetIndexY = (this->drawOffsetY - this->y) / this->cellSize;
 
     this->drawCell = this->field.getItem(offsetIndexY).getItem(offsetIndexX);
+
+    //    if (this->miniMapClick)
+    // {
+    //     console.log("this->miniMapClickX : " + to_string(this->miniMapClickX));
+    //     this->miniMapClickX = this->miniMapX + this->drawCell->hor * this->mcs;
+    //     this->miniMapClickY = this->miniMapY + this->drawCell->ver * this->mcs;
+    //     console.log("this->miniMapClickX : " + to_string(this->miniMapClickX));
+    //     console.log("___________________________________________");
+    // }
 }

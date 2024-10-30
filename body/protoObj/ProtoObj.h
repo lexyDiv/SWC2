@@ -16,8 +16,8 @@ public:
     string type;
     float x = 0.0f;
     float y = 0.0f;
-    int ver = 0;
-    int hor = 0;
+    float ver = 0;
+    float hor = 0;
     int drawX = 0;
     int drawY = 0;
     int animX = 0;

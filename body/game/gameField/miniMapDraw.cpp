@@ -15,10 +15,10 @@ void GameField::miniMapDraw()
 
     if (this->drawCell != nullptr)
     {
-        float mcs = this->miniMapGab / this->gabarit;
+      float mcs = this->miniMapGab / this->gabarit;
         float x, y;
-        x = (this->miniMapX + (this->drawCell->hor * mcs)) - mcs * 7;
-        y = (this->miniMapY + (this->drawCell->ver * mcs)) - mcs * 7;
+        x = (this->miniMapX + (this->drawCell->hor * this->mcs)) - this->mcs * 7;
+        y = (this->miniMapY + (this->drawCell->ver * this->mcs)) - this->mcs * 7;
         ctx.StrokeRect(x, y, this->miniMapWinGab, this->miniMapWinGab, "orange");
     }
 }

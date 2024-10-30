@@ -6,9 +6,8 @@ void GameField::create()
     this->width = array.length * this->cellSize;
     this->height = array.getItem(0).size() * this->cellSize;
 
-    float mcs = this->miniMapGab / array.getItem(0).size();
-    
-    this->miniMapWinGab = ceil(mcs * 15);
+    this->mcs = this->miniMapGab / array.getItem(0).size();
+    this->miniMapWinGab = ceil(this->mcs * 15);
 
     this->mapInit(array);
     this->getFieldImage();

@@ -5,8 +5,8 @@
 class Mouse
 {
    public:
-   int x;
-   int y;
+   float x;
+   float y;
    bool leftKey = false;
    bool rightKey = false;
    bool midKey = false;
