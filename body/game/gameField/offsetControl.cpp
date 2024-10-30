@@ -1,5 +1,6 @@
 #include "miniMapDraw.cpp"
 
+
 void GameField::offsetControl()
 {
     int mx = mouse.x;
@@ -51,5 +52,4 @@ void GameField::offsetControl()
     int offsetIndexY = (this->drawOffsetY - this->y) / this->cellSize;
 
     this->drawCell = this->field.getItem(offsetIndexY).getItem(offsetIndexX);
-
 }

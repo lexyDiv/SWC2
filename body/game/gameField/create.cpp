@@ -5,6 +5,11 @@ void GameField::create()
     Array<string> array = readMap(&this->path);
     this->width = array.length * this->cellSize;
     this->height = array.getItem(0).size() * this->cellSize;
+
+    float mcs = this->miniMapGab / array.getItem(0).size();
+    
+    this->miniMapWinGab = ceil(mcs * 15);
+
     this->mapInit(array);
     this->getFieldImage();
     this->getAroundCells(1, false, [](ProtoObj *focusCell, ProtoObj *pushedCell){

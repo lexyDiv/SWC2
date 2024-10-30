@@ -15,6 +15,7 @@ class ProtoGameField {
    virtual void cellsIteration(function<void(ProtoObj *cell)> fn);
    virtual void getAroundCells(int wing, bool selfCell, function<void(ProtoObj *focusCell, ProtoObj *cellToPush)> fn);
    virtual void offsetControl();
+   virtual void miniMapMouseControl();
 
    virtual Color getDefaultColor(char lit);
     Array<Array<ProtoObj *>> field;
@@ -40,9 +41,13 @@ class ProtoGameField {
     int offsetStep = 10;
     bool init = false;
     // this->miniMap, 0, 0, this->gabarit, this->gabarit, 732, 100, 285, 285
-    int miniMapX = 732;
-    int miniMapY = 48;
-    int miniMapGab = 285;
+    float miniMapX = 732;
+    float miniMapY = 48;
+    float miniMapGab = 285;
+    int miniMapClickX = 0;
+    int miniMapClickY = 0;
+    bool miniMapClick = false;
+    float miniMapWinGab = 0;
 
 private:
 };

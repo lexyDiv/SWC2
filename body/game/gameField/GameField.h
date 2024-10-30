@@ -80,7 +80,8 @@ public:
     void miniMapDraw() override;
     void cellsIteration(function<void(ProtoObj *cell)> fn) override;
     void getAroundCells(int wing, bool selfCell, function<void(ProtoObj *focusCell, ProtoObj *cellToPush)> fn) override;
-    void offsetControl();
+    void offsetControl() override;
+    void miniMapMouseControl() override;
 
      Color getDefaultColor(char lit) override;
 

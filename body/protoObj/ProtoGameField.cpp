@@ -51,6 +51,9 @@ Color ProtoGameField::getDefaultColor(char lit)
     return Color();
 }
 
+void ProtoGameField::miniMapMouseControl()
+{
+}
 
 ////////////////////////////////////
 
