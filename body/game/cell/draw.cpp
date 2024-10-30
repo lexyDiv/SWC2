@@ -25,14 +25,14 @@ void Cell::draw()
         this->gabY,
         "yellow");
 
-    if (this == this->gf->drawCell)
-    {
-        ctx.FillRect(
-        (this->x + this->gf->x) - offsetX,
-        (this->y + this->gf->y) - offsetY,
-                     this->gabX,
-                     this->gabY,
-                     "violet");
-      //  console.log("ver : " + to_string(this->ver) + " hor : " + to_string(this->hor));
-    }
+    // if (this == this->gf->drawCell)
+    // {
+    //     ctx.FillRect(
+    //     (this->x + this->gf->x) - offsetX,
+    //     (this->y + this->gf->y) - offsetY,
+    //                  this->gabX,
+    //                  this->gabY,
+    //                  "violet");
+    //   //  console.log("ver : " + to_string(this->ver) + " hor : " + to_string(this->hor));
+    // }
 }

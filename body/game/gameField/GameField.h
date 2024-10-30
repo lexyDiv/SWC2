@@ -83,28 +83,5 @@ public:
     void offsetControl();
 
      Color getDefaultColor(char lit) override;
-//     Array<Array<ProtoObj *>> field;
-//     Image *miniMap = nullptr;
-//     ProtoObj *drawCell = nullptr;
-//     string path;
-//     int type;
-//     int miniMapUpdateVer = 0;
-//     int gabarit = 0;
-//     int cellSize = 50;
-//     int screenWidth = 700;
-//     int screenHeight = 700;
-//     int x = 0;
-//     int y = 68;
-//     int centerX = this->screenWidth / 2 + this->x;
-//     int centerY = this->screenHeight / 2 + this->y;
-//     int offsetX = 0;
-//     int offsetY = 0;
-//     int drawOffsetX = 0;
-//     int drawOffsetY = 0;
-//     int width = 0;
-//     int height = 0;
-//     int offsetStep = 10;
-//     bool init = false;
 
-// private:
 };

@@ -75,7 +75,7 @@ int main()
                                                { cell->draw(); });
       }
 
-      ctx.FillRect(gameField->centerX, gameField->centerY + gameField->y, 3, 3, "black");
+    //  ctx.FillRect(gameField->centerX, gameField->centerY + gameField->y, 3, 3, "black");
 
       ctx.CreateDrawZone(0, 0, gameField->screenWidth, ctx.SCREEN_HEIGHT - gameField->screenHeight);
       ctx.FillRect(0, 0, gameField->screenWidth, ctx.SCREEN_HEIGHT - gameField->screenHeight, "blue");

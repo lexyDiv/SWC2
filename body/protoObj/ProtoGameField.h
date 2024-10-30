@@ -39,6 +39,10 @@ class ProtoGameField {
     int height = 0;
     int offsetStep = 10;
     bool init = false;
+    // this->miniMap, 0, 0, this->gabarit, this->gabarit, 732, 100, 285, 285
+    int miniMapX = 732;
+    int miniMapY = 48;
+    int miniMapGab = 285;
 
 private:
 };
