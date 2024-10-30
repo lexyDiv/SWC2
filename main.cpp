@@ -1,80 +1,26 @@
 // g++ main.cpp -I./include -o program `sdl2-config --cflags --libs` -lSDL2 -lSDL2_mixer -lSDL2_image -lSDL2_ttf -I./GLM/
 #include "body/game/gameField/offsetControl.cpp"
 
-// class Unit
-// {
-// public:
-//   Unit(string* s) {
-//     this->str = *s;
-//   };
-//   Unit(int n);
-//   virtual void print() {};
-//   string str;
-//   string type;
-//   int number;
-//   bool isProc = false;
-//   bool isActive = false;
-
-// private:
-// };
-
-// class Peon : public Unit
-// {
-// public:
-//   Peon(int n) : Unit(n)
-//   {
-//   }
-//   void print() override
-//   {
-//     console.log("I em Pion !!!");
-//   };
-
-// private:
-// };
-
-// class Troll : public Unit
-// {
-// public:
-//   Troll(int n) : Unit(n)
-//   {
-//   }
-//   void print() override
-//   {
-//     console.log("I em Troll !!!");
-//   };
-
-// private:
-// };
-
-/////////////////////////////////
-
 bool quit = false;
 int tik = 0;
- string path = "levels/test_1.txt";
+string path = "levels/test_1.txt";
 // mapWrite(&path, testMap);
- ProtoGameField *gameField = new GameField(&path, 1);
+ProtoGameField *gameField = new GameField(&path, 1);
 
 // vector<ProtoObj *> *vec = new vector<ProtoObj *>;
 
 void hard()
 {
 
-
   while (!quit)
   {
 
-
-
     this_thread::sleep_for(chrono::milliseconds(25));
   }
-
-
 }
 
 void goWork()
 {
-
-
 
   SDL_Event e;
   while (!quit)
@@ -83,25 +29,23 @@ void goWork()
     listenner(e, quit);
     console.proc(mouse.x, mouse.y, mouse.leftKey);
 
-     
-     if (gameField->init) {
+    if (gameField->init)
+    {
       gameField->offsetControl();
-     }
+    }
 
     mouse.defaultKeys();
-    
-    this_thread::sleep_for(chrono::milliseconds(25));
+
+    this_thread::sleep_for(chrono::milliseconds(20));
   }
 };
-
-
 
 int main()
 {
 
   srand(time(0));
 
-  console.log("papa loh");
+  //  console.log("papa loh");
 
   ctx.getFont();
 
@@ -115,51 +59,39 @@ int main()
 
   while (!quit)
   {
-    
 
     ctx.CreateDrawZone(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT);
     ctx.FillRect(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT, "white");
 
-    if (gameField->init) {
-          ctx.CreateDrawZone(gameField->x, 0, gameField->screenWidth, 900);
-    ctx.FillRect(gameField->x, gameField->y, gameField->screenHeight, gameField->screenHeight, "white");
-    
-    if (gameField->drawCell != nullptr) {
+    if (gameField->init)
+    {
+      ctx.CreateDrawZone(gameField->x, gameField->y, gameField->screenWidth, gameField->screenHeight);
 
-         gameField->drawCell->drawCells.forEach([](ProtoObj *cell){
-          cell->draw();
-         });
 
-          // ctx.FillRect(gameField->drawCell->x - gameField->drawOffsetX, 
-          // (gameField->drawCell->y - gameField->drawOffsetY), 50, 50, "red");
+      if (gameField->drawCell != nullptr)
+      {
+
+        gameField->drawCell->drawCells.forEach([](ProtoObj *cell)
+                                               { cell->draw(); });
+      }
+
+      ctx.FillRect(gameField->centerX, gameField->centerY + gameField->y, 3, 3, "black");
+
+      ctx.CreateDrawZone(0, 0, gameField->screenWidth, ctx.SCREEN_HEIGHT - gameField->screenHeight);
+      ctx.FillRect(0, 0, gameField->screenWidth, ctx.SCREEN_HEIGHT - gameField->screenHeight, "blue");
+
+      ctx.CreateDrawZone(gameField->screenWidth, 0, 324, ctx.SCREEN_HEIGHT);
+      ctx.FillRect(gameField->screenWidth, 0, 324, ctx.SCREEN_HEIGHT, "black");
+
+      gameField->miniMapDraw();
+
     }
-    }
-    
-    ctx.FillRect(350, 418, 3, 3, "black");
-
-
-
-    // ctx.CreateDrawZone(0, 0, 700, 68);
-    // ctx.FillRect(0, 0, 700, 68, "blue");
-
-    ctx.CreateDrawZone(700, 0, 324, ctx.SCREEN_HEIGHT);
-    ctx.FillRect(700, 0, 324, ctx.SCREEN_HEIGHT, "black");
-
-
-         if (gameField->init) {
-          gameField->miniMapDraw();
-         }
-      
-
 
     ctx.CreateDrawZone(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT);
-
- 
 
     console.draw();
     ctx.End();
   }
-
 
   delete gameField;
   gameField = nullptr;
