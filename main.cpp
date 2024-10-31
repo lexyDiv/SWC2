@@ -14,7 +14,10 @@ void hard()
 
   while (!quit)
   {
-
+      //            for (int i = 0; i < 100000000; i++) {
+      //   float f = i;
+      //   //console.log(to_string(f));
+      // }
     this_thread::sleep_for(chrono::milliseconds(25));
   }
 }
@@ -33,6 +36,7 @@ void goWork()
     {
       gameField->miniMapMouseControl();
       gameField->offsetControl();
+
     }
 
     mouse.defaultKeys();

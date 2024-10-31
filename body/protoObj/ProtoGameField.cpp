@@ -55,6 +55,10 @@ void ProtoGameField::miniMapMouseControl()
 {
 }
 
+void ProtoGameField::miniMapHoldLeftMouseKey()
+{
+}
+
 ////////////////////////////////////
 
 // class GF : public ProtoGameField {

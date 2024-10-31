@@ -16,6 +16,7 @@ class ProtoGameField {
    virtual void getAroundCells(int wing, bool selfCell, function<void(ProtoObj *focusCell, ProtoObj *cellToPush)> fn);
    virtual void offsetControl();
    virtual void miniMapMouseControl();
+   virtual void miniMapHoldLeftMouseKey();
 
    virtual Color getDefaultColor(char lit);
     Array<Array<ProtoObj *>> field;

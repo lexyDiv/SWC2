@@ -82,6 +82,7 @@ public:
     void getAroundCells(int wing, bool selfCell, function<void(ProtoObj *focusCell, ProtoObj *cellToPush)> fn) override;
     void offsetControl() override;
     void miniMapMouseControl() override;
+    void miniMapHoldLeftMouseKey() override;
 
      Color getDefaultColor(char lit) override;
 
