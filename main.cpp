@@ -14,10 +14,23 @@ void hard()
 
   while (!quit)
   {
-      //            for (int i = 0; i < 100000000; i++) {
-      //   float f = i;
-      //   //console.log(to_string(f));
-      // }
+    
+  //   if (gameField->init) {
+  //     //     for (int i = 0; i < 100; i ++) {
+  //     // if (quit) {
+  //     //   break;
+  //     // }
+  //     gameField->field.forEach([](Array<ProtoObj *> arr){
+  //       arr.forEach([](ProtoObj *cell){
+  //         ProtoObj *cellCopy = cell;
+  //         cell->mapColor.R = intRand(0, 255);
+  //         cell->mapColor.G = intRand(0, 255);
+  //         cell->mapColor.B = intRand(0, 255);
+  //       });
+  //     });
+  // //  }
+  //   }
+
     this_thread::sleep_for(chrono::milliseconds(25));
   }
 }
@@ -32,14 +45,6 @@ void goWork()
     listenner(e, quit);
     console.proc(mouse.x, mouse.y, mouse.leftKey);
 
-    if (gameField->init)
-    {
-      gameField->miniMapMouseControl();
-      gameField->offsetControl();
-
-    }
-
-    mouse.defaultKeys();
 
     this_thread::sleep_for(chrono::milliseconds(20));
   }
@@ -65,13 +70,18 @@ int main()
   while (!quit)
   {
 
+    if (gameField->init)
+    {
+      gameField->miniMapMouseControl();
+      gameField->offsetControl();
+    }
+
     ctx.CreateDrawZone(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT);
     ctx.FillRect(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT, "white");
 
     if (gameField->init)
     {
       ctx.CreateDrawZone(gameField->x, gameField->y, gameField->screenWidth, gameField->screenHeight);
-
 
       if (gameField->drawCell != nullptr)
       {
@@ -80,7 +90,7 @@ int main()
                                                { cell->draw(); });
       }
 
-    //  ctx.FillRect(gameField->centerX, gameField->centerY + gameField->y, 3, 3, "black");
+      //  ctx.FillRect(gameField->centerX, gameField->centerY + gameField->y, 3, 3, "black");
 
       ctx.CreateDrawZone(0, 0, gameField->screenWidth, ctx.SCREEN_HEIGHT - gameField->screenHeight);
       ctx.FillRect(0, 0, gameField->screenWidth, ctx.SCREEN_HEIGHT - gameField->screenHeight, "blue");
@@ -89,13 +99,13 @@ int main()
       ctx.FillRect(gameField->screenWidth, 0, 324, ctx.SCREEN_HEIGHT, "black");
 
       gameField->miniMapDraw();
-
     }
 
     ctx.CreateDrawZone(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT);
 
     console.draw();
     ctx.End();
+  //  mouse.defaultKeys();
   }
 
   delete gameField;
