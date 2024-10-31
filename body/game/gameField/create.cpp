@@ -14,8 +14,11 @@ void GameField::create()
     this->getAroundCells(1, false, [](ProtoObj *focusCell, ProtoObj *pushedCell){
        focusCell->aroundCells.push(pushedCell);
     });
-        this->getAroundCells(8, true, [](ProtoObj *focusCell, ProtoObj *pushedCell){
+    this->getAroundCells(8, true, [](ProtoObj *focusCell, ProtoObj *pushedCell){
        focusCell->drawCells.push(pushedCell);
+    });
+    this->getAroundCells(11, false, [](ProtoObj *focusCell, ProtoObj *pushedCell){
+       focusCell->maxAroundCells.push(pushedCell);
     });
     this->init = true;
 }

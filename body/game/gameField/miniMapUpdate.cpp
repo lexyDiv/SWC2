@@ -20,7 +20,7 @@ void GameField::miniMapUpdate()
 														  Uint32 hzRes = SDL_MapRGBA(pixelFormat, r, g, b, a);
 														  pixelsArr[index] = hzRes; }); });
     this->miniMapUpdateVer++;
-    if (this->miniMapUpdateVer == 65)
+    if (this->miniMapUpdateVer == this->gabarit)
     {
         this->miniMapUpdateVer = 0;
     }

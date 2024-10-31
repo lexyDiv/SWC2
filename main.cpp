@@ -4,6 +4,8 @@
 bool quit = false;
 int tik = 0;
 string path = "levels/test_1.txt";
+string path2 = "levels/testBig_1.txt";
+
 // mapWrite(&path, testMap);
 ProtoGameField *gameField = new GameField(&path, 1);
 
@@ -12,9 +14,20 @@ ProtoGameField *gameField = new GameField(&path, 1);
 void hard()
 {
 
+
+// vector<string> vec;
+// for (int i = 0; i < 256; i ++) {
+//   string str = "";
+//   for (int i = 0; i < 256; i ++) {
+//      str += "0";
+//   }
+//   vec.push_back(str);
+// }
+// mapWrite(&path2, vec);
+
   while (!quit)
   {
-    
+
   //   if (gameField->init) {
   //     //     for (int i = 0; i < 100; i ++) {
   //     // if (quit) {

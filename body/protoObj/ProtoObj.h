@@ -49,6 +49,7 @@ public:
     ProtoObj *groundUnit = nullptr;
     ProtoObj *flyUnit = nullptr;
     Array<ProtoObj *> aroundCells;
+    Array<ProtoObj *> maxAroundCells;
     Array<ProtoObj *> drawCells;
     Array<ProtoObj *> ripUnits;
     Array<ProtoObj *> landDecorationObjs;
