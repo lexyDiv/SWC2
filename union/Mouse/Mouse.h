@@ -5,8 +5,8 @@
 class Mouse
 {
    public:
-   int x;
-   int y;
+   float x;
+   float y;
    bool leftKey = false;
    bool rightKey = false;
    bool midKey = false;
@@ -22,6 +22,8 @@ class Mouse
    bool midKeyUp = false;
    bool rightKeyDown = false;
    bool rightKeyUp = false;
+
+   bool listen = false;
 
    void keyDown(int keyCode);
    void keyUp(int keyCode);

@@ -1,18 +1,23 @@
-#include "../../Listenner.h"
+#include "ProtoGameField.cpp"
 
-class GameField;
+
 
 class ProtoObj
 {
 public:
     ProtoObj();
-   virtual ~ProtoObj();
+    virtual ~ProtoObj();
     virtual void draw();
+    virtual Color getMapColor();
 
     // all
+    ProtoGameField *gf = nullptr;
 
+    string type;
     float x = 0.0f;
     float y = 0.0f;
+    float ver = 0;
+    float hor = 0;
     int drawX = 0;
     int drawY = 0;
     int animX = 0;
@@ -23,6 +28,7 @@ public:
     int animStepY = 0;
     int gabX = 0;
     int gabY = 0;
+    Color mapColor = {R : 0, G : 0, B : 0};
     Image *image = nullptr;
 
     // units
@@ -33,22 +39,23 @@ public:
     int armor = 0;
     int mana = 0;
     ProtoObj *cell = nullptr;
-    Array<ProtoObj *>  enemys;
-    Array<ProtoObj *>  myWay;
-    Array<ProtoObj *>  cells2X2;
-    Array<ProtoObj *>  contactCells;
+    Array<ProtoObj *> enemys;
+    Array<ProtoObj *> myWay;
+    Array<ProtoObj *> cells2X2;
+    Array<ProtoObj *> contactCells;
 
     // cells
 
     ProtoObj *groundUnit = nullptr;
     ProtoObj *flyUnit = nullptr;
-    Array<ProtoObj *>  aroundCells;
-    Array<ProtoObj *>  drawCells;
-    Array<ProtoObj *>  ripUnits;
-    Array<ProtoObj *>  landDecorationObjs;
-    Array<ProtoObj *>  guardCells;
-    Array<ProtoObj *>  booms;
-    Array<ProtoObj *>  bullets;
+    Array<ProtoObj *> aroundCells;
+    Array<ProtoObj *> maxAroundCells;
+    Array<ProtoObj *> drawCells;
+    Array<ProtoObj *> ripUnits;
+    Array<ProtoObj *> landDecorationObjs;
+    Array<ProtoObj *> guardCells;
+    Array<ProtoObj *> booms;
+    Array<ProtoObj *> bullets;
     ProtoObj *continent = nullptr;
 
     // bullets
@@ -59,12 +66,14 @@ public:
     // sea units
 
     // buildings
-    Array<ProtoObj *>  myCells;
+    Array<ProtoObj *> myCells;
 
     // land objects
 
     // wall
 
 private:
-    string type;
 };
+
+
+

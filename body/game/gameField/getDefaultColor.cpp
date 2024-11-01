@@ -1,0 +1,22 @@
+#include "getAroundCells.cpp"
+
+Color GameField::getDefaultColor(char lit)
+{
+    switch (lit)
+    {
+    case '0':
+        return ctx.ColorsMap("green");
+    case 'g':
+        return ctx.ColorsMap("violet");
+    case 't':
+        return ctx.ColorsMap("dgreen");
+    case '1':
+        return ctx.ColorsMap("dgreen");
+    case 'w':
+        return ctx.ColorsMap("blue");
+    case 'S':
+        return ctx.ColorsMap("yellow");
+    default:
+        return ctx.ColorsMap("black");
+    }
+}

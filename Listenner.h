@@ -58,4 +58,5 @@ void listenner(SDL_Event e, bool &quit)
             console.whellOrder(e.motion.yrel);
         }
     }
+    mouse.listen = true;
 }

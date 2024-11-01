@@ -98,12 +98,16 @@ void Mouse::keyUp(int keyCode)
 
 void Mouse::defaultKeys()
 {
+   if (this->listen) {
     this->leftKeyDown = false;
     this->leftKeyUp = false;
     this->midKeyDown = false;
     this->midKeyUp = false;
     this->rightKeyDown = false;
     this->rightKeyUp = false;
+
+    this->listen = false;
+   }
 }
 
 Mouse mouse;
