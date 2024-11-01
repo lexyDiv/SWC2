@@ -1,4 +1,4 @@
-#include "../../protoObj/ProtoGame.cpp"
+#include "../../proto/protoGame/ProtoGame.cpp"
 
 
 class Cell : public ProtoObj
