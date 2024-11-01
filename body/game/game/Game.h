@@ -6,7 +6,7 @@ class Game : public ProtoGame {
     Game() : ProtoGame(){};
     ~Game();
 
-    void init() override;
+    void create() override;
     void draw() override;
     void preDraw() override;
 

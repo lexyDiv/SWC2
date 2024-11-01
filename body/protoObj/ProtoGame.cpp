@@ -8,7 +8,7 @@ ProtoGame::~ProtoGame()
 {
 }
 
-void ProtoGame::init()
+void ProtoGame::create()
 {
 }
 

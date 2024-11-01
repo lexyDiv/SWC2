@@ -5,7 +5,7 @@ class ProtoGame
 public:
     ProtoGame();
     virtual ~ProtoGame();
-    virtual void init();
+    virtual void create();
     virtual void draw();
     virtual void preDraw();
 

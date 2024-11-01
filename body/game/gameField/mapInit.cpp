@@ -16,6 +16,7 @@ void GameField::mapInit(Array<string> array)
             cell->gabX = this->cellSize;
             cell->gabY = this->cellSize;
             cell->gf = this;
+            cell->game = this->game;
             arr.push(cell);
         } 
         this->field.push(arr); });

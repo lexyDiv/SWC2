@@ -3,11 +3,14 @@
 
 bool quit = false;
 int tik = 0;
-string path = "levels/test_1.txt";
-string path2 = "levels/testBig_1.txt";
 
-// mapWrite(&path, testMap);
-ProtoGameField *gameField = new GameField(&path, 1);
+ProtoGame *game = new Game();
+
+// string path = "levels/test_1.txt";
+// string path2 = "levels/testBig_1.txt";
+
+// // mapWrite(&path, testMap);
+// ProtoGameField *gameField = new GameField(&path, 1);
 
 // vector<ProtoObj *> *vec = new vector<ProtoObj *>;
 
@@ -66,6 +69,8 @@ void goWork()
 int main()
 {
 
+  game->create();
+
   srand(time(0));
 
   //  console.log("papa loh");
@@ -78,54 +83,26 @@ int main()
 
   int ver = 0;
 
-  gameField->create();
+  //gameField->create();
 
   while (!quit)
   {
 
-
-
-    if (gameField->init)
-    {
-      gameField->miniMapMouseControl();
-      gameField->offsetControl();
-    }
+    game->preDraw();
 
     ctx.CreateDrawZone(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT);
     ctx.FillRect(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT, "white");
 
-    if (gameField->init)
-    {
-      ctx.CreateDrawZone(gameField->x, gameField->y, gameField->screenWidth, gameField->screenHeight);
-
-      if (gameField->drawCell != nullptr)
-      {
-
-        gameField->drawCell->drawCells.forEach([](ProtoObj *cell)
-                                               { cell->draw(); });
-      }
-
-      //  ctx.FillRect(gameField->centerX, gameField->centerY + gameField->y, 3, 3, "black");
-
-      ctx.CreateDrawZone(0, 0, gameField->screenWidth, ctx.SCREEN_HEIGHT - gameField->screenHeight);
-      ctx.FillRect(0, 0, gameField->screenWidth, ctx.SCREEN_HEIGHT - gameField->screenHeight, "blue");
-
-      ctx.CreateDrawZone(gameField->screenWidth, 0, 324, ctx.SCREEN_HEIGHT);
-      ctx.FillRect(gameField->screenWidth, 0, 324, ctx.SCREEN_HEIGHT, "black");
-
-      gameField->miniMapDraw();
-    }
-
-    ctx.CreateDrawZone(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT);
+    game->draw();
 
     console.draw();
     ctx.End();
 
   }
 
-  delete gameField;
-  gameField = nullptr;
-
+   delete game;
+   game = nullptr;
+   
   ctx.Close();
 
   th_h.join();
@@ -133,13 +110,3 @@ int main()
 
   return 0;
 }
-
-// Unit::Unit(int n)
-// {
-//   this->number = n;
-// }
-
-// void Unit::print()
-// {
-// console.log(this->str);
-// }
