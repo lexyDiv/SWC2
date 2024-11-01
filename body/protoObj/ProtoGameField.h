@@ -2,6 +2,7 @@
 
 
 class ProtoObj;
+class ProtoGame;
 
 class ProtoGameField {
     public:
@@ -19,6 +20,9 @@ class ProtoGameField {
    virtual void miniMapHoldLeftMouseKey();
 
    virtual Color getDefaultColor(char lit);
+
+   ProtoGame *game = nullptr;
+
     Array<Array<ProtoObj *>> field;
     Image *miniMap = nullptr;
     ProtoObj *drawCell = nullptr;

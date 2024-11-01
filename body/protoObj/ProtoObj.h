@@ -12,6 +12,7 @@ public:
 
     // all
     ProtoGameField *gf = nullptr;
+    ProtoGame *game = nullptr;
 
     string type;
     float x = 0.0f;
