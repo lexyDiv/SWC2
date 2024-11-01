@@ -58,5 +58,4 @@ void GameField::offsetControl()
 
     this->drawCell = this->field.getItem(offsetIndexY).getItem(offsetIndexX);
 
-
 }

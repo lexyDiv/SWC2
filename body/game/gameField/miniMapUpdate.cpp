@@ -1,7 +1,13 @@
 #include "create.cpp"
 
+
 void GameField::miniMapUpdate()
 {
+
+  if (!this->miniMap) {
+  this->miniMap = new Image(this->gabarit, this->gabarit);
+  }
+
     ctx.PixelHendler(
         this->miniMap,
         0,

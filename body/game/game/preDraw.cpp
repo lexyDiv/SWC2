@@ -2,7 +2,7 @@
 
 void Game::preDraw()
 {
-    if (this->gf->init)
+    if (this->gf && this->gf->init)
     {
         this->gf->miniMapMouseControl();
         this->gf->offsetControl();

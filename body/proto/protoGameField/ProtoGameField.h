@@ -3,6 +3,7 @@
 
 class ProtoObj;
 class ProtoGame;
+class ProtoPlane;
 
 class ProtoGameField {
     public:
@@ -24,6 +25,9 @@ class ProtoGameField {
    ProtoGame *game = nullptr;
 
     Array<Array<ProtoObj *>> field;
+
+    Array<ProtoPlane *> planes;
+
     Image *miniMap = nullptr;
     ProtoObj *drawCell = nullptr;
     string path;

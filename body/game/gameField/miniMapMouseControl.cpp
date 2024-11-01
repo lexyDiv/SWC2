@@ -9,19 +9,16 @@ void GameField::miniMapHoldLeftMouseKey()
     clickIndexX = clickIndexX >= this->gabarit ? this->gabarit - 1 : clickIndexX;
     clickIndexY = clickIndexY >= this->gabarit ? this->gabarit - 1 : clickIndexY;
 
-    //     if (clickIndexX >= 65) {
-    //     console.log("miniMap : " + to_string(clickIndexX));
-    //     clickIndexX = 64;
-    //    // return;
-    // }
 
     ProtoObj *cell = this->field.getItem(clickIndexY).getItem(clickIndexX);
+    if (cell && this->drawCell) {
     int deltaIndexX = this->drawCell->hor - cell->hor;
     int deltaIndexY = this->drawCell->ver - cell->ver;
     int deltaScrollX = deltaIndexX * this->cellSize;
     int deltaScrollY = deltaIndexY * this->cellSize;
     this->offsetX -= deltaScrollX;
     this->offsetY -= deltaScrollY;
+    }
 }
 
 void GameField::miniMapMouseControl()

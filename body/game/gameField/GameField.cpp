@@ -9,6 +9,11 @@
 
 GameField::~GameField()
 {
+    this->planes.forEach([](ProtoPlane *plane){
+        delete plane;
+        plane = nullptr;
+    });
+
     this->drawCell = nullptr;
     
     if (this->miniMap != nullptr)

@@ -8,6 +8,7 @@ ProtoGame *game = new Game();
 
 // string path = "levels/test_1.txt";
 // string path2 = "levels/testBig_1.txt";
+string path3 = "levels/testBig_500.txt";
 
 // // mapWrite(&path, testMap);
 // ProtoGameField *gameField = new GameField(&path, 1);
@@ -19,17 +20,23 @@ void hard()
 
 
 // vector<string> vec;
-// for (int i = 0; i < 256; i ++) {
+// for (int i = 0; i < 500; i ++) {
 //   string str = "";
-//   for (int i = 0; i < 256; i ++) {
+//   for (int i = 0; i < 500; i ++) {
 //      str += "0";
 //   }
 //   vec.push_back(str);
 // }
-// mapWrite(&path2, vec);
+// mapWrite(&path3, vec);
+
+
+
+        game->create();
+    
 
   while (!quit)
   {
+
 
   //   if (gameField->init) {
   //     //     for (int i = 0; i < 100; i ++) {
@@ -54,12 +61,16 @@ void hard()
 void goWork()
 {
 
+
+
   SDL_Event e;
   while (!quit)
   {
 
     listenner(e, quit);
     console.proc(mouse.x, mouse.y, mouse.leftKey);
+
+
 
 
     this_thread::sleep_for(chrono::milliseconds(20));
@@ -69,7 +80,7 @@ void goWork()
 int main()
 {
 
-  game->create();
+
 
   srand(time(0));
 
@@ -81,23 +92,41 @@ int main()
   thread th(goWork);
   //  SDL_Event e;
 
-  int ver = 0;
+  int stop = 0;
 
   //gameField->create();
 
   while (!quit)
   {
 
-    game->preDraw();
+
+  //   if (tik % 100 == 0) {
+  //   delete game;
+  //   game = nullptr;
+  //   game = new Game();
+  //   game->create();
+  // }
+//if (game) {
+
+  //  console.log("loading");
+
+
+   
 
     ctx.CreateDrawZone(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT);
     ctx.FillRect(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT, "white");
 
-    game->draw();
+
+
+      game->preDraw();
+      game->draw();
+//}
+       
+    
 
     console.draw();
     ctx.End();
-
+  //  mouse.defaultKeys();
   }
 
    delete game;

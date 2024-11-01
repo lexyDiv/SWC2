@@ -4,9 +4,10 @@ void GameField::create()
 {
     Array<string> array = readMap(&this->path);
     this->width = array.length * this->cellSize;
-    this->height = array.getItem(0).size() * this->cellSize;
+    this->gabarit = array.getItem(0).size();
+    this->height = this->gabarit * this->cellSize;
 
-    this->mcs = this->miniMapGab / array.getItem(0).size();
+    this->mcs = this->miniMapGab / this->gabarit;
     this->miniMapWinGab = ceil(this->mcs * 15);
 
     this->mapInit(array);

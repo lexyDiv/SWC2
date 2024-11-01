@@ -7,6 +7,10 @@ struct ToOtherPlane {
 
 class ProtoPlane {
     public:
-   // ProtoPlane
+    ProtoPlane();
+    virtual ~ProtoPlane();
+
+    string type = "";
+    Array<ToOtherPlane *> contactPlanes;
 
 };

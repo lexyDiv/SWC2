@@ -11,7 +11,8 @@ public:
 
     vector<string> pathes{
         "levels/test_1.txt",
-        "levels/testBig_1.txt"};
+        "levels/testBig_1.txt",
+        "levels/testBig_500.txt"};
 
     ProtoGameField *gf = nullptr;
 };
