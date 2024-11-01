@@ -1,4 +1,4 @@
-#include "../protoObj/ProtoObj.cpp"
+#include "../protoPlane/ProtoPlane.cpp"
 
 class ProtoGame
 {

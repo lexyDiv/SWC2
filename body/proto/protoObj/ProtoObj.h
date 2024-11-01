@@ -1,6 +1,6 @@
 #include "../protoGameField/ProtoGameField.cpp"
 
-
+class ProtoPlane;
 
 class ProtoObj
 {
@@ -13,6 +13,7 @@ public:
     // all
     ProtoGameField *gf = nullptr;
     ProtoGame *game = nullptr;
+    ProtoPlane *plane = nullptr;
 
     string type;
     float x = 0.0f;
