@@ -23,6 +23,8 @@ class Mouse
    bool rightKeyDown = false;
    bool rightKeyUp = false;
 
+   bool listen = false;
+
    void keyDown(int keyCode);
    void keyUp(int keyCode);
 

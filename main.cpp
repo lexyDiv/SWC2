@@ -83,6 +83,8 @@ int main()
   while (!quit)
   {
 
+
+
     if (gameField->init)
     {
       gameField->miniMapMouseControl();
@@ -118,7 +120,7 @@ int main()
 
     console.draw();
     ctx.End();
-  //  mouse.defaultKeys();
+
   }
 
   delete gameField;
