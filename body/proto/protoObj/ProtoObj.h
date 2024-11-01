@@ -18,10 +18,11 @@ public:
     string type;
     float x = 0.0f;
     float y = 0.0f;
+    float drawX = 0.0f;
+    float drawY = 0.0f;
     float ver = 0;
     float hor = 0;
-    int drawX = 0;
-    int drawY = 0;
+
     int animX = 0;
     int animY = 0;
     int animGabX = 0;

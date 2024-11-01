@@ -28,4 +28,5 @@ void Game::draw()
     }
 
     ctx.CreateDrawZone(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT);
+
 }

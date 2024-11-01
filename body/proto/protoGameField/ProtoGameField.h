@@ -41,8 +41,10 @@ class ProtoGameField {
     int y = 48;
     int centerX = this->screenWidth / 2 ;//+ this->x;
     int centerY = this->screenHeight / 2 ; //+ this->y;
-    int offsetX = 0;
-    int offsetY = 0;
+    float offsetX = 0;
+    float offsetY = 0;
+    float drawDeltaX = 0;
+    float drawDeltaY = 0;
     int drawOffsetX = 0;
     int drawOffsetY = 0;
     int width = 0;

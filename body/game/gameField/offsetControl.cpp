@@ -57,5 +57,6 @@ void GameField::offsetControl()
     // }
 
     this->drawCell = this->field.getItem(offsetIndexY).getItem(offsetIndexX);
-
+    this->drawDeltaX = this->x - this->offsetX;
+    this->drawDeltaY = this->y - this->offsetY;
 }

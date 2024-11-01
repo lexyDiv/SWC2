@@ -3,14 +3,12 @@
 void Cell::draw()
 {
 
-    //  console.log("draw cell");
-    // int offsetX = gf->drawOffsetX;
-    int offsetX = this->gf->offsetX;
-    int offsetY = this->gf->offsetY;
+    float drawDeltaX = this->gf->drawDeltaX;
+    float drawDeltaY = this->gf->drawDeltaY;
 
     ctx.FillRect(
-        (this->x + this->gf->x) - offsetX,
-        (this->y + this->gf->y) - offsetY,
+        this->x + drawDeltaX,
+        this->y + drawDeltaY,
         this->gabX,
         this->gabY,
         this->getMapColor().R,
@@ -19,20 +17,14 @@ void Cell::draw()
         255);
 
     ctx.StrokeRect(
-        (this->x + this->gf->x) - offsetX,
-        (this->y + this->gf->y) - offsetY,
+        this->x + drawDeltaX,
+        this->y + drawDeltaY,
         this->gabX,
         this->gabY,
         "yellow");
 
-    // if (this == this->gf->drawCell)
-    // {
-    //     ctx.FillRect(
-    //     (this->x + this->gf->x) - offsetX,
-    //     (this->y + this->gf->y) - offsetY,
-    //                  this->gabX,
-    //                  this->gabY,
-    //                  "violet");
-    //   //  console.log("ver : " + to_string(this->ver) + " hor : " + to_string(this->hor));
-    // }
+       string str = "V= " + to_string((int)this->ver);
+       ctx.DrawText(this->x + drawDeltaX, this->y + drawDeltaY + 5, 10,  str, 255);
+       str = "H= " + to_string((int)this->hor);
+       ctx.DrawText(this->x + drawDeltaX, this->y + drawDeltaY + 25, 10,  str, 255);
 }
