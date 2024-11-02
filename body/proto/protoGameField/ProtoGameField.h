@@ -19,6 +19,7 @@ class ProtoGameField {
    virtual void offsetControl();
    virtual void miniMapMouseControl();
    virtual void miniMapHoldLeftMouseKey();
+   virtual void getContinents();
 
    virtual Color getDefaultColor(char lit);
 

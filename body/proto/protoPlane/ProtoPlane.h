@@ -11,6 +11,8 @@ class ProtoPlane {
     virtual ~ProtoPlane();
 
     string type = "";
+    int number = 0;
+    Array<ProtoObj *> cells;
     Array<ToOtherPlane *> contactPlanes;
 
 };

@@ -31,7 +31,7 @@ public:
     int animStepY = 0;
     int gabX = 0;
     int gabY = 0;
-    Color mapColor = {R : 0, G : 0, B : 0};
+
     Image *image = nullptr;
 
     // units
@@ -49,6 +49,8 @@ public:
 
     // cells
 
+   // bool check = false;
+
     ProtoObj *groundUnit = nullptr;
     ProtoObj *flyUnit = nullptr;
     Array<ProtoObj *> aroundCells;
@@ -60,6 +62,8 @@ public:
     Array<ProtoObj *> booms;
     Array<ProtoObj *> bullets;
     ProtoObj *continent = nullptr;
+    Color mapColor = {R : 0, G : 0, B : 0};
+    char litera;
 
     // bullets
 

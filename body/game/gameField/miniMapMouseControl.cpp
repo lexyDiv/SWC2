@@ -1,5 +1,6 @@
 #include "offsetControl.cpp"
 
+
 void GameField::miniMapHoldLeftMouseKey()
 {
     int clickIndexX, clickIndexY;
@@ -20,6 +21,7 @@ void GameField::miniMapHoldLeftMouseKey()
     this->offsetY -= deltaScrollY;
     }
 }
+
 
 void GameField::miniMapMouseControl()
 {

@@ -23,8 +23,10 @@ void Cell::draw()
         this->gabY,
         "yellow");
 
-       string str = "V= " + to_string((int)this->ver);
+      if (this->plane) {
+        string str = "K: " + to_string(this->plane->number);
        ctx.DrawText(this->x + drawDeltaX, this->y + drawDeltaY + 5, 10,  str, 255);
-       str = "H= " + to_string((int)this->hor);
-       ctx.DrawText(this->x + drawDeltaX, this->y + drawDeltaY + 25, 10,  str, 255);
+      }
+    //    str = "H= " + to_string((int)this->hor);
+    //    ctx.DrawText(this->x + drawDeltaX, this->y + drawDeltaY + 25, 10,  str, 255);
 }

@@ -83,6 +83,7 @@ public:
     void offsetControl() override;
     void miniMapMouseControl() override;
     void miniMapHoldLeftMouseKey() override;
+    void getContinents() override;
 
      Color getDefaultColor(char lit) override;
 

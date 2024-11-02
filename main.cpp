@@ -58,6 +58,8 @@ void hard()
   }
 }
 
+
+
 void goWork()
 {
 

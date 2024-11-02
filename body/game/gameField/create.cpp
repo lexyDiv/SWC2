@@ -21,5 +21,6 @@ void GameField::create()
     this->getAroundCells(11, false, [](ProtoObj *focusCell, ProtoObj *pushedCell){
        focusCell->maxAroundCells.push(pushedCell);
     });
+    this->getContinents();
     this->init = true;
 }

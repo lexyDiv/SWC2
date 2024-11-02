@@ -17,6 +17,7 @@ void GameField::mapInit(Array<string> array)
             cell->gabY = this->cellSize;
             cell->gf = this;
             cell->game = this->game;
+            cell->litera = lit;
             arr.push(cell);
         } 
         this->field.push(arr); });

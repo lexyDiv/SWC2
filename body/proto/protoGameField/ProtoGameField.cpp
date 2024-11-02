@@ -59,6 +59,10 @@ void ProtoGameField::miniMapHoldLeftMouseKey()
 {
 }
 
+void ProtoGameField::getContinents()
+{
+}
+
 ////////////////////////////////////
 
 // class GF : public ProtoGameField {
