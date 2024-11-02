@@ -25,6 +25,9 @@ void Cell::draw()
 
       if (this->plane) {
         string str = "K: " + to_string(this->plane->number);
+        if (this->plane->type == "sea") {
+          str = "S: " + to_string(this->plane->number);
+        }
        ctx.DrawText(this->x + drawDeltaX, this->y + drawDeltaY + 5, 10,  str, 255);
       }
     //    str = "H= " + to_string((int)this->hor);

@@ -1,6 +1,6 @@
 #include "GameField.cpp"
 
-void recAroundCells(Array<ProtoObj *> frash, ProtoGameField *gf)
+void recAroundCellsCont(Array<ProtoObj *> frash, ProtoGameField *gf)
 {
    Array<ProtoObj *> reFrash;
    for (int i = 0; i < frash.length; i++)
@@ -21,10 +21,35 @@ void recAroundCells(Array<ProtoObj *> frash, ProtoGameField *gf)
    {
       return;
    }
-   recAroundCells(reFrash, gf);
+   recAroundCellsCont(reFrash, gf);
+};
+
+void recAroundCellsSea(Array<ProtoObj *> frash, ProtoGameField *gf)
+{
+   Array<ProtoObj *> reFrash;
+   for (int i = 0; i < frash.length; i++)
+   {
+      ProtoObj *cell = frash.getItem(i);
+      for (int k = 0; k < cell->aroundCells.length; k++)
+      {
+         ProtoObj *ac = cell->aroundCells.getItem(k);
+         if ((ac->litera == 'w' || ac->litera == '9') && !ac->plane)
+         {
+            ac->plane = cell->plane;
+            ac->plane->cells.push(ac);
+            reFrash.push(ac);
+         }
+      }
+   }
+   if (!reFrash.length)
+   {
+      return;
+   }
+   recAroundCellsSea(reFrash, gf);
 };
 
 int gCont = 1;
+int gSea = 1;
 
 void GameField::getContinents()
 {
@@ -56,10 +81,38 @@ void GameField::getContinents()
             }
             if (frash.length)
             {
-               recAroundCells(frash, this);
+               recAroundCellsCont(frash, this);
+            }
+         }
+         else if ((cell->litera == 'w' || cell->litera == '9') && !cell->plane)
+         {
+            ProtoPlane *plane = new ProtoPlane;
+            plane->type = "sea";
+            this->planes.push(plane);
+            cell->plane = plane;
+            cell->plane->cells.push(cell);
+            plane->number = gSea;
+            gSea++;
+            Array<ProtoObj *> frash;
+            for (int i = 0; i < cell->aroundCells.length; i++)
+            {
+               ProtoObj *ac = cell->aroundCells.getItem(i);
+               if (ac->litera == 'w' || ac->litera == '9')
+               {
+                  ac->plane = cell->plane;
+                  ac->plane->cells.push(ac);
+                  frash.push(ac);
+               }
+            }
+            if (frash.length)
+            {
+               recAroundCellsSea(frash, this);
             }
          }
       }
    }
-   console.log(to_string(this->planes.getItem(0)->cells.length));
+   console.log(to_string(this->planes.length));
+   this->planes.forEach([](ProtoPlane *plane){
+      console.log(plane->type);
+   });
 }
