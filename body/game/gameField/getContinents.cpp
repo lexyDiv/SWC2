@@ -111,8 +111,30 @@ void GameField::getContinents()
          }
       }
    }
-   console.log(to_string(this->planes.length));
-   this->planes.forEach([](ProtoPlane *plane){
-      console.log(plane->type);
-   });
+   // console.log(to_string(this->planes.length));
+   // this->planes.forEach([](ProtoPlane *plane){
+   //    console.log(plane->type);
+   // });
+
+   this->planes.forEach([this](ProtoPlane *plane)
+                        { plane->cells.forEach([this, plane](ProtoObj *cell)
+                                               {
+         int aclength = cell->aroundCells.length;
+         for (int i = 0; i < aclength; i++) {
+            ProtoObj *ac = cell->aroundCells.getItem(i);
+            if (ac->plane != cell->plane) {
+               ToOtherPlane *op = plane->contactPlanes.find([ac](ToOtherPlane *item){
+                  return item->otherPlane == ac->plane;
+               });
+               if (op == nullptr) {
+                  op = new ToOtherPlane;
+                  op->otherPlane = ac->plane;
+                  plane->contactPlanes.push(op);
+               }
+               op->cellsToOther.push(cell);
+               break;
+            }
+         } }); });
+
+   // console.log(to_string(this->planes.getItem(0)->contactPlanes.getItem(0)->cellsToOther.length));
 }

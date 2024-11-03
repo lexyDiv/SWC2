@@ -123,7 +123,12 @@ int main()
       game->preDraw();
       game->draw();
 //}
-       
+// if ( game && game->gf && game->gf->init) {
+// game->gf->planes.getItem(3)->contactPlanes.getItem(0)->cellsToOther.forEach([](ProtoObj *cell){
+//   cell->mapColor.R = 225;
+//   cell->draw();
+// }); 
+// }
     
 
     console.draw();
