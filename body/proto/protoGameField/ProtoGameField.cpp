@@ -63,6 +63,10 @@ void ProtoGameField::getContinents()
 {
 }
 
+void ProtoGameField::getMaxAroundCellsDis()
+{
+}
+
 ////////////////////////////////////
 
 // class GF : public ProtoGameField {

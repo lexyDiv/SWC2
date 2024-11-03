@@ -20,6 +20,7 @@ class ProtoGameField {
    virtual void miniMapMouseControl();
    virtual void miniMapHoldLeftMouseKey();
    virtual void getContinents();
+   virtual void getMaxAroundCellsDis();
 
    virtual Color getDefaultColor(char lit);
 

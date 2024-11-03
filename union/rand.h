@@ -29,6 +29,14 @@ struct Delta
 };
 
 
+Delta getDeltas(PointF a, PointF b)
+{
+    double deltaX = b.x - a.x;
+    double deltaY = b.y - a.y;
+    return {deltaX, deltaY};
+}
+
+
 Delta getDeltas(PointF &a, PointF &b)
 {
     double deltaX = b.x - a.x;

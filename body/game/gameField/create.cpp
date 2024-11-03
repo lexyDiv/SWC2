@@ -22,5 +22,11 @@ void GameField::create()
        focusCell->maxAroundCells.push(pushedCell);
     });
     this->getContinents();
+
+    this->getMaxAroundCellsDis();
+
+   //  this->field.getItem(0).getItem(0)->maxAroundCellsDis.forEach([](double dis){
+   //    console.log(to_string(dis));
+   //  });
     this->init = true;
 }

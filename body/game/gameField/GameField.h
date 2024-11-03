@@ -84,6 +84,7 @@ public:
     void miniMapMouseControl() override;
     void miniMapHoldLeftMouseKey() override;
     void getContinents() override;
+    void getMaxAroundCellsDis() override;
 
      Color getDefaultColor(char lit) override;
 

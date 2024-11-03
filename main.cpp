@@ -122,13 +122,24 @@ int main()
 
       game->preDraw();
       game->draw();
-//}
-// if ( game && game->gf && game->gf->init) {
-// game->gf->planes.getItem(3)->contactPlanes.getItem(0)->cellsToOther.forEach([](ProtoObj *cell){
-//   cell->mapColor.R = 225;
-//   cell->draw();
-// }); 
-// }
+
+//  if ( game && game->gf && game->gf->init) {
+//    ProtoObj *cell = game->gf->field.getItem(0).getItem(0);
+//     cell->maxAroundCells
+//     .forEach([cell](ProtoObj *c, int i){
+//       int dis = cell->maxAroundCellsDis.getItem(i);
+//     float drawDeltaX = game->gf->drawDeltaX;
+//     float drawDeltaY = game->gf->drawDeltaY;
+
+//        if (dis <= c->gabX * 11) {
+//         c->mapColor.R = 255;
+//        }  
+//             if ( dis <= c->gabX * 9.5) {
+//          c->mapColor.G = 0;
+//         }
+//        ctx.DrawText(c->x + drawDeltaX, c->y + drawDeltaY + 5, 10,  to_string(dis), 255);
+//     });
+//  }
     
 
     console.draw();

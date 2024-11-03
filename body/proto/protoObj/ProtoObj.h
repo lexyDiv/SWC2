@@ -1,5 +1,7 @@
 #include "../protoGameField/ProtoGameField.cpp"
 
+
+
 class ProtoPlane;
 
 class ProtoObj
@@ -31,6 +33,8 @@ public:
     int animStepY = 0;
     int gabX = 0;
     int gabY = 0;
+    int centerX = 0;
+    int centerY = 0;
 
     Image *image = nullptr;
 
@@ -49,12 +53,11 @@ public:
 
     // cells
 
-   // bool check = false;
-
     ProtoObj *groundUnit = nullptr;
     ProtoObj *flyUnit = nullptr;
     Array<ProtoObj *> aroundCells;
     Array<ProtoObj *> maxAroundCells;
+    Array<double> maxAroundCellsDis;
     Array<ProtoObj *> drawCells;
     Array<ProtoObj *> ripUnits;
     Array<ProtoObj *> landDecorationObjs;

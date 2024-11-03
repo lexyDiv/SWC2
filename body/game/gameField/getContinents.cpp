@@ -1,4 +1,4 @@
-#include "GameField.cpp"
+#include "getMaxAroundCellsDis.cpp"
 
 void recAroundCellsCont(Array<ProtoObj *> frash, ProtoGameField *gf)
 {
