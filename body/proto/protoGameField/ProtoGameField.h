@@ -23,7 +23,7 @@ class ProtoGameField {
    virtual void getMaxAroundCellsDis();
    virtual void getToOtherPlaneCellsNumber();
    virtual void getToTreeCellLineNumber();
-   //
+   
 
    virtual Color getDefaultColor(char lit);
 
