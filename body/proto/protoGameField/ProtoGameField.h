@@ -21,6 +21,8 @@ class ProtoGameField {
    virtual void miniMapHoldLeftMouseKey();
    virtual void getContinents();
    virtual void getMaxAroundCellsDis();
+   virtual void getToOtherPlaneCellsNumber();
+   virtual void getToTreeCellLineNumber();
 
    virtual Color getDefaultColor(char lit);
 

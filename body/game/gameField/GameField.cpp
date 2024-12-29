@@ -10,6 +10,10 @@
 GameField::~GameField()
 {
     this->planes.forEach([](ProtoPlane *plane){
+        // plane->contactPlanes.forEach([](ToOtherPlane* otherPlane){
+        //     delete otherPlane;
+        //     otherPlane = nullptr;
+        // });
         delete plane;
         plane = nullptr;
     });

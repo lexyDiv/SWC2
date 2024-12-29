@@ -85,6 +85,8 @@ public:
     void miniMapHoldLeftMouseKey() override;
     void getContinents() override;
     void getMaxAroundCellsDis() override;
+    void getToOtherPlaneCellsNumber() override;
+    void getToTreeCellLineNumber() override;
 
      Color getDefaultColor(char lit) override;
 

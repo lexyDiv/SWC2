@@ -67,6 +67,14 @@ void ProtoGameField::getMaxAroundCellsDis()
 {
 }
 
+void ProtoGameField::getToOtherPlaneCellsNumber()
+{
+}
+
+void ProtoGameField::getToTreeCellLineNumber()
+{
+}
+
 ////////////////////////////////////
 
 // class GF : public ProtoGameField {

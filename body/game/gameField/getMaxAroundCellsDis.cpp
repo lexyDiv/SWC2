@@ -1,4 +1,4 @@
-#include "GameField.cpp"
+#include "getToOtherPlaneCellsNumber.cpp"
 
 void GameField::getMaxAroundCellsDis()
 {

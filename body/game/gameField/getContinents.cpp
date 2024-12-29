@@ -131,6 +131,7 @@ void GameField::getContinents()
                   op->otherPlane = ac->plane;
                   plane->contactPlanes.push(op);
                }
+               cell->lineToOtherPlaneNumber = 1;
                op->cellsToOther.push(cell);
                break;
             }

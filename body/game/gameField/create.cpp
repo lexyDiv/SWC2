@@ -24,9 +24,10 @@ void GameField::create()
     this->getContinents();
 
     this->getMaxAroundCellsDis();
-
+    this->getToOtherPlaneCellsNumber();
+    this->getToTreeCellLineNumber();
    //  this->field.getItem(0).getItem(0)->maxAroundCellsDis.forEach([](double dis){
    //    console.log(to_string(dis));
    //  });
     this->init = true;
-}
+};

@@ -67,6 +67,9 @@ public:
     ProtoObj *continent = nullptr;
     Color mapColor = {R : 0, G : 0, B : 0};
     char litera;
+    int lineToOtherPlaneNumber = 0;
+    int lineToTreeNumber = 0;
+    int LineToMountNumber = 0;
 
     // bullets
 
