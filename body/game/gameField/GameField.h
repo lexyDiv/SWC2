@@ -87,7 +87,8 @@ public:
     void getMaxAroundCellsDis() override;
     void getToOtherPlaneCellsNumber() override;
     void getToTreeCellLineNumber() override;
+    void getCellImageCellDrawIndexCellUnitInit() override;
 
-     Color getDefaultColor(char lit) override;
-//
+    Color getDefaultColor(char lit) override;
+    //
 };

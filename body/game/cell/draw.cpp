@@ -3,28 +3,35 @@
 void Cell::draw()
 {
 
-    float drawDeltaX = this->gf->drawDeltaX;
-    float drawDeltaY = this->gf->drawDeltaY;
+  float drawDeltaX = this->gf->drawDeltaX;
+  float drawDeltaY = this->gf->drawDeltaY;
 
-    ctx.FillRect(
-        this->x + drawDeltaX,
-        this->y + drawDeltaY,
-        this->gabX,
-        this->gabY,
-        this->getMapColor().R,
-        this->getMapColor().G,
-        this->getMapColor().B,
-        255);
+  // ctx.FillRect(
+  //     this->x + drawDeltaX,
+  //     this->y + drawDeltaY,
+  //     this->gabX,
+  //     this->gabY,
+  //     this->getMapColor().R,
+  //     this->getMapColor().G,
+  //     this->getMapColor().B,
+  //     255);
 
-    ctx.StrokeRect(
-        this->x + drawDeltaX,
-        this->y + drawDeltaY,
-        this->gabX,
-        this->gabY,
-        "yellow");
+  if (this->plane)
+  {
 
+    if (this->cellImage)
+    {
 
-      if (this->plane) {
+      ctx.DrawImage(this->cellImage,
+                    this->animX,
+                    this->animY,
+                    this->animGabX,
+                    this->animGabY,
+                    this->x + drawDeltaX - 35,
+                    this->y + drawDeltaY - 35,
+                    120, 120);
+    }
+
     //     string str = "K: " + to_string(this->plane->number);
     //     if (this->plane->type == "sea") {
     //       str = "S: " + to_string(this->plane->number);
@@ -42,10 +49,16 @@ void Cell::draw()
     //         string str = "K: " + to_string(this->lineToOtherPlaneNumber);
     //        ctx.DrawText(this->x + drawDeltaX, this->y + drawDeltaY + 5, 10,  str, 255);
     //   }
-          if (this->plane->type == "ground" && this->LineToMountNumber) {
-            string str = "K: " + to_string(this->LineToMountNumber);
-           ctx.DrawText(this->x + drawDeltaX, this->y + drawDeltaY + 5, 10,  str, 255);
-      }
-      }
+    //     if (this->plane->type == "ground" && this->LineToMountNumber) {
+    //       string str = "K: " + to_string(this->LineToMountNumber);
+    //      ctx.DrawText(this->x + drawDeltaX, this->y + drawDeltaY + 5, 10,  str, 255);
+    // }
+  }
 
+  // ctx.StrokeRect(
+  //     this->x + drawDeltaX,
+  //     this->y + drawDeltaY,
+  //     this->gabX,
+  //     this->gabY,
+  //     "yellow");
 }

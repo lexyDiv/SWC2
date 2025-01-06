@@ -129,6 +129,8 @@ if ( game && game->gf && game->gf->init) {
       game->preDraw();
       game->draw();
 
+    //  ctx.DrawImage(groundBasic, 0, 0, 100, 100, 100, 100, 200, 200);
+
 //  if ( game && game->gf && game->gf->init) {
 //    ProtoObj *cell = game->gf->field.getItem(0).getItem(0);
 //     cell->maxAroundCells

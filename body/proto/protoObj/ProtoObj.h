@@ -71,6 +71,9 @@ public:
     int lineToTreeNumber = 0;
     int LineToMountNumber = 0;
     int cellDrawIndex = 0;
+    Image* cellImage = nullptr;
+    Image* cellImage2 = nullptr;
+    Image* cellImage3 = nullptr;
 
     // bullets
 

@@ -11,9 +11,19 @@ void Game::draw()
 
         if (this->gf->drawCell != nullptr)
         {
+            float drawDeltaX = this->gf->drawDeltaX;
+            float drawDeltaY = this->gf->drawDeltaY;
 
             this->gf->drawCell->drawCells.forEach([](ProtoObj *cell)
                                                   { cell->draw(); });
+                                                  
+            this->gf->drawCell->drawCells.forEach([drawDeltaX, drawDeltaY](ProtoObj *cell)
+                                                  { ctx.StrokeRect(
+                                                        cell->x + drawDeltaX,
+                                                        cell->y + drawDeltaY,
+                                                        cell->gabX,
+                                                        cell->gabY,
+                                                        "yellow"); });
         }
 
         //  ctx.FillRect(this->gf->centerX, this->gf->centerY + this->gf->y, 3, 3, "black");
@@ -28,5 +38,4 @@ void Game::draw()
     }
 
     ctx.CreateDrawZone(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT);
-
 }

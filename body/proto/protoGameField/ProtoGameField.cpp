@@ -75,6 +75,10 @@ void ProtoGameField::getToTreeCellLineNumber()
 {
 }
 
+void ProtoGameField::getCellImageCellDrawIndexCellUnitInit()
+{
+}
+
 ////////////////////////////////////
 
 // class GF : public ProtoGameField {
