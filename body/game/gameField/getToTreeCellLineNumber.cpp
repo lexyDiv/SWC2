@@ -10,9 +10,9 @@ void GameField::getToTreeCellLineNumber()
                              {
 
                                  Array<ProtoObj *> arr;
+                                 Array<ProtoObj *> arrAroundDarck;
                                  
-                                 
-                                 plane->cells.forEach([plane, &arr, &arrStones](ProtoObj *cell)
+                                 plane->cells.forEach([plane, &arr, &arrStones, &arrAroundDarck](ProtoObj *cell)
                                                       {                                 
                 if (cell->litera == 't' || cell->litera == '1') {
                     cell->aroundCells.forEach([plane, &arr](ProtoObj* ac){
@@ -27,6 +27,10 @@ void GameField::getToTreeCellLineNumber()
                } 
                                    if (cell->litera == 'g') {
                         arrStones.push(cell);
+                    }
+                    if (cell->litera == 'e') {
+                        cell->lineToDarckGround = 1;
+                         arrAroundDarck.push(cell);
                     }  
                });
                                  arr.forEach([](ProtoObj *firstCell)
@@ -52,6 +56,26 @@ void GameField::getToTreeCellLineNumber()
                             if (!ac->LineToMountNumber && ac->litera != 'g') {
                                 ac->LineToMountNumber = 2;
                             }
+                        });
+                    });
+
+                    arrAroundDarck.forEach([](ProtoObj* cell){
+                        cell->maxAroundCells.forEach([cell](ProtoObj* ac, int i){
+                            int dis = cell->maxAroundCellsDis.getItem(i);
+                           if (dis <= 150 && (!ac->lineToDarckGround || (
+                            ac->lineToDarckGround > 1
+                           ))) {
+                                  ac->lineToDarckGround = 1;
+                           } else if (dis <= 250 && (!ac->lineToDarckGround || (
+                            ac->lineToDarckGround > 2
+                           ))) {
+                            ac->lineToDarckGround = 2;
+                           }
+                        //     else if (dis <= 350 && (!ac->lineToDarckGround || (
+                        //     ac->lineToDarckGround > 3
+                        //    ))) {
+                        //     ac->lineToDarckGround = 3;
+                        //    }
                         });
                     });
                              } });

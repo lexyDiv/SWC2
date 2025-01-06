@@ -16,14 +16,14 @@ void Game::draw()
 
             this->gf->drawCell->drawCells.forEach([](ProtoObj *cell)
                                                   { cell->draw(); });
-                                                  
-            this->gf->drawCell->drawCells.forEach([drawDeltaX, drawDeltaY](ProtoObj *cell)
-                                                  { ctx.StrokeRect(
-                                                        cell->x + drawDeltaX,
-                                                        cell->y + drawDeltaY,
-                                                        cell->gabX,
-                                                        cell->gabY,
-                                                        "yellow"); });
+
+            // this->gf->drawCell->drawCells.forEach([drawDeltaX, drawDeltaY](ProtoObj *cell)
+            //                                       { ctx.StrokeRect(
+            //                                             cell->x + drawDeltaX,
+            //                                             cell->y + drawDeltaY,
+            //                                             cell->gabX,
+            //                                             cell->gabY,
+            //                                             "yellow"); });
         }
 
         //  ctx.FillRect(this->gf->centerX, this->gf->centerY + this->gf->y, 3, 3, "black");

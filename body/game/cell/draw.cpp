@@ -49,8 +49,8 @@ void Cell::draw()
     //         string str = "K: " + to_string(this->lineToOtherPlaneNumber);
     //        ctx.DrawText(this->x + drawDeltaX, this->y + drawDeltaY + 5, 10,  str, 255);
     //   }
-    //     if (this->plane->type == "ground" && this->LineToMountNumber) {
-    //       string str = "K: " + to_string(this->LineToMountNumber);
+    //     if (this->plane->type == "ground" && this->lineToDarckGround) {
+    //       string str = "K: " + to_string(this->lineToDarckGround);
     //      ctx.DrawText(this->x + drawDeltaX, this->y + drawDeltaY + 5, 10,  str, 255);
     // }
   }
