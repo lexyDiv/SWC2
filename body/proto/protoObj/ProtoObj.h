@@ -70,6 +70,7 @@ public:
     int lineToOtherPlaneNumber = 0;
     int lineToTreeNumber = 0;
     int LineToMountNumber = 0;
+    int lineToDarckGround = 0;
     int cellDrawIndex = 0;
     Image* cellImage = nullptr;
     Image* cellImage2 = nullptr;
