@@ -36,8 +36,8 @@ void GameField::getCellImageCellDrawIndexCellUnitInit()
                                                      cell->animGabX = 100;
                                                      cell->animGabY = 100;
                                                      cell->cellDrawIndex = cell->lineToOtherPlaneNumber == 1 ? 3 : 2;
-                                                     cell->drawGabaritX = cell->lineToOtherPlaneNumber == 1 ? 100 : 100;
-                                                     cell->drawGabaritY = cell->drawGabaritX;
+                                                    // cell->drawGabaritX = cell->lineToOtherPlaneNumber == 1 ? 100 : 100;
+                                                    // cell->drawGabaritY = cell->drawGabaritX;
                                                  }
 
                                                  if (cell->LineToMountNumber)
@@ -59,7 +59,7 @@ void GameField::getCellImageCellDrawIndexCellUnitInit()
                                                  cell->animY = 0;
                                                  cell->animGabX = 100;
                                                  cell->animGabY = 100;
-                                                 cell->cellDrawIndex = 3;
+                                                 cell->cellDrawIndex = 5;
                                              }
                                              else if (cell->lineToDarckGround == 2)
                                              {
@@ -68,7 +68,7 @@ void GameField::getCellImageCellDrawIndexCellUnitInit()
                                                  cell->animY = 0;
                                                  cell->animGabX = 100;
                                                  cell->animGabY = 100;
-                                                 cell->cellDrawIndex = 3;
+                                                 cell->cellDrawIndex = 5;
                                              }
 
                                              if (cell->litera == 't')
@@ -127,13 +127,13 @@ void GameField::getCellImageCellDrawIndexCellUnitInit()
                                          });
                         });
 
-    this->field.forEach([](Array<ProtoObj *> arr)
-                        { arr.forEach([](ProtoObj *cell)
-                                      { 
-                                      //  console.log(to_string(cell->cellDrawIndex));
-                cell->drawCells.sort([](ProtoObj *a, ProtoObj *b)
-                    { return a->cellDrawIndex < b->cellDrawIndex; }); 
+    // this->field.forEach([](Array<ProtoObj *> arr)
+    //                     { arr.forEach([](ProtoObj *cell)
+    //                                   { 
+    //                                   //  console.log(to_string(cell->cellDrawIndex));
+    //             cell->drawCells.sort([](ProtoObj *a, ProtoObj *b)
+    //                 { return a->cellDrawIndex < b->cellDrawIndex; }); 
                                                              
-                                                             }); });
+    //                                                          }); });
 
 }
