@@ -60,6 +60,7 @@ public:
     Array<ProtoObj *> maxAroundCells;
     Array<double> maxAroundCellsDis;
     Array<ProtoObj *> drawCells;
+    Array<Array<ProtoObj *>> cellsOnDraw;
     Array<ProtoObj *> ripUnits;
     Array<ProtoObj *> landDecorationObjs;
     Array<ProtoObj *> guardCells;

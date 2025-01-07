@@ -14,8 +14,16 @@ void Game::draw()
             float drawDeltaX = this->gf->drawDeltaX;
             float drawDeltaY = this->gf->drawDeltaY;
 
-            this->gf->drawCell->drawCells.forEach([](ProtoObj *cell)
-                                                  { cell->draw(); });
+            // this->gf->drawCell->drawCells.forEach([](ProtoObj *cell)
+            //                                       { cell->draw(); });
+           
+           // console.log(to_string(this->gf->drawCell->cellsOnDraw.getItem(0).length));
+            this->gf->drawCell->cellsOnDraw.forEach([](Array<ProtoObj *> drawLine){
+                drawLine.forEach([](ProtoObj* cell){
+                  //  console.log("here");
+                    cell->draw();
+                });
+            });
 
             // this->gf->drawCell->drawCells.forEach([drawDeltaX, drawDeltaY](ProtoObj *cell)
             //                                       { ctx.StrokeRect(
