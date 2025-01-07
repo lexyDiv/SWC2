@@ -9,3 +9,8 @@ Image *aroundWood1 = new Image("images/grunt/summer/round_wood_1.png");
 Image *aroundWood2 = new Image("images/grunt/summer/round_wood_2.png");
 Image *aroundWood3 = new Image("images/grunt/summer/round_wood_3.png");
 Image *ocean = new Image("images/images/ocean.png");
+Image *pesok1 = new Image("images/grunt/summer/round_pesok_1.png");
+Image *pesok2 = new Image("images/grunt/summer/round_pesok_2.png");
+
+Image *mount1 = new Image("images/grunt/summer/round_stown_1.png");
+Image *mount2 = new Image("images/grunt/summer/round_stown_2.png");

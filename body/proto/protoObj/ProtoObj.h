@@ -32,6 +32,8 @@ public:
     int animStepY = 0;
     int gabX = 0;
     int gabY = 0;
+    int drawGabaritX = 120;
+    int drawGabaritY = 120;
     int centerX = 0;
     int centerY = 0;
 
@@ -131,11 +133,11 @@ struct Water
         {
             if (this->conorVector)
             {
-                this->conor += 0.02;
+                this->conor += 0.05;
             }
             else
             {
-                this->conor -= 0.02;
+                this->conor -= 0.05;
             }
             if (this->conor >= 360 || this->conor <= -360)
             {
@@ -180,7 +182,7 @@ struct Water
             cell->cellImage, this->animX, this->animY,
             cell->animGabX, cell->animGabY,
             cell->x + drawDeltaX - 40, cell->y + drawDeltaY - 40,
-            120 + this->drawGabPro, 120 + this->drawGabPro,
+            cell->drawGabaritX + this->drawGabPro, cell->drawGabaritY + this->drawGabPro,
             SDL_FLIP_NONE, this->conor, this->alpha);
     };
 };
