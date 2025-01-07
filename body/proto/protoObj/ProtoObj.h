@@ -100,19 +100,60 @@ struct Water
     int alpha = 255;
     bool alphaVector = true;
     double conor = 0.0f;
+    int conorVector = intRand(0, 2);
     int takt = 0;
     int checkTakt = 0;
-    void drawControlBasic()
+    int drawGabPro = intRand(1, 20);
+    bool drawGabProVector = true;
+    void drawControlBasic(int i)
     {
-       if (this->takt % this->checkTakt == 0) {
-                if (this->alpha == 255 || !this->alpha)
+
+        if (!i)
         {
-            this->alphaVector = !this->alphaVector;
-            if (!this->alpha)
+
+            if (this->takt % (this->checkTakt + 5) == 0)
             {
-                this->animX = 100 * intRand(0, 8);
+                if (this->drawGabPro <= 0 || this->drawGabPro >= 20)
+                {
+                    this->drawGabProVector = !this->drawGabProVector;
+                }
+                if (this->drawGabProVector)
+                {
+                    this->drawGabPro++;
+                }
+                else
+                {
+                    this->drawGabPro--;
+                }
             }
         }
+        else
+        {
+            if (this->conorVector)
+            {
+                this->conor += 0.02;
+            }
+            else
+            {
+                this->conor -= 0.02;
+            }
+            if (this->conor >= 360 || this->conor <= -360)
+            {
+                this->conor = 0;
+                conorVector = intRand(0, 2);
+            }
+        }
+        if (this->takt % this->checkTakt == 0)
+        {
+            if (this->alpha == 255 || !this->alpha)
+            {
+                this->alphaVector = !this->alphaVector;
+                if (!this->alpha)
+                {
+                    this->animX = 100 * intRand(0, 8);
+                    // this->conor = (double)intRand(0, 360);
+                }
+            }
 
             if (!this->alphaVector)
             {
@@ -122,11 +163,12 @@ struct Water
             {
                 this->alpha--;
             }
-       }
-           this->takt ++;
-           if (this->takt == 100) {
+        }
+        this->takt++;
+        if (this->takt == 1000)
+        {
             this->takt = 0;
-           }
+        }
     };
 
     void draw(ProtoObj *cell, int i)
@@ -137,22 +179,8 @@ struct Water
         ctx.DrawImage(
             cell->cellImage, this->animX, this->animY,
             cell->animGabX, cell->animGabY,
-            cell->x + drawDeltaX - 35, cell->y + drawDeltaY - 35,
-            120, 120, SDL_FLIP_NONE, 0, this->alpha);
-        //   if (i) {
-        //              ctx.DrawImage(
-        //  cell->cellImage, this->animX, this->animY,
-        //  cell->animGabX, cell->animGabY,
-        //  cell->x + drawDeltaX - 35, cell->y + drawDeltaY - 35,
-        //  120, 120, SDL_FLIP_NONE, 0, this->alpha
-        //  );
-        //   } else {
-        //              ctx.DrawImage(
-        //  cell->cellImage, this->animX, this->animY,
-        //  cell->animGabX, cell->animGabY,
-        //  cell->x + drawDeltaX - 35 + 120, cell->y + drawDeltaY - 35 + 120,
-        //  120, 120, SDL_FLIP_NONE, 0, this->alpha
-        //  );
-        //   }
+            cell->x + drawDeltaX - 40, cell->y + drawDeltaY - 40,
+            120 + this->drawGabPro, 120 + this->drawGabPro,
+            SDL_FLIP_NONE, this->conor, this->alpha);
     };
 };

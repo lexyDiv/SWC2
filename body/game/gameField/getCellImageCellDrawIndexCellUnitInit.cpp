@@ -12,7 +12,7 @@ void GameField::getCellImageCellDrawIndexCellUnitInit()
                 cell->litera == '0' 
            // && !cell->lineToTreeNumber 
             && !cell->lineToOtherPlaneNumber
-           // && !cell->LineToMountNumber 
+            && !cell->LineToMountNumber 
           //  && !cell->lineToDarckGround
             ) {
                 

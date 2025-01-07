@@ -32,7 +32,7 @@ void Cell::draw()
                     120, 120);
            } else {
                 this->waters.forEach([this](Water* water, int i){
-                  water->drawControlBasic();
+                  water->drawControlBasic(i);
                   water->draw(this, i);
                 });
            }
