@@ -1,29 +1,7 @@
 #include "../protoGameField/ProtoGameField.cpp"
 
-
-
 class ProtoPlane;
-
-struct Water {
-    int animX = 0;
-    int animY = 0;
-    int alpha = 255;
-    bool alphaVector = true;
-    double conor = 0.0f;
-    void drawControlBasic() {
-        if (this->alpha == 255 || !this->alpha) {
-            this->alphaVector = !this->alphaVector;
-            if (!this->alpha) {
-                this->animX = 100 * intRand(0, 8);
-            }
-        }
-        if (!this->alphaVector) {
-            this->alpha --;
-        } else {
-            this->alpha ++;
-        }
-    };
-};
+struct Water;
 
 class ProtoObj
 {
@@ -93,10 +71,10 @@ public:
     int LineToMountNumber = 0;
     int lineToDarckGround = 0;
     int cellDrawIndex = 0;
-    Array<Water *>  waters;
-    Image* cellImage = nullptr;
-    Image* cellImage2 = nullptr;
-    Image* cellImage3 = nullptr;
+    Array<Water *> waters;
+    Image *cellImage = nullptr;
+    Image *cellImage2 = nullptr;
+    Image *cellImage3 = nullptr;
 
     // bullets
 
@@ -115,5 +93,66 @@ public:
 private:
 };
 
+struct Water
+{
+    int animX = 0;
+    int animY = 0;
+    int alpha = 255;
+    bool alphaVector = true;
+    double conor = 0.0f;
+    int takt = 0;
+    int checkTakt = 0;
+    void drawControlBasic()
+    {
+       if (this->takt % this->checkTakt == 0) {
+                if (this->alpha == 255 || !this->alpha)
+        {
+            this->alphaVector = !this->alphaVector;
+            if (!this->alpha)
+            {
+                this->animX = 100 * intRand(0, 8);
+            }
+        }
 
+            if (!this->alphaVector)
+            {
+                this->alpha++;
+            }
+            else
+            {
+                this->alpha--;
+            }
+       }
+           this->takt ++;
+           if (this->takt == 100) {
+            this->takt = 0;
+           }
+    };
 
+    void draw(ProtoObj *cell, int i)
+    {
+        float drawDeltaX = cell->gf->drawDeltaX;
+        float drawDeltaY = cell->gf->drawDeltaY;
+
+        ctx.DrawImage(
+            cell->cellImage, this->animX, this->animY,
+            cell->animGabX, cell->animGabY,
+            cell->x + drawDeltaX - 35, cell->y + drawDeltaY - 35,
+            120, 120, SDL_FLIP_NONE, 0, this->alpha);
+        //   if (i) {
+        //              ctx.DrawImage(
+        //  cell->cellImage, this->animX, this->animY,
+        //  cell->animGabX, cell->animGabY,
+        //  cell->x + drawDeltaX - 35, cell->y + drawDeltaY - 35,
+        //  120, 120, SDL_FLIP_NONE, 0, this->alpha
+        //  );
+        //   } else {
+        //              ctx.DrawImage(
+        //  cell->cellImage, this->animX, this->animY,
+        //  cell->animGabX, cell->animGabY,
+        //  cell->x + drawDeltaX - 35 + 120, cell->y + drawDeltaY - 35 + 120,
+        //  120, 120, SDL_FLIP_NONE, 0, this->alpha
+        //  );
+        //   }
+    };
+};

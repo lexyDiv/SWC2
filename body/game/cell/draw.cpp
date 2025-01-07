@@ -21,8 +21,8 @@ void Cell::draw()
 
     if (this->cellImage)
     {
-
-      ctx.DrawImage(this->cellImage,
+           if (this->litera != 'w') {
+                  ctx.DrawImage(this->cellImage,
                     this->animX,
                     this->animY,
                     this->animGabX,
@@ -30,6 +30,13 @@ void Cell::draw()
                     this->x + drawDeltaX - 35,
                     this->y + drawDeltaY - 35,
                     120, 120);
+           } else {
+                this->waters.forEach([this](Water* water, int i){
+                  water->drawControlBasic();
+                  water->draw(this, i);
+                });
+           }
+
     }
 
     //     string str = "K: " + to_string(this->plane->number);
