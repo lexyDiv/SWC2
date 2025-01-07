@@ -1,9 +1,5 @@
 #include "GameField.cpp"
 
-Image *groundBasic = new Image("images/grunt/summer/basic/basick.png");
-Image *groundBasic1 = new Image("images/grunt/summer/basick.png");
-Image *groundBasicDarck1 = new Image("images/grunt/summer/basick_tem1.png");
-Image *groundBasicDarck = new Image("images/grunt/summer/basick_tem.png");
 
 void GameField::getCellImageCellDrawIndexCellUnitInit()
 {
@@ -40,6 +36,41 @@ void GameField::getCellImageCellDrawIndexCellUnitInit()
                 cell->animGabX = 100;
                 cell->animGabY = 100;
             } 
+
+            if (cell->litera == 't') {
+                cell->cellImage = underWood;
+                cell->animX = 100 * intRand(0, 60);
+                cell->animY = 0;
+                cell->animGabX = 100;
+                cell->animGabY = 100;
+            }
+
+                if (cell->lineToTreeNumber == 1) {
+                cell->cellImage = aroundWood1;
+                cell->animX = 100 * intRand(0, 30);
+                cell->animY = 0;
+                cell->animGabX = 100;
+                cell->animGabY = 100;
+            } else if (cell->lineToTreeNumber == 2) {
+                cell->cellImage = aroundWood2;
+                cell->animX = 100 * intRand(0, 30);
+                cell->animY = 0;
+                cell->animGabX = 100;
+                cell->animGabY = 100;
+            } 
+
+            if (cell->litera == 'w') {
+                cell->cellImage = ocean;
+                Water *water1 = new Water;
+                Water *water2 = new Water;
+                water1->alpha = 0;
+                cell->waters.push(water1);
+                cell->waters.push(water2);
+                // cell->animX = 100 * intRand(0, 8);
+                // cell->animY = cell->lineToOtherPlaneNumber ? 100 : 0;
+                // cell->animGabX = 100;
+                // cell->animGabY = 100;
+            }
 
             }); });
 }

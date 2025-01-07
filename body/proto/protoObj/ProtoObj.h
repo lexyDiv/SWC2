@@ -4,6 +4,27 @@
 
 class ProtoPlane;
 
+struct Water {
+    int animX = 0;
+    int animY = 0;
+    int alpha = 255;
+    bool alphaVector = true;
+    double conor = 0.0f;
+    void drawControlBasic() {
+        if (this->alpha == 255 || !this->alpha) {
+            this->alphaVector = !this->alphaVector;
+            if (!this->alpha) {
+                this->animX = 100 * intRand(0, 8);
+            }
+        }
+        if (!this->alphaVector) {
+            this->alpha --;
+        } else {
+            this->alpha ++;
+        }
+    };
+};
+
 class ProtoObj
 {
 public:
@@ -72,6 +93,7 @@ public:
     int LineToMountNumber = 0;
     int lineToDarckGround = 0;
     int cellDrawIndex = 0;
+    Array<Water *>  waters;
     Image* cellImage = nullptr;
     Image* cellImage2 = nullptr;
     Image* cellImage3 = nullptr;

@@ -45,6 +45,15 @@ void Cell::draw()
     //     this->gabY,
     //     "red");
     // }
+
+    //     if (this->lineToOtherPlaneNumber && this->plane->type == "sea") {
+    //           ctx.StrokeRect(
+    //     this->x + drawDeltaX,
+    //     this->y + drawDeltaY,
+    //     this->gabX,
+    //     this->gabY,
+    //     "green");
+    // }
     //   if (this->plane->type == "sea" && this->lineToOtherPlaneNumber) {
     //         string str = "K: " + to_string(this->lineToOtherPlaneNumber);
     //        ctx.DrawText(this->x + drawDeltaX, this->y + drawDeltaY + 5, 10,  str, 255);
