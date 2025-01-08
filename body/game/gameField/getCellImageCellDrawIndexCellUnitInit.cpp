@@ -40,16 +40,6 @@ void GameField::getCellImageCellDrawIndexCellUnitInit()
                                                     // cell->drawGabaritY = cell->drawGabaritX;
                                                  }
 
-                                                 if (cell->LineToMountNumber)
-                                                 {
-                                                     Image *img = cell->LineToMountNumber == 1 ? mount1 : mount2;
-                                                     cell->cellImage = img;
-                                                     cell->animX = 100 * intRand(0, 12);
-                                                     cell->animY = 0;
-                                                     cell->animGabX = 100;
-                                                     cell->animGabY = 100;
-                                                     cell->cellDrawIndex = 0;
-                                                 }
                                              }
 
                                              if (cell->lineToDarckGround == 1)
@@ -90,7 +80,7 @@ void GameField::getCellImageCellDrawIndexCellUnitInit()
                                                      cell->animY = 0;
                                                      cell->animGabX = 100;
                                                      cell->animGabY = 100;
-                                                     cell->cellDrawIndex = 3;
+                                                     cell->cellDrawIndex = 2;
                                                  }
                                                  else if (cell->lineToTreeNumber == 2)
                                                  {
@@ -102,6 +92,17 @@ void GameField::getCellImageCellDrawIndexCellUnitInit()
                                                      cell->cellDrawIndex = 3;
                                                  }
                                              }
+
+                                    if (cell->LineToMountNumber)
+                                                 {
+                                                     Image *img = cell->LineToMountNumber == 1 ? mount1 : mount2;
+                                                     cell->cellImage = img;
+                                                     cell->animX = 100 * intRand(0, 12);
+                                                     cell->animY = 0;
+                                                     cell->animGabX = 100;
+                                                     cell->animGabY = 100;
+                                                     cell->cellDrawIndex = 0;
+                                                 }
 
                                              if (cell->litera == 'w')
                                              {
@@ -122,7 +123,7 @@ void GameField::getCellImageCellDrawIndexCellUnitInit()
                                                  water2->animY = cell->lineToOtherPlaneNumber ? 100 : 0;
                                                  cell->animGabX = 100;
                                                  cell->animGabY = 100;
-                                                 cell->cellDrawIndex = 2;
+                                                 cell->cellDrawIndex = cell->lineToOtherPlaneNumber ? 3 : 2;
                                              }
                                          });
                         });

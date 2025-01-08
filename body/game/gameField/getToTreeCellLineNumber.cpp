@@ -5,12 +5,13 @@ void GameField::getToTreeCellLineNumber()
 
     this->planes.forEach([](ProtoPlane *plane)
                          {
-                            Array<ProtoObj *> arrStones;
+                           
                              if (plane->type == "ground")
                              {
 
                                  Array<ProtoObj *> arr;
                                  Array<ProtoObj *> arrAroundDarck;
+                                Array<ProtoObj *> arrStones;
                                  
                                  plane->cells.forEach([plane, &arr, &arrStones, &arrAroundDarck](ProtoObj *cell)
                                                       {                                 
@@ -33,31 +34,15 @@ void GameField::getToTreeCellLineNumber()
                          arrAroundDarck.push(cell);
                     }  
                });
-                                 arr.forEach([](ProtoObj *firstCell)
-                                             { firstCell->aroundCells.forEach([](ProtoObj *secondCell)
+                    arr.forEach([](ProtoObj *firstCell)
+                    { firstCell->aroundCells.forEach([](ProtoObj *secondCell)
                                                                               {
                     if (secondCell->litera != 't' && 
-                    secondCell->litera != '1' && 
                     !secondCell->lineToTreeNumber) {
-                        secondCell->lineToTreeNumber = 2;
+                        int rand = intRand(0, 5);
+                        if (!rand) {secondCell->lineToTreeNumber = 2;}
                     } }); });
 
-                     Array<ProtoObj*> firstLineToStone;
-                    arrStones.forEach([&firstLineToStone](ProtoObj* stoneCell){
-                        stoneCell->aroundCells.forEach([&firstLineToStone](ProtoObj * firstLineSC){
-                            if (firstLineSC->litera != 'g' && !firstLineSC->LineToMountNumber) {
-                                firstLineSC->LineToMountNumber = 1;
-                                firstLineToStone.push(firstLineSC);
-                            }
-                        });
-                    });
-                    firstLineToStone.forEach([](ProtoObj* sc){
-                        sc->aroundCells.forEach([](ProtoObj* ac){
-                            if (!ac->LineToMountNumber && ac->litera != 'g') {
-                                ac->LineToMountNumber = 2;
-                            }
-                        });
-                    });
 
                     arrAroundDarck.forEach([](ProtoObj* cell){
                         cell->maxAroundCells.forEach([cell](ProtoObj* ac, int i){
@@ -71,12 +56,24 @@ void GameField::getToTreeCellLineNumber()
                            ))) {
                             ac->lineToDarckGround = 2;
                            }
-                        //     else if (dis <= 350 && (!ac->lineToDarckGround || (
-                        //     ac->lineToDarckGround > 3
-                        //    ))) {
-                        //     ac->lineToDarckGround = 3;
-                        //    }
                         });
                     });
+
+                    arrStones.forEach([](ProtoObj* as){
+                        as->maxAroundCells.forEach([as](ProtoObj* ac){
+                        Delta delta = getDeltas(
+                        {as->x + as->gabX, as->y + as->gabY},
+                        {ac->x + as->gabX / 2, ac->y + as->gabY /2}
+                        ); 
+                        double dis = getDis(delta); 
+                        if (dis <= 100) {
+                            ac->LineToMountNumber = 1;
+                        } else if (dis <= 200 && !ac->LineToMountNumber) {
+                            ac->LineToMountNumber = 2;
+                        }
+                        });
+                    });
+
+
                              } });
 };
