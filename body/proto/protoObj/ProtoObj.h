@@ -10,6 +10,10 @@ public:
     virtual ~ProtoObj();
     virtual void draw();
     virtual Color getMapColor();
+    
+    /////////
+    virtual void create(ProtoObj* cell);
+    ////////
 
     // all
     ProtoGameField *gf = nullptr;
@@ -51,6 +55,7 @@ public:
     Array<ProtoObj *> myWay;
     Array<ProtoObj *> cells2X2;
     Array<ProtoObj *> contactCells;
+    Array<ProtoObj *> myCells;
 
     // cells
 
