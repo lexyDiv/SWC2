@@ -24,6 +24,7 @@ class ProtoGameField {
    virtual void getToOtherPlaneCellsNumber();
    virtual void getToTreeCellLineNumber();
    virtual void getCellImageCellDrawIndexCellUnitInit();
+   virtual void getVectorCells(ProtoObj *cell);
    
 
    virtual Color getDefaultColor(char lit);

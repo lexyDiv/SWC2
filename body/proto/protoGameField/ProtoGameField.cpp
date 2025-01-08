@@ -79,6 +79,10 @@ void ProtoGameField::getCellImageCellDrawIndexCellUnitInit()
 {
 }
 
+void ProtoGameField::getVectorCells(ProtoObj *cell)
+{
+}
+
 ////////////////////////////////////
 
 // class GF : public ProtoGameField {

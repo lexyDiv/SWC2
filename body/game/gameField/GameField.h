@@ -88,6 +88,7 @@ public:
     void getToOtherPlaneCellsNumber() override;
     void getToTreeCellLineNumber() override;
     void getCellImageCellDrawIndexCellUnitInit() override;
+    void getVectorCells(ProtoObj *cell) override;
 
     Color getDefaultColor(char lit) override;
     //

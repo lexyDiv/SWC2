@@ -1,12 +1,14 @@
 #include "GameField.cpp"
 
+
 void GameField::getCellImageCellDrawIndexCellUnitInit()
 {
 
-    this->field.forEach([](Array<ProtoObj *> line)
+    this->field.forEach([this](Array<ProtoObj *> line)
                         {
-                            line.forEach([](ProtoObj *cell)
+                            line.forEach([this](ProtoObj *cell)
                                          {
+                                            
                                              if (cell->litera == '0')
                                              {
                                                  if (
@@ -125,6 +127,7 @@ void GameField::getCellImageCellDrawIndexCellUnitInit()
                                                  cell->animGabY = 100;
                                                  cell->cellDrawIndex = cell->lineToOtherPlaneNumber ? 3 : 2;
                                              }
+        this->getVectorCells(cell);
                                          });
                         });
 
@@ -166,5 +169,4 @@ void GameField::getCellImageCellDrawIndexCellUnitInit()
                 //     { return a->cellDrawIndex < b->cellDrawIndex; }); 
                                                              
                                                              }); });
-
 }
