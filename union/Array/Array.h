@@ -35,6 +35,9 @@ public:
     ~Array();
     //  T &operator[] (int i) { return this->vec[i]; }
     T getItem(int i);
+    T getItem2(int i);
+    T& getItem3(int i);
+
     void push(T el);
     void unshift(T el);
     T pop();
@@ -75,6 +78,18 @@ template <typename T>
 inline T Array<T>::getItem(int i)
 {
     return this->vec.at(i);
+}
+
+template <typename T>
+inline T Array<T>::getItem2(int i)
+{
+    return this->vec[i];
+}
+
+template <typename T>
+inline T &Array<T>::getItem3(int i)
+{
+    return *&this->vec[i];
 }
 
 template <typename T>

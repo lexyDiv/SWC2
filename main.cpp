@@ -102,6 +102,27 @@ int main()
 
   //gameField->create();
 
+//  vector<vector<int>> vec;
+//  vector<int> ve;
+//  vec.push_back(ve);
+
+//  vector<int> &veCopy = vec[0];
+//  veCopy.push_back(11);
+//  //vec[0].push_back(11);
+
+// if (vec[0][0]) {
+//    console.log(to_string(vec[0][0]));
+// }
+
+// ProtoObj* pa = new ProtoObj;
+
+// Array<Array<ProtoObj *>> arr;
+// Array<ProtoObj *> a;
+// arr.push(a);
+// Array<ProtoObj *> &hz = arr.getItem3(0);
+// hz.push(pa);
+// console.log(to_string(arr.getItem(0).length));
+
   while (!quit)
   {
 

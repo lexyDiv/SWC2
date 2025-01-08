@@ -143,6 +143,20 @@ void GameField::getCellImageCellDrawIndexCellUnitInit()
             });
             cell->cellsOnDraw.push(arr);
         }
+
+        // for (int i = 0; i <= 3; i++) {
+        //     Array<ProtoObj *> arr;
+        //     cell->cellsOnDraw.push(arr);
+        // }
+
+        // for (int i = 0; i < cell->cellsOnDraw.length; i++) {
+        //     Array<ProtoObj *> &arr = cell->cellsOnDraw.getItem3(i);
+        //     cell->drawCells.forEach([&arr, i](ProtoObj* dc){
+        //        if (dc->cellDrawIndex == i) {
+        //           arr.push(dc);
+        //        }
+        //     });
+        // }
          
          cell->drawCells.clear();
  
