@@ -3,6 +3,12 @@
 void GameField::getToTreeCellLineNumber()
 {
 
+    this->field.forEach([this](Array<ProtoObj *> line){
+        line.forEach([this](ProtoObj* cell){
+               this->getVectorCells(cell);
+        });
+    });
+
     this->planes.forEach([](ProtoPlane *plane)
                          {
                            
@@ -28,8 +34,8 @@ void GameField::getToTreeCellLineNumber()
                } 
                                    if (cell->litera == 'g') {
                         arrStones.push(cell);
-                       // ProtoObj *mount = new Mount();
-                       // mount->create(cell);
+                        ProtoObj *mount = new Mount();
+                        mount->create(cell);
                     }
                     if (cell->litera == 'e') {
                         cell->lineToDarckGround = 1;

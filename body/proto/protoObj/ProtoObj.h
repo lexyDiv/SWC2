@@ -20,6 +20,8 @@ public:
     ProtoGame *game = nullptr;
     ProtoPlane *plane = nullptr;
 
+    bool isDelete = false;
+
     string type;
     float x = 0.0f;
     float y = 0.0f;

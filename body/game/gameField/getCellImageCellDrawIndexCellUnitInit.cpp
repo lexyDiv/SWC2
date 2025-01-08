@@ -127,7 +127,7 @@ void GameField::getCellImageCellDrawIndexCellUnitInit()
                                                  cell->animGabY = 100;
                                                  cell->cellDrawIndex = cell->lineToOtherPlaneNumber ? 3 : 2;
                                              }
-        this->getVectorCells(cell);
+     
                                          });
                         });
 
