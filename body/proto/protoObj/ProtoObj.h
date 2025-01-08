@@ -55,7 +55,7 @@ public:
     Array<ProtoObj *> myWay;
     Array<ProtoObj *> cells2X2;
     Array<ProtoObj *> contactCells;
-    Array<ProtoObj *> myCells;
+ 
 
     // cells
 
@@ -68,7 +68,17 @@ public:
     Array<Array<ProtoObj *>> cellsOnDraw;
     Array<ProtoObj *> ripUnits;
     Array<ProtoObj *> landDecorationObjs;
-    Array<ProtoObj *> guardCells;
+
+    ProtoObj* left = nullptr;
+    ProtoObj* right = nullptr;
+    ProtoObj* top = nullptr;
+    ProtoObj* bottom = nullptr;
+    ProtoObj* top_left = nullptr;
+    ProtoObj* top_right = nullptr;
+    ProtoObj* bottom_left = nullptr;
+    ProtoObj* bottom_right = nullptr;
+    
+   // Array<ProtoObj *> guardCells;
     Array<ProtoObj *> booms;
     Array<ProtoObj *> bullets;
     ProtoObj *continent = nullptr;
