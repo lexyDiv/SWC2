@@ -29,6 +29,14 @@ void hard()
 // }
 // mapWrite(&path3, vec);
 
+// ProtoObj *hz = new Cell;
+// ProtoObj *&copy = hz;
+// copy->x = 69;
+// delete hz;
+// hz = nullptr;
+// if (copy) {
+//   console.log(to_string(copy->x));
+// }
 
 
         game->create();

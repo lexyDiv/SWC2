@@ -28,6 +28,8 @@ void GameField::getToTreeCellLineNumber()
                } 
                                    if (cell->litera == 'g') {
                         arrStones.push(cell);
+                       // ProtoObj *mount = new Mount();
+                       // mount->create(cell);
                     }
                     if (cell->litera == 'e') {
                         cell->lineToDarckGround = 1;

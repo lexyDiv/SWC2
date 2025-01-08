@@ -45,6 +45,7 @@ public:
 
     // units
     bool isActive = false;
+    bool isAddOnDraw = false;
     int speed = 0;
     int hp = 0;
     int attack = 0;
@@ -77,7 +78,7 @@ public:
     ProtoObj* top_right = nullptr;
     ProtoObj* bottom_left = nullptr;
     ProtoObj* bottom_right = nullptr;
-    
+
    // Array<ProtoObj *> guardCells;
     Array<ProtoObj *> booms;
     Array<ProtoObj *> bullets;

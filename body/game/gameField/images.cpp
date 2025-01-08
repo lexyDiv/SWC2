@@ -14,3 +14,9 @@ Image *pesok2 = new Image("images/grunt/summer/round_pesok_2.png");
 
 Image *mount1 = new Image("images/grunt/summer/round_stown_1.png");
 Image *mount2 = new Image("images/grunt/summer/round_stown_2.png");
+
+// mount
+Image *gora1 = new Image("images/grunt/summer/gora_closed.png");
+Image *gora2 = new Image("images/grunt/summer/gora_free.png");
+Image *gora3 = new Image("images/grunt/summer/gora_left_free.png");
+Image *gora4 = new Image("images/grunt/summer/gora_right_free.png");

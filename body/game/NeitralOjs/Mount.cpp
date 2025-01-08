@@ -3,6 +3,7 @@
 
 Mount::~Mount()
 {
+    std::cout<<"mount del"<<std::endl;
 }
 
 

@@ -9,6 +9,10 @@ Cell::~Cell()
     delete water;
     water = nullptr;
    });
+   if (this->groundUnit) {
+    delete this->groundUnit;
+    this->groundUnit = nullptr;
+   }
 }
 
 
