@@ -22,12 +22,15 @@ void GameField::getToTreeCellLineNumber()
                                  plane->cells.forEach([plane, &arr, &arrStones, &arrAroundDarck](ProtoObj *cell)
                                                       {                                 
                 if (cell->litera == 't' || cell->litera == '1') {
+                    ProtoObj *tree = new Tree;
+                    tree->create(cell);
                     cell->aroundCells.forEach([plane, &arr](ProtoObj* ac){
                         if (ac->plane == plane &&
                         ac->litera != 't' && ac->litera != '1' &&
                         !ac->lineToTreeNumber) {
                             ac->lineToTreeNumber = 1;
                             arr.push(ac);
+                            
                         }
                     });
                   plane->treeCells.push(cell);
@@ -43,7 +46,9 @@ void GameField::getToTreeCellLineNumber()
                     }  
                });
                     arr.forEach([](ProtoObj *firstCell)
-                    { firstCell->aroundCells.forEach([](ProtoObj *secondCell)
+                    {
+                        
+                         firstCell->aroundCells.forEach([](ProtoObj *secondCell)
                                                                               {
                     if (secondCell->litera != 't' && 
                     !secondCell->lineToTreeNumber) {

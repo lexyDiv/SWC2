@@ -31,21 +31,34 @@ void Game::draw()
                 });
             });
 
+
             unitsOnDraw.sort([](ProtoObj* a, ProtoObj* b){
                 return a->y < b->y;
             });
+
+            //     unitsOnDraw.sort([](ProtoObj* a, ProtoObj* b){
+            //     return a->x > b->x;
+            // });
+
 
             unitsOnDraw.forEach([](ProtoObj *unit){
                 unit->draw();
             });
 
-            // this->gf->drawCell->drawCells.forEach([drawDeltaX, drawDeltaY](ProtoObj *cell)
-            //                                       { ctx.StrokeRect(
+
+            //             this->gf->drawCell->cellsOnDraw.forEach([&unitsOnDraw, drawDeltaX, drawDeltaY](Array<ProtoObj *> drawLine){
+            //     drawLine.forEach([&unitsOnDraw, drawDeltaX, drawDeltaY](ProtoObj* cell){
+            //         string color = cell->groundUnit ? "red" : "yellow";
+            //         ctx.StrokeRect(
             //                                             cell->x + drawDeltaX,
             //                                             cell->y + drawDeltaY,
             //                                             cell->gabX,
             //                                             cell->gabY,
-            //                                             "yellow"); });
+            //                                             color);
+            //     });
+            // });
+
+
         }
 
         //  ctx.FillRect(this->gf->centerX, this->gf->centerY + this->gf->y, 3, 3, "black");

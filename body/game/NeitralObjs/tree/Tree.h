@@ -1,4 +1,4 @@
-#include "../fraction/Fraction.cpp"
+#include "../../fraction/Fraction.cpp"
 
 class Tree : public ProtoObj {
      public:

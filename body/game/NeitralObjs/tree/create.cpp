@@ -5,8 +5,10 @@ void Tree::create(ProtoObj * cell) {
     cell->groundUnit = this;
     this->myCells.push(cell);
     this->name = "tree";
-    this->x = cell->x + intRand(1, cell->gabX - 1);
-    this->y = cell->y + intRand(1, cell->gabY - 1);
+    this->drawGabaritX = 100;
+    this->drawGabaritY = 120;
+    this->x = cell->x; // (cell->x - cell->gabX /2) + intRand(1, cell->gabX);
+    this->y = cell->y;// (cell->y - cell->gabY /2) + intRand(1, cell->gabY) - this->drawGabaritY / 2;
     this->hp = 50;
     this->animGabX = 200;
     this->animGabY = 200;
@@ -17,4 +19,5 @@ void Tree::create(ProtoObj * cell) {
     this->image2 = randImg ? tree1Trup : tree2Trup;
     this->animX = 200 * intRand(0, 4);
     this->animY = 200 * intRand(0, 4);
+    this->gf = cell->gf;
 }
