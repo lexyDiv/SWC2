@@ -1,5 +1,5 @@
 //#include "../game/preDraw.cpp"
-#include "../../proto/protoGame/ProtoGame.cpp"
+#include "../fraction/Fraction.cpp"
 
 class Mount : public ProtoObj {
 

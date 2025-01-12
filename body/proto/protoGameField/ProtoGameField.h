@@ -4,6 +4,7 @@
 class ProtoObj;
 class ProtoGame;
 class ProtoPlane;
+class ProtoFraction;
 
 class ProtoGameField {
     public:
@@ -30,6 +31,7 @@ class ProtoGameField {
    virtual Color getDefaultColor(char lit);
 
    ProtoGame *game = nullptr;
+   Array<ProtoFraction *> fractions;
 
     Array<Array<ProtoObj *>> field;
 

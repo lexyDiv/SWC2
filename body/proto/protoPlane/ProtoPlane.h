@@ -1,4 +1,4 @@
-#include "../protoObj/ProtoObj.cpp"
+#include "../protoFraction/ProtoFraction.cpp"
 
 struct ToOtherPlane {
     ProtoPlane *otherPlane = nullptr;

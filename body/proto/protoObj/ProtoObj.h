@@ -2,6 +2,7 @@
 
 class ProtoPlane;
 struct Water;
+class ProtoFraction;
 
 class ProtoObj
 {
@@ -64,6 +65,7 @@ public:
     Array<ProtoObj *> myWay;
     Array<ProtoObj *> cells2X2;
     Array<ProtoObj *> contactCells;
+    ProtoFraction *fraction = nullptr;
  
 
     // cells
