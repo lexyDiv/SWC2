@@ -1,4 +1,4 @@
-#include "getFieldImage.cpp"
+#include "getVectorCells.cpp"
 
 void GameField::create()
 {
@@ -26,6 +26,7 @@ void GameField::create()
     this->getMaxAroundCellsDis();
     this->getToOtherPlaneCellsNumber();
     this->getToTreeCellLineNumber();
+    this->getCellImageCellDrawIndexCellUnitInit();
    //  this->field.getItem(0).getItem(0)->maxAroundCellsDis.forEach([](double dis){
    //    console.log(to_string(dis));
    //  });

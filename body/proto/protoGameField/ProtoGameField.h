@@ -1,4 +1,4 @@
-#include "../../../Listenner.h"
+#include "../images.cpp"
 
 
 class ProtoObj;
@@ -23,6 +23,8 @@ class ProtoGameField {
    virtual void getMaxAroundCellsDis();
    virtual void getToOtherPlaneCellsNumber();
    virtual void getToTreeCellLineNumber();
+   virtual void getCellImageCellDrawIndexCellUnitInit();
+   virtual void getVectorCells(ProtoObj *cell);
    
 
    virtual Color getDefaultColor(char lit);

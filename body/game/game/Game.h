@@ -1,4 +1,4 @@
-#include "../gameField/miniMapMouseControl.cpp"
+#include "images.cpp"
 
 class Game : public ProtoGame {
 

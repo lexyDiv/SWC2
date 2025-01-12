@@ -1,4 +1,4 @@
-#include "../cell/draw.cpp"
+#include "images.cpp"
 
 vector<string> testMap = {
 
@@ -87,7 +87,9 @@ public:
     void getMaxAroundCellsDis() override;
     void getToOtherPlaneCellsNumber() override;
     void getToTreeCellLineNumber() override;
+    void getCellImageCellDrawIndexCellUnitInit() override;
+    void getVectorCells(ProtoObj *cell) override;
 
-     Color getDefaultColor(char lit) override;
-//
+    Color getDefaultColor(char lit) override;
+    //
 };

@@ -19,4 +19,6 @@ Color ProtoObj::getMapColor()
     return {R: 255, G: 255, B: 255};
 }
 
-
+void ProtoObj::create(ProtoObj *cell)
+{
+}
