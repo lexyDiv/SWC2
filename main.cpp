@@ -32,14 +32,18 @@ void hard()
 // ProtoObj *hz = new Cell;
 // ProtoObj *&copy = hz;
 // copy->x = 69;
-// delete hz;
-// hz = nullptr;
-// if (copy) {
-//   console.log(to_string(copy->x));
+// delete copy;
+// copy = nullptr;
+// if (hz) {
+//   console.log(to_string(hz->x));
 // }
 
 
+
+
         game->create();
+
+
     
 
   while (!quit)
