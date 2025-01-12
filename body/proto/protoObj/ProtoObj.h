@@ -31,6 +31,7 @@ public:
     float ver = 0;
     float hor = 0;
 
+    int animTakt = 0;
     int animX = 0;
     int animY = 0;
     int animGabX = 0;
@@ -45,6 +46,8 @@ public:
     int centerY = 0;
 
     Image *image = nullptr;
+    Image *image2 = nullptr;
+    Image *image3 = nullptr;
 
     // units
     bool isWarrior = false;
@@ -88,6 +91,8 @@ public:
     ProtoObj* top_right = nullptr;
     ProtoObj* bottom_left = nullptr;
     ProtoObj* bottom_right = nullptr;
+
+
 
    // Array<ProtoObj *> guardCells;
     Array<ProtoObj *> booms;

@@ -20,3 +20,11 @@ Image *gora1 = new Image("images/grunt/summer/gora_closed.png");
 Image *gora2 = new Image("images/grunt/summer/gora_free.png");
 Image *gora3 = new Image("images/grunt/summer/gora_left_free.png");
 Image *gora4 = new Image("images/grunt/summer/gora_right_free.png");
+
+// tree
+
+Image *tree1 = new Image("images/images/trees.png"); 
+Image *tree2 = new Image("images/images/trees2.png"); 
+
+Image *tree1Trup = new Image("images/images/treesTrup.png"); 
+Image *tree2Trup = new Image("images/images/trees2Trup.png"); 
