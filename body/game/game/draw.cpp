@@ -14,40 +14,46 @@ void Game::draw()
             float drawDeltaX = this->gf->drawDeltaX;
             float drawDeltaY = this->gf->drawDeltaY;
 
-            // this->gf->drawCell->drawCells.forEach([](ProtoObj *cell)
-            //                                       { cell->draw(); });
-           
-           // console.log(to_string(this->gf->drawCell->cellsOnDraw.getItem(0).length));
-           Array<ProtoObj *> unitsOnDraw;
+           Array<Array<ProtoObj *>> DA;
+           for (int i = 0; i < 100; i++) {
+            Array<ProtoObj *> a;
+            DA.push(a);
+           };
 
-            this->gf->drawCell->cellsOnDraw.forEach([&unitsOnDraw](Array<ProtoObj *> drawLine){
-                drawLine.forEach([&unitsOnDraw](ProtoObj* cell){
-                  //  console.log("here");
+           Array<int> max;
+           
+
+            this->gf->drawCell->cellsOnDraw.forEach([drawDeltaY, &DA, &max](Array<ProtoObj *> drawLine){
+                drawLine.forEach([drawDeltaY, &DA, &max](ProtoObj* cell){
                     cell->draw();
                     if (cell->groundUnit && !cell->groundUnit->isAddOnDraw) {
+                    int index = ceil((((cell->groundUnit->y) + drawDeltaY) / 10) + 10);
+                  //  console.log(to_string(index));
                         cell->groundUnit->isAddOnDraw = true;
-                        unitsOnDraw.push(cell->groundUnit);
+                       Array<ProtoObj *> &line = DA.getItem3(index);                    
+                        line.push(cell->groundUnit);
+                       max.push(index);
                     }
                 });
             });
+            
+        //    if (max.length) {
+        //               max.sort([](int a, int b){
+        //         return a > b;
+        //     });
+        //     int mx = max.getItem(0);
+        //     int mn = max.getItem(max.length - 1);
+        //     console.log(to_string(mx));
+        //    }
 
-
-            unitsOnDraw.sort([](ProtoObj* a, ProtoObj* b){
-                return a->y < b->y;
+            DA.forEach([](Array<ProtoObj * > line){
+                line.forEach([](ProtoObj* unit){
+                    unit->draw();
+                });
             });
 
-            //     unitsOnDraw.sort([](ProtoObj* a, ProtoObj* b){
-            //     return a->x > b->x;
-            // });
-
-
-            unitsOnDraw.forEach([](ProtoObj *unit){
-                unit->draw();
-            });
-
-
-            //             this->gf->drawCell->cellsOnDraw.forEach([&unitsOnDraw, drawDeltaX, drawDeltaY](Array<ProtoObj *> drawLine){
-            //     drawLine.forEach([&unitsOnDraw, drawDeltaX, drawDeltaY](ProtoObj* cell){
+            //             this->gf->drawCell->cellsOnDraw.forEach([drawDeltaX, drawDeltaY](Array<ProtoObj *> drawLine){
+            //     drawLine.forEach([drawDeltaX, drawDeltaY](ProtoObj* cell){
             //         string color = cell->groundUnit ? "red" : "yellow";
             //         ctx.StrokeRect(
             //                                             cell->x + drawDeltaX,
