@@ -7,13 +7,16 @@ void Tree::draw()
   float drawDeltaY = this->gf->drawDeltaY;
   if (this->hp > 0)
   {
-    //  ctx.FillRect(this->x + drawDeltaX, this->y + drawDeltaY, 5, 5, "blue");
 
     ctx.DrawImage(this->image,
                   this->animX, this->animY,
                   this->animGabX, this->animGabY,
-                  this->x + drawDeltaX, this->y + drawDeltaY,
+                  (this->x - this->drawGabaritX / 2) + drawDeltaX,
+                  (this->y - this->drawGabaritY) + 13 + drawDeltaY,
                   this->drawGabaritX, this->drawGabaritY);
+
+   // ctx.FillRect(this->x + drawDeltaX, this->y + drawDeltaY, 5, 5, "blue");
+
   }
 
   this->animTakt++;
