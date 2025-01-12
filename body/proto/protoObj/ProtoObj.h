@@ -46,6 +46,12 @@ public:
     Image *image = nullptr;
 
     // units
+    bool isWarrior = false;
+    bool isFlying = false;
+    bool isSweeming = false;
+
+    string name = "";
+
     bool isActive = false;
     bool isAddOnDraw = false;
     int speed = 0;

@@ -18,11 +18,25 @@ void Game::draw()
             //                                       { cell->draw(); });
            
            // console.log(to_string(this->gf->drawCell->cellsOnDraw.getItem(0).length));
-            this->gf->drawCell->cellsOnDraw.forEach([](Array<ProtoObj *> drawLine){
-                drawLine.forEach([](ProtoObj* cell){
+           Array<ProtoObj *> unitsOnDraw;
+
+            this->gf->drawCell->cellsOnDraw.forEach([&unitsOnDraw](Array<ProtoObj *> drawLine){
+                drawLine.forEach([&unitsOnDraw](ProtoObj* cell){
                   //  console.log("here");
                     cell->draw();
+                    if (cell->groundUnit && !cell->groundUnit->isAddOnDraw) {
+                        cell->groundUnit->isAddOnDraw = true;
+                        unitsOnDraw.push(cell->groundUnit);
+                    }
                 });
+            });
+
+            unitsOnDraw.sort([](ProtoObj* a, ProtoObj* b){
+                return a->y < b->y;
+            });
+
+            unitsOnDraw.forEach([](ProtoObj *unit){
+                unit->draw();
             });
 
             // this->gf->drawCell->drawCells.forEach([drawDeltaX, drawDeltaY](ProtoObj *cell)

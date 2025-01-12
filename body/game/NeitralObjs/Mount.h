@@ -7,5 +7,6 @@ public:
   Mount() : ProtoObj(){};
   ~Mount();
   void create(ProtoObj * cell) override;
+  void draw() override;
 
 };

@@ -1,4 +1,4 @@
-#include "Mount.cpp"
+#include "draw.cpp"
 
 void Mount::create(ProtoObj *cell)
 {
@@ -14,8 +14,14 @@ void Mount::create(ProtoObj *cell)
     this->x = cell->x + cell->gabX;
     this->y = cell->y + cell->gabY;
 
-    this->image = gora1;
+    this->animX = 200 * intRand(0, 5);
+
+    int rand = intRand(0, 3);
+    this->image = !rand ? gora1 : rand == 1 ? gora4 : gora3;
     this->animGabX = 200;
     this->animGabY = 200;
+    this->gf = cell->gf;
+
+    this->name = "mount";
 
 }
