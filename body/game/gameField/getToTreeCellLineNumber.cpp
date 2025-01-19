@@ -9,7 +9,7 @@ void GameField::getToTreeCellLineNumber()
         });
     });
 
-    this->planes.forEach([](ProtoPlane *plane)
+    this->planes.forEach([this](ProtoPlane *plane)
                          {
                            
                              if (plane->type == "ground")
@@ -18,8 +18,9 @@ void GameField::getToTreeCellLineNumber()
                                  Array<ProtoObj *> arr;
                                  Array<ProtoObj *> arrAroundDarck;
                                 Array<ProtoObj *> arrStones;
+                                Array<ProtoObj *> shahts;
                                  
-                                 plane->cells.forEach([plane, &arr, &arrStones, &arrAroundDarck](ProtoObj *cell)
+                                 plane->cells.forEach([plane, &arr, &arrStones, &arrAroundDarck, &shahts](ProtoObj *cell)
                                                       {                                 
                 if (cell->litera == 't') {
                     ProtoObj *tree = new Tree;
@@ -35,6 +36,9 @@ void GameField::getToTreeCellLineNumber()
                     });
                   plane->treeCells.push(cell);
                } 
+               if (cell->litera == 'S') {
+                    shahts.push(cell);
+               }
                                    if (cell->litera == 'g') {
                         arrStones.push(cell);
                         ProtoObj *mount = new Mount();
@@ -87,6 +91,13 @@ void GameField::getToTreeCellLineNumber()
                         });
                     });
 
+            shahts.forEach([this](ProtoObj *cell, int i){
+                ProtoObj *shaht = new Shaht;
+                shaht->create(cell);
+                shaht->gold = stoi(this->goldData.getItem(i));
+            });
+
+            
 
                              } });
 };

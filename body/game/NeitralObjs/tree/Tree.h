@@ -1,4 +1,4 @@
-#include "../shaht/Shaht.cpp"
+#include "../shaht/draw.cpp"
 
 class Tree : public ProtoObj {
      public:

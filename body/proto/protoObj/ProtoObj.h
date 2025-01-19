@@ -49,6 +49,10 @@ public:
     Image *image2 = nullptr;
     Image *image3 = nullptr;
 
+    // neitral & buildfings
+    int gold = 0;
+    Array<ProtoObj *> clients;
+
     // units
     bool isWarrior = false;
     bool isFlying = false;
