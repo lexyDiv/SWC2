@@ -9,7 +9,7 @@ void GameField::getCellImageCellDrawIndexCellUnitInit()
                             line.forEach([this](ProtoObj *cell)
                                          {
                                             
-                                             if (cell->litera == '0')
+                                             if (cell->litera == '0' || cell->litera == 'S')
                                              {
                                                  if (
 

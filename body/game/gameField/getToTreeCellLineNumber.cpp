@@ -21,7 +21,7 @@ void GameField::getToTreeCellLineNumber()
                                  
                                  plane->cells.forEach([plane, &arr, &arrStones, &arrAroundDarck](ProtoObj *cell)
                                                       {                                 
-                if (cell->litera == 't' || cell->litera == '1') {
+                if (cell->litera == 't') {
                     ProtoObj *tree = new Tree;
                     tree->create(cell);
                     cell->aroundCells.forEach([plane, &arr](ProtoObj* ac){
