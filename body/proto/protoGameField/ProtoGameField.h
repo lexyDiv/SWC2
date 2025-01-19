@@ -36,6 +36,8 @@ class ProtoGameField {
     Array<Array<ProtoObj *>> field;
 
     Array<ProtoPlane *> planes;
+    Array<string> goldData;
+    Array<string> oilData;
 
     Image *miniMap = nullptr;
     ProtoObj *drawCell = nullptr;

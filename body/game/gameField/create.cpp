@@ -7,6 +7,33 @@ void GameField::create()
     this->gabarit = array.getItem(0).size();
     this->height = this->gabarit * this->cellSize;
 
+/////////////////////////////////
+    string shahtData = array.getItem(array.length - 1);
+    string goldDtataItem = "";
+    this->goldData.push(goldDtataItem);
+    int goldIndex = 0;
+    for (int i = 0; i < shahtData.length(); i++) {
+      string lit{shahtData[i]};
+      if (lit == ",") {
+         goldIndex ++;
+         string gdi = "";
+         this->goldData.push(gdi);
+      } else {
+         string &str = this->goldData.getItem3(goldIndex);
+         str += lit;
+      }
+    }
+
+   //  this->goldData.forEach([](string str){
+   //    console.log(str);
+   //  });
+
+
+   //  string hz = "100";
+   //  int hz2 = stoi(hz);
+   //  console.log(to_string(hz2));
+///////////////////////////////
+
     this->mcs = this->miniMapGab / this->gabarit;
     this->miniMapWinGab = ceil(this->mcs * 15);
 
