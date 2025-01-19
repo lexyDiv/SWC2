@@ -3,10 +3,10 @@
 void GameField::create()
 {
     Array<string> array = readMap(&this->path);
-    this->width = array.length * this->cellSize;
+   // this->width = array.length * this->cellSize;
     this->gabarit = array.getItem(0).size();
     this->height = this->gabarit * this->cellSize;
-
+    this->width = this->height;
 /////////////////////////////////
     string shahtData = array.getItem(array.length - 1);
     string goldDtataItem = "";
