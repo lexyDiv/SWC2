@@ -28,7 +28,6 @@ void Game::draw()
                     cell->draw();
                     if (cell->groundUnit && !cell->groundUnit->isAddOnDraw) {
                     int index = ceil((((cell->groundUnit->y) + drawDeltaY) / 10) + 30);
-                  //  console.log(to_string(index));
                         cell->groundUnit->isAddOnDraw = true;
                        Array<ProtoObj *> &line = DA.getItem3(index);                    
                         line.push(cell->groundUnit);

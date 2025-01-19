@@ -122,10 +122,10 @@ void GameField::getCellImageCellDrawIndexCellUnitInit()
                                                  water1->animX = 100 * intRand(0, 8);
                                                  water1->animY = cell->lineToOtherPlaneNumber ? 100 : 0;
                                                  water2->animX = 100 * intRand(0, 8);
-                                                 water2->animY = cell->lineToOtherPlaneNumber ? 100 : 0;
+                                                 water2->animY = cell->lineToOtherPlaneNumber == 1 ? 100 : 0;
                                                  cell->animGabX = 100;
                                                  cell->animGabY = 100;
-                                                 cell->cellDrawIndex = cell->lineToOtherPlaneNumber ? 3 : 2;
+                                                 cell->cellDrawIndex = cell->lineToOtherPlaneNumber == 1 ? 3 : 2;
                                              }
      
                                          });
