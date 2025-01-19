@@ -31,6 +31,7 @@ public:
     float ver = 0;
     float hor = 0;
 
+    int drawIndexY = 0;
     int animTakt = 0;
     int animX = 0;
     int animY = 0;

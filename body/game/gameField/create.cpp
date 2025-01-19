@@ -23,7 +23,7 @@ void GameField::create()
          str += lit;
       }
     }
-
+   array.pop();
    //  this->goldData.forEach([](string str){
    //    console.log(str);
    //  });

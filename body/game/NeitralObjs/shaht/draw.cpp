@@ -12,8 +12,8 @@ int animY = !this->clients.length ? 0 : this->animStepY;
    this->x + drawDeltaX - 80, this->y + drawDeltaY - 105,
    160, 195);
 
-   this->myCells.forEach([drawDeltaX, drawDeltaY](ProtoObj *cell){
-    ctx.StrokeRect(cell->x + drawDeltaX, cell->y + drawDeltaY, cell->gabX, cell->gabY);
-   });
+//    this->myCells.forEach([drawDeltaX, drawDeltaY](ProtoObj *cell){
+//     ctx.StrokeRect(cell->x + drawDeltaX, cell->y + drawDeltaY, cell->gabX, cell->gabY);
+//    });
 
 }

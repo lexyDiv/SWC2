@@ -15,7 +15,7 @@ Color GameField::getDefaultColor(char lit)
     case 'w':
         return ctx.ColorsMap("blue");
     case 'S':
-        return ctx.ColorsMap("yellow");
+        return ctx.ColorsMap("green");
     default:
         return ctx.ColorsMap("black");
     }

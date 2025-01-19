@@ -13,6 +13,7 @@ void Mount::create(ProtoObj *cell)
 
     this->x = cell->x + cell->gabX;
     this->y = cell->y + cell->gabY;
+    this->drawIndexY = this->y;
 
     this->animX = 200 * intRand(0, 5);
 
@@ -23,5 +24,6 @@ void Mount::create(ProtoObj *cell)
     this->gf = cell->gf;
 
     this->name = "mount";
+    this->mapColor = {R: 127, G: 0, B: 255};
 
 }

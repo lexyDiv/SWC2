@@ -27,7 +27,7 @@ void Game::draw()
                 drawLine.forEach([drawDeltaY, &DA, &max](ProtoObj* cell){
                     cell->draw();
                     if (cell->groundUnit && !cell->groundUnit->isAddOnDraw) {
-                    int index = ceil((((cell->groundUnit->y) + drawDeltaY) / 10) + 30);
+                    int index = ceil((((cell->groundUnit->drawIndexY) + drawDeltaY) / 10) + 30);
                         cell->groundUnit->isAddOnDraw = true;
                        Array<ProtoObj *> &line = DA.getItem3(index);                    
                         line.push(cell->groundUnit);

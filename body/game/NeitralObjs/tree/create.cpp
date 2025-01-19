@@ -5,6 +5,7 @@ void Tree::create(ProtoObj * cell) {
     cell->groundUnit = this;
     this->myCells.push(cell);
     this->name = "tree";
+    this->mapColor = {R: 0, G: 150, B: 0};
    // int randGX = intRand(0, 25);
     int randGY = intRand(0, 50);
     this->drawGabaritX = 40 + randGY;
@@ -18,6 +19,7 @@ void Tree::create(ProtoObj * cell) {
 
     this->x = randXVec ? cell->centerX + randX : cell->centerX - randX; 
     this->y = randYVec ? cell->centerY + randY : cell->centerY - randY; 
+    this->drawIndexY = this->y;
     this->hp = 50;
     this->animGabX = 200;
     this->animGabY = 200;
