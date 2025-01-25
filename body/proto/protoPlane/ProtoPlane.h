@@ -14,5 +14,7 @@ class ProtoPlane {
     int number = 0;
     Array<ProtoObj *> cells;
     Array<ToOtherPlane *> contactPlanes;
-    Array<ProtoObj *> treeCells;
+    Array<ProtoObj *> trees;
+    Array<ProtoObj *> shahts;
+    Array<ProtoObj *> oils;
 };

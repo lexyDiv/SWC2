@@ -9,11 +9,11 @@ int animY = !this->clients.length ? 0 : this->animStepY;
    ctx.DrawImage(this->image,
    this->animX, animY,
    this->animGabX, this->animGabY,
-   this->x + drawDeltaX - 80, this->y + drawDeltaY - 105,
+   this->x + drawDeltaX - 8, this->y + drawDeltaY - 30,
    160, 195);
 
-//    this->myCells.forEach([drawDeltaX, drawDeltaY](ProtoObj *cell){
-//     ctx.StrokeRect(cell->x + drawDeltaX, cell->y + drawDeltaY, cell->gabX, cell->gabY);
-//    });
+   this->myCells.forEach([drawDeltaX, drawDeltaY](ProtoObj *cell){
+    ctx.StrokeRect(cell->x + drawDeltaX, cell->y + drawDeltaY, cell->gabX, cell->gabY);
+   });
 
 }

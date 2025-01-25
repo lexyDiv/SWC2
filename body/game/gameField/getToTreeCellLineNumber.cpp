@@ -30,11 +30,10 @@ void GameField::getToTreeCellLineNumber()
                         ac->litera != 't' && ac->litera != '1' &&
                         !ac->lineToTreeNumber) {
                             ac->lineToTreeNumber = 1;
-                            arr.push(ac);
-                            
+                            arr.push(ac);  
                         }
                     });
-                  plane->treeCells.push(cell);
+                  plane->trees.push(tree);
                } 
                if (cell->litera == 'S') {
                     shahts.push(cell);
@@ -100,4 +99,12 @@ void GameField::getToTreeCellLineNumber()
             
 
                              } });
+
+    //                              this->field.forEach([this](Array<ProtoObj *> line){
+    //     line.forEach([this](ProtoObj* cell){
+    //            if (cell->plane) {
+    //             console.log("here");
+    //            }
+    //     });
+    // });
 };

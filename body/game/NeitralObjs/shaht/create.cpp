@@ -18,8 +18,10 @@ void Shaht::create(ProtoObj* cell) {
     this->name = "shaht";
     this->mapColor = {R: 255, G: 255, B: 0};
     this->image = shaht;
-    this->x = cell->x + cell->gabX * 1.5;
-    this->y = cell->y + cell->gabY * 1.5;
+    this->x = cell->x; //+ cell->gabX * 1.5;
+    this->y = cell->y; //+ cell->gabY * 1.5;
+    this->getGabX = cell->gabX * 3;
+    this->getGabY = this->getGabX;
     this->drawIndexY = cell->y + 20;
 
     this->animGabX = 96;

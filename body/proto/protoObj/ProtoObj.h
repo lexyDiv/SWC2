@@ -46,6 +46,9 @@ public:
     int centerX = 0;
     int centerY = 0;
 
+    int getGabX = 0;
+    int getGabY = 0;
+
     Image *image = nullptr;
     Image *image2 = nullptr;
     Image *image3 = nullptr;
@@ -55,6 +58,9 @@ public:
     Array<ProtoObj *> clients;
 
     // units
+
+    Image *menuImage = nullptr;
+
     bool isWarrior = false;
     bool isFlying = false;
     bool isSweeming = false;
