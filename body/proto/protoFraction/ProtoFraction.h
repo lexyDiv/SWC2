@@ -1,4 +1,4 @@
-#include "../protoObj/ProtoObj.cpp"
+#include "../protoObjMenu/ProtoObjMenu.cpp"
 
 class ProtoFraction {
     public:
