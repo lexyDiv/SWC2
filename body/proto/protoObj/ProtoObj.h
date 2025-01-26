@@ -22,7 +22,9 @@ public:
     ProtoPlane *plane = nullptr;
 
     bool isDelete = false;
-
+   // bool inUse = false;
+    double createCountData = 0.0;
+    
     string type;
     float x = 0.0f;
     float y = 0.0f;

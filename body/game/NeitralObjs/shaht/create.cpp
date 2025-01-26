@@ -1,5 +1,10 @@
 #include "Shaht.cpp"
 
+struct CellDis {
+  ProtoObj* cell = nullptr;
+  double dis = 0.0;
+};
+
 void Shaht::create(ProtoObj* cell) {
     cell->groundUnit = this;
     this->myCells.push(cell);
@@ -15,11 +20,39 @@ void Shaht::create(ProtoObj* cell) {
         this->myCells.push(cl->bottom->bottom);
     }
 
+    ProtoObj* exitCell = cell->bottom->bottom->bottom_left;
+
+    Array<CellDis> proContactCells;
+    this->gf = cell->gf;
+    this->gf->createCount += 0.00001;
+    this->myCells.forEach([exitCell, &proContactCells, this](ProtoObj* mc){
+        mc->aroundCells.forEach([mc, this, exitCell, &proContactCells](ProtoObj* ac){
+          if (ac->plane == mc->plane &&
+          ac->groundUnit != this &&
+          this->gf->createCount != ac->createCountData
+          ) {
+            ac->createCountData = this->gf->createCount;
+            CellDis cd;
+            cd.cell = ac;
+            Delta del = getDeltas({ x: ac->x, y: ac->y },
+             { x: exitCell->x, y: exitCell->y });
+            cd.dis = getDis(&del);
+            proContactCells.push(cd);
+          }
+        });
+    });
+    proContactCells.sort([](CellDis a, CellDis b){
+      return a.dis < b.dis;
+    });
+    this->contactCells = proContactCells.map([](CellDis cd){
+      return cd.cell;
+    });
+
     this->name = "shaht";
     this->mapColor = {R: 255, G: 255, B: 0};
     this->image = shaht;
-    this->x = cell->x; //+ cell->gabX * 1.5;
-    this->y = cell->y; //+ cell->gabY * 1.5;
+    this->x = cell->x;
+    this->y = cell->y;
     this->getGabX = cell->gabX * 3;
     this->getGabY = this->getGabX;
     this->drawIndexY = cell->y + 20;
@@ -31,8 +64,6 @@ void Shaht::create(ProtoObj* cell) {
 
     this->animX = 0;
     this->animY = 0;
-
-    this->gf = cell->gf;
 
   //  console.log(to_string(this->myCells.length));
 

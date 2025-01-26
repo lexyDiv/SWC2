@@ -27,6 +27,8 @@
 
 using namespace std;
 
+class ProtoObj;
+
 template <typename T>
 class Array
 {
@@ -36,7 +38,7 @@ public:
     //  T &operator[] (int i) { return this->vec[i]; }
     T getItem(int i);
     T getItem2(int i);
-    T& getItem3(int i);
+    T &getItem3(int i);
 
     void push(T el);
     void unshift(T el);
@@ -53,6 +55,7 @@ public:
     void splice(int index, int count);
     void filterSelf(function<bool(T item)> fn);
     void sort(function<bool(T a, T b)> fn);
+    Array<ProtoObj *> map(function<ProtoObj *(T item)> fn);
 
     void clear();
 
@@ -257,6 +260,15 @@ inline void Array<T>::sort(function<bool(T a, T b)> fn)
 {
     std::sort(this->vec.begin(), this->vec.end(), [fn](T a, T b)
               { return fn(a, b); });
+}
+
+template <typename T>
+inline Array<ProtoObj *> Array<T>::map(function<ProtoObj *(T item)> fn)
+{
+    Array<ProtoObj *> newArr;
+    this->forEach([&newArr, fn](T item)
+                  { newArr.push(fn(item)); });
+    return *&newArr;
 }
 
 template <typename T>
