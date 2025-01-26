@@ -21,6 +21,7 @@ void Shaht::create(ProtoObj* cell) {
     }
 
     ProtoObj* exitCell = cell->bottom->bottom->bottom_left;
+    ProtoObj* centerCell = cell->bottom_right;
 
     Array<CellDis> proContactCells;
     this->gf = cell->gf;
@@ -45,6 +46,25 @@ void Shaht::create(ProtoObj* cell) {
       return a.dis < b.dis;
     });
     this->contactCells = proContactCells.map([](CellDis cd){
+      return cd.cell;
+    });
+    proContactCells.clear();
+    cell->plane->cells.forEach([this, centerCell, &proContactCells](ProtoObj* pc){
+      if (pc->createCountData != this->gf->createCount &&
+      pc->groundUnit != this) {
+        pc->createCountData = this->gf->createCount;
+            CellDis cd;
+            cd.cell = pc;
+            Delta del = getDeltas({ x: pc->x, y: pc->y },
+             { x: centerCell->x, y: centerCell->y });
+            cd.dis = getDis(&del);
+            proContactCells.push(cd);
+      }
+    });
+     proContactCells.sort([](CellDis a, CellDis b){
+      return a.dis < b.dis;
+    });
+    this->exitCells = proContactCells.map([](CellDis cd){
       return cd.cell;
     });
 

@@ -81,6 +81,7 @@ public:
     Array<ProtoObj *> myWay;
     Array<ProtoObj *> cells2X2;
     Array<ProtoObj *> contactCells;
+    Array<ProtoObj *> exitCells;
     ProtoFraction *fraction = nullptr;
  
 
