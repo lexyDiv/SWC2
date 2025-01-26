@@ -6,8 +6,8 @@ int tik = 0;
 
 ProtoGame *game = new Game();
 
-// string path = "levels/test_1.txt";
-// string path2 = "levels/testBig_1.txt";
+ //string path = "levels/test_1.txt";
+ //string path2 = "levels/testBig_1.txt";
 string path3 = "levels/testBig_500.txt";
 
 // // mapWrite(&path, testMap);

@@ -32,4 +32,5 @@ void Tree::create(ProtoObj * cell) {
     this->animY = 200 * intRand(0, 4);
     this->animTakt = intRand(0, 15);
     this->gf = cell->gf;
+    cell->plane->trees.push(this);
 }

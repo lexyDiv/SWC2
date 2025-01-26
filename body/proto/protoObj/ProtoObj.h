@@ -58,7 +58,8 @@ public:
     // neitral & buildfings
     int gold = 0;
     Array<ProtoObj *> clients;
-
+    void get3x3myCells(ProtoObj* cell);
+    void getContactAndExitCells(ProtoObj* cell, ProtoObj* exitCell, ProtoObj* centerCell);
     // units
 
     Image *menuImage = nullptr;
@@ -79,9 +80,12 @@ public:
     ProtoObj *cell = nullptr;
     Array<ProtoObj *> enemys;
     Array<ProtoObj *> myWay;
-    Array<ProtoObj *> cells2X2;
+    //Array<ProtoObj *> cells2X2;
+    ////////////////////// =>  buildings
     Array<ProtoObj *> contactCells;
     Array<ProtoObj *> exitCells;
+    Array<ProtoObj *> interUnits;
+    //////////////////////  <= buildings
     ProtoFraction *fraction = nullptr;
  
 
@@ -231,4 +235,9 @@ struct Water
             cell->drawGabaritX + this->drawGabPro, cell->drawGabaritY + this->drawGabPro,
             SDL_FLIP_NONE, this->conor, this->alpha);
     };
+};
+
+struct CellDis {
+  ProtoObj* cell = nullptr;
+  double dis = 0.0;
 };
