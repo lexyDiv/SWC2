@@ -26,7 +26,7 @@ class ProtoGameField {
    virtual void getToTreeCellLineNumber();
    virtual void getCellImageCellDrawIndexCellUnitInit();
    virtual void getVectorCells(ProtoObj *cell);
-   
+   virtual void fieldClick();
 
    virtual Color getDefaultColor(char lit);
 
@@ -76,6 +76,10 @@ class ProtoGameField {
     int dx = 0;
     int dy = 0;
     //////////////////////////// <= miniMap
+
+    ///////////////// => fieldClick
+     bool isFieldClickHold = false;
+    //////////////// <= fieldClick
 
 private:
 };

@@ -3,7 +3,7 @@
 
 void GameField::offsetControl()
 {
-    
+
     int mx = mouse.x;
     int my = mouse.y;
     int maxOffsetX = this->width - this->centerX * 2;
