@@ -20,7 +20,7 @@ void GameField::fieldClick() {
 
     if (clickLeftUp) {
         string s = "click x : " + to_string(x) + " y : " + to_string(y);
-         console.log(s);
+        // console.log(s);
     }
     
 };
