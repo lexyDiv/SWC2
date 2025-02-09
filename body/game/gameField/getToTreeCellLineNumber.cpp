@@ -19,9 +19,11 @@ void GameField::getToTreeCellLineNumber()
                                  Array<ProtoObj *> arrAroundDarck;
                                 Array<ProtoObj *> arrStones;
                                 Array<ProtoObj *> shahts;
+                                
                                  
                                  plane->cells.forEach([plane, &arr, &arrStones, &arrAroundDarck, &shahts](ProtoObj *cell)
-                                                      {                                 
+                                                      {  
+                               
                 if (cell->litera == 't') {
                     ProtoObj *tree = new Tree;
                     tree->create(cell);
@@ -33,7 +35,7 @@ void GameField::getToTreeCellLineNumber()
                             arr.push(ac);  
                         }
                     });
-                  plane->trees.push(tree);
+                 // plane->trees.push(tree);
                } 
                if (cell->litera == 'S') {
                     shahts.push(cell);
@@ -98,7 +100,16 @@ void GameField::getToTreeCellLineNumber()
 
             
 
-                             } });
+    } else {
+     Array<ProtoObj *> oils;
+     plane->cells.forEach([&oils](ProtoObj * cell){
+        if (cell->litera == '9') {
+            console.log("is oil");
+        }
+     });
+
+                             }
+                              });
 
     //                              this->field.forEach([this](Array<ProtoObj *> line){
     //     line.forEach([this](ProtoObj* cell){

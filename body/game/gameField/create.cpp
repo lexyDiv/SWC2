@@ -7,7 +7,7 @@ void GameField::create()
     this->gabarit = array.getItem(0).size();
     this->height = this->gabarit * this->cellSize;
     this->width = this->height;
-/////////////////////////////////
+///////////////////////////////// get gold data
     string shahtData = array.getItem(array.length - 1);
     string goldDtataItem = "";
     this->goldData.push(goldDtataItem);
