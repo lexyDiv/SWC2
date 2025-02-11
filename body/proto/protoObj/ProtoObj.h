@@ -60,6 +60,7 @@ public:
     int oil = 0;
     Array<ProtoObj *> clients;
     void get3x3myCells(ProtoObj* cell);
+    void get2x2myCells(ProtoObj* cell);
     void getContactAndExitCells(ProtoObj* cell, ProtoObj* exitCell, ProtoObj* centerCell);
     // units
 

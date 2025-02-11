@@ -5,6 +5,6 @@ class Oil : public ProtoObj {
      Oil() : ProtoObj(){};
      ~Oil();
 
-   // void create(ProtoObj * cell) override;
-   // void draw() override;
+    void create(ProtoObj * cell) override;
+    void draw() override;
 };
