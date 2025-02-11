@@ -112,7 +112,7 @@ void GameField::getToTreeCellLineNumber()
                 oil->create(cell);
                 oil->oil = stoi(this->oilData.getItem(i));
                //
-                console.log(to_string(oil->oil));
+               // console.log(to_string(oil->oil));
         });
                              }
                               });

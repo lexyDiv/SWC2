@@ -1,6 +1,9 @@
 #include "../../Listenner.h"
 
-Image *groundBasic = new Image("images/grunt/summer/basic/basick.png");
+
+class Imager {
+    public:
+    Image *groundBasic = new Image("images/grunt/summer/basic/basick.png");
 Image *groundBasic1 = new Image("images/grunt/summer/basick.png");
 Image *groundBasicDarck1 = new Image("images/grunt/summer/basick_tem1.png");
 Image *groundBasicDarck = new Image("images/grunt/summer/basick_tem.png");
@@ -37,3 +40,64 @@ Image *shaht = new Image("images/images/neutral/buildings/summer/gold_mine2.png"
 // oil
 
 Image *oilPoint = new Image("images/images/oil.png");
+    Imager() {};
+    ~Imager(){
+delete groundBasic;
+groundBasic = nullptr;
+
+delete groundBasic1;
+groundBasic1 = nullptr;
+
+delete groundBasicDarck1;
+groundBasicDarck1 = nullptr;
+
+delete groundBasicDarck;
+groundBasicDarck = nullptr;
+
+delete underWood;
+underWood = nullptr;
+delete aroundWood1;
+aroundWood1 = nullptr;
+delete aroundWood2;
+aroundWood2 = nullptr;
+delete aroundWood3;
+aroundWood3 = nullptr;
+delete ocean;
+ocean = nullptr;
+delete pesok1;
+pesok1 = nullptr;
+delete pesok2;
+pesok2 = nullptr;
+
+delete mount1;
+mount1 = nullptr;
+delete mount2;
+mount2 = nullptr;
+
+// mount
+delete gora1;
+gora1 = nullptr;
+delete gora2;
+gora2 = nullptr;
+delete gora3;
+gora3 = nullptr;
+delete gora4;
+gora4 = nullptr;
+delete tree1;
+tree1 = nullptr; 
+delete tree2;
+tree2 = nullptr; 
+
+delete tree1Trup;
+tree1Trup = nullptr;
+delete tree2Trup;
+tree2Trup = nullptr;
+delete shaht;
+shaht = nullptr;
+delete oilPoint;
+oilPoint = nullptr;
+        std::cout<<"imager delete"<<std::endl;
+    };
+};
+
+Imager imager;

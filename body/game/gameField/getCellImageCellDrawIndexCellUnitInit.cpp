@@ -20,7 +20,7 @@ void GameField::getCellImageCellDrawIndexCellUnitInit()
                                                  {
 
                                                      int rnd = intRand(0, 2);
-                                                     Image *img = !rnd ? groundBasic : groundBasic1;
+                                                     Image *img = !rnd ? imager.groundBasic : imager.groundBasic1;
 
                                                      cell->cellImage = img;
                                                      cell->animX = 100 * intRand(0, 30);
@@ -31,7 +31,7 @@ void GameField::getCellImageCellDrawIndexCellUnitInit()
                                                  }
                                                  else if (cell->lineToOtherPlaneNumber)
                                                  {
-                                                     Image *img = cell->lineToOtherPlaneNumber == 1 ? pesok1 : pesok2;
+                                                     Image *img = cell->lineToOtherPlaneNumber == 1 ? imager.pesok1 : imager.pesok2;
                                                      cell->cellImage = img;
                                                      cell->animX = 100 * intRand(0, 5);
                                                      cell->animY = 0;
@@ -46,7 +46,7 @@ void GameField::getCellImageCellDrawIndexCellUnitInit()
 
                                              if (cell->lineToDarckGround == 1)
                                              {
-                                                 cell->cellImage = groundBasicDarck;
+                                                 cell->cellImage = imager.groundBasicDarck;
                                                  cell->animX = 100 * intRand(0, 30);
                                                  cell->animY = 0;
                                                  cell->animGabX = 100;
@@ -55,7 +55,7 @@ void GameField::getCellImageCellDrawIndexCellUnitInit()
                                              }
                                              else if (cell->lineToDarckGround == 2)
                                              {
-                                                 cell->cellImage = groundBasicDarck1;
+                                                 cell->cellImage = imager.groundBasicDarck1;
                                                  cell->animX = 100 * intRand(0, 30);
                                                  cell->animY = 0;
                                                  cell->animGabX = 100;
@@ -65,7 +65,7 @@ void GameField::getCellImageCellDrawIndexCellUnitInit()
 
                                              if (cell->litera == 't')
                                              {
-                                                 cell->cellImage = underWood;
+                                                 cell->cellImage = imager.underWood;
                                                  cell->animX = 100 * intRand(0, 60);
                                                  cell->animY = 0;
                                                  cell->animGabX = 100;
@@ -77,7 +77,7 @@ void GameField::getCellImageCellDrawIndexCellUnitInit()
                                              {
                                                  if (cell->lineToTreeNumber == 1)
                                                  {
-                                                     cell->cellImage = aroundWood1;
+                                                     cell->cellImage = imager.aroundWood1;
                                                      cell->animX = 100 * intRand(0, 30);
                                                      cell->animY = 0;
                                                      cell->animGabX = 100;
@@ -86,7 +86,7 @@ void GameField::getCellImageCellDrawIndexCellUnitInit()
                                                  }
                                                  else if (cell->lineToTreeNumber == 2)
                                                  {
-                                                     cell->cellImage = aroundWood2;
+                                                     cell->cellImage = imager.aroundWood2;
                                                      cell->animX = 100 * intRand(0, 30);
                                                      cell->animY = 0;
                                                      cell->animGabX = 100;
@@ -97,7 +97,7 @@ void GameField::getCellImageCellDrawIndexCellUnitInit()
 
                                     if (cell->LineToMountNumber)
                                                  {
-                                                     Image *img = cell->LineToMountNumber == 1 ? mount1 : mount2;
+                                                     Image *img = cell->LineToMountNumber == 1 ? imager.mount1 : imager.mount2;
                                                      cell->cellImage = img;
                                                      cell->animX = 100 * intRand(0, 12);
                                                      cell->animY = 0;
@@ -108,7 +108,7 @@ void GameField::getCellImageCellDrawIndexCellUnitInit()
 
                                              if (cell->litera == 'w')
                                              {
-                                                 cell->cellImage = ocean;
+                                                 cell->cellImage = imager.ocean;
                                                  Water *water1 = new Water;
                                                  Water *water2 = new Water;
                                                  int rand = intRand(0, 2);

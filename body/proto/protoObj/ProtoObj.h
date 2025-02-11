@@ -2,6 +2,7 @@
 
 class ProtoPlane;
 struct Water;
+struct AnimLines;
 class ProtoFraction;
 
 class ProtoObj
@@ -11,9 +12,9 @@ public:
     virtual ~ProtoObj();
     virtual void draw();
     virtual Color getMapColor();
-    
+
     /////////
-    virtual void create(ProtoObj* cell);
+    virtual void create(ProtoObj *cell);
     ////////
 
     // all
@@ -22,9 +23,9 @@ public:
     ProtoPlane *plane = nullptr;
 
     bool isDelete = false;
-   // bool inUse = false;
+    // bool inUse = false;
     double createCountData = 0.0;
-    
+
     string type;
     float x = 0.0f;
     float y = 0.0f;
@@ -58,10 +59,14 @@ public:
     // neitral & buildfings
     int gold = 0;
     int oil = 0;
+    Array<AnimLines *> lines; // oil anim line
+    float linePusherY = 0.0f; // oil anim
+    float linePullerY = -100.0f; // oil anim
+    int linesCount = 20;
     Array<ProtoObj *> clients;
-    void get3x3myCells(ProtoObj* cell);
-    void get2x2myCells(ProtoObj* cell);
-    void getContactAndExitCells(ProtoObj* cell, ProtoObj* exitCell, ProtoObj* centerCell);
+    void get3x3myCells(ProtoObj *cell);
+    void get2x2myCells(ProtoObj *cell);
+    void getContactAndExitCells(ProtoObj *cell, ProtoObj *exitCell, ProtoObj *centerCell);
     // units
 
     Image *menuImage = nullptr;
@@ -82,14 +87,13 @@ public:
     ProtoObj *cell = nullptr;
     Array<ProtoObj *> enemys;
     Array<ProtoObj *> myWay;
-    //Array<ProtoObj *> cells2X2;
+    // Array<ProtoObj *> cells2X2;
     ////////////////////// =>  buildings
     Array<ProtoObj *> contactCells;
     Array<ProtoObj *> exitCells;
     Array<ProtoObj *> interUnits;
     //////////////////////  <= buildings
     ProtoFraction *fraction = nullptr;
- 
 
     // cells
 
@@ -103,18 +107,16 @@ public:
     Array<ProtoObj *> ripUnits;
     Array<ProtoObj *> landDecorationObjs;
 
-    ProtoObj* left = nullptr;
-    ProtoObj* right = nullptr;
-    ProtoObj* top = nullptr;
-    ProtoObj* bottom = nullptr;
-    ProtoObj* top_left = nullptr;
-    ProtoObj* top_right = nullptr;
-    ProtoObj* bottom_left = nullptr;
-    ProtoObj* bottom_right = nullptr;
+    ProtoObj *left = nullptr;
+    ProtoObj *right = nullptr;
+    ProtoObj *top = nullptr;
+    ProtoObj *bottom = nullptr;
+    ProtoObj *top_left = nullptr;
+    ProtoObj *top_right = nullptr;
+    ProtoObj *bottom_left = nullptr;
+    ProtoObj *bottom_right = nullptr;
 
-
-
-   // Array<ProtoObj *> guardCells;
+    // Array<ProtoObj *> guardCells;
     Array<ProtoObj *> booms;
     Array<ProtoObj *> bullets;
     ProtoObj *continent = nullptr;
@@ -145,6 +147,30 @@ public:
     // wall
 
 private:
+};
+
+struct AnimLines
+{
+    int y = 0;
+    int animX = 0;
+    int animY = 0;
+    int animGabX = 100;
+    int animGabY = 5;
+    float deltaX = 0;
+    int gabY = 5;
+
+
+    void draw(ProtoObj *oil)
+    {
+        float drawDeltaX = oil->gf->drawDeltaX;
+        float drawDeltaY = oil->gf->drawDeltaY;
+        ctx.DrawImage(oil->image,
+                      this->animX,
+                      this->animY,
+                      this->animGabX, this->animGabY,
+                      oil->x + this->deltaX + drawDeltaX, oil->y + this->y + drawDeltaY,
+                      oil->getGabX, this->gabY, SDL_FLIP_NONE, 0, 150);
+    };
 };
 
 struct Water
@@ -239,7 +265,8 @@ struct Water
     };
 };
 
-struct CellDis {
-  ProtoObj* cell = nullptr;
-  double dis = 0.0;
+struct CellDis
+{
+    ProtoObj *cell = nullptr;
+    double dis = 0.0;
 };

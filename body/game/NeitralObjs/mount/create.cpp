@@ -18,7 +18,7 @@ void Mount::create(ProtoObj *cell)
     this->animX = 200 * intRand(0, 5);
 
     int rand = intRand(0, 3);
-    this->image = !rand ? gora1 : rand == 1 ? gora4 : gora3;
+    this->image = !rand ? imager.gora1 : rand == 1 ? imager.gora4 : imager.gora3;
     this->animGabX = 200;
     this->animGabY = 200;
     this->gf = cell->gf;

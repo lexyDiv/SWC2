@@ -11,7 +11,7 @@ void Shaht::create(ProtoObj* cell) {
 
     this->name = "shaht";
     this->mapColor = {R: 255, G: 255, B: 0};
-    this->image = shaht;
+    this->image = imager.shaht;
     this->x = cell->x;
     this->y = cell->y;
     this->getGabX = cell->gabX * 3;
