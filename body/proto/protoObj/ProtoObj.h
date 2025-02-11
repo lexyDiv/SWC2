@@ -57,6 +57,7 @@ public:
 
     // neitral & buildfings
     int gold = 0;
+    int oil = 0;
     Array<ProtoObj *> clients;
     void get3x3myCells(ProtoObj* cell);
     void getContactAndExitCells(ProtoObj* cell, ProtoObj* exitCell, ProtoObj* centerCell);

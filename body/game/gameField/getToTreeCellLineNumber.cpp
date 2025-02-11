@@ -102,12 +102,18 @@ void GameField::getToTreeCellLineNumber()
 
     } else {
      Array<ProtoObj *> oils;
-     plane->cells.forEach([&oils](ProtoObj * cell){
+     plane->cells.forEach([&oils, this](ProtoObj * cell){
         if (cell->litera == '9') {
-            console.log("is oil");
+            oils.push(cell);
         }
      });
-
+        oils.forEach([this](ProtoObj * cell, int i){
+                ProtoObj *oil = new Oil;
+                oil->create(cell);
+                oil->oil = stoi(this->oilData.getItem(i));
+               //
+                console.log(to_string(oil->oil));
+        });
                              }
                               });
 

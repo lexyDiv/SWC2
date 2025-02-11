@@ -7,6 +7,28 @@ void GameField::create()
     this->gabarit = array.getItem(0).size();
     this->height = this->gabarit * this->cellSize;
     this->width = this->height;
+
+
+///////////////////////////////// get oil data
+    string oilData = array.getItem(array.length - 1);
+    string oilDtataItem = "";
+    this->oilData.push(oilDtataItem);
+    int oilIndex = 0;
+    for (int i = 0; i < oilData.length(); i++) {
+      string lit{oilData[i]};
+      if (lit == ",") {
+         oilIndex ++;
+         string odi = "";
+         this->oilData.push(odi);
+      } else {
+         string &str = this->oilData.getItem3(oilIndex);
+         str += lit;
+      }
+    }
+   array.pop();
+
+///////////////////////////////
+
 ///////////////////////////////// get gold data
     string shahtData = array.getItem(array.length - 1);
     string goldDtataItem = "";
@@ -24,14 +46,7 @@ void GameField::create()
       }
     }
    array.pop();
-   //  this->goldData.forEach([](string str){
-   //    console.log(str);
-   //  });
 
-
-   //  string hz = "100";
-   //  int hz2 = stoi(hz);
-   //  console.log(to_string(hz2));
 ///////////////////////////////
 
     this->mcs = this->miniMapGab / this->gabarit;
