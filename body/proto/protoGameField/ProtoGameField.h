@@ -1,6 +1,5 @@
 #include "../images.cpp"
 
-
 class ProtoObj;
 class ProtoGame;
 class ProtoPlane;
@@ -8,33 +7,34 @@ class ProtoFraction;
 class ProtoObjMenu;
 struct FieldClick;
 
-class ProtoGameField {
-    public:
+class ProtoGameField
+{
+public:
     ProtoGameField(string *path, int type);
-   virtual ~ProtoGameField();
-   virtual void create();
-   virtual void mapInit(Array<string> array);
-   virtual void getFieldImage();
-   virtual void miniMapUpdate();
-   virtual void miniMapDraw();
-   virtual void cellsIteration(function<void(ProtoObj *cell)> fn);
-   virtual void getAroundCells(int wing, bool selfCell, function<void(ProtoObj *focusCell, ProtoObj *cellToPush)> fn);
-   virtual void offsetControl();
-   virtual void miniMapMouseControl();
-   virtual void miniMapHoldLeftMouseKey();
-   virtual void getContinents();
-   virtual void getMaxAroundCellsDis();
-   virtual void getToOtherPlaneCellsNumber();
-   virtual void getToTreeCellLineNumber();
-   virtual void getCellImageCellDrawIndexCellUnitInit();
-   virtual void getVectorCells(ProtoObj *cell);
-   virtual void fieldClick();
+    virtual ~ProtoGameField();
+    virtual void create();
+    virtual void mapInit(Array<string> array);
+    virtual void getFieldImage();
+    virtual void miniMapUpdate();
+    virtual void miniMapDraw();
+    virtual void cellsIteration(function<void(ProtoObj *cell)> fn);
+    virtual void getAroundCells(int wing, bool selfCell, function<void(ProtoObj *focusCell, ProtoObj *cellToPush)> fn);
+    virtual void offsetControl();
+    virtual void miniMapMouseControl();
+    virtual void miniMapHoldLeftMouseKey();
+    virtual void getContinents();
+    virtual void getMaxAroundCellsDis();
+    virtual void getToOtherPlaneCellsNumber();
+    virtual void getToTreeCellLineNumber();
+    virtual void getCellImageCellDrawIndexCellUnitInit();
+    virtual void getVectorCells(ProtoObj *cell);
+    virtual void fieldClick();
 
-   virtual Color getDefaultColor(char lit);
+    virtual Color getDefaultColor(char lit);
 
-  // ProtoObjMenu* objMenu = nullptr;
-   ProtoGame *game = nullptr;
-   Array<ProtoFraction *> fractions;
+    // ProtoObjMenu* objMenu = nullptr;
+    ProtoGame *game = nullptr;
+    Array<ProtoFraction *> fractions;
 
     Array<Array<ProtoObj *>> field;
 
@@ -53,8 +53,8 @@ class ProtoGameField {
     int cellSize = this->screenHeight / 15;
     int x = 0;
     int y = 48;
-    int centerX = this->screenWidth / 2 ;//+ this->x;
-    int centerY = this->screenHeight / 2 ; //+ this->y;
+    int centerX = this->screenWidth / 2;  //+ this->x;
+    int centerY = this->screenHeight / 2; //+ this->y;
     float offsetX = 0;
     float offsetY = 0;
     float drawDeltaX = 0;
@@ -81,15 +81,46 @@ class ProtoGameField {
     //////////////////////////// <= miniMap
 
     ///////////////// => fieldClick
-     bool isFieldClickHold = false;
+    bool isFieldClickHold = false;
     //////////////// <= fieldClick
 
-    FieldClick* fieldClickPoint = nullptr;
+    FieldClick *fieldClickPoint = nullptr;
 
 private:
 };
 
-struct FieldClick {
+struct FieldClick
+{
     Point clickPoint;
     int time = 20;
+    bool up = false;
+    int firstX, firstY, secX, secY, gabX, gabY;
+    void moveControl(int cursorX, int cursorY)
+    {
+        int X = this->clickPoint.x;
+        int Y = this->clickPoint.y;
+        if (X <= cursorX)
+        {
+            this->firstX = X;
+            this->secX = cursorX;
+        }
+        else
+        {
+            this->firstX = cursorX;
+            this->secX = X;
+        }
+
+        if (Y <= cursorY)
+        {
+            this->firstY = Y;
+            this->secY = cursorY;
+        }
+        else
+        {
+            this->firstY = cursorY;
+            this->secY = Y;
+        }
+        this->gabX = this->secX - this->firstX;
+        this->gabY = this->secY - this->firstY;
+    };
 };

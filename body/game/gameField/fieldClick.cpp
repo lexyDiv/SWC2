@@ -1,44 +1,70 @@
 #include "getVectorCells.cpp"
 
-void GameField::fieldClick() {
+void GameField::fieldClick()
+{
     bool clickLeft = mouse.leftKeyDown;
     bool clickLeftUp = mouse.leftKeyUp;
     bool clickRight = mouse.rightKeyDown;
+
     int x = mouse.x;
     int y = mouse.y;
 
     float drawDeltaX = this->drawDeltaX;
     float drawDeltaY = this->drawDeltaY;
 
-    int cursorX = x + drawDeltaX;
-    int cursorY = y + drawDeltaY;
+    int cursorX = x - drawDeltaX;
+    int cursorY = y - drawDeltaY;
 
-  // console.log(to_string(drawDeltaX));
+    // console.log(to_string(clickLeft));
 
-    if (clickLeft) {
-        this->isFieldClickHold = true;
+    // console.log(to_string(drawDeltaX));
+
+    if (mouse.isMove)
+    {
+        mouse.isMove = false;
+        if (this->fieldClickPoint)
+        {
+           // console.log(to_string(cursorY));
+            this->fieldClickPoint->moveControl(cursorX, cursorY);
+        }
     }
-    if (clickLeftUp) {
-        this->isFieldClickHold = false;
+
+    if (this->fieldClickPoint)
+    {
+        if (this->fieldClickPoint->time)
+        {
+            this->fieldClickPoint->time--;
+        }
+
+        if (!this->fieldClickPoint->time && this->fieldClickPoint->up)
+        {
+            console.log("create zone");
+            delete this->fieldClickPoint;
+            this->fieldClickPoint = nullptr;
+        }
     }
 
-   if (!(x > this->screenWidth || y < this->y)) {
-          if (this->isFieldClickHold && !this->fieldClickPoint) {
-        FieldClick* fcp = new FieldClick;
-        fcp->clickPoint.x = cursorX;
-        fcp->clickPoint.y = cursorY;
-        this->fieldClickPoint = fcp;
-       // console.log(to_string(cursorX));
-      }
-   }
-
-       if (clickLeftUp && this->fieldClickPoint) {
-        FieldClick* fcp = this->fieldClickPoint;
-        int firstX, firstY, secondX, secondY;
-       // string s = "click x : " + to_string(fcp->clickPoint.x) + " y : " + to_string(fcp->clickPoint.y);
-       //  console.log(s);
-    delete this->fieldClickPoint;
-    this->fieldClickPoint = nullptr;
+    if (!(x > this->screenWidth || y < this->y) && clickLeft)
+    {
+        if (!this->fieldClickPoint)
+        {
+            FieldClick *fc = new FieldClick;
+            fc->clickPoint.x = x - drawDeltaX;
+            fc->clickPoint.y = (y) - drawDeltaY;
+            this->fieldClickPoint = fc;
+           // console.log(to_string(fc->clickPoint.y));
+             console.log("new click");
+        }
+        else if (this->fieldClickPoint->time)
+        {
+            console.log("DOUBLE CLICK");
+            delete this->fieldClickPoint;
+            this->fieldClickPoint = nullptr;
+        }
     }
-    
+
+    if (this->fieldClickPoint && clickLeftUp)
+    {
+        this->fieldClickPoint->up = true;
+    }
 };

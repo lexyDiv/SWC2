@@ -22,6 +22,7 @@ class Mouse
    bool midKeyUp = false;
    bool rightKeyDown = false;
    bool rightKeyUp = false;
+   bool isMove = false;
 
    bool listen = false;
 

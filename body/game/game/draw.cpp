@@ -77,9 +77,20 @@ void Game::draw()
         ctx.FillRect(unit->x + drawDeltaX, unit->y + drawDeltaY, unit->gabX, unit->gabY, "red");
         });
 
+        /////////////// zone
+        FieldClick* fcp = this->gf->fieldClickPoint;
+        if (fcp) {
+          ctx.StrokeRect(
+            fcp->firstX + drawDeltaX, 
+            fcp->firstY + drawDeltaY, 
+            fcp->gabX, fcp->gabY, "red");
+        }
+        /////////////// zone
+
         }
 
         //  ctx.FillRect(this->gf->centerX, this->gf->centerY + this->gf->y, 3, 3, "black");
+
 
 
 

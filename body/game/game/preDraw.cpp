@@ -4,8 +4,9 @@ void Game::preDraw()
 {
     if (this->gf && this->gf->init)
     {
-        this->gf->fieldClick();
+        
         this->gf->miniMapMouseControl();
         this->gf->offsetControl();
+        this->gf->fieldClick();
     }
 }
