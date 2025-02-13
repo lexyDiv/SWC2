@@ -1,4 +1,4 @@
-#include "ProtoObj.h"
+#include "get3x3myCells.cpp"
 
 ProtoObj::ProtoObj()
 {

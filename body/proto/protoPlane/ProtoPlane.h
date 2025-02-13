@@ -1,4 +1,4 @@
-#include "../protoObj/ProtoObj.cpp"
+#include "../protoFraction/ProtoFraction.cpp"
 
 struct ToOtherPlane {
     ProtoPlane *otherPlane = nullptr;
@@ -14,5 +14,7 @@ class ProtoPlane {
     int number = 0;
     Array<ProtoObj *> cells;
     Array<ToOtherPlane *> contactPlanes;
-    Array<ProtoObj *> treeCells;
+    Array<ProtoObj *> trees;
+    Array<ProtoObj *> shahts;
+    Array<ProtoObj *> oils;
 };

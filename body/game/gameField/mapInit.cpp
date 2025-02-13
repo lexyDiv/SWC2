@@ -15,6 +15,8 @@ void GameField::mapInit(Array<string> array)
             cell->y = ver * this->cellSize;
             cell->gabX = this->cellSize;
             cell->gabY = this->cellSize;
+            cell->centerX = cell->x + cell->gabX / 2;
+            cell->centerY = cell->y + cell->gabY / 2;
             cell->gf = this;
             cell->game = this->game;
             cell->litera = lit;

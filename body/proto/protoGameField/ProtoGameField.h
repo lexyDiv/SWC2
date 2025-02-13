@@ -4,6 +4,7 @@
 class ProtoObj;
 class ProtoGame;
 class ProtoPlane;
+class ProtoFraction;
 
 class ProtoGameField {
     public:
@@ -25,15 +26,18 @@ class ProtoGameField {
    virtual void getToTreeCellLineNumber();
    virtual void getCellImageCellDrawIndexCellUnitInit();
    virtual void getVectorCells(ProtoObj *cell);
-   
+   virtual void fieldClick();
 
    virtual Color getDefaultColor(char lit);
 
    ProtoGame *game = nullptr;
+   Array<ProtoFraction *> fractions;
 
     Array<Array<ProtoObj *>> field;
 
     Array<ProtoPlane *> planes;
+    Array<string> goldData;
+    Array<string> oilData;
 
     Image *miniMap = nullptr;
     ProtoObj *drawCell = nullptr;
@@ -58,6 +62,7 @@ class ProtoGameField {
     int height = 0;
     int offsetStep = 10;
     bool init = false;
+    double createCount = 0.0;
     // this->miniMap, 0, 0, this->gabarit, this->gabarit, 732, 100, 285, 285
     ////////////////////////////// => miniMap
     float miniMapX = 732;
@@ -71,6 +76,10 @@ class ProtoGameField {
     int dx = 0;
     int dy = 0;
     //////////////////////////// <= miniMap
+
+    ///////////////// => fieldClick
+     bool isFieldClickHold = false;
+    //////////////// <= fieldClick
 
 private:
 };

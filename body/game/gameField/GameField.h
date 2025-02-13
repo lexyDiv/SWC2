@@ -89,6 +89,7 @@ public:
     void getToTreeCellLineNumber() override;
     void getCellImageCellDrawIndexCellUnitInit() override;
     void getVectorCells(ProtoObj *cell) override;
+    void fieldClick() override;
 
     Color getDefaultColor(char lit) override;
     //

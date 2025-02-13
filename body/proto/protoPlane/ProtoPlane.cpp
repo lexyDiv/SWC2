@@ -1,4 +1,4 @@
-#include "ProtoPlane.h"
+#include "../protoObj/getContactAndExitCells.cpp"
 
 ProtoPlane::ProtoPlane()
 {

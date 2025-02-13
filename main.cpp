@@ -1,4 +1,5 @@
 // g++ main.cpp -I./include -o program `sdl2-config --cflags --libs` -lSDL2 -lSDL2_mixer -lSDL2_image -lSDL2_ttf -I./GLM/
+// ./program
 #include "body/game/game/preDraw.cpp"
 
 bool quit = false;
@@ -6,8 +7,8 @@ int tik = 0;
 
 ProtoGame *game = new Game();
 
-// string path = "levels/test_1.txt";
-// string path2 = "levels/testBig_1.txt";
+ //string path = "levels/test_1.txt";
+ //string path2 = "levels/testBig_1.txt";
 string path3 = "levels/testBig_500.txt";
 
 // // mapWrite(&path, testMap);

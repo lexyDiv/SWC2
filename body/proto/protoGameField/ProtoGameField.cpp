@@ -83,6 +83,10 @@ void ProtoGameField::getVectorCells(ProtoObj *cell)
 {
 }
 
+void ProtoGameField::fieldClick()
+{
+}
+
 ////////////////////////////////////
 
 // class GF : public ProtoGameField {

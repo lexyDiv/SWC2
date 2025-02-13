@@ -9,7 +9,7 @@ void GameField::getToTreeCellLineNumber()
         });
     });
 
-    this->planes.forEach([](ProtoPlane *plane)
+    this->planes.forEach([this](ProtoPlane *plane)
                          {
                            
                              if (plane->type == "ground")
@@ -18,20 +18,28 @@ void GameField::getToTreeCellLineNumber()
                                  Array<ProtoObj *> arr;
                                  Array<ProtoObj *> arrAroundDarck;
                                 Array<ProtoObj *> arrStones;
+                                Array<ProtoObj *> shahts;
+                                
                                  
-                                 plane->cells.forEach([plane, &arr, &arrStones, &arrAroundDarck](ProtoObj *cell)
-                                                      {                                 
-                if (cell->litera == 't' || cell->litera == '1') {
+                                 plane->cells.forEach([plane, &arr, &arrStones, &arrAroundDarck, &shahts](ProtoObj *cell)
+                                                      {  
+                               
+                if (cell->litera == 't') {
+                    ProtoObj *tree = new Tree;
+                    tree->create(cell);
                     cell->aroundCells.forEach([plane, &arr](ProtoObj* ac){
                         if (ac->plane == plane &&
                         ac->litera != 't' && ac->litera != '1' &&
                         !ac->lineToTreeNumber) {
                             ac->lineToTreeNumber = 1;
-                            arr.push(ac);
+                            arr.push(ac);  
                         }
                     });
-                  plane->treeCells.push(cell);
+                 // plane->trees.push(tree);
                } 
+               if (cell->litera == 'S') {
+                    shahts.push(cell);
+               }
                                    if (cell->litera == 'g') {
                         arrStones.push(cell);
                         ProtoObj *mount = new Mount();
@@ -43,7 +51,9 @@ void GameField::getToTreeCellLineNumber()
                     }  
                });
                     arr.forEach([](ProtoObj *firstCell)
-                    { firstCell->aroundCells.forEach([](ProtoObj *secondCell)
+                    {
+                        
+                         firstCell->aroundCells.forEach([](ProtoObj *secondCell)
                                                                               {
                     if (secondCell->litera != 't' && 
                     !secondCell->lineToTreeNumber) {
@@ -82,6 +92,36 @@ void GameField::getToTreeCellLineNumber()
                         });
                     });
 
+            shahts.forEach([this](ProtoObj *cell, int i){
+                ProtoObj *shaht = new Shaht;
+                shaht->create(cell);
+                shaht->gold = stoi(this->goldData.getItem(i));
+            });
 
-                             } });
+            
+
+    } else {
+     Array<ProtoObj *> oils;
+     plane->cells.forEach([&oils, this](ProtoObj * cell){
+        if (cell->litera == '9') {
+            oils.push(cell);
+        }
+     });
+        oils.forEach([this](ProtoObj * cell, int i){
+                ProtoObj *oil = new Oil;
+                oil->create(cell);
+                oil->oil = stoi(this->oilData.getItem(i));
+               //
+               // console.log(to_string(oil->oil));
+        });
+                             }
+                              });
+
+    //                              this->field.forEach([this](Array<ProtoObj *> line){
+    //     line.forEach([this](ProtoObj* cell){
+    //            if (cell->plane) {
+    //             console.log("here");
+    //            }
+    //     });
+    // });
 };
