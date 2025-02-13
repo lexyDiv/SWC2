@@ -62,11 +62,17 @@ void Game::draw()
             //                                             color);
             //     });
             // });
-
+        this->gf->drawCell->cellsOnDraw.forEach([drawDeltaX, drawDeltaY](Array<ProtoObj* > drawLine){
+            drawLine.forEach([drawDeltaX, drawDeltaY](ProtoObj* cell){
+                ctx.StrokeRect(cell->x + drawDeltaX, cell->y + drawDeltaY, cell->gabX, cell->gabY, "yellow");
+            });
+        });
 
         }
 
         //  ctx.FillRect(this->gf->centerX, this->gf->centerY + this->gf->y, 3, 3, "black");
+
+
 
         ctx.CreateDrawZone(0, 0, this->gf->screenWidth, ctx.SCREEN_HEIGHT - this->gf->screenHeight);
         ctx.FillRect(0, 0, this->gf->screenWidth, ctx.SCREEN_HEIGHT - this->gf->screenHeight, "black");

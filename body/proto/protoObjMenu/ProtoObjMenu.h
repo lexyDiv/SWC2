@@ -5,4 +5,5 @@ class ProtoObjMenu {
     ProtoObjMenu();
     ~ProtoObjMenu();
     Array<ProtoObj *> units;
+    ProtoObj* unit = nullptr;
 };
