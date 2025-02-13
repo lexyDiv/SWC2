@@ -7,6 +7,14 @@ void GameField::fieldClick() {
     int x = mouse.x;
     int y = mouse.y;
 
+    float drawDeltaX = this->drawDeltaX;
+    float drawDeltaY = this->drawDeltaY;
+
+    int cursorX = x + drawDeltaX;
+    int cursorY = y + drawDeltaY;
+
+  // console.log(to_string(drawDeltaX));
+
     if (clickLeft) {
         this->isFieldClickHold = true;
     }
@@ -14,13 +22,23 @@ void GameField::fieldClick() {
         this->isFieldClickHold = false;
     }
 
-    if (this->isFieldClickHold) {
-      //  console.log("hold");
-    }
+   if (!(x > this->screenWidth || y < this->y)) {
+          if (this->isFieldClickHold && !this->fieldClickPoint) {
+        FieldClick* fcp = new FieldClick;
+        fcp->clickPoint.x = cursorX;
+        fcp->clickPoint.y = cursorY;
+        this->fieldClickPoint = fcp;
+       // console.log(to_string(cursorX));
+      }
+   }
 
-    if (clickLeftUp) {
-        string s = "click x : " + to_string(x) + " y : " + to_string(y);
-        // console.log(s);
+       if (clickLeftUp && this->fieldClickPoint) {
+        FieldClick* fcp = this->fieldClickPoint;
+        int firstX, firstY, secondX, secondY;
+       // string s = "click x : " + to_string(fcp->clickPoint.x) + " y : " + to_string(fcp->clickPoint.y);
+       //  console.log(s);
+    delete this->fieldClickPoint;
+    this->fieldClickPoint = nullptr;
     }
     
 };

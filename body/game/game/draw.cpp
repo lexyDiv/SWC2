@@ -68,6 +68,15 @@ void Game::draw()
             });
         });
 
+        if (this->objMenu->unit) {
+            ProtoObj* unit = this->objMenu->unit;
+   ctx.FillRect(unit->x + drawDeltaX, unit->y + drawDeltaY, unit->gabX, unit->gabY, "red");
+        };
+
+        this->objMenu->units.forEach([drawDeltaX, drawDeltaY](ProtoObj* unit){
+        ctx.FillRect(unit->x + drawDeltaX, unit->y + drawDeltaY, unit->gabX, unit->gabY, "red");
+        });
+
         }
 
         //  ctx.FillRect(this->gf->centerX, this->gf->centerY + this->gf->y, 3, 3, "black");

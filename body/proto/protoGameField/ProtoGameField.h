@@ -6,6 +6,7 @@ class ProtoGame;
 class ProtoPlane;
 class ProtoFraction;
 class ProtoObjMenu;
+struct FieldClick;
 
 class ProtoGameField {
     public:
@@ -83,5 +84,12 @@ class ProtoGameField {
      bool isFieldClickHold = false;
     //////////////// <= fieldClick
 
+    FieldClick* fieldClickPoint = nullptr;
+
 private:
+};
+
+struct FieldClick {
+    Point clickPoint;
+    int time = 20;
 };
