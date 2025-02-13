@@ -158,7 +158,7 @@ struct AnimLines
     int animGabY = 5;
     float deltaX = 0;
     int gabY = 5;
-
+    float alpha = 255;
 
     void draw(ProtoObj *oil)
     {
@@ -169,7 +169,7 @@ struct AnimLines
                       this->animY,
                       this->animGabX, this->animGabY,
                       oil->x + this->deltaX + drawDeltaX, oil->y + this->y + drawDeltaY,
-                      oil->getGabX, this->gabY, SDL_FLIP_NONE, 0, 150);
+                      oil->getGabX, this->gabY, SDL_FLIP_NONE, 0, this->alpha);
     };
 };
 
