@@ -30,6 +30,7 @@ void Cell::draw()
                     this->x + drawDeltaX - 35,
                     this->y + drawDeltaY - 35,
                     this->drawGabaritX, this->drawGabaritY);
+
            } else {
                 this->waters.forEach([this](Water* water, int i){
                   water->drawControlBasic(i);

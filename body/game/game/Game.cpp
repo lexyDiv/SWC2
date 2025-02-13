@@ -7,6 +7,7 @@ Game::~Game()
 
     delete this->objMenu;
     this->objMenu = nullptr;
+    
 }
 
 void Game::create()
