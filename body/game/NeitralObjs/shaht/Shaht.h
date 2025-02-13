@@ -1,4 +1,4 @@
-#include "../../fraction/Fraction.cpp"
+#include "../../fraction/create.cpp"
 
 class Shaht : public ProtoObj {
     public:
