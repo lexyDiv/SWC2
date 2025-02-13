@@ -9,5 +9,4 @@ class Game : public ProtoGame {
     void create() override;
     void draw() override;
     void preDraw() override;
-
 };

@@ -1,9 +1,10 @@
-#include "../protoUnitMenu/create.cpp"
+#include "../protoUnitMenu/ProtoUnitMenu.cpp"
 
 class ProtoObjMenu {
     public:
     ProtoObjMenu();
-    ~ProtoObjMenu();
+   virtual ~ProtoObjMenu();
+   virtual void create();
     Array<ProtoObj *> units;
     ProtoObj* unit = nullptr;
 };

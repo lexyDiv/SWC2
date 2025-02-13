@@ -15,5 +15,5 @@ public:
         "levels/testBig_500.txt"};
 
     ProtoGameField *gf = nullptr;
-    ProtoObjMenu objMenu;
+    ProtoObjMenu* objMenu = nullptr;
 };

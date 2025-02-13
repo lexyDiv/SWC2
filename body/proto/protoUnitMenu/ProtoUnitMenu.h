@@ -3,5 +3,8 @@
 class ProtoUnitMenu {
     public:
     ProtoUnitMenu();
-    ~ProtoUnitMenu();
+   virtual ~ProtoUnitMenu();
+   virtual void create(ProtoObj* unit);
+
+   ProtoObj* unit = nullptr;
 };

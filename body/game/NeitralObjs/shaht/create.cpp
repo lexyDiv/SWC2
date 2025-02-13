@@ -2,6 +2,9 @@
 
 void Shaht::create(ProtoObj* cell) {
 
+   this->unitMenu = new UnitMenu;
+   this->unitMenu->create(this);
+
    this->get3x3myCells(cell);
 
     ProtoObj* exitCell = cell->bottom->bottom->bottom_left;

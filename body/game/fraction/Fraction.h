@@ -3,7 +3,7 @@
 class Fraction : public ProtoFraction {
     public:
     Fraction(): ProtoFraction(){};
-   ~Fraction();
-
+    ~Fraction();
+     void create() override;
 
 };

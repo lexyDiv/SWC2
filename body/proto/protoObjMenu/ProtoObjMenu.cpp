@@ -7,3 +7,8 @@ ProtoObjMenu::ProtoObjMenu()
 ProtoObjMenu::~ProtoObjMenu()
 {
 }
+
+void ProtoObjMenu::create()
+{
+    
+}

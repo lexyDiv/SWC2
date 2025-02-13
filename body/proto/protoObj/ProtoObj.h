@@ -4,6 +4,7 @@ class ProtoPlane;
 struct Water;
 struct AnimLines;
 class ProtoFraction;
+class ProtoUnitMenu;
 
 class ProtoObj
 {
@@ -21,6 +22,8 @@ public:
     ProtoGameField *gf = nullptr;
     ProtoGame *game = nullptr;
     ProtoPlane *plane = nullptr;
+    ProtoUnitMenu* unitMenu = nullptr;
+
 
     bool isDelete = false;
     // bool inUse = false;
@@ -84,6 +87,8 @@ public:
     int attack = 0;
     int armor = 0;
     int mana = 0;
+
+    
     ProtoObj *cell = nullptr;
     Array<ProtoObj *> enemys;
     Array<ProtoObj *> myWay;
