@@ -82,6 +82,10 @@ void goWork()
   while (!quit)
   {
 
+    if ( game && game->gf && game->gf->init) {
+      game->objMenu->getCandidateCells();
+    }
+
     listenner(e, quit);
     console.proc(mouse.x, mouse.y, mouse.leftKey);
 

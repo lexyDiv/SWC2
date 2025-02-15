@@ -85,6 +85,10 @@ void Game::draw()
             fcp->firstY + drawDeltaY, 
             fcp->gabX, fcp->gabY, "red");
         }
+      //  console.log(to_string(this->objMenu->candidateCells.length));
+        this->objMenu->candidateCells.forEach([drawDeltaX, drawDeltaY](ProtoObj* cell){
+            ctx.FillRect(cell->x + drawDeltaX, cell->y + drawDeltaY, cell->gabX, cell->gabY, "red");
+        });
         /////////////// zone
 
         }
