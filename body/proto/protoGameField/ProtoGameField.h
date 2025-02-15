@@ -97,6 +97,7 @@ struct FieldClick
     int firstX, firstY, secX, secY, gabX, gabY;
     void moveControl(int cursorX, int cursorY)
     {
+        
         int X = this->clickPoint.x;
         int Y = this->clickPoint.y;
         if (X <= cursorX)

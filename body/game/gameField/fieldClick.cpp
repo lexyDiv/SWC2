@@ -12,25 +12,14 @@ void GameField::fieldClick()
     float drawDeltaX = this->drawDeltaX;
     float drawDeltaY = this->drawDeltaY;
 
-    int cursorX = x - drawDeltaX;
-    int cursorY = y - drawDeltaY;
-
-    // console.log(to_string(clickLeft));
-
-    // console.log(to_string(drawDeltaX));
-
-    if (mouse.isMove)
-    {
-        mouse.isMove = false;
-        if (this->fieldClickPoint)
-        {
-           // console.log(to_string(cursorY));
-            this->fieldClickPoint->moveControl(cursorX, cursorY);
-        }
-    }
 
     if (this->fieldClickPoint)
     {
+    int cursorX = x <= this->screenWidth ? x - drawDeltaX : this->screenWidth - drawDeltaX;
+    int cursorY = y >= this->y ? y - drawDeltaY : this->y - drawDeltaY;
+
+        this->fieldClickPoint->moveControl(cursorX, cursorY);
+
         if (this->fieldClickPoint->time)
         {
             this->fieldClickPoint->time--;
@@ -38,7 +27,7 @@ void GameField::fieldClick()
 
         if (!this->fieldClickPoint->time && this->fieldClickPoint->up)
         {
-            console.log("create zone");
+          //  console.log("create zone");
             delete this->fieldClickPoint;
             this->fieldClickPoint = nullptr;
         }
@@ -53,11 +42,11 @@ void GameField::fieldClick()
             fc->clickPoint.y = (y) - drawDeltaY;
             this->fieldClickPoint = fc;
            // console.log(to_string(fc->clickPoint.y));
-             console.log("new click");
+            // console.log("new click");
         }
         else if (this->fieldClickPoint->time)
         {
-            console.log("DOUBLE CLICK");
+           // console.log("DOUBLE CLICK");
             delete this->fieldClickPoint;
             this->fieldClickPoint = nullptr;
         }

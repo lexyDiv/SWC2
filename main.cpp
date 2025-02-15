@@ -187,7 +187,7 @@ if ( game && game->gf && game->gf->init) {
     console.draw();
     ctx.End();
   
-  //  mouse.defaultKeys();
+ 
   }
 
    delete game;
