@@ -1,6 +1,7 @@
 #include "Oil.cpp"
 
 void Oil::create(ProtoObj* cell) {
+    this->unitMenu = new UnitMenu;
     this->get2x2myCells(cell);
     ProtoObj* exitCell = cell->left;
     ProtoObj* centerCell = cell->bottom_right;
@@ -8,6 +9,7 @@ void Oil::create(ProtoObj* cell) {
     this->getContactAndExitCells(cell, exitCell, centerCell);
 
     this->name = "oil";
+    this->type = "building";
     this->mapColor = {R: 0, G: 0, B: 0};
     this->image = imager.oilPoint;
      this->x = cell->x;

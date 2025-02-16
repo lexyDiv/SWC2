@@ -7,5 +7,6 @@ class ProtoFraction {
    virtual void create();
 
     string name = "";
+    string control = "";
     Array<ProtoObj *> units;
 };

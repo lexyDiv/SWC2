@@ -53,7 +53,7 @@ void GameField::fieldClick()
         }
         else if (this->fieldClickPoint->time)
         {
-           // console.log("DOUBLE CLICK");
+            console.log("DOUBLE CLICK");
             delete this->fieldClickPoint;
             this->fieldClickPoint = nullptr;
         }

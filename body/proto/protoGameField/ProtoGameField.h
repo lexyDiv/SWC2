@@ -92,12 +92,12 @@ private:
 struct FieldClick
 {
     Point clickPoint;
-    int time = 20;
+    int time = 10;
     bool up = false;
     int firstX, firstY, secX, secY, gabX, gabY;
     void moveControl(int cursorX, int cursorY)
     {
-        
+
         int X = this->clickPoint.x;
         int Y = this->clickPoint.y;
         if (X <= cursorX)

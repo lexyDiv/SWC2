@@ -84,6 +84,9 @@ void goWork()
 
     if ( game && game->gf && game->gf->init) {
       game->objMenu->getCandidateCells();
+      if (game->objMenu->unit) {
+       // console.log(game->objMenu->unit->name);
+      }
     }
 
     listenner(e, quit);

@@ -13,6 +13,7 @@ void Shaht::create(ProtoObj* cell) {
     this->getContactAndExitCells(cell, exitCell, centerCell);
 
     this->name = "shaht";
+    this->type = "building";
     this->mapColor = {R: 255, G: 255, B: 0};
     this->image = imager.shaht;
     this->x = cell->x;

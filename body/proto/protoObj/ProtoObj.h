@@ -66,6 +66,7 @@ public:
     float linePusherY = 0.0f; // oil anim
     float linePullerY = -100.0f; // oil anim
     int linesCount = 20;
+    bool inZone = false;
     Array<ProtoObj *> clients;
     void get3x3myCells(ProtoObj *cell);
     void get2x2myCells(ProtoObj *cell);
