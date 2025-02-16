@@ -82,7 +82,7 @@ void goWork()
   while (!quit)
   {
 
-    if ( game && game->gf && game->gf->init) {
+    if (game->isGFComplite) {
       game->objMenu->getCandidateCells();
       if (game->objMenu->unit) {
        // console.log(game->objMenu->unit->name);
@@ -146,7 +146,7 @@ int main()
   while (!quit)
   {
 
-if ( game && game->gf && game->gf->init) {
+if (game->isGFComplite) {
 //console.log(to_string(game->gf->planes.getItem(0)->contactPlanes.getItem(0)->cellsToOther.length));
 }
   //   if (tik % 100 == 0) {
@@ -167,8 +167,10 @@ if ( game && game->gf && game->gf->init) {
 
 
 
+    if (game->isGFComplite) {
       game->preDraw();
       game->draw();
+    }
 
     //  ctx.DrawImage(groundBasic, 0, 0, 100, 100, 100, 100, 200, 200);
 

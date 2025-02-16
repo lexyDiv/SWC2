@@ -16,4 +16,5 @@ public:
 
     ProtoGameField *gf = nullptr;
     ProtoObjMenu* objMenu = nullptr;
+    bool isGFComplite = false;
 };

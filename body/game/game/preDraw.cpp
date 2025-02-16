@@ -2,12 +2,10 @@
 
 void Game::preDraw()
 {
-    if (this->gf && this->gf->init)
-    {
-        
+     
         this->gf->miniMapMouseControl();
         this->gf->offsetControl();
         this->gf->fieldClick();
         mouse.defaultKeys();
-    }
+    
 }
