@@ -39,9 +39,13 @@ Image *shaht = new Image("images/images/neutral/buildings/summer/gold_mine2.png"
 Image *oilPoint = new Image("images/images/oil.png");
 
 Image *menuVert = new Image("images/images/unit_m.png");
+Image *menuFon = new Image("images/images/menuFon.jpg");
 
     Imager() {};
     ~Imager(){
+
+        delete menuFon;
+        menuFon = nullptr;
 
 delete menuVert;
 menuVert = nullptr;

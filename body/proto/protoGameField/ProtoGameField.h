@@ -69,8 +69,8 @@ public:
     // this->miniMap, 0, 0, this->gabarit, this->gabarit, 732, 100, 285, 285
     ////////////////////////////// => miniMap
     float miniMapX = 732;
-    float miniMapY = 48;
-    float miniMapGab = 285;
+    float miniMapY = 5;
+    float miniMapGab = 200;
     float miniMapClickX = 0;
     float miniMapClickY = 0;
     bool miniMapClick = false;

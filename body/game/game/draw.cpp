@@ -1,4 +1,4 @@
-#include "Game.cpp"
+#include "fonMenuDraw.cpp"
 
 void Game::draw()
 {
@@ -85,9 +85,9 @@ void Game::draw()
             fcp->gabX, fcp->gabY, "red");
         }
       //  console.log(to_string(this->objMenu->candidateCells.length));
-        this->objMenu->candidateCells.forEach([drawDeltaX, drawDeltaY](ProtoObj* cell){
-            ctx.FillRect(cell->x + drawDeltaX, cell->y + drawDeltaY, cell->gabX, cell->gabY, "red");
-        });
+        // this->objMenu->candidateCells.forEach([drawDeltaX, drawDeltaY](ProtoObj* cell){
+        //     ctx.FillRect(cell->x + drawDeltaX, cell->y + drawDeltaY, cell->gabX, cell->gabY, "red");
+        // });
         /////////////// zone
 
         }
@@ -100,8 +100,14 @@ void Game::draw()
         ctx.CreateDrawZone(0, 0, this->gf->screenWidth, ctx.SCREEN_HEIGHT - this->gf->screenHeight);
         ctx.FillRect(0, 0, this->gf->screenWidth, ctx.SCREEN_HEIGHT - this->gf->screenHeight, "black");
 
+
+
         ctx.CreateDrawZone(this->gf->screenWidth, 0, 324, ctx.SCREEN_HEIGHT);
         ctx.FillRect(this->gf->screenWidth, 0, 324, ctx.SCREEN_HEIGHT, "black");
+
+          this->fonMenuDraw();
+
+
 
         this->gf->miniMapDraw();
     

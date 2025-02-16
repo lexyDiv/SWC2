@@ -20,26 +20,6 @@ void hard()
 {
 
 
-// vector<string> vec;
-// for (int i = 0; i < 500; i ++) {
-//   string str = "";
-//   for (int i = 0; i < 500; i ++) {
-//      str += "0";
-//   }
-//   vec.push_back(str);
-// }
-// mapWrite(&path3, vec);
-
-// ProtoObj *hz = new Cell;
-// ProtoObj *&copy = hz;
-// copy->x = 69;
-// delete copy;
-// copy = nullptr;
-// if (hz) {
-//   console.log(to_string(hz->x));
-// }
-
-
 
 
         game->create();
@@ -50,22 +30,6 @@ void hard()
   while (!quit)
   {
 
-
-  //   if (gameField->init) {
-  //     //     for (int i = 0; i < 100; i ++) {
-  //     // if (quit) {
-  //     //   break;
-  //     // }
-  //     gameField->field.forEach([](Array<ProtoObj *> arr){
-  //       arr.forEach([](ProtoObj *cell){
-  //         ProtoObj *cellCopy = cell;
-  //         cell->mapColor.R = intRand(0, 255);
-  //         cell->mapColor.G = intRand(0, 255);
-  //         cell->mapColor.B = intRand(0, 255);
-  //       });
-  //     });
-  // //  }
-  //   }
 
     this_thread::sleep_for(chrono::milliseconds(25));
   }
@@ -84,9 +48,6 @@ void goWork()
 
     if (game->isGFComplite) {
       game->objMenu->getCandidateCells();
-      if (game->objMenu->unit) {
-       // console.log(game->objMenu->unit->name);
-      }
     }
 
     listenner(e, quit);
@@ -120,28 +81,7 @@ int main()
 
   int stop = 0;
 
-  //gameField->create();
 
-//  vector<vector<int>> vec;
-//  vector<int> ve;
-//  vec.push_back(ve);
-
-//  vector<int> &veCopy = vec[0];
-//  veCopy.push_back(11);
-//  //vec[0].push_back(11);
-
-// if (vec[0][0]) {
-//    console.log(to_string(vec[0][0]));
-// }
-
-// ProtoObj* pa = new ProtoObj;
-
-// Array<Array<ProtoObj *>> arr;
-// Array<ProtoObj *> a;
-// arr.push(a);
-// Array<ProtoObj *> &hz = arr.getItem3(0);
-// hz.push(pa);
-// console.log(to_string(arr.getItem(0).length));
 
   while (!quit)
   {
@@ -168,6 +108,9 @@ if (game->isGFComplite) {
 
 
     if (game->isGFComplite) {
+      if (game->objMenu->unit) {
+        console.log(game->objMenu->unit->name);
+      }
       game->preDraw();
       game->draw();
     }

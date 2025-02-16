@@ -8,6 +8,7 @@ public:
     virtual void create();
     virtual void draw();
     virtual void preDraw();
+    virtual void fonMenuDraw();
 
     vector<string> pathes{
         "levels/test_1.txt",
