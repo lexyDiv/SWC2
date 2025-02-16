@@ -84,6 +84,7 @@ void Game::draw()
             fcp->firstY + drawDeltaY, 
             fcp->gabX, fcp->gabY, "red");
         }
+ 
       //  console.log(to_string(this->objMenu->candidateCells.length));
         // this->objMenu->candidateCells.forEach([drawDeltaX, drawDeltaY](ProtoObj* cell){
         //     ctx.FillRect(cell->x + drawDeltaX, cell->y + drawDeltaY, cell->gabX, cell->gabY, "red");
@@ -106,10 +107,10 @@ void Game::draw()
         ctx.FillRect(this->gf->screenWidth, 0, 324, ctx.SCREEN_HEIGHT, "black");
 
           this->fonMenuDraw();
-
-
-
         this->gf->miniMapDraw();
+      if (this->objMenu->unit) {
+         this->objMenu->draw();
+      }
     
 
     ctx.CreateDrawZone(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT);

@@ -1,12 +1,12 @@
-#include "ObjMenu.cpp"
+#include "draw.cpp"
 
 void ObjMenu::getCandidateCells()
 {
     if (this->zone.active)
     {
-       // this->candidateCells.clear();
-       this->units.clear();
-       this->unit = nullptr;
+        // this->candidateCells.clear();
+        this->units.clear();
+        this->unit = nullptr;
         int cellSize = this->gf->cellSize;
         this->zone.active = false;
         int firstX = this->zone.a.x;
@@ -21,15 +21,17 @@ void ObjMenu::getCandidateCells()
 
         int intX = indexX + ceil((gabX) / cellSize) + 1;
         int intY = indexY + ceil((gabY) / cellSize) + 1;
-        if (intX > this->gf->gabarit) {
+        if (intX > this->gf->gabarit)
+        {
             intX = 65;
         }
-        if (intY > this->gf->gabarit) {
+        if (intY > this->gf->gabarit)
+        {
             intY = 65;
         }
-         
+
         Array<ProtoObj *> units;
-        ProtoObj * building = nullptr;
+        ProtoObj *building = nullptr;
         Array<ProtoObj *> ships;
         Array<ProtoObj *> fly;
 
@@ -46,7 +48,7 @@ void ObjMenu::getCandidateCells()
                     {
                         units.push(unit);
                         unit->inZone = true;
-                      //  console.log("life");
+                        //  console.log("life");
                     }
 
                     if (
@@ -56,27 +58,31 @@ void ObjMenu::getCandidateCells()
                     {
                         building = unit;
                         unit->inZone = true;
-                       // console.log("building");
+                        // console.log("building");
                     }
                 }
             }
         }
-        if (units.length == 1) {
-            this->unit = unit;
-        } else if (units.length > 1) {
-            units.forEach([this](ProtoObj* unit){
-                this->units.push(unit);
-            });
-        } else if (building) {
+        if (units.length == 1)
+        {
+            this->unit = units.getItem(0);
+        }
+        else if (units.length > 1)
+        {
+            units.forEach([this](ProtoObj *unit)
+                          { this->units.push(unit); });
+        }
+        else if (building)
+        {
             building->inZone = false;
             this->unit = building;
         }
         ////////////////////////////////////////
-        if (building) {
+        if (building)
+        {
             building->inZone = false;
         }
-        this->units.forEach([](ProtoObj* unit){
-            unit->inZone = false;
-        });
+        this->units.forEach([](ProtoObj *unit)
+                            { unit->inZone = false; });
     };
 };

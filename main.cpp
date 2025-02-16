@@ -108,9 +108,6 @@ if (game->isGFComplite) {
 
 
     if (game->isGFComplite) {
-      if (game->objMenu->unit) {
-        console.log(game->objMenu->unit->name);
-      }
       game->preDraw();
       game->draw();
     }

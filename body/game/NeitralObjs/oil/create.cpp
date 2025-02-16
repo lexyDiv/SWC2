@@ -2,6 +2,11 @@
 
 void Oil::create(ProtoObj* cell) {
     this->unitMenu = new UnitMenu;
+    this->unitMenu->titleName = "Oil";
+   this->unitMenu->resurs = true;
+   this->unitMenu->titleMenuX = 450;
+   this->unitMenu->titleMenuY = 290;
+    /////////////////////////////
     this->get2x2myCells(cell);
     ProtoObj* exitCell = cell->left;
     ProtoObj* centerCell = cell->bottom_right;

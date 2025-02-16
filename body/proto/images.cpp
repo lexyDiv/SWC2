@@ -38,7 +38,8 @@ Image *shaht = new Image("images/images/neutral/buildings/summer/gold_mine2.png"
 //Image *shaht = new Image("images/images/altar_h_blue.png");
 Image *oilPoint = new Image("images/images/oil.png");
 
-Image *menuVert = new Image("images/images/unit_m.png");
+Image *icons = new Image("images/icons.png");
+
 Image *menuFon = new Image("images/images/menuFon.jpg");
 
     Imager() {};
@@ -47,8 +48,8 @@ Image *menuFon = new Image("images/images/menuFon.jpg");
         delete menuFon;
         menuFon = nullptr;
 
-delete menuVert;
-menuVert = nullptr;
+delete icons;
+icons = nullptr;
 
 delete groundBasic;
 groundBasic = nullptr;

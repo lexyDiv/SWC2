@@ -16,3 +16,11 @@ void ProtoObjMenu::create()
 void ProtoObjMenu::getCandidateCells()
 {
 }
+
+void ProtoObjMenu::control()
+{
+}
+
+void ProtoObjMenu::draw()
+{
+}

@@ -23,6 +23,7 @@ public:
     ProtoGame *game = nullptr;
     ProtoPlane *plane = nullptr;
     ProtoUnitMenu* unitMenu = nullptr;
+  
 
 
     bool isDelete = false;
@@ -60,7 +61,7 @@ public:
     Image *image3 = nullptr;
 
     // neitral & buildfings
-    int gold = 0;
+    int gold = -1;
     int oil = 0;
     Array<AnimLines *> lines; // oil anim line
     float linePusherY = 0.0f; // oil anim

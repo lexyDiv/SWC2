@@ -3,6 +3,11 @@
 void Shaht::create(ProtoObj* cell) {
 
    this->unitMenu = new UnitMenu;
+   this->unitMenu->titleName = "Gold mine";
+   this->unitMenu->resurs = true;
+   this->unitMenu->titleMenuX = 200;
+   this->unitMenu->titleMenuY = 290;
+   //////////////////
    this->unitMenu->create(this);
 
    this->get3x3myCells(cell);
