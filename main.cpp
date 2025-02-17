@@ -82,7 +82,6 @@ int main()
   int stop = 0;
 
 
-
   while (!quit)
   {
 
@@ -98,6 +97,7 @@ if (game->isGFComplite) {
 //if (game) {
 
   //  console.log("loading");
+
 
 
    
