@@ -2,6 +2,8 @@
 // ./program
 #include "body/game/game/preDraw.cpp"
 
+
+
 bool quit = false;
 int tik = 0;
 
@@ -63,8 +65,38 @@ void goWork()
 ///////////////////////////////  kata
 //////////////////////////////////
 
+
+
 int main()
 {
+
+  ProtoObj cell;
+ // console.log();
+ json j; 
+
+
+
+// for (it = data.begin(); it != data.end(); ++it){
+//     std::cout << it->name;
+// }
+
+
+// for (int i = 0; i < testMap.size(); i++) {
+//   string line = testMap[i];
+//   j["plan"].push_back(line);
+// } // ok!
+
+
+// for (json::iterator it = j.begin(); it != j.end(); ++it) {
+//  // std::cout << *it << '\n';
+//  string value = *it;
+//  string res = it.key() + " : " + value;
+//  console.log(res); // key
+// }
+
+console.log(to_string(j));
+
+
 
 //////////////////////////////////// kata res
 ////////////////////

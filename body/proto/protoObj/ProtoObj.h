@@ -19,6 +19,7 @@ public:
     ////////
 
     // all
+    
     ProtoGameField *gf = nullptr;
     ProtoGame *game = nullptr;
     ProtoPlane *plane = nullptr;
