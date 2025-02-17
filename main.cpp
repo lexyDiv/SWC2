@@ -11,7 +11,7 @@ ProtoGame *game = new Game();
 
  //string path = "levels/test_1.txt";
  //string path2 = "levels/testBig_1.txt";
-string path3 = "levels/testBig_500.txt";
+//string path3 = "levels/testBig_500.txt";
 
 // // mapWrite(&path, testMap);
 // ProtoGameField *gameField = new GameField(&path, 1);
@@ -70,9 +70,30 @@ void goWork()
 int main()
 {
 
-  ProtoObj cell;
- // console.log();
- json j; 
+
+
+
+ ///////////////////////////////
+// json j; 
+
+  //  string path = "strings/test_1.txt";
+  //   std::ifstream in(path); // окрываем файл для чтения
+  //   string line;
+  //   string resStr = "";
+  //   if (in.is_open())
+  //   {
+
+  //       while (std::getline(in, line))
+  //       {
+  //         resStr += line;
+  //          // std::cout << line << std::endl;
+  //         // arr.push(line);
+  //       }
+  //   }
+  //   in.close();     // закрываем файл
+  //   json hz = json::parse(resStr);
+  //    console.log(to_string(hz["field"].size()));
+ /////////////////////
 
 
 
@@ -94,7 +115,7 @@ int main()
 //  console.log(res); // key
 // }
 
-console.log(to_string(j));
+
 
 
 
