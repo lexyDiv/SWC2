@@ -7,7 +7,7 @@ class ObjMenu : public ProtoObjMenu {
     ObjMenu() : ProtoObjMenu() {};
     ~ObjMenu();
 
-    void create() override;
+    void create(ProtoGameField* gf) override;
     void getCandidateCells() override;
     void control() override;
     void draw() override;

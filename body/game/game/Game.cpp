@@ -17,7 +17,9 @@ void Game::create()
     this->gf->create();
   
     this->objMenu = new ObjMenu;
-    this->objMenu->create();
-    this->objMenu->gf = this->gf;
+    this->objMenu->create(this->gf);
+    
+   
+
      this->isGFComplite = true;
 };

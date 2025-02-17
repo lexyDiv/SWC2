@@ -1,4 +1,4 @@
-#include "../protoGameField/ProtoGameField.cpp"
+#include "MenuText.cpp"
 
 class ProtoPlane;
 struct Water;

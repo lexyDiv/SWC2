@@ -111,6 +111,12 @@ void Game::draw()
       if (this->objMenu->unit) {
          this->objMenu->draw();
       }
+    //   string s = "Papa Loh";
+    //   string s2 = "War Craft 2";
+    //   string s3 = "Wee UPSET!";
+    //   menuText.draw(s, 730, 400, 20);
+    //   menuText.draw(s2, 730, 422, 20);
+    //   menuText.draw(s3, 730, 445, 30);
     
 
     ctx.CreateDrawZone(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT);

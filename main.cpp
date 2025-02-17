@@ -69,8 +69,16 @@ void goWork()
 
 int main()
 {
+ 
 
-
+// string literas = "!#$%&(),-;@+=0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.:/' ";
+// for (int i = 0; i < literas.size(); i++) {
+//  char c = literas[i];
+//  string cr = string{c};
+//  string cr_to_str = to_string(c);
+//  string res = cr + " = " + cr_to_str;
+//   console.log(res);
+// }
 
 
  ///////////////////////////////
