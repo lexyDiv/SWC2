@@ -16,6 +16,7 @@ public:
 
     /////////
     virtual void create(ProtoObj *cell);
+    virtual int getLevel();
     ////////
 
     // all
@@ -88,6 +89,7 @@ public:
     bool isAddOnDraw = false;
     int speed = 0;
     int hp = 0;
+    int hpMax = 0;
     int attack = 0;
     int armor = 0;
     int mana = 0;

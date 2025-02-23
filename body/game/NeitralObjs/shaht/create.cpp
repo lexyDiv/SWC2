@@ -1,28 +1,39 @@
 #include "Shaht.cpp"
 
-void Shaht::create(ProtoObj* cell) {
+void Shaht::create(ProtoObj *cell)
+{
 
-   this->unitMenu = new UnitMenu;
-   this->titleName = "Gold mine";
-   this->unitMenu->resurs = true;
-   this->unitMenu->titleMenuX = 200;
-   this->unitMenu->titleMenuY = 290;
-   this->unitMenu->getTitleName =  [](ProtoObj* unit){
-    return unit->titleName;
-   };
-   //////////////////
-   this->unitMenu->create(this);
+    this->unitMenu = new UnitMenu;
+    this->titleName = "Gold mine";
+    this->unitMenu->resurs = true;
+    this->unitMenu->titleMenuX = 200;
+    this->unitMenu->titleMenuY = 290;
+    this->unitMenu->getTitleName = [](ProtoObj *unit)
+    {
+        return unit->titleName;
+    };
+    // this->unitMenu->getTitl_1_line = [](ProtoObj* unit){
+    //     return "Line 1";
+    // };
+    this->unitMenu->getTitl_2_line = [this](ProtoObj* unit){
+        return "Gold: " + to_string(this->gold);
+    };
+    // this->unitMenu->getTitl_3_line = [](ProtoObj* unit){
+    //     return "Line 3";
+    // };
+    //////////////////
+    this->unitMenu->create(this);
 
-   this->get3x3myCells(cell);
+    this->get3x3myCells(cell);
 
-    ProtoObj* exitCell = cell->bottom->bottom->bottom_left;
-    ProtoObj* centerCell = cell->bottom_right;
+    ProtoObj *exitCell = cell->bottom->bottom->bottom_left;
+    ProtoObj *centerCell = cell->bottom_right;
 
     this->getContactAndExitCells(cell, exitCell, centerCell);
 
     this->name = "shaht";
     this->type = "building";
-    this->mapColor = {R: 255, G: 255, B: 0};
+    this->mapColor = {R : 255, G : 255, B : 0};
     this->image = imager.shaht;
     this->x = cell->x;
     this->y = cell->y;

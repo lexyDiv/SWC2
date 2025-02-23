@@ -11,6 +11,9 @@ void Oil::create(ProtoObj *cell)
     {
         return unit->titleName;
     };
+    this->unitMenu->getTitl_2_line = [this](ProtoObj* unit){
+        return "Oil: " + to_string(this->oil);
+    };
     /////////////////////////////
     this->get2x2myCells(cell);
     ProtoObj *exitCell = cell->left;
