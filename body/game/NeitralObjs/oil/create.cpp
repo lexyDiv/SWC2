@@ -1,29 +1,34 @@
 #include "Oil.cpp"
 
-void Oil::create(ProtoObj* cell) {
+void Oil::create(ProtoObj *cell)
+{
     this->unitMenu = new UnitMenu;
-    this->unitMenu->titleName = "Oil";
-   this->unitMenu->resurs = true;
-   this->unitMenu->titleMenuX = 450;
-   this->unitMenu->titleMenuY = 290;
+    this->titleName = "Oil";
+    this->unitMenu->resurs = true;
+    this->unitMenu->titleMenuX = 450;
+    this->unitMenu->titleMenuY = 290;
+    this->unitMenu->getTitleName = [](ProtoObj *unit)
+    {
+        return unit->titleName;
+    };
     /////////////////////////////
     this->get2x2myCells(cell);
-    ProtoObj* exitCell = cell->left;
-    ProtoObj* centerCell = cell->bottom_right;
+    ProtoObj *exitCell = cell->left;
+    ProtoObj *centerCell = cell->bottom_right;
 
     this->getContactAndExitCells(cell, exitCell, centerCell);
 
     this->name = "oil";
     this->type = "building";
-    this->mapColor = {R: 0, G: 0, B: 0};
+    this->mapColor = {R : 0, G : 0, B : 0};
     this->image = imager.oilPoint;
-     this->x = cell->x;
-     this->y = cell->y;
-     this->getGabX = cell->gabX * 2;
-     this->getGabY = this->getGabX;
-     this->drawIndexY = cell->bottom->y + cell->gabY;
+    this->x = cell->x;
+    this->y = cell->y;
+    this->getGabX = cell->gabX * 2;
+    this->getGabY = this->getGabX;
+    this->drawIndexY = cell->bottom->y + cell->gabY;
 
-//////////////
+    //////////////
     // int x = 0;
     // int y = 0;
     // int max = 30;
@@ -34,13 +39,14 @@ void Oil::create(ProtoObj* cell) {
     // int animGabY = 5;
     // int deltaX = 0;
     // bool vector = false;
-   
+
     int y = 0;
     int stepY = this->getGabY / this->linesCount;
-  //  console.log(to_string(stepY));
+    //  console.log(to_string(stepY));
     int lineYGab = 100 / this->linesCount;
-    for (int i = 0; i < 100; i += lineYGab) {
-        AnimLines* line = new AnimLines;
+    for (int i = 0; i < 100; i += lineYGab)
+    {
+        AnimLines *line = new AnimLines;
         line->gabY = stepY + 1;
         line->y = y;
         line->animY = i;
@@ -48,7 +54,7 @@ void Oil::create(ProtoObj* cell) {
         y += stepY + 1;
         this->lines.push(line);
     }
-    // int dx = 
+    // int dx =
     // this->lines.forEach([](AnimLines* line, int i){
     //    // int pmRand = intRand(0, 2);
     //     // int dxRand = intRand(0, 5);
@@ -56,8 +62,7 @@ void Oil::create(ProtoObj* cell) {
     //     line->p = i % 2 == 0 ? 1 : -1;
     // });
 
-////////////
+    ////////////
 
-
-     cell->plane->oils.push(this);
+    cell->plane->oils.push(this);
 };

@@ -17,14 +17,14 @@ public:
   ~MenuText();
   Array<LiteraData *> data;
 
-  void draw(string s, int x, int y, int gab)
+  void draw(string s, int x, int y, int gab, int R, int G, int B)
   {
     for (int i = 0; i < s.size(); i++)
     {
       int lit = s[i];
       LiteraData *litD = this->data.getItem2(lit);
       int dx = x + i * (gab * 0.7);
-      ctx.DrawImage(this->font, litD->x, 0, litD->gabX, litD->gabY, dx, y, gab, gab);
+      ctx.DrawImage(this->font, litD->x, 0, litD->gabX, litD->gabY, dx, y, gab, gab, SDL_FLIP_NONE, 0.0, 255, 0, 0, R, G, B);
     }
   }
 };

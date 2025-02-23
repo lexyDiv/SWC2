@@ -31,10 +31,10 @@ void TitleUnit::draw(ProtoObj *unit, ProtoObjMenu *objMenu)
       
        // ctx.DrawText(750, 250, 20, unit->unitMenu->titleName);
        int titleNameFontSize = 20;
-       string titleName = unit->unitMenu->titleName;
+       string titleName = unit->unitMenu->getTitleName(unit);
        int titleNameGabX = titleName.size() * (titleNameFontSize * 0.7);
        int titleNameX = objMenu->centerX - titleNameGabX / 2;
-       menuText.draw(titleName, titleNameX, 250, titleNameFontSize);
+       menuText.draw(titleName, titleNameX, 250, titleNameFontSize, 255, 255, 255);
         ctx.DrawImage(imager.icons, unit->unitMenu->titleMenuX, unit->unitMenu->titleMenuY, 50, 42, this->x, this->y, this->gabX, this->gabY);
         if (unit->unitMenu->resurs) {
           int resurs;
@@ -47,7 +47,7 @@ void TitleUnit::draw(ProtoObj *unit, ProtoObjMenu *objMenu)
             resursName = "Oil";
           }
           string resStr = resursName + ": " + to_string(resurs);
-          menuText.draw(resStr, 750, 400, 15);
+          menuText.draw(resStr, 750, 400, 15, 255, 255, 0);
          // ctx.DrawText(750, 400, 20, resStr);
         }
     };

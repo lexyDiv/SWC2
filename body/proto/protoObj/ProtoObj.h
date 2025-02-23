@@ -76,6 +76,7 @@ public:
     // units
 
     Image *menuImage = nullptr;
+    string titleName = "";
 
     bool isWarrior = false;
     bool isFlying = false;

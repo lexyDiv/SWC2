@@ -12,4 +12,6 @@ public:
     int titleMenuX = 0;
     int titleMenuY = 0;
     ProtoObj *unit = nullptr;
+    function<string(ProtoObj *unit)> getTitleName;
+    // function<bool(T item, int index, vector<T> vec)> fn
 };
