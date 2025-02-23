@@ -5,22 +5,16 @@ void Shaht::create(ProtoObj *cell)
 
     this->unitMenu = new UnitMenu;
     this->titleName = "Gold mine";
-    this->unitMenu->resurs = true;
     this->unitMenu->titleMenuX = 200;
     this->unitMenu->titleMenuY = 290;
+    this->unitMenu->hp = true;
     this->unitMenu->getTitleName = [](ProtoObj *unit)
     {
         return unit->titleName;
     };
-    // this->unitMenu->getTitl_1_line = [](ProtoObj* unit){
-    //     return "Line 1";
-    // };
-    this->unitMenu->getTitl_2_line = [this](ProtoObj* unit){
+    this->unitMenu->getTitl_3_line = [this](ProtoObj* unit){
         return "Gold: " + to_string(this->gold);
     };
-    // this->unitMenu->getTitl_3_line = [](ProtoObj* unit){
-    //     return "Line 3";
-    // };
     //////////////////
     this->unitMenu->create(this);
 
@@ -48,5 +42,7 @@ void Shaht::create(ProtoObj *cell)
 
     this->animX = 0;
     this->animY = 0;
+    this->hpMax = 1000;
+    this->hp = 300;
     cell->plane->shahts.push(this);
-}
+};

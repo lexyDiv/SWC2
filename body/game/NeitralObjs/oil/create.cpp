@@ -4,14 +4,13 @@ void Oil::create(ProtoObj *cell)
 {
     this->unitMenu = new UnitMenu;
     this->titleName = "Oil";
-    this->unitMenu->resurs = true;
     this->unitMenu->titleMenuX = 450;
     this->unitMenu->titleMenuY = 290;
     this->unitMenu->getTitleName = [](ProtoObj *unit)
     {
         return unit->titleName;
     };
-    this->unitMenu->getTitl_2_line = [this](ProtoObj* unit){
+    this->unitMenu->getTitl_3_line = [this](ProtoObj* unit){
         return "Oil: " + to_string(this->oil);
     };
     /////////////////////////////
@@ -29,7 +28,7 @@ void Oil::create(ProtoObj *cell)
     this->y = cell->y;
     this->getGabX = cell->gabX * 2;
     this->getGabY = this->getGabX;
-    this->drawIndexY = cell->bottom->y + cell->gabY;
+    this->drawIndexY = cell->y - 100;
 
     //////////////
     // int x = 0;

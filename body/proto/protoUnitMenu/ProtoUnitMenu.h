@@ -6,8 +6,6 @@ public:
     ProtoUnitMenu();
     virtual ~ProtoUnitMenu();
     virtual void create(ProtoObj *unit);
-    string titleName = "";
-    bool resurs = false;
     bool hp = false;
     int titleMenuX = 0;
     int titleMenuY = 0;
@@ -22,6 +20,12 @@ public:
         return "";
     };
     function<string(ProtoObj *unit)> getTitl_3_line = [](ProtoObj* unit){
+        return "";
+    };
+    function<string(ProtoObj *unit)> getTitl_4_line = [](ProtoObj* unit){
+        return "";
+    };
+    function<string(ProtoObj *unit)> getTitl_5_line = [](ProtoObj* unit){
         return "";
     };
     // function<bool(T item, int index, vector<T> vec)> fn
