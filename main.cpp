@@ -33,7 +33,7 @@ void hard()
   {
 
 
-    this_thread::sleep_for(chrono::milliseconds(25));
+    this_thread::sleep_for(chrono::milliseconds(1));
   }
 }
 
@@ -58,7 +58,7 @@ void goWork()
 
 
 
-    this_thread::sleep_for(chrono::milliseconds(20));
+   this_thread::sleep_for(chrono::milliseconds(1));
   }
 };
 
@@ -197,7 +197,7 @@ if (game->isGFComplite) {
     console.draw();
     ctx.End();
   
- 
+ this_thread::sleep_for(chrono::milliseconds(1));
   }
 
    delete game;
