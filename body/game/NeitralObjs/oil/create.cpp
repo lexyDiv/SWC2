@@ -4,7 +4,7 @@ void Oil::create(ProtoObj *cell)
 {
     this->unitMenu = new UnitMenu;
     this->titleName = "Oil";
-    this->unitMenu->titleMenuX = 450;
+    this->unitMenu->titleMenuX = 445;
     this->unitMenu->titleMenuY = 290;
     this->unitMenu->getTitleName = [](ProtoObj *unit)
     {
@@ -29,18 +29,8 @@ void Oil::create(ProtoObj *cell)
     this->getGabX = cell->gabX * 2;
     this->getGabY = this->getGabX;
     this->drawIndexY = cell->y - 100;
-
-    //////////////
-    // int x = 0;
-    // int y = 0;
-    // int max = 30;
-    // int animX = 0;
-    // int animY = 0;
-    // int lines = 20;
-    // int animGabX = 100;
-    // int animGabY = 5;
-    // int deltaX = 0;
-    // bool vector = false;
+    this->hpMax = 1000;
+    this->hp = 1000;
 
     int y = 0;
     int stepY = this->getGabY / this->linesCount;

@@ -7,7 +7,6 @@ void Shaht::create(ProtoObj *cell)
     this->titleName = "Gold mine";
     this->unitMenu->titleMenuX = 200;
     this->unitMenu->titleMenuY = 290;
-    this->unitMenu->hp = true;
     this->unitMenu->getTitleName = [](ProtoObj *unit)
     {
         return unit->titleName;
@@ -43,6 +42,6 @@ void Shaht::create(ProtoObj *cell)
     this->animX = 0;
     this->animY = 0;
     this->hpMax = 1000;
-    this->hp = 300;
+    this->hp = 1000;
     cell->plane->shahts.push(this);
 };

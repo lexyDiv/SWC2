@@ -4,10 +4,10 @@ void GameField::miniMapDraw()
 {
     this->miniMapUpdate();
 
-    ctx.FillRect(this->miniMapX + 30,
-                  this->miniMapY + 30,
-                  this->miniMapGab,
-                  this->miniMapGab, "black", 150);
+    // ctx.FillRect(this->miniMapX + 30,
+    //               this->miniMapY + 30,
+    //               this->miniMapGab,
+    //               this->miniMapGab, "black", 150);
 
     ctx.DrawImage(this->miniMap,
                   0,
