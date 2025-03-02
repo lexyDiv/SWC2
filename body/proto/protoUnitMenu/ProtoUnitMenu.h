@@ -9,6 +9,7 @@ public:
 
     int titleMenuX = 0;
     int titleMenuY = 0;
+    bool isButtons = false;
 
     ProtoObj *unit = nullptr;
 

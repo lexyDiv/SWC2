@@ -7,6 +7,7 @@ void Shaht::create(ProtoObj *cell)
     this->titleName = "Gold mine";
     this->unitMenu->titleMenuX = 200;
     this->unitMenu->titleMenuY = 290;
+    this->unitMenu->isButtons = true;
     this->unitMenu->getTitleName = [](ProtoObj *unit)
     {
         return unit->titleName;
@@ -14,8 +15,9 @@ void Shaht::create(ProtoObj *cell)
     this->unitMenu->getTitl_3_line = [this](ProtoObj* unit){
         return "Gold: " + to_string(this->gold);
     };
-    //////////////////
     this->unitMenu->create(this);
+    //////////////////
+
 
     this->get3x3myCells(cell);
 

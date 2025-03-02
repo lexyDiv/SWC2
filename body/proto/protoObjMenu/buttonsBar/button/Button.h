@@ -5,6 +5,6 @@ class Button {
     Button();
     ~Button();
 
-    
+    void draw();
 
 };
