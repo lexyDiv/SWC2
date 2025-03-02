@@ -7,3 +7,7 @@ ProtoFraction::ProtoFraction()
 ProtoFraction::~ProtoFraction()
 {
 }
+
+void ProtoFraction::create()
+{
+}

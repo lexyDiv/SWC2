@@ -1,9 +1,10 @@
-#include "../protoGameField/ProtoGameField.cpp"
+#include "MenuText.cpp"
 
 class ProtoPlane;
 struct Water;
 struct AnimLines;
 class ProtoFraction;
+class ProtoUnitMenu;
 
 class ProtoObj
 {
@@ -15,12 +16,17 @@ public:
 
     /////////
     virtual void create(ProtoObj *cell);
+    virtual int getLevel();
     ////////
 
     // all
+    
     ProtoGameField *gf = nullptr;
     ProtoGame *game = nullptr;
     ProtoPlane *plane = nullptr;
+    ProtoUnitMenu* unitMenu = nullptr;
+  
+
 
     bool isDelete = false;
     // bool inUse = false;
@@ -57,12 +63,13 @@ public:
     Image *image3 = nullptr;
 
     // neitral & buildfings
-    int gold = 0;
+    int gold = -1;
     int oil = 0;
     Array<AnimLines *> lines; // oil anim line
     float linePusherY = 0.0f; // oil anim
     float linePullerY = -100.0f; // oil anim
     int linesCount = 20;
+    bool inZone = false;
     Array<ProtoObj *> clients;
     void get3x3myCells(ProtoObj *cell);
     void get2x2myCells(ProtoObj *cell);
@@ -70,6 +77,7 @@ public:
     // units
 
     Image *menuImage = nullptr;
+    string titleName = "";
 
     bool isWarrior = false;
     bool isFlying = false;
@@ -81,9 +89,12 @@ public:
     bool isAddOnDraw = false;
     int speed = 0;
     int hp = 0;
+    int hpMax = 0;
     int attack = 0;
     int armor = 0;
     int mana = 0;
+
+    
     ProtoObj *cell = nullptr;
     Array<ProtoObj *> enemys;
     Array<ProtoObj *> myWay;

@@ -32,6 +32,7 @@ void listenner(SDL_Event e, bool &quit)
         {
             mouse.move(e.motion.x, e.motion.y);
             // console.log(to_string(e.motion.x));
+            mouse.isMove = true;
         }
         if (e.type == SDL_MOUSEBUTTONDOWN)
         {

@@ -36,12 +36,21 @@ Image *tree2Trup = new Image("images/images/trees2Trup.png");
 
 Image *shaht = new Image("images/images/neutral/buildings/summer/gold_mine2.png");
 //Image *shaht = new Image("images/images/altar_h_blue.png");
-
-// oil
-
 Image *oilPoint = new Image("images/images/oil.png");
+
+Image *icons = new Image("images/icons.png");
+
+Image *menuFon = new Image("images/images/menuFon.jpg");
+
     Imager() {};
     ~Imager(){
+
+        delete menuFon;
+        menuFon = nullptr;
+
+delete icons;
+icons = nullptr;
+
 delete groundBasic;
 groundBasic = nullptr;
 

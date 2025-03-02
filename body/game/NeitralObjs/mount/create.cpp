@@ -24,6 +24,7 @@ void Mount::create(ProtoObj *cell)
     this->gf = cell->gf;
 
     this->name = "mount";
+    this->type = "building";
     this->mapColor = {R: 127, G: 0, B: 255};
 
 }

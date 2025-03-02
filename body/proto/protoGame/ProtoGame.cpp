@@ -19,3 +19,7 @@ void ProtoGame::draw()
 void ProtoGame::preDraw()
 {
 }
+
+void ProtoGame::fonMenuDraw()
+{
+}

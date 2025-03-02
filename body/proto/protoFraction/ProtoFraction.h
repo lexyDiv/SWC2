@@ -3,8 +3,10 @@
 class ProtoFraction {
     public:
     ProtoFraction();
-    ~ProtoFraction();
+   virtual ~ProtoFraction();
+   virtual void create();
 
     string name = "";
+    string control = "";
     Array<ProtoObj *> units;
 };

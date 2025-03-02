@@ -2,6 +2,8 @@
 // ./program
 #include "body/game/game/preDraw.cpp"
 
+
+
 bool quit = false;
 int tik = 0;
 
@@ -9,7 +11,7 @@ ProtoGame *game = new Game();
 
  //string path = "levels/test_1.txt";
  //string path2 = "levels/testBig_1.txt";
-string path3 = "levels/testBig_500.txt";
+//string path3 = "levels/testBig_500.txt";
 
 // // mapWrite(&path, testMap);
 // ProtoGameField *gameField = new GameField(&path, 1);
@@ -18,26 +20,6 @@ string path3 = "levels/testBig_500.txt";
 
 void hard()
 {
-
-
-// vector<string> vec;
-// for (int i = 0; i < 500; i ++) {
-//   string str = "";
-//   for (int i = 0; i < 500; i ++) {
-//      str += "0";
-//   }
-//   vec.push_back(str);
-// }
-// mapWrite(&path3, vec);
-
-// ProtoObj *hz = new Cell;
-// ProtoObj *&copy = hz;
-// copy->x = 69;
-// delete copy;
-// copy = nullptr;
-// if (hz) {
-//   console.log(to_string(hz->x));
-// }
 
 
 
@@ -51,23 +33,7 @@ void hard()
   {
 
 
-  //   if (gameField->init) {
-  //     //     for (int i = 0; i < 100; i ++) {
-  //     // if (quit) {
-  //     //   break;
-  //     // }
-  //     gameField->field.forEach([](Array<ProtoObj *> arr){
-  //       arr.forEach([](ProtoObj *cell){
-  //         ProtoObj *cellCopy = cell;
-  //         cell->mapColor.R = intRand(0, 255);
-  //         cell->mapColor.G = intRand(0, 255);
-  //         cell->mapColor.B = intRand(0, 255);
-  //       });
-  //     });
-  // //  }
-  //   }
-
-    this_thread::sleep_for(chrono::milliseconds(25));
+    this_thread::sleep_for(chrono::milliseconds(1));
   }
 }
 
@@ -82,21 +48,84 @@ void goWork()
   while (!quit)
   {
 
+    if (game->isGFComplite) {
+      game->objMenu->getCandidateCells();
+    }
+
     listenner(e, quit);
     console.proc(mouse.x, mouse.y, mouse.leftKey);
 
 
 
 
-    this_thread::sleep_for(chrono::milliseconds(20));
+   this_thread::sleep_for(chrono::milliseconds(1));
   }
 };
 
 ///////////////////////////////  kata
 //////////////////////////////////
 
+
+
 int main()
 {
+ 
+
+// string literas = "!#$%&(),-;@+=0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.:/' ";
+// for (int i = 0; i < literas.size(); i++) {
+//  char c = literas[i];
+//  string cr = string{c};
+//  string cr_to_str = to_string(c);
+//  string res = cr + " = " + cr_to_str;
+//   console.log(res);
+// }
+
+
+ ///////////////////////////////
+// json j; 
+
+  //  string path = "strings/test_1.txt";
+  //   std::ifstream in(path); // окрываем файл для чтения
+  //   string line;
+  //   string resStr = "";
+  //   if (in.is_open())
+  //   {
+
+  //       while (std::getline(in, line))
+  //       {
+  //         resStr += line;
+  //          // std::cout << line << std::endl;
+  //         // arr.push(line);
+  //       }
+  //   }
+  //   in.close();     // закрываем файл
+  //   json hz = json::parse(resStr);
+  //    console.log(to_string(hz["field"].size()));
+ /////////////////////
+
+
+
+// for (it = data.begin(); it != data.end(); ++it){
+//     std::cout << it->name;
+// }
+
+
+// for (int i = 0; i < testMap.size(); i++) {
+//   string line = testMap[i];
+//   j["plan"].push_back(line);
+// } // ok!
+
+
+// for (json::iterator it = j.begin(); it != j.end(); ++it) {
+//  // std::cout << *it << '\n';
+//  string value = *it;
+//  string res = it.key() + " : " + value;
+//  console.log(res); // key
+// }
+
+
+
+
 
 //////////////////////////////////// kata res
 ////////////////////
@@ -113,33 +142,11 @@ int main()
 
   int stop = 0;
 
-  //gameField->create();
-
-//  vector<vector<int>> vec;
-//  vector<int> ve;
-//  vec.push_back(ve);
-
-//  vector<int> &veCopy = vec[0];
-//  veCopy.push_back(11);
-//  //vec[0].push_back(11);
-
-// if (vec[0][0]) {
-//    console.log(to_string(vec[0][0]));
-// }
-
-// ProtoObj* pa = new ProtoObj;
-
-// Array<Array<ProtoObj *>> arr;
-// Array<ProtoObj *> a;
-// arr.push(a);
-// Array<ProtoObj *> &hz = arr.getItem3(0);
-// hz.push(pa);
-// console.log(to_string(arr.getItem(0).length));
 
   while (!quit)
   {
 
-if ( game && game->gf && game->gf->init) {
+if (game->isGFComplite) {
 //console.log(to_string(game->gf->planes.getItem(0)->contactPlanes.getItem(0)->cellsToOther.length));
 }
   //   if (tik % 100 == 0) {
@@ -153,6 +160,7 @@ if ( game && game->gf && game->gf->init) {
   //  console.log("loading");
 
 
+
    
 
     ctx.CreateDrawZone(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT);
@@ -160,8 +168,10 @@ if ( game && game->gf && game->gf->init) {
 
 
 
+    if (game->isGFComplite) {
       game->preDraw();
       game->draw();
+    }
 
     //  ctx.DrawImage(groundBasic, 0, 0, 100, 100, 100, 100, 200, 200);
 
@@ -186,7 +196,8 @@ if ( game && game->gf && game->gf->init) {
 
     console.draw();
     ctx.End();
-  //  mouse.defaultKeys();
+  
+ this_thread::sleep_for(chrono::milliseconds(1));
   }
 
    delete game;

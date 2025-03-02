@@ -1,8 +1,22 @@
 #include "fieldClick.cpp"
 
+
 void GameField::create()
 {
     Array<string> array = readMap(&this->path);
+    /////////////////////////
+   //  json j;
+   //  j["name"] = "test_bigest_500";
+   //  j["oil"].push_back(100);
+   //  j["oil"].push_back(200);
+   //  j["gold"].push_back(10000);
+   //  j["gold"].push_back(20000);
+   //  array.forEach([&j](string line){
+   //    j["field"].push_back(line);
+   //  });
+   //  string sPath = "strings/test_bigest_500.txt";
+   //  writeStr(&sPath, to_string(j));
+    ///////////////////////////
    // this->width = array.length * this->cellSize;
     this->gabarit = array.getItem(0).size();
     this->height = this->gabarit * this->cellSize;

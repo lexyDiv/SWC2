@@ -7,4 +7,9 @@ Shaht::~Shaht()
         delete peon;
         peon = nullptr;
     });
+
+    if (this->unitMenu) {
+        delete this->unitMenu;
+        this->unitMenu = nullptr;
+    }
 }

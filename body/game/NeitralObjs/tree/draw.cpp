@@ -2,6 +2,7 @@
 
 void Tree::draw()
 {
+ 
   this->isAddOnDraw = false;
   float drawDeltaX = this->gf->drawDeltaX;
   float drawDeltaY = this->gf->drawDeltaY;

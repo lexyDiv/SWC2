@@ -22,3 +22,7 @@ Color ProtoObj::getMapColor()
 void ProtoObj::create(ProtoObj *cell)
 {
 }
+
+int ProtoObj::getLevel() {
+    return 0;
+};

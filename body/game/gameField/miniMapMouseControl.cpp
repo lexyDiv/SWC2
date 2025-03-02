@@ -29,7 +29,7 @@ void GameField::miniMapMouseControl()
     if (mouse.leftKeyUp)
     {
         this->miniMapClick = false;
-        mouse.leftKeyUp = false;
+       // mouse.leftKeyUp = false;
     }
     if (click)
     {
@@ -47,7 +47,7 @@ void GameField::miniMapMouseControl()
 
             this->miniMapHoldLeftMouseKey();
         }
-        mouse.leftKeyDown = false;
+       // mouse.leftKeyDown = false;
     }
 
     if (this->miniMapClick)
