@@ -1,4 +1,4 @@
-#include "button/draw.cpp"
+#include "button/Button.cpp"
 
 class ProtoObjMenu;
 
@@ -12,7 +12,7 @@ class ButtonsBar {
     int width = 250;
     int height = 200;
     ProtoObjMenu* pom = nullptr;
-    Array<Button> buttonsArray;
+    Array<Button *> buttonsArray;
 
     void create(ProtoObjMenu* pom);
     void draw();
