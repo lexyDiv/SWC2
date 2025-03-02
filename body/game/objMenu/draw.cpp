@@ -1,5 +1,7 @@
 #include "control.cpp"
 
 void ObjMenu::draw() {
-    this->titleUnit.draw(this->unit, this);
+    if (this->unit) {
+        this->titleUnit.draw(this->unit, this);
+    }
 };
