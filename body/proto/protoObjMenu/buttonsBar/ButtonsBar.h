@@ -16,6 +16,8 @@ class ButtonsBar {
     int height = this->buttonGabarit * this->lines;
     ProtoObjMenu* pom = nullptr;
     Array<Array<Button *>> buttonsArray;
+    Button* focusButton = nullptr;
+    Array<Button*> toutchedButtons;
 
     void create(ProtoObjMenu* pom);
     void draw();

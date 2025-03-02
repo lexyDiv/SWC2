@@ -9,7 +9,7 @@ void ButtonsBar::create(ProtoObjMenu *pom)
       for (int hor = 0; hor < this->columns; hor++)
       {
          Button *button = new Button;
-         button->create(this->x + 5 + hor * 50, this->y + 5 + ver * 50);
+         button->create(this->x + (this->buttonGabarit / 2) + hor * this->buttonGabarit, this->y + (this->buttonGabarit / 2) + ver * 50);
          line.push(button);
       }
       this->buttonsArray.push(line);
