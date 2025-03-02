@@ -20,10 +20,10 @@ void ButtonsBar::control()
               y < this->y ||
               y > this->y + this->height))
         {
-   
+            int indexX = floor((x - this->x) / (this->buttonGabarit));
+            int indexY = floor((y - this->y) / (this->buttonGabarit));
             if (clickLeft)
             {
-                console.log("click");
             }
         };
     }
