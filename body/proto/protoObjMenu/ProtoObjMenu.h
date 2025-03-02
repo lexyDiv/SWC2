@@ -1,4 +1,4 @@
-#include "../protoUnitMenu/ProtoUnitMenu.cpp"
+#include "buttonsBar/draw.cpp"
 
 struct Zone
 {
@@ -33,6 +33,7 @@ public:
     int mX, gabX, centerX;
 
     TitleUnit titleUnit;
+    ButtonsBar buttonsBar;
     Zone zone;
     Array<ProtoObj *> units;
     Array<ProtoObj *> candidateCells;
