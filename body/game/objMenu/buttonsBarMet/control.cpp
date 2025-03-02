@@ -2,7 +2,11 @@
 
 void ButtonsBar::control()
 {
-    if (this->pom->unit && this->pom->unit->unitMenu->isButtons)
+    if (!this->pom->gf->miniMapClick &&
+        !this->pom->zone.active &&
+        !this->pom->gf->fieldClickPoint &&
+        this->pom->unit &&
+        this->pom->unit->unitMenu->isButtons)
     {
         bool clickLeft = mouse.leftKeyDown;
         bool clickLeftUp = mouse.leftKeyUp;
@@ -16,7 +20,9 @@ void ButtonsBar::control()
               y < this->y ||
               y > this->y + this->height))
         {
-            if (clickLeft) {
+   
+            if (clickLeft)
+            {
                 console.log("click");
             }
         };

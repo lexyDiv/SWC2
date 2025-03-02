@@ -19,17 +19,11 @@ void ObjMenu::getCandidateCells()
         int gabX = secX - fc->x;
         int gabY = secY - fc->y;
 
-        int intX = indexX + ceil((gabX) / cellSize) + 1;
-        int intY = indexY + ceil((gabY) / cellSize) + 1;
-        if (intX > this->gf->gabarit)
-        {
-            intX = 65;
-        }
-        if (intY > this->gf->gabarit)
-        {
-            intY = 65;
-        }
-
+        int zoneWidth = indexX + ceil((gabX) / cellSize) + 1;
+        int zoneHeight = indexY + ceil((gabY) / cellSize) + 1; 
+        int intX = zoneWidth <= this->gf->gabarit ? zoneWidth : this->gf->gabarit;
+        int intY = zoneHeight <= this->gf->gabarit ? zoneHeight : this->gf->gabarit;
+        
         Array<ProtoObj *> units;
         ProtoObj *building = nullptr;
         Array<ProtoObj *> ships;

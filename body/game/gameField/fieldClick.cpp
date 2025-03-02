@@ -25,7 +25,11 @@ void GameField::fieldClick()
             this->fieldClickPoint->time--;
         }
 
-        if (!this->fieldClickPoint->time && this->fieldClickPoint->up)
+
+        if (
+            (!this->fieldClickPoint->time && this->fieldClickPoint->up) ||
+            (x > this->screenWidth && clickLeftUp)
+            )
         {
           //  console.log("create zone");
           ProtoObjMenu* objMenu = this->game->objMenu;
@@ -46,7 +50,7 @@ void GameField::fieldClick()
         {
             FieldClick *fc = new FieldClick;
             fc->clickPoint.x = x - drawDeltaX;
-            fc->clickPoint.y = (y) - drawDeltaY;
+            fc->clickPoint.y = y - drawDeltaY;
             this->fieldClickPoint = fc;
            // console.log(to_string(fc->clickPoint.y));
             // console.log("new click");
