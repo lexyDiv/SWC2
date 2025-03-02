@@ -1,4 +1,4 @@
-#include "buttonsBar/draw.cpp"
+#include "buttonsBar/ButtonsBar.cpp"
 
 struct Zone
 {
