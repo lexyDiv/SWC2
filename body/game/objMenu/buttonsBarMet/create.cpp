@@ -1,4 +1,4 @@
-#include "../../gameField/images.cpp"
+#include "control.cpp"
 
 void ButtonsBar::create(ProtoObjMenu* pom) {
     this->pom = pom;

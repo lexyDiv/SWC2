@@ -16,4 +16,5 @@ class ButtonsBar {
 
     void create(ProtoObjMenu* pom);
     void draw();
+    void control();
 };
