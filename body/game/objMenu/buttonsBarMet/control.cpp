@@ -25,11 +25,7 @@ void ButtonsBar::control()
             int indexX = floor((x - this->x) / (this->buttonGabarit));
             int indexY = floor((y - this->y) / (this->buttonGabarit));
             fb = this->buttonsArray.getItem(indexY).getItem2(indexX);
-            // if (!fb->isToutched)
-            // {
-            //     this->toutchedButtons.push(fb);
-            //     fb->isToutched = true;
-            // }
+
             if (clickLeft)
             {
             }

@@ -27,16 +27,29 @@ void ProtoObjMenu::draw()
 void TitleUnit::draw(ProtoObj *unit, ProtoObjMenu *objMenu)
 {
   {
+    ctx.DrawLine({x: this->x, y: this->y}, {x: 1200, y: this->y}, "red");
     int titleNameFontSize = 22;
     int fontSize = 12;
     string titleName = unit->unitMenu->getTitleName(unit);
     int titleNameGabX = titleName.size() * (titleNameFontSize * 0.7);
     int titleNameX = objMenu->centerX - titleNameGabX / 2;
-    menuText.draw(titleName, titleNameX, 250, titleNameFontSize, 255, 255, 255);
-    ctx.DrawImage(imager.icons, unit->unitMenu->titleMenuX, unit->unitMenu->titleMenuY, 50, 42, this->x, this->y, this->gabX, this->gabY);
-    ctx.StrokeRect(this->x, this->y, this->gabX, this->gabY, 110, 110, 110);
+    menuText.draw(titleName, titleNameX, this->y + 15, titleNameFontSize, 255, 255, 255);
+
+    ctx.DrawImage(imager.icons, 
+    unit->unitMenu->titleMenuX, 
+    unit->unitMenu->titleMenuY, 
+    50, 
+    42, 
+    this->x, 
+    this->y + 50, 
+    this->gabX, 
+    this->gabY);
+
+    ctx.StrokeRect(this->x, this->y + 50, this->gabX, this->gabY, 110, 110, 110);
+
     string resStr = unit->unitMenu->getTitl_1_line(unit);
-    menuText.draw(resStr, 840, 284, fontSize, 255, 255, 0);
+    //int lineX = this->x
+    menuText.draw(resStr, this->x + 110, this->y + 54, fontSize, 255, 255, 0);
     resStr = unit->unitMenu->getTitl_2_line(unit);
     menuText.draw(resStr, 840, 304, fontSize, 255, 255, 0);
     resStr = unit->unitMenu->getTitl_3_line(unit);
