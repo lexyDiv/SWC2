@@ -1,11 +1,16 @@
 #include "ProtoObjMenu.h"
 
+
 ProtoObjMenu::ProtoObjMenu()
 {
 }
 
 ProtoObjMenu::~ProtoObjMenu()
 {
+}
+
+void ProtoObjMenu::defaultData() {
+
 }
 
 void ProtoObjMenu::create(ProtoGameField *gf)

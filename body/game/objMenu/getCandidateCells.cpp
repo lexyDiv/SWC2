@@ -4,15 +4,14 @@ void ObjMenu::getCandidateCells()
 {
     if (this->zone.active)
     {
-        // this->candidateCells.clear();
-        this->units.clear();
-        this->unit = nullptr;
+        this->defaultData();
         int cellSize = this->gf->cellSize;
-        this->zone.active = false;
+
         int firstX = this->zone.a.x;
         int firstY = this->zone.a.y;
         int indexX = ceil(firstX / cellSize);
         int indexY = ceil(firstY / cellSize);
+
         ProtoObj *fc = this->gf->field.getItem(indexY).getItem(indexX);
         int secX = this->zone.b.x;
         int secY = this->zone.b.y;
@@ -20,10 +19,10 @@ void ObjMenu::getCandidateCells()
         int gabY = secY - fc->y;
 
         int zoneWidth = indexX + ceil((gabX) / cellSize) + 1;
-        int zoneHeight = indexY + ceil((gabY) / cellSize) + 1; 
+        int zoneHeight = indexY + ceil((gabY) / cellSize) + 1;
         int intX = zoneWidth <= this->gf->gabarit ? zoneWidth : this->gf->gabarit;
         int intY = zoneHeight <= this->gf->gabarit ? zoneHeight : this->gf->gabarit;
-        
+
         Array<ProtoObj *> units;
         ProtoObj *building = nullptr;
         Array<ProtoObj *> ships;

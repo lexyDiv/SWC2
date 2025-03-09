@@ -6,4 +6,15 @@ void UnitMenu::create(ProtoObj* unit) {
      Lambda lambda;
      this->infoLines.push(lambda);
   }
+
+  for (int ver = 0; ver < 4; ver++) {
+    Array<ButtonData*> line;
+    for (int hor = 0; hor < 5; hor++) {
+       ButtonData *buttonData = new ButtonData;
+       line.push(buttonData);
+     // line.push(nullptr);
+    };
+    this->buttonsData.push(line);
+  };
+
 };

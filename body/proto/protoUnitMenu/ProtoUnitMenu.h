@@ -4,8 +4,23 @@ struct Lambda
 {
     function<string(ProtoObj *unit)> fn = [](ProtoObj *unit)
     {
-        return "Line";
+        return "";
     };
+};
+
+struct ButtonData {
+    int animX = 0;
+    int animY = 0;
+    int animGabX = 0;
+    int animGabY = 0;
+    Image *image = nullptr;
+    function<void (ProtoObj *unit)> onClick = [](ProtoObj *unit){};
+    function<ButtonData* (int ver, int hor)> update = [this](int ver, int hor){
+        return nullptr;
+    };
+    // ButtonData* update(int ver, int hor) {
+    //     return nullptr;
+    // };
 };
 
 class ProtoUnitMenu
@@ -21,15 +36,16 @@ public:
 
     ProtoObj *unit = nullptr;
     Array<Lambda> infoLines;
+    Array<Array<ButtonData*>> buttonsData;
 
     function<bool(ProtoObj *unit)> getIsHp = [](ProtoObj *unit)
     {
-        return true;
+        return false;
     };
 
     function<bool(ProtoObj *unit)> getIsMana = [](ProtoObj *unit)
     {
-        return true;
+        return false;
     };
 
     function<string(ProtoObj *unit)> getTitleName = [](ProtoObj *unit)

@@ -29,8 +29,10 @@ public:
     virtual void getCandidateCells();
     virtual void control();
     virtual void draw();
+    virtual void defaultData();
 
     int mX, gabX, centerX;
+    int slice = 0;
 
     TitleUnit titleUnit;
     ButtonsBar buttonsBar;

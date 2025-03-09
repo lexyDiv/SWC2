@@ -2,12 +2,23 @@
 
 void ButtonsBar::control()
 {
-         Button* fb = nullptr;
+    bool isUnit = (bool)this->pom->unit;
+
+    this->buttonsArray.forEach([this, isUnit](Array<Button *> line, int ver)
+                               { line.forEach([this, ver, isUnit](Button *button, int hor)
+                                              {
+            if (isUnit) {
+ButtonData *buttonData = this->pom->unit->unitMenu->buttonsData.getItem(ver).getItem(hor);
+console.log(to_string(buttonData->animGabX));
+    //button->buttonData = buttonData->update(ver, hor);
+            } }); });
+
+    Button *fb = nullptr;
     if (
         !this->pom->gf->miniMapClick &&
         !this->pom->zone.active &&
         !this->pom->gf->fieldClickPoint &&
-        this->pom->unit &&
+        isUnit &&
         this->pom->unit->unitMenu->isButtons)
     {
         bool clickLeft = mouse.leftKeyDown;
@@ -37,12 +48,12 @@ void ButtonsBar::control()
         fb->width += 1;
         fb->height += 1;
     }
-    this->buttonsArray.forEach([this, fb](Array<Button*> line){
-        line.forEach([this, fb](Button* button){
+    this->buttonsArray.forEach([this, fb](Array<Button *> line)
+                               { line.forEach([this, fb](Button *button)
+                                              {
+                                                button->buttonData = nullptr;
             if (button != fb && button->width > button->gabarit) {
                  button->width -= 1;
                  button->height -= 1;
-            }
-        });
-    });
+            } }); });
 };

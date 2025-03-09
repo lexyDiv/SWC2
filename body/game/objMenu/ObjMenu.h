@@ -11,4 +11,5 @@ class ObjMenu : public ProtoObjMenu {
     void getCandidateCells() override;
     void control() override;
     void draw() override;
+    void defaultData() override;
 };

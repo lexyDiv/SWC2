@@ -16,4 +16,5 @@ void Shaht::createUnitMenu()
     {
         return "Gold: " + to_string(unit->gold);
     };
+  //  this->unitMenu->buttonsData.getItem(3).getItem(4)->image = imager.icons;
 };
