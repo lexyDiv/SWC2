@@ -12,6 +12,7 @@ public:
     bool isButtons = false;
 
     ProtoObj *unit = nullptr;
+   // Array<function<string(ProtoObj *unit)> *> infoLines;
 
     function<bool(ProtoObj *unit)> getIsHp = [](ProtoObj* unit){
         return true;

@@ -17,6 +17,7 @@ public:
     /////////
     virtual void create(ProtoObj *cell);
     virtual int getLevel();
+    virtual void createUnitMenu();
     ////////
 
     // all

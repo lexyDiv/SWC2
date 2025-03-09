@@ -7,4 +7,5 @@ class Oil : public ProtoObj {
 
     void create(ProtoObj * cell) override;
     void draw() override;
+    void createUnitMenu() override;
 };
