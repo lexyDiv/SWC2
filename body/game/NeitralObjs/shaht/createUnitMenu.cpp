@@ -23,6 +23,6 @@ void Shaht::createUnitMenu()
     };
     bd->onClick = [](ProtoObj* unit){
         unit->gf->game->objMenu->defaultData();
-        console.log("this is out button");
+        console.log(to_string(unit->gold));
     };
 };
