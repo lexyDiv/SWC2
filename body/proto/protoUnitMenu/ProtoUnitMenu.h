@@ -15,7 +15,7 @@ struct ButtonData {
     int animGabY = 0;
     Image *image = nullptr;
     function<void (ProtoObj *unit)> onClick = [](ProtoObj *unit){};
-    function<ButtonData* (int ver, int hor)> update = [this](int ver, int hor){
+    function<ButtonData* (ProtoObj *unit)> update = [this](ProtoObj *unit){
         return nullptr;
     };
     // ButtonData* update(int ver, int hor) {
@@ -36,7 +36,8 @@ public:
 
     ProtoObj *unit = nullptr;
     Array<Lambda> infoLines;
-    Array<Array<ButtonData*>> buttonsData;
+   // Array<Array<ButtonData*>> buttonsData;
+    Array<Array<Array<ButtonData*>>> buttonsData;
 
     function<bool(ProtoObj *unit)> getIsHp = [](ProtoObj *unit)
     {

@@ -16,5 +16,13 @@ void Shaht::createUnitMenu()
     {
         return "Gold: " + to_string(unit->gold);
     };
-  //  this->unitMenu->buttonsData.getItem(3).getItem(4)->image = imager.icons;
+
+     ButtonData *bd = this->unitMenu->buttonsData.getItem(0).getItem(3).getItem(4);
+     bd->update = [bd](ProtoObj* unit){
+        return bd;
+    };
+    bd->onClick = [](ProtoObj* unit){
+        unit->gf->game->objMenu->defaultData();
+        console.log("this is out button");
+    };
 };

@@ -7,6 +7,7 @@ void UnitMenu::create(ProtoObj* unit) {
      this->infoLines.push(lambda);
   }
 
+  Array<Array<ButtonData*>> slice;
   for (int ver = 0; ver < 4; ver++) {
     Array<ButtonData*> line;
     for (int hor = 0; hor < 5; hor++) {
@@ -14,7 +15,7 @@ void UnitMenu::create(ProtoObj* unit) {
        line.push(buttonData);
      // line.push(nullptr);
     };
-    this->buttonsData.push(line);
+    slice.push(line);
   };
-
+this->buttonsData.push(slice);
 };
