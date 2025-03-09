@@ -1,5 +1,13 @@
 #include "../protoObj/ProtoObj.cpp"
 
+struct Lambda
+{
+    function<string(ProtoObj *unit)> fn = [](ProtoObj *unit)
+    {
+        return "Line";
+    };
+};
+
 class ProtoUnitMenu
 {
 public:
@@ -12,33 +20,20 @@ public:
     bool isButtons = false;
 
     ProtoObj *unit = nullptr;
-   // Array<function<string(ProtoObj *unit)> *> infoLines;
+    Array<Lambda> infoLines;
 
-    function<bool(ProtoObj *unit)> getIsHp = [](ProtoObj* unit){
+    function<bool(ProtoObj *unit)> getIsHp = [](ProtoObj *unit)
+    {
         return true;
     };
 
-        function<bool(ProtoObj *unit)> getIsMana = [](ProtoObj* unit){
+    function<bool(ProtoObj *unit)> getIsMana = [](ProtoObj *unit)
+    {
         return true;
     };
 
-    function<string(ProtoObj *unit)> getTitleName = [](ProtoObj* unit){
+    function<string(ProtoObj *unit)> getTitleName = [](ProtoObj *unit)
+    {
         return "";
     };
-    function<string(ProtoObj *unit)> getTitl_1_line = [](ProtoObj* unit){
-        return "Line 1";
-    };
-    function<string(ProtoObj *unit)> getTitl_2_line = [](ProtoObj* unit){
-        return "Line 2";
-    };
-    function<string(ProtoObj *unit)> getTitl_3_line = [](ProtoObj* unit){
-        return "Line 3";
-    };
-    function<string(ProtoObj *unit)> getTitl_4_line = [](ProtoObj* unit){
-        return "Line 4";
-    };
-    function<string(ProtoObj *unit)> getTitl_5_line = [](ProtoObj* unit){
-        return "Line 5";
-    };
-    // function<bool(T item, int index, vector<T> vec)> fn
 };

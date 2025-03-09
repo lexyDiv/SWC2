@@ -13,7 +13,7 @@ struct TitleUnit
 {
 
     int x = 730;
-    int y = 230;
+    int y = 210;
     int gabX = 100;
     int gabY = 100;
 

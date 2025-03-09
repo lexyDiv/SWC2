@@ -1,19 +1,19 @@
 #include "create.cpp"
 
-void Oil::createUnitMenu()
+void Shaht::createUnitMenu()
 {
     this->unitMenu = new UnitMenu;
-    this->unitMenu->create(this);
-    this->titleName = "Oil";
-    this->unitMenu->titleMenuX = 445;
+    this->titleName = "Gold mine";
+    this->unitMenu->titleMenuX = 200;
     this->unitMenu->titleMenuY = 290;
+    this->unitMenu->isButtons = true;
     this->unitMenu->getTitleName = [](ProtoObj *unit)
     {
         return unit->titleName;
     };
-
+    this->unitMenu->create(this);
     this->unitMenu->infoLines.getItem3(2).fn = [](ProtoObj *unit)
     {
-        return "Oil: " + to_string(unit->oil);
+        return "Gold: " + to_string(unit->gold);
     };
 };

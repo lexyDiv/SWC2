@@ -27,7 +27,6 @@ void ProtoObjMenu::draw()
 void TitleUnit::draw(ProtoObj *unit, ProtoObjMenu *objMenu)
 {
   {
-    ctx.DrawLine({x: this->x, y: this->y}, {x: 1200, y: this->y}, "red");
     int titleNameFontSize = 22;
     int fontSize = 12;
     string titleName = unit->unitMenu->getTitleName(unit);
@@ -35,32 +34,27 @@ void TitleUnit::draw(ProtoObj *unit, ProtoObjMenu *objMenu)
     int titleNameX = objMenu->centerX - titleNameGabX / 2;
     menuText.draw(titleName, titleNameX, this->y + 15, titleNameFontSize, 255, 255, 255);
 
-    ctx.DrawImage(imager.icons, 
-    unit->unitMenu->titleMenuX, 
-    unit->unitMenu->titleMenuY, 
-    50, 
-    42, 
-    this->x, 
-    this->y + 50, 
-    this->gabX, 
-    this->gabY);
+    ctx.DrawImage(imager.icons,
+                  unit->unitMenu->titleMenuX,
+                  unit->unitMenu->titleMenuY,
+                  50,
+                  42,
+                  this->x,
+                  this->y + 50,
+                  this->gabX,
+                  this->gabY);
 
     ctx.StrokeRect(this->x, this->y + 50, this->gabX, this->gabY, 110, 110, 110);
+    int infoLineX = this->x + 110;
+    int infoLineY = this->y + 54;
+    unit->unitMenu->infoLines.forEach([unit, this, fontSize, infoLineX, infoLineY](Lambda lambda, int i)
+                                      {
+      string resStr = lambda.fn(unit);
+      menuText.draw(resStr, infoLineX, infoLineY + (i * 20), fontSize, 255, 255, 0); });
 
-    string resStr = unit->unitMenu->getTitl_1_line(unit);
-    //int lineX = this->x
-    menuText.draw(resStr, this->x + 110, this->y + 54, fontSize, 255, 255, 0);
-    resStr = unit->unitMenu->getTitl_2_line(unit);
-    menuText.draw(resStr, 840, 304, fontSize, 255, 255, 0);
-    resStr = unit->unitMenu->getTitl_3_line(unit);
-    menuText.draw(resStr, 840, 323, fontSize, 255, 255, 0);
-    resStr = unit->unitMenu->getTitl_4_line(unit);
-    menuText.draw(resStr, 840, 342, fontSize, 255, 255, 0);
-    resStr = unit->unitMenu->getTitl_5_line(unit);
-    menuText.draw(resStr, 840, 362, fontSize, 255, 255, 0);
     if (unit->unitMenu->getIsHp(unit))
     {
-      int y = 398;
+      int y = this->y + 178;
       string resHp = "Hit points: " + to_string(unit->hp) + " / " + to_string(unit->hpMax);
       titleNameGabX = resHp.size() * (fontSize * 0.7);
       titleNameX = objMenu->centerX - titleNameGabX / 2;
@@ -73,7 +67,7 @@ void TitleUnit::draw(ProtoObj *unit, ProtoObjMenu *objMenu)
     }
     if (unit->unitMenu->getIsMana(unit))
     {
-      int y = 428;
+      int y = this->y + 208;
       string resHp = "Hit points: " + to_string(unit->hp) + " / " + to_string(unit->hpMax);
       titleNameGabX = resHp.size() * (fontSize * 0.7);
       titleNameX = objMenu->centerX - titleNameGabX / 2;
