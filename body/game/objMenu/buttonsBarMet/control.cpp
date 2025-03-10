@@ -12,7 +12,7 @@ void ButtonsBar::control()
 ButtonData *buttonData = this->pom->unit->unitMenu->buttonsData.getItem(this->pom->slice).getItem(ver).getItem(hor);
     button->buttonData = buttonData->update(this->pom->unit); }); });
 
-        Button *fb = nullptr;
+        this->focusButton = nullptr;
         if (
             !this->pom->gf->miniMapClick &&
             !this->pom->zone.active &&
@@ -32,24 +32,24 @@ ButtonData *buttonData = this->pom->unit->unitMenu->buttonsData.getItem(this->po
             {
                 int indexX = floor((x - this->x) / (this->buttonGabarit));
                 int indexY = floor((y - this->y) / (this->buttonGabarit));
-                fb = this->buttonsArray.getItem(indexY).getItem2(indexX);
+                this->focusButton = this->buttonsArray.getItem(indexY).getItem2(indexX);
 
-                if (clickLeft && fb->buttonData)
+                if (clickLeft && this->focusButton->buttonData)
                 {
-                    fb->buttonData->onClick(this->pom->unit);
+                    this->focusButton->buttonData->onClick(this->pom->unit);
                 }
             };
         }
-        if (fb &&
-            fb->width < this->buttonGabarit)
+        if (this->focusButton &&
+            this->focusButton->width < this->buttonGabarit)
         {
-            fb->width += 1;
-            fb->height += 1;
+            this->focusButton->width += 1;
+            this->focusButton->height += 1;
         }
-        this->buttonsArray.forEach([this, fb](Array<Button *> line)
-                                   { line.forEach([this, fb](Button *button)
+        this->buttonsArray.forEach([this](Array<Button *> line)
+                                   { line.forEach([this](Button *button)
                                                   {
-            if (button != fb && button->width > button->gabarit) {
+            if (button != this->focusButton && button->width > button->gabarit) {
                  button->width -= 1;
                  button->height -= 1;
             } }); });

@@ -17,12 +17,14 @@ void Shaht::createUnitMenu()
         return "Gold: " + to_string(unit->gold);
     };
 
+     ////////////////////////////////// out button
      ButtonData *bd = this->unitMenu->buttonsData.getItem(0).getItem(3).getItem(4);
      bd->update = [bd](ProtoObj* unit){
         return bd;
     };
     bd->onClick = [](ProtoObj* unit){
         unit->gf->game->objMenu->defaultData();
-        console.log(to_string(unit->gold));
     };
+    bd->infoString = "Close menu";
+    /////////////////////////
 };

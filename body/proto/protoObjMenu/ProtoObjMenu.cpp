@@ -37,7 +37,15 @@ void TitleUnit::draw(ProtoObj *unit, ProtoObjMenu *objMenu)
     string titleName = unit->unitMenu->getTitleName(unit);
     int titleNameGabX = titleName.size() * (titleNameFontSize * 0.7);
     int titleNameX = objMenu->centerX - titleNameGabX / 2;
-    menuText.draw(titleName, titleNameX, this->y + 15, titleNameFontSize, 255, 255, 255);
+
+    int dynamicY = this->y + 50;
+    dynamicY = unit->unitMenu->getIsHp(unit) ? dynamicY - 15 : dynamicY;
+    dynamicY = unit->unitMenu->getIsMana(unit) ? dynamicY - 15 : dynamicY;
+
+    menuText.draw(titleName, titleNameX, dynamicY + 15, titleNameFontSize, 255, 255, 255);
+
+
+
 
     ctx.DrawImage(imager.icons,
                   unit->unitMenu->titleMenuX,
@@ -45,21 +53,22 @@ void TitleUnit::draw(ProtoObj *unit, ProtoObjMenu *objMenu)
                   50,
                   42,
                   this->x,
-                  this->y + 50,
+                  dynamicY + 50,
                   this->gabX,
                   this->gabY);
 
-    ctx.StrokeRect(this->x, this->y + 50, this->gabX, this->gabY, 110, 110, 110);
+    ctx.StrokeRect(this->x, dynamicY + 50, this->gabX, this->gabY, 110, 110, 110);
     int infoLineX = this->x + 110;
-    int infoLineY = this->y + 54;
+    int infoLineY = dynamicY + 54;
     unit->unitMenu->infoLines.forEach([unit, this, fontSize, infoLineX, infoLineY](Lambda lambda, int i)
                                       {
       string resStr = lambda.fn(unit);
-      menuText.draw(resStr, infoLineX, infoLineY + (i * 20), fontSize, 255, 255, 0); });
+      menuText.draw(resStr, infoLineX, infoLineY + (i * 20), fontSize, 255, 255, 0);
+       });
 
     if (unit->unitMenu->getIsHp(unit))
     {
-      int y = this->y + 178;
+      int y = dynamicY + 178;
       string resHp = "Hit points: " + to_string(unit->hp) + " / " + to_string(unit->hpMax);
       titleNameGabX = resHp.size() * (fontSize * 0.7);
       titleNameX = objMenu->centerX - titleNameGabX / 2;
@@ -72,7 +81,7 @@ void TitleUnit::draw(ProtoObj *unit, ProtoObjMenu *objMenu)
     }
     if (unit->unitMenu->getIsMana(unit))
     {
-      int y = this->y + 208;
+      int y = dynamicY + 208;
       string resHp = "Hit points: " + to_string(unit->hp) + " / " + to_string(unit->hpMax);
       titleNameGabX = resHp.size() * (fontSize * 0.7);
       titleNameX = objMenu->centerX - titleNameGabX / 2;

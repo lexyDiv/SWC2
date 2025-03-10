@@ -13,14 +13,12 @@ struct ButtonData {
     int animY = 0;
     int animGabX = 0;
     int animGabY = 0;
+    string infoString = "";
     Image *image = nullptr;
     function<void (ProtoObj *unit)> onClick = [](ProtoObj *unit){};
     function<ButtonData* (ProtoObj *unit)> update = [this](ProtoObj *unit){
         return nullptr;
     };
-    // ButtonData* update(int ver, int hor) {
-    //     return nullptr;
-    // };
 };
 
 class ProtoUnitMenu

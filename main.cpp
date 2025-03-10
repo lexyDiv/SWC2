@@ -173,6 +173,7 @@ if (game->isGFComplite) {
       game->draw();
     }
 
+
     //  ctx.DrawImage(groundBasic, 0, 0, 100, 100, 100, 100, 200, 200);
 
 //  if ( game && game->gf && game->gf->init) {
