@@ -16,7 +16,8 @@ struct ButtonData {
     string infoString = "";
     Image *image = nullptr;
     function<void (ProtoObj *unit)> onClick = [](ProtoObj *unit){};
-    function<ButtonData* (ProtoObj *unit)> update = [this](ProtoObj *unit){
+    
+    function<ButtonData* (ProtoObj *unit)> update = [](ProtoObj *unit){
         return nullptr;
     };
 };
