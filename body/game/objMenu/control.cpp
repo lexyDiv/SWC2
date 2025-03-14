@@ -1,4 +1,4 @@
-#include "ObjMenu.cpp"
+#include "default.cpp"
 
 void ObjMenu::control() {
     

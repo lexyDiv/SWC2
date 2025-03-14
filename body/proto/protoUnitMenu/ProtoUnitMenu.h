@@ -1,5 +1,27 @@
 #include "../protoObj/ProtoObj.cpp"
 
+struct Lambda
+{
+    function<string(ProtoObj *unit)> fn = [](ProtoObj *unit)
+    {
+        return "";
+    };
+};
+
+struct ButtonData {
+    int animX = 0;
+    int animY = 0;
+    int animGabX = 0;
+    int animGabY = 0;
+    string infoString = "";
+    Image *image = nullptr;
+    function<void (ProtoObj *unit)> onClick = [](ProtoObj *unit){};
+    
+    function<ButtonData* (ProtoObj *unit)> update = [](ProtoObj *unit){
+        return nullptr;
+    };
+};
+
 class ProtoUnitMenu
 {
 public:
@@ -9,34 +31,25 @@ public:
 
     int titleMenuX = 0;
     int titleMenuY = 0;
+    bool isButtons = false;
 
     ProtoObj *unit = nullptr;
+    Array<Lambda> infoLines;
+   // Array<Array<ButtonData*>> buttonsData;
+    Array<Array<Array<ButtonData*>>> buttonsData;
 
-    function<bool(ProtoObj *unit)> getIsHp = [](ProtoObj* unit){
-        return true;
+    function<bool(ProtoObj *unit)> getIsHp = [](ProtoObj *unit)
+    {
+        return false;
     };
 
-        function<bool(ProtoObj *unit)> getIsMana = [](ProtoObj* unit){
-        return true;
+    function<bool(ProtoObj *unit)> getIsMana = [](ProtoObj *unit)
+    {
+        return false;
     };
 
-    function<string(ProtoObj *unit)> getTitleName = [](ProtoObj* unit){
+    function<string(ProtoObj *unit)> getTitleName = [](ProtoObj *unit)
+    {
         return "";
     };
-    function<string(ProtoObj *unit)> getTitl_1_line = [](ProtoObj* unit){
-        return "Line 1";
-    };
-    function<string(ProtoObj *unit)> getTitl_2_line = [](ProtoObj* unit){
-        return "Line 2";
-    };
-    function<string(ProtoObj *unit)> getTitl_3_line = [](ProtoObj* unit){
-        return "Line 3";
-    };
-    function<string(ProtoObj *unit)> getTitl_4_line = [](ProtoObj* unit){
-        return "Line 4";
-    };
-    function<string(ProtoObj *unit)> getTitl_5_line = [](ProtoObj* unit){
-        return "Line 5";
-    };
-    // function<bool(T item, int index, vector<T> vec)> fn
 };

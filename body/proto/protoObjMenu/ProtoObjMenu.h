@@ -1,6 +1,7 @@
-#include "../protoUnitMenu/ProtoUnitMenu.cpp"
+#include "buttonsBar/ButtonsBar.cpp"
 
-struct Zone {
+struct Zone
+{
     Point a;
     Point b;
     int gabX;
@@ -8,33 +9,36 @@ struct Zone {
     bool active = false;
 };
 
-struct TitleUnit {
+struct TitleUnit
+{
 
     int x = 730;
-    int y = 280;
+    int y = 210;
     int gabX = 100;
     int gabY = 100;
 
-
-
-    void draw(ProtoObj* unit, ProtoObjMenu* objMenu); 
+    void draw(ProtoObj *unit, ProtoObjMenu *objMenu);
 };
 
-class ProtoObjMenu {
-    public:
+class ProtoObjMenu
+{
+public:
     ProtoObjMenu();
-   virtual ~ProtoObjMenu();
-   virtual void create(ProtoGameField* gf);
-   virtual void getCandidateCells();
-   virtual void control();
-   virtual void draw();
+    virtual ~ProtoObjMenu();
+    virtual void create(ProtoGameField *gf);
+    virtual void getCandidateCells();
+    virtual void control();
+    virtual void draw();
+    virtual void defaultData();
 
-   int mX, gabX, centerX;
-   
-   TitleUnit titleUnit;
-   Zone zone;
+    int mX, gabX, centerX;
+    int slice = 0;
+
+    TitleUnit titleUnit;
+    ButtonsBar buttonsBar;
+    Zone zone;
     Array<ProtoObj *> units;
-    Array<ProtoObj* > candidateCells;
-    ProtoObj* unit = nullptr;
-    ProtoGameField* gf = nullptr;
+    Array<ProtoObj *> candidateCells;
+    ProtoObj *unit = nullptr;
+    ProtoGameField *gf = nullptr;
 };
