@@ -46,11 +46,11 @@ void TitleUnit::draw(ProtoObj *unit, ProtoObjMenu *objMenu)
     menuText.draw(titleName, titleNameX, dynamicY + 15, titleNameFontSize, 255, 255, 255);
 
 
-
+    Point titleMenuXY = unit->unitMenu->titleMenuXY(unit);
 
     ctx.DrawImage(imager.icons,
-                  unit->unitMenu->titleMenuX,
-                  unit->unitMenu->titleMenuY,
+                  titleMenuXY.x,
+                  titleMenuXY.y,
                   50,
                   42,
                   this->x,
