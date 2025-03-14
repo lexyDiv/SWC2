@@ -5,5 +5,6 @@ class UnitMenu : public ProtoUnitMenu {
     UnitMenu() : ProtoUnitMenu(){};
     ~UnitMenu();
 
-    void create(ProtoObj* unit) override;
+    void create() override;
+    void createShaht() override;
 };

@@ -27,7 +27,8 @@ class ProtoUnitMenu
 public:
     ProtoUnitMenu();
     virtual ~ProtoUnitMenu();
-    virtual void create(ProtoObj *unit);
+    virtual void create();
+    virtual void createShaht();
 
     int titleMenuX = 0;
     int titleMenuY = 0;

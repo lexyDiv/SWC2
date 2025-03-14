@@ -35,6 +35,7 @@ void TitleUnit::draw(ProtoObj *unit, ProtoObjMenu *objMenu)
     int titleNameFontSize = 22;
     int fontSize = 12;
     string titleName = unit->unitMenu->getTitleName(unit);
+
     int titleNameGabX = titleName.size() * (titleNameFontSize * 0.7);
     int titleNameX = objMenu->centerX - titleNameGabX / 2;
 

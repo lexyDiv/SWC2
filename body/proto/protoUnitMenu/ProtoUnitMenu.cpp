@@ -8,6 +8,10 @@ ProtoUnitMenu::~ProtoUnitMenu()
 {
 }
 
-void ProtoUnitMenu::create(ProtoObj* unit)
+void ProtoUnitMenu::create()
+{
+}
+
+void ProtoUnitMenu::createShaht()
 {
 }
