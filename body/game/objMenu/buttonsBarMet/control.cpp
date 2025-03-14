@@ -32,7 +32,7 @@ ButtonData *buttonData = this->pom->unit->unitMenu->buttonsData.getItem(this->po
             {
                 int indexX = floor((x - this->x) / (this->buttonGabarit));
                 int indexY = floor((y - this->y) / (this->buttonGabarit));
-                Button* candidate = this->buttonsArray.getItem(indexY).getItem2(indexX);
+                Button *candidate = this->buttonsArray.getItem(indexY).getItem2(indexX);
                 this->focusButton = candidate->buttonData ? candidate : nullptr;
 
                 if (clickLeft && this->focusButton->buttonData)
