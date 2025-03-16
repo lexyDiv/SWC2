@@ -23,10 +23,7 @@ void ButtonData::createOut()
         return this;
     };
 
-    // this->isPriceOk = [](ProtoObj* unit){
-    //     return false;
-    // };
-    this->priceType = "res";
+    this->priceType = "";
 
     this->animGabX = 256;
     this->animGabY = 256;

@@ -1,6 +1,5 @@
 #include "../../protoObj/ProtoObj.cpp"
 
-
 class ButtonData
 {
 public:
@@ -33,21 +32,25 @@ public:
 
     /////////////// price
 
-    function<bool(ProtoObj* unit)> isManaOk = [](ProtoObj* unit){
+    function<bool(ProtoObj *unit)> isManaOk = [](ProtoObj *unit)
+    {
         return true;
-     };
+    };
 
-     function<bool(ProtoObj* unit)> isGoldOk = [](ProtoObj* unit){
+    function<bool(ProtoObj *unit)> isGoldOk = [](ProtoObj *unit)
+    {
         return true;
-     };
+    };
 
-     function<bool(ProtoObj* unit)> isOilOk = [](ProtoObj* unit){
+    function<bool(ProtoObj *unit)> isOilOk = [](ProtoObj *unit)
+    {
         return true;
-     };
+    };
 
-     function<bool(ProtoObj* unit)> isWoodOk = [](ProtoObj* unit){
+    function<bool(ProtoObj *unit)> isWoodOk = [](ProtoObj *unit)
+    {
         return true;
-     };
+    };
 
     function<string(ProtoObj *unit)> goldPriceInfo = [](ProtoObj *unit)
     {
@@ -75,7 +78,18 @@ public:
 
     function<bool(ProtoObj *unit)> isPriceOk = [this](ProtoObj *unit)
     {
-        return bool(this->isGoldOk(unit) && this->isOilOk(unit) && this->isWoodOk(unit) && this->isManaOk(unit));
+        if (this->priceType == "res")
+        {
+            return bool(this->isGoldOk(unit) && this->isOilOk(unit) && this->isWoodOk(unit));
+        }
+        else if (this->priceType == "mana")
+        {
+            return bool(this->isManaOk(unit));
+        }
+        else
+        {
+            return true;
+        }
     };
 };
 

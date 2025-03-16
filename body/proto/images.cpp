@@ -42,10 +42,30 @@ public:
 
     Image *menuFon = new Image("images/images/menuFon.jpg");
     Image *close = new Image("images/close.png");
+    Image *yes = new Image("images/yes.png");
+    Image *no = new Image("images/no.png");
+    Image *goldIcon = new Image("images/gold.png");
+    Image *oilIcon = new Image("images/oil.png");
+    Image *woodIcon = new Image("images/wood.png");
+
 
     Imager() {};
     ~Imager()
     {
+       delete oilIcon;
+       oilIcon = nullptr;
+
+       delete woodIcon;
+       woodIcon = nullptr;
+
+        delete goldIcon;
+        goldIcon = nullptr;
+
+        delete no;
+        no = nullptr;
+
+        delete yes;
+        yes = nullptr;
 
         delete close;
         close = nullptr;
