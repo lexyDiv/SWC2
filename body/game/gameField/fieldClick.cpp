@@ -33,12 +33,12 @@ void GameField::fieldClick()
         {
           //  console.log("create zone");
           ProtoObjMenu* objMenu = this->game->objMenu;
+        //  objMenu->defaultData();
         objMenu->zone.active = true;
         objMenu->zone.a = {x: this->fieldClickPoint->firstX, y: this->fieldClickPoint->firstY};
         objMenu->zone.b = {x: this->fieldClickPoint->secX, y: this->fieldClickPoint->secY};
         objMenu->zone.gabX = this->fieldClickPoint->gabX;
         objMenu->zone.gabY = this->fieldClickPoint->gabY;
-
             delete this->fieldClickPoint;
             this->fieldClickPoint = nullptr;
         }

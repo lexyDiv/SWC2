@@ -1,4 +1,4 @@
-#include "../protoObj/ProtoObj.cpp"
+#include "buttonData/ButtonData.cpp"
 
 struct Lambda
 {
@@ -8,21 +8,6 @@ struct Lambda
     };
 };
 
-struct ButtonData
-{
-    int animX = 0;
-    int animY = 0;
-    int animGabX = 0;
-    int animGabY = 0;
-    string infoString = "";
-    Image *image = nullptr;
-    function<void(ProtoObj *unit)> onClick = [](ProtoObj *unit) {};
-
-    function<ButtonData *(ProtoObj *unit)> update = [](ProtoObj *unit)
-    {
-        return nullptr;
-    };
-};
 
 class ProtoUnitMenu
 {

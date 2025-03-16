@@ -2,12 +2,12 @@
 
 void ButtonsBar::draw()
 {
-
+    ProtoObj* unit = this->pom->unit;
         if (this->focusButton && this->focusButton->buttonData)
         {
                 int infoStringFontSize = 15;
 
-                string infoString = this->focusButton->buttonData->infoString;
+                string infoString = this->focusButton->buttonData->infoString(unit);
                 int infoStringGabX = infoString.size() * (infoStringFontSize * 0.7);
                 int infoStringX = this->pom->centerX - infoStringGabX / 2;
 
