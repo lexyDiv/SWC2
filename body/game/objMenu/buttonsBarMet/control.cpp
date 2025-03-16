@@ -6,8 +6,8 @@ void ButtonsBar::control()
 
     if (isUnit && this->pom->unit->unitMenu->isButtons)
     {
-        this->buttonsArray.forEach([this, isUnit](Array<Button *> line, int ver)
-                                   { line.forEach([this, ver, isUnit](Button *button, int hor)
+        this->buttonsArray.forEach([this](Array<Button *> line, int ver)
+                                   { line.forEach([this, ver](Button *button, int hor)
                                                   {
 ButtonData *buttonData = this->pom->unit->unitMenu->buttonsData.getItem(this->pom->slice).getItem(ver).getItem(hor);
     button->buttonData = buttonData->update(this->pom->unit); }); });
