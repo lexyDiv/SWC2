@@ -1,5 +1,6 @@
 #include "../../protoObj/ProtoObj.cpp"
 
+
 class ButtonData
 {
 public:
@@ -9,6 +10,8 @@ public:
     int animY = 0;
     int animGabX = 0;
     int animGabY = 0;
+
+    string priceType = "";
 
     void createOut();
     void createVoid();
@@ -26,6 +29,53 @@ public:
     function<ButtonData *(ProtoObj *unit)> update = [](ProtoObj *unit)
     {
         return nullptr;
+    };
+
+    /////////////// price
+
+    function<bool(ProtoObj* unit)> isManaOk = [](ProtoObj* unit){
+        return true;
+     };
+
+     function<bool(ProtoObj* unit)> isGoldOk = [](ProtoObj* unit){
+        return true;
+     };
+
+     function<bool(ProtoObj* unit)> isOilOk = [](ProtoObj* unit){
+        return true;
+     };
+
+     function<bool(ProtoObj* unit)> isWoodOk = [](ProtoObj* unit){
+        return true;
+     };
+
+    function<string(ProtoObj *unit)> goldPriceInfo = [](ProtoObj *unit)
+    {
+        string priceInfo = "";
+        return priceInfo;
+    };
+
+    function<string(ProtoObj *unit)> oilPriceInfo = [](ProtoObj *unit)
+    {
+        string priceInfo = "";
+        return priceInfo;
+    };
+
+    function<string(ProtoObj *unit)> woodPriceInfo = [](ProtoObj *unit)
+    {
+        string priceInfo = "";
+        return priceInfo;
+    };
+
+    function<string(ProtoObj *unit)> manaPriceInfo = [](ProtoObj *unit)
+    {
+        string priceInfo = "";
+        return priceInfo;
+    };
+
+    function<bool(ProtoObj *unit)> isPriceOk = [this](ProtoObj *unit)
+    {
+        return bool(this->isGoldOk(unit) && this->isOilOk(unit) && this->isWoodOk(unit) && this->isManaOk(unit));
     };
 };
 

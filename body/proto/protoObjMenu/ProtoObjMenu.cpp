@@ -31,7 +31,6 @@ void ProtoObjMenu::draw()
 
 void TitleUnit::draw(ProtoObj *unit, ProtoObjMenu *objMenu)
 {
-  {
     int titleNameFontSize = 22;
     int fontSize = 12;
     string titleName = unit->unitMenu->getTitleName(unit);
@@ -92,6 +91,5 @@ void TitleUnit::draw(ProtoObj *unit, ProtoObjMenu *objMenu)
       ctx.FillRect(750, y, width, 10, color);
       ctx.StrokeRect(750, y, 250, 10, 110, 110, 110);
       menuText.draw(resHp, titleNameX, y - 15, fontSize, 255, 255, 0);
-    }
-  };
+    } 
 }

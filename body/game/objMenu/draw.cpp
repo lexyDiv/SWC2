@@ -9,5 +9,6 @@ void ObjMenu::draw()
         {
             this->buttonsBar.draw();
         }
+        this->priceDraw();
     }
 };

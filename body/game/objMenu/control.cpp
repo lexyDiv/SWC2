@@ -1,4 +1,4 @@
-#include "default.cpp"
+#include "priceDraw.cpp"
 
 void ObjMenu::control()
 {

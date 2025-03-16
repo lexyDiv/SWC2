@@ -14,6 +14,7 @@ class Button {
     int width = this->gabarit;
     int height = this->gabarit;
     bool isToutched = false;
+    bool isPriceOkResault = true;
     ButtonData *buttonData = nullptr;
 
     void create(int x, int y);
