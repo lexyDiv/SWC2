@@ -2,7 +2,7 @@
 
 class ButtonData
 {
-    public:
+public:
     ButtonData();
     ~ButtonData();
     int animX = 0;
@@ -11,6 +11,7 @@ class ButtonData
     int animGabY = 0;
 
     void createOut();
+    void createVoid();
 
     function<string(ProtoObj *unit)> infoString = [](ProtoObj *unit)
     {
@@ -27,3 +28,25 @@ class ButtonData
         return nullptr;
     };
 };
+
+class ButtonDataHub
+{
+public:
+    ButtonDataHub()
+    {
+        this->outButtonData->createOut();
+    };
+    ~ButtonDataHub()
+    {
+        delete this->outButtonData;
+        this->outButtonData = nullptr;
+
+        delete this->voidButtonData;
+        this->voidButtonData = nullptr;
+    };
+
+    ButtonData *outButtonData = new ButtonData;
+    ButtonData *voidButtonData = new ButtonData;
+};
+
+ButtonDataHub buttonDataHub;

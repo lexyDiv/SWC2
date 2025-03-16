@@ -2,6 +2,7 @@
 
 void Oil::createUnitMenu()
 {
+    this->unitMenu = unitMenuPack.oil;
     // this->unitMenu = new UnitMenu;
     // this->unitMenu->create(this);
     // this->titleName = "Oil";

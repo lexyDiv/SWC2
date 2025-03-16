@@ -14,11 +14,11 @@ void ButtonsBar::draw()
                 menuText.draw(infoString, infoStringX, this->y - 22, infoStringFontSize, 255, 255, 255);
         }
 
-        ctx.FillRect(this->x, this->y, this->width, this->height, "red", 255);
-        this->buttonsArray.forEach([](Array<Button *> line)
-                                   { line.forEach([](Button *button)
+        ctx.FillRect(this->x, this->y, this->width, this->height, "black", 150);
+        this->buttonsArray.forEach([unit](Array<Button *> line)
+                                   { line.forEach([unit](Button *button)
                                                   {
                         if (button->buttonData) {
-                                button->draw();
+                                button->draw(unit);
                         } }); });
 };

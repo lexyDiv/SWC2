@@ -17,6 +17,6 @@ class Button {
     ButtonData *buttonData = nullptr;
 
     void create(int x, int y);
-    void draw();
+    void draw(ProtoObj* unit);
 
 };

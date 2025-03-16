@@ -22,4 +22,24 @@ void UnitMenu::createShaht()
         Point point = {x: 200, y: 290};
         return point;
     };
+
+/////////////////////////////// buttons data
+
+this->isButtons = true;
+
+   Array<Array<ButtonData *>> slice;
+  for (int ver = 0; ver < 4; ver++)
+  {
+    Array<ButtonData *> line;
+    for (int hor = 0; hor < 5; hor++)
+    {
+      ButtonData *buttonData = buttonDataHub.voidButtonData;
+      line.push(buttonData);
+    };
+    slice.push(line);
+  };
+  this->buttonsData.push(slice);
+
+  this->buttonsData.getItem3(0).getItem3(3).changeEl(buttonDataHub.outButtonData, 4);
+
 };
