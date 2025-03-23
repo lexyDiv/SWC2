@@ -1,6 +1,6 @@
 // g++ main.cpp -I./include -o program `sdl2-config --cflags --libs` -lSDL2 -lSDL2_mixer -lSDL2_image -lSDL2_ttf -I./GLM/
 // ./program
-#include "methods/buttonData/createOut.cpp"
+#include "methods/fraction/create.cpp"
 
 
 
