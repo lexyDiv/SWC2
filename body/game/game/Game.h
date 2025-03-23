@@ -11,4 +11,5 @@ class Game : public ProtoGame {
     void preDraw() override;
     void fonMenuDraw() override;
     void fractionsControl() override;
+    void getPotentialWayControl() override;
 };

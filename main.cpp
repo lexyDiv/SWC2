@@ -33,7 +33,7 @@ void hard()
   {
 
     if (game->isGFComplite) {
-      
+      game->getPotentialWayControl();
     }
 
     this_thread::sleep_for(chrono::milliseconds(1));

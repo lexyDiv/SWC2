@@ -10,6 +10,7 @@ public:
     virtual void preDraw();
     virtual void fonMenuDraw();
     virtual void fractionsControl();
+    virtual void getPotentialWayControl();
 
     vector<string> pathes{
         "levels/test_1.txt",
@@ -20,5 +21,5 @@ public:
     ProtoObjMenu* objMenu = nullptr;
     bool isGFComplite = false;
     Array<ProtoFraction*> fractions;
-    Array<ProtoObj *> UnitsOnWay;
+    Array<ProtoObj *> unitsOnWay;
 };

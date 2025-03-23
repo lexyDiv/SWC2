@@ -3,10 +3,11 @@
 void Peon::create(ProtoObj* cell) {
   
     this->unitMenu = unitMenuPack.peon;
-
+    
     this->cell = cell;
     this->cell->groundUnit = this;
     this->gf = cell->gf;
+    this->game = cell->game;
 
     this->sight = 1;
     this->speed = 1;

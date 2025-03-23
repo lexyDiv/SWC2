@@ -19,6 +19,7 @@ public:
     virtual int getLevel();
     virtual void createUnitMenu();
     virtual void getHandTarget(ProtoObj* cell);
+    virtual void getPotentialWayTarget();
     ////////
 
     // all

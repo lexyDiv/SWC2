@@ -1,4 +1,4 @@
-#include "getHandTarget.cpp"
+#include "getPotentialWayTarget.cpp"
 
 void Peon::draw() {
     this->preDraw();

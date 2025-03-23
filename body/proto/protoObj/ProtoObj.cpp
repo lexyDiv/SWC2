@@ -2,6 +2,7 @@
 
 
 
+
 ProtoObj::ProtoObj()
 {
 }
@@ -32,5 +33,8 @@ void ProtoObj::createUnitMenu()
 {
 }
 void ProtoObj::getHandTarget(ProtoObj *cell)
+{
+}
+void ProtoObj::getPotentialWayTarget()
 {
 }

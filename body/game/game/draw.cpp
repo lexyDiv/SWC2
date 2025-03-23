@@ -1,4 +1,4 @@
-#include "fractionsControl.cpp"
+#include "getPotentialWayControl.cpp"
 
 void Game::draw()
 {
