@@ -1,4 +1,4 @@
-#include "fieldClick.cpp"
+#include "getPotentialWay.cpp"
 
 
 void GameField::create()

@@ -109,7 +109,9 @@ public:
     Array<ProtoObj *> enemys;
     Array<ProtoObj *> way;
     Array<ProtoObj *> potentialWay;
+    //////////////////// =>  way
     bool isPotentialWayComplite = false;
+    ////////////////////////// <= way
     // Array<ProtoObj *> cells2X2;
     ////////////////////// =>  buildings
     Array<ProtoObj *> contactCells;

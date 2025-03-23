@@ -91,6 +91,7 @@ public:
     void getVectorCells(ProtoObj *cell) override;
     void fieldClick() override;
     void fieldClickRight() override;
+    void getPotentialWay(ProtoObj* unit) override;
 
     Color getDefaultColor(char lit) override;
     //

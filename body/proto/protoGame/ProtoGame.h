@@ -22,4 +22,7 @@ public:
     bool isGFComplite = false;
     Array<ProtoFraction*> fractions;
     Array<ProtoObj *> unitsOnWay;
+
+    // bool isAllOrdersPushed = false;
+    // bool isAllUnitsPusedOnGetPotentialWay = false;
 };

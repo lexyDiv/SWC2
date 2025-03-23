@@ -26,6 +26,7 @@ void GameField::fieldClickRight()
             order->cell = cell;
             unit->fraction->orders.push(order);
             order->isComplite = true;
+           // this->game->isAllOrdersPushed = true;
            // console.log(to_string(unit->fraction->orders.length));
         }
     }

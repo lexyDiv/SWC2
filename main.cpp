@@ -150,9 +150,7 @@ int main()
   while (!quit)
   {
 
-if (game->isGFComplite) {
-//console.log(to_string(game->gf->planes.getItem(0)->contactPlanes.getItem(0)->cellsToOther.length));
-}
+
   //   if (tik % 100 == 0) {
   //   delete game;
   //   game = nullptr;
@@ -185,6 +183,7 @@ if (game->isGFComplite) {
           cell->gabX, cell->gabY, "red");
         });
       }
+      
     }
 
 

@@ -2,7 +2,8 @@
 
 void Fraction::orderControl() {
    // console.log(to_string(this->orders.length));
-    this->orders.forEach([this](Order* order){
+
+            this->orders.forEach([this](Order* order){
         if (order->isComplite) {
             ProtoObj *unit = order->unit;
             ProtoObj *cell = order->cell;
@@ -15,11 +16,12 @@ void Fraction::orderControl() {
                 //   //  unit->handTargetTimer = unit->handTargetMaxTime;
                 // }
             }
-            delete order;
-            order = nullptr;
+            order->readyToDelete = true;
         }
     });
-   this->orders.filterSelf([](Order* item){
-       return bool(item);
+    
+   this->orders.filterSelf([](Order* order){
+       return bool(order->readyToDelete);
    });
+     
 };
