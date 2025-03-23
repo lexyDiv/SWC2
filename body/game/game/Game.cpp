@@ -7,6 +7,11 @@ Game::~Game()
 
     delete this->objMenu;
     this->objMenu = nullptr;
+
+    this->fractions.forEach([](ProtoFraction* f){
+        delete f;
+        f = nullptr;
+    });
     
 }
 
@@ -19,6 +24,11 @@ void Game::create()
     this->objMenu = new ObjMenu;
     this->objMenu->create(this->gf);
     
+    ////////////////////////////// fractons
+     ProtoFraction* fraction = new Fraction;
+     fraction->create(this);
+     this->fractions.push(fraction);
+    //////////////////////////////
    
 
      this->isGFComplite = true;

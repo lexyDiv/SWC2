@@ -8,6 +8,6 @@ ProtoFraction::~ProtoFraction()
 {
 }
 
-void ProtoFraction::create()
+void ProtoFraction::create(ProtoGame* game)
 {
 }

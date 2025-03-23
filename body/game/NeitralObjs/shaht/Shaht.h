@@ -1,4 +1,4 @@
-#include "../../unitMenu/create.cpp"
+#include "../../units/peon/draw.cpp"
 
 class Shaht : public ProtoObj {
     public:

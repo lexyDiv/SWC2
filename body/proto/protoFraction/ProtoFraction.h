@@ -4,7 +4,7 @@ class ProtoFraction {
     public:
     ProtoFraction();
    virtual ~ProtoFraction();
-   virtual void create();
+   virtual void create(ProtoGame* game);
 
     string name = "";
     string control = "";
