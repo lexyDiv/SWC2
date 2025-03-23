@@ -11,3 +11,11 @@ ProtoFraction::~ProtoFraction()
 void ProtoFraction::create(ProtoGame* game)
 {
 }
+
+void ProtoFraction::orderControl()
+{
+}
+
+void ProtoFraction::controller()
+{
+}

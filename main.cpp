@@ -1,6 +1,6 @@
 // g++ main.cpp -I./include -o program `sdl2-config --cflags --libs` -lSDL2 -lSDL2_mixer -lSDL2_image -lSDL2_ttf -I./GLM/
 // ./program
-#include "methods/fraction/create.cpp"
+#include "methods/fraction/orderControl.cpp"
 
 
 
@@ -32,6 +32,9 @@ void hard()
   while (!quit)
   {
 
+    if (game->isGFComplite) {
+      
+    }
 
     this_thread::sleep_for(chrono::milliseconds(1));
   }
@@ -50,6 +53,7 @@ void goWork()
 
     if (game->isGFComplite) {
       game->objMenu->getCandidateCells();
+      game->fractionsControl();
     }
 
     listenner(e, quit);

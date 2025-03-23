@@ -87,6 +87,10 @@ void ProtoGameField::fieldClick()
 {
 }
 
+void ProtoGameField::fieldClickRight()
+{
+}
+
 ////////////////////////////////////
 
 // class GF : public ProtoGameField {

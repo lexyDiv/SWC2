@@ -90,6 +90,7 @@ public:
     void getCellImageCellDrawIndexCellUnitInit() override;
     void getVectorCells(ProtoObj *cell) override;
     void fieldClick() override;
+    void fieldClickRight() override;
 
     Color getDefaultColor(char lit) override;
     //

@@ -1,6 +1,7 @@
 #include "get3x3myCells.cpp"
 
 
+
 ProtoObj::ProtoObj()
 {
 }
@@ -28,5 +29,8 @@ int ProtoObj::getLevel() {
     return 1;
 };
 void ProtoObj::createUnitMenu()
+{
+}
+void ProtoObj::getHandTarget(ProtoObj *cell)
 {
 }

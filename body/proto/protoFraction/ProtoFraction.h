@@ -1,4 +1,6 @@
-#include "../protoObjMenu/ProtoObjMenu.cpp"
+#include "order/Order.cpp"
+
+
 
 class ProtoFraction {
     public:
@@ -6,7 +8,13 @@ class ProtoFraction {
    virtual ~ProtoFraction();
    virtual void create(ProtoGame* game);
 
+   virtual void orderControl();
+   virtual void controller();
+
     string name = "";
     string control = "";
     Array<ProtoObj *> units;
+    Array<Order*> orders;
+    Array<ProtoObj*> activeUnits;
+    ProtoGame *game = nullptr;
 };

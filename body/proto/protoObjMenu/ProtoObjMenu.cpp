@@ -30,7 +30,7 @@ void ProtoObjMenu::draw()
 
 void TitleUnit::draw(ProtoObj *unit, ProtoObjMenu *objMenu)
 {
- // console.log("here");
+
   int titleNameFontSize = 22;
   int fontSize = 12;
   string titleName = unit->unitMenu->getTitleName(unit);

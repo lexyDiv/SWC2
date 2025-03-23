@@ -6,8 +6,7 @@ class Peon : public ProtoObj {
     ~Peon();
     void create(ProtoObj* cell) override;
     void draw() override;
+    void getHandTarget(ProtoObj *cell) override;
     void preDraw();
-
-    int animTimer = 0;
 
 };

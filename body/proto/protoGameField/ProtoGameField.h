@@ -29,6 +29,7 @@ public:
     virtual void getCellImageCellDrawIndexCellUnitInit();
     virtual void getVectorCells(ProtoObj *cell);
     virtual void fieldClick();
+    virtual void fieldClickRight();
 
     virtual Color getDefaultColor(char lit);
 

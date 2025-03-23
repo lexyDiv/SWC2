@@ -1,4 +1,4 @@
-#include "getVectorCells.cpp"
+#include "fieldClickRight.cpp"
 
 void GameField::fieldClick()
 {

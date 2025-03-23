@@ -8,9 +8,9 @@ Game::~Game()
     delete this->objMenu;
     this->objMenu = nullptr;
 
-    this->fractions.forEach([](ProtoFraction* f){
-        delete f;
-        f = nullptr;
+    this->fractions.forEach([](ProtoFraction* fr){
+        delete fr;
+        fr = nullptr;
     });
     
 }

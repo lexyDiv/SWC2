@@ -23,3 +23,7 @@ void ProtoGame::preDraw()
 void ProtoGame::fonMenuDraw()
 {
 }
+
+void ProtoGame::fractionsControl()
+{
+}
