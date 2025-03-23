@@ -19,7 +19,7 @@ public:
     virtual int getLevel();
     virtual void createUnitMenu();
     virtual void getHandTarget(ProtoObj* cell);
-    virtual void getPotentialWayTarget();
+    virtual bool getPotentialWayTarget(ProtoObj* cell);
     ////////
 
     // all
@@ -101,6 +101,7 @@ public:
 
     ///////////////////  handTarget
     ProtoObj *handTargetCell = nullptr;
+    ProtoObj *targetCell = nullptr;
     int handTargetTimer = 0;
     int handTargetMaxTime = 0;
 //////////////////////////
@@ -111,6 +112,10 @@ public:
     Array<ProtoObj *> potentialWay;
     //////////////////// =>  way
     bool isPotentialWayComplite = false;
+    int G = 0;
+    int F = 0;
+    int H = 0;
+    ProtoObj* wayFather = nullptr;
     ////////////////////////// <= way
     // Array<ProtoObj *> cells2X2;
     ////////////////////// =>  buildings
