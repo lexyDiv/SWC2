@@ -26,6 +26,7 @@ public:
     virtual ~ProtoUnitMenu();
     virtual void create();
     virtual void createShaht();
+    virtual void createPeon();
 
     // int titleMenuX = 0;
     // int titleMenuY = 0;

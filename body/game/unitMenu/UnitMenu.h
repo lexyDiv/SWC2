@@ -10,7 +10,7 @@ class UnitMenu : public ProtoUnitMenu {
 
     void create() override;
     void createShaht() override;
-
+    void createPeon() override;
 
 
 };

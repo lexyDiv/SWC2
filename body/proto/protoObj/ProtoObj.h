@@ -94,6 +94,7 @@ public:
     int attack = 0;
     int armor = 0;
     int mana = 0;
+    int sight = 1;
 
     
     ProtoObj *cell = nullptr;

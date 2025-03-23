@@ -27,6 +27,7 @@ void Game::create()
     ////////////////////////////// fractons
      ProtoFraction* fraction = new Fraction;
      fraction->create(this);
+     fraction->control = "human";
      this->fractions.push(fraction);
     //////////////////////////////
    

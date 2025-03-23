@@ -25,7 +25,7 @@ void ProtoObj::create(ProtoObj *cell)
 }
 
 int ProtoObj::getLevel() {
-    return 0;
+    return 1;
 };
 void ProtoObj::createUnitMenu()
 {
