@@ -10,4 +10,6 @@ void ObjMenu::control()
         this->potencialUnits.forEach([this](ProtoObj *unit)
                                      { this->units.push(unit); });
     }
+    this->alpha -= 5;
+    this->alpha = this->alpha > 100 ? this->alpha : 255;
 };

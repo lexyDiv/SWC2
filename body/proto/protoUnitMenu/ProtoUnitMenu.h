@@ -8,6 +8,16 @@ struct Lambda
     };
 };
 
+struct UpgradeData {
+    Image* image = imager.icons;
+    int animX = 0;
+    int animY = 0;
+    int animWidth = 100;
+    int animHeight = 100;
+    int compliteCount = 1;
+    int currentCount = 1;
+};
+
 
 class ProtoUnitMenu
 {
@@ -33,12 +43,24 @@ public:
     // Array<Array<ButtonData*>> buttonsData;
     Array<Array<Array<ButtonData *>>> buttonsData;
 
+    ///////////////////////////  upgrade
+     function<UpgradeData(ProtoObj* unit)> upgrade = [](ProtoObj* unit) {
+        UpgradeData upgradeData;
+        return upgradeData;
+     };
+    //////////////////////////
+
     function<bool(ProtoObj *unit)> getIsHp = [](ProtoObj *unit)
     {
         return false;
     };
 
     function<bool(ProtoObj *unit)> getIsMana = [](ProtoObj *unit)
+    {
+        return false;
+    };
+
+    function<bool(ProtoObj *unit)> getIsUpgrade = [](ProtoObj *unit)
     {
         return false;
     };

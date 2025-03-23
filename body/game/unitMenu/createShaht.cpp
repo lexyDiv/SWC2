@@ -23,6 +23,28 @@ void UnitMenu::createShaht()
         return point;
     };
 
+    // this->getIsUpgrade = [](ProtoObj* unit){
+    //   return false;
+    // };
+
+    // this->upgrade = [](ProtoObj* unit){
+    //   UpgradeData ud;
+    //   ud.image = imager.icons;
+    //   ud.compliteCount = 1000;
+    //   ud.currentCount = 500;
+    //   ud.animX = 200;
+    //   ud.animY = 290;
+    //   ud.animWidth = 50;
+    //   ud.animHeight = 42;
+    //   return ud;
+    // };
+
+    // this->getIsHp = [](ProtoObj* unit){
+    //   return false;
+    // };
+    //   this->getIsMana = [](ProtoObj* unit){
+    //   return false;
+    // };
 /////////////////////////////// buttons data
 
 this->isButtons = true;

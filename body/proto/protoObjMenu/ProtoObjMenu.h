@@ -34,6 +34,7 @@ public:
     int mX, gabX, centerX;
     int slice = 0;
     bool needUpdate = false;
+    int alpha = 255;
 
     TitleUnit titleUnit;
     ButtonsBar buttonsBar;
