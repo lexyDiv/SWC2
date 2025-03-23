@@ -6,9 +6,10 @@ Oil::~Oil()
                         {
         delete line;
         line = nullptr; });
-    if (this->unitMenu)
-    {
-        delete this->unitMenu;
-        this->unitMenu = nullptr;
-    }
+
+    // if (this->unitMenu)
+    // {
+    //     delete this->unitMenu;
+    //     this->unitMenu = nullptr;
+    // }
 }

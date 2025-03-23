@@ -4,7 +4,7 @@ void ObjMenu::getCandidateCells()
 {
     if (this->zone.active)
     {
-        this->defaultData();
+       this->defaultData();
         int cellSize = this->gf->cellSize;
 
         int firstX = this->zone.a.x;
@@ -63,12 +63,16 @@ void ObjMenu::getCandidateCells()
         else if (units.length > 1)
         {
             units.forEach([this](ProtoObj *unit)
-                          { this->units.push(unit); });
+                          { this->potencialUnits.push(unit); });
         }
         else if (building)
         {
+           // this->defaultData();
             building->inZone = false;
-            this->unit = building;
+            this->potencialUnit = building;
+           // console.log("new state");
+        } else {
+            // console.log("out");
         }
         ////////////////////////////////////////
         if (building)

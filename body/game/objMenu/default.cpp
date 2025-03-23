@@ -1,8 +1,9 @@
 #include "ObjMenu.cpp"
 
 void ObjMenu::defaultData() {
-        this->units.clear();
-        this->unit = nullptr;
+        this->needUpdate = true;
+        this->potencialUnits.clear();
+        this->potencialUnit = nullptr;
         int cellSize = this->gf->cellSize;
         this->zone.active = false;
         this->slice = 0;
@@ -13,4 +14,5 @@ void ObjMenu::defaultData() {
             button->height = button->gabarit;
             }); 
             });
+            this->buttonsBar.focusButton = nullptr;
 };

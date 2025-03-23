@@ -33,12 +33,16 @@ public:
 
     int mX, gabX, centerX;
     int slice = 0;
+    bool needUpdate = false;
+    int alpha = 255;
 
     TitleUnit titleUnit;
     ButtonsBar buttonsBar;
     Zone zone;
     Array<ProtoObj *> units;
+    Array<ProtoObj *> potencialUnits;
     Array<ProtoObj *> candidateCells;
     ProtoObj *unit = nullptr;
+    ProtoObj *potencialUnit = nullptr;
     ProtoGameField *gf = nullptr;
 };

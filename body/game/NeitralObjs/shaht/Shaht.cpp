@@ -8,8 +8,8 @@ Shaht::~Shaht()
         peon = nullptr;
     });
 
-    if (this->unitMenu) {
-        delete this->unitMenu;
-        this->unitMenu = nullptr;
-    }
+    // if (this->unitMenu) {
+    //     delete this->unitMenu;
+    //     this->unitMenu = nullptr;
+    // }
 }
