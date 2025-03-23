@@ -73,6 +73,7 @@ void goWork()
 
 int main()
 {
+
  
 
 // string literas = "!#$%&(),-;@+=0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.:/' ";
