@@ -25,6 +25,8 @@ void GameField::fieldClickRight()
             order->unit = unit;
             order->cell = cell;
             unit->fraction->orders.push(order);
+            order->isComplite = true;
+           // console.log(to_string(unit->fraction->orders.length));
         }
     }
 };

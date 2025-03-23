@@ -175,6 +175,16 @@ if (game->isGFComplite) {
     if (game->isGFComplite) {
       game->preDraw();
       game->draw();
+
+// potential way draw
+      if (game->objMenu->unit && game->objMenu->unit->isPotentialWayComplite) {
+        game->objMenu->unit->potentialWay.forEach([](ProtoObj* cell){
+          float drawDeltaX = game->gf->drawDeltaX;
+          float drawDeltaY = game->gf->drawDeltaY;
+          ctx.FillRect(cell->x + drawDeltaX, cell->y + drawDeltaY,
+          cell->gabX, cell->gabY, "red");
+        });
+      }
     }
 
 

@@ -1,4 +1,4 @@
-#include "fonMenuDraw.cpp"
+#include "fractionsControl.cpp"
 
 void Game::draw()
 {
