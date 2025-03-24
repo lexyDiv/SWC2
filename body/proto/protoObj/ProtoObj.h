@@ -1,4 +1,4 @@
-#include "MenuText.cpp"
+#include "../../../deleter/Deleter.cpp"
 
 class ProtoPlane;
 struct Water;

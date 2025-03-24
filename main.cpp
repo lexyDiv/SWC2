@@ -1,6 +1,6 @@
 // g++ main.cpp -I./include -o program `sdl2-config --cflags --libs` -lSDL2 -lSDL2_mixer -lSDL2_image -lSDL2_ttf -I./GLM/
 // ./program
-#include "methods/fraction/orderControl.cpp"
+#include "methods/deleter/process.cpp"
 
 
 
@@ -54,6 +54,8 @@ void goWork()
     if (game->isGFComplite) {
       game->objMenu->getCandidateCells();
       game->fractionsControl();
+
+      deleter.process();
     }
 
     listenner(e, quit);

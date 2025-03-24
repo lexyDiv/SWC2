@@ -1,4 +1,6 @@
+#include "../body/proto/protoObj/MenuText.cpp"
 
+class Order;
 
 class Deleter {
     public:
