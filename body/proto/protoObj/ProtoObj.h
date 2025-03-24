@@ -117,6 +117,7 @@ public:
     int F = 0;
     int H = 0;
     ProtoObj *wayFather = nullptr;
+    bool isNeedReturnGetPotentialWay = false; // ???
     virtual bool isOnGetPotentialWayGetTarget(ProtoObj *cell);
     virtual bool isNewCellOnGetWayValide(ProtoObj *cell);
     ////////////////////////// <= way
