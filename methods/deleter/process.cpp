@@ -19,5 +19,3 @@ void Deleter::process()
             }
             return false; });
 };
-
-Deleter deleter;

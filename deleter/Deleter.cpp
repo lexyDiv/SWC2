@@ -7,3 +7,5 @@ Deleter::Deleter()
 Deleter::~Deleter()
 {
 }
+
+Deleter deleter;

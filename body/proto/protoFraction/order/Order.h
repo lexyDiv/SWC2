@@ -8,6 +8,5 @@ public:
     ProtoObj *cell = nullptr;
     ProtoObj *unit = nullptr;
     bool isComplite = false;
-    bool readyToDelete = false;
     int deleteTimer = 0;
 };
