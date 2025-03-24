@@ -9,5 +9,5 @@ public:
     ProtoObj *unit = nullptr;
     bool isComplite = false;
     bool readyToDelete = false;
-   // bool readyToDelete = false;
+    int deleteTimer = 0;
 };
