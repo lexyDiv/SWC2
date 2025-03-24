@@ -21,7 +21,7 @@ public:
     virtual void getHandTarget(ProtoObj *cell);
 
     ////////
-
+     int deleteTimer = 0;
     // all
 
     ProtoGameField *gf = nullptr;

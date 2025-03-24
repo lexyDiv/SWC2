@@ -93,7 +93,7 @@ public:
     void fieldClickRight() override;
     /////////// => get potential Way methods
     void getPotentialWay(ProtoObj* unit) override;
-    void cellFormat(ProtoObj* cell);
+    void exploreNewCellAndAddToOpenArr(ProtoObj *unit, ProtoObj* cell, ProtoObj *potentialCell);
     Array<ProtoObj *> openArr;
     //////////////// <= get potential Way methods
 

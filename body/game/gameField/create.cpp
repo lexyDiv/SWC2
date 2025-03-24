@@ -1,4 +1,4 @@
-#include "getWay/cellFormat.cpp"
+#include "getWay/exploreNewCellAndAddToOpenArr.cpp"
 
 
 void GameField::create()
