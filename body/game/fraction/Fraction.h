@@ -4,6 +4,8 @@ class Fraction : public ProtoFraction {
     public:
     Fraction(): ProtoFraction(){};
     ~Fraction();
-     void create() override;
+     void create(ProtoGame* game) override;
+     void orderControl() override;
+     void controller() override;
 
 };

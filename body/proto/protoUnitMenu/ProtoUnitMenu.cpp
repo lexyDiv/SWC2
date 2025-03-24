@@ -15,3 +15,7 @@ void ProtoUnitMenu::create()
 void ProtoUnitMenu::createShaht()
 {
 }
+
+void ProtoUnitMenu::createPeon()
+{
+}

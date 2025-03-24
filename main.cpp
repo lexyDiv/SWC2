@@ -1,6 +1,6 @@
 // g++ main.cpp -I./include -o program `sdl2-config --cflags --libs` -lSDL2 -lSDL2_mixer -lSDL2_image -lSDL2_ttf -I./GLM/
 // ./program
-#include "methods/buttonData/createOut.cpp"
+#include "methods/fraction/orderControl.cpp"
 
 
 
@@ -32,6 +32,9 @@ void hard()
   while (!quit)
   {
 
+    if (game->isGFComplite) {
+      game->getPotentialWayControl();
+    }
 
     this_thread::sleep_for(chrono::milliseconds(1));
   }
@@ -50,6 +53,7 @@ void goWork()
 
     if (game->isGFComplite) {
       game->objMenu->getCandidateCells();
+      game->fractionsControl();
     }
 
     listenner(e, quit);
@@ -69,6 +73,7 @@ void goWork()
 
 int main()
 {
+
  
 
 // string literas = "!#$%&(),-;@+=0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.:/' ";
@@ -146,9 +151,7 @@ int main()
   while (!quit)
   {
 
-if (game->isGFComplite) {
-//console.log(to_string(game->gf->planes.getItem(0)->contactPlanes.getItem(0)->cellsToOther.length));
-}
+
   //   if (tik % 100 == 0) {
   //   delete game;
   //   game = nullptr;
@@ -171,6 +174,17 @@ if (game->isGFComplite) {
     if (game->isGFComplite) {
       game->preDraw();
       game->draw();
+
+// potential way draw
+      if (game->objMenu->unit && game->objMenu->unit->isPotentialWayComplite) {
+        game->objMenu->unit->potentialWay.forEach([](ProtoObj* cell){
+          float drawDeltaX = game->gf->drawDeltaX;
+          float drawDeltaY = game->gf->drawDeltaY;
+          ctx.FillRect(cell->x + drawDeltaX, cell->y + drawDeltaY,
+          cell->gabX, cell->gabY, "red");
+        });
+      }
+      
     }
 
 

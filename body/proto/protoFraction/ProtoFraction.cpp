@@ -8,6 +8,14 @@ ProtoFraction::~ProtoFraction()
 {
 }
 
-void ProtoFraction::create()
+void ProtoFraction::create(ProtoGame* game)
+{
+}
+
+void ProtoFraction::orderControl()
+{
+}
+
+void ProtoFraction::controller()
 {
 }

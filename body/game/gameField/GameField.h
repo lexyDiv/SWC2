@@ -90,6 +90,12 @@ public:
     void getCellImageCellDrawIndexCellUnitInit() override;
     void getVectorCells(ProtoObj *cell) override;
     void fieldClick() override;
+    void fieldClickRight() override;
+    /////////// => get potential Way methods
+    void getPotentialWay(ProtoObj* unit) override;
+    void cellFormat(ProtoObj* cell);
+    Array<ProtoObj *> openArr;
+    //////////////// <= get potential Way methods
 
     Color getDefaultColor(char lit) override;
     //

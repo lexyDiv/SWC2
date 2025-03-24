@@ -18,6 +18,8 @@ public:
     virtual void create(ProtoObj *cell);
     virtual int getLevel();
     virtual void createUnitMenu();
+    virtual void getHandTarget(ProtoObj* cell);
+    virtual bool getPotentialWayTarget(ProtoObj* cell);
     ////////
 
     // all
@@ -94,11 +96,27 @@ public:
     int attack = 0;
     int armor = 0;
     int mana = 0;
+    int sight = 1;
+    int animTimer = 0;
 
+    ///////////////////  handTarget
+    ProtoObj *handTargetCell = nullptr;
+    ProtoObj *targetCell = nullptr;
+    int handTargetTimer = 0;
+    int handTargetMaxTime = 0;
+//////////////////////////
     
     ProtoObj *cell = nullptr;
     Array<ProtoObj *> enemys;
-    Array<ProtoObj *> myWay;
+    Array<ProtoObj *> way;
+    Array<ProtoObj *> potentialWay;
+    //////////////////// =>  way
+    bool isPotentialWayComplite = false;
+    int G = 0;
+    int F = 0;
+    int H = 0;
+    ProtoObj* wayFather = nullptr;
+    ////////////////////////// <= way
     // Array<ProtoObj *> cells2X2;
     ////////////////////// =>  buildings
     Array<ProtoObj *> contactCells;

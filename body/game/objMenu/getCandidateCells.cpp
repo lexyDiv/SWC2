@@ -58,7 +58,8 @@ void ObjMenu::getCandidateCells()
         }
         if (units.length == 1)
         {
-            this->unit = units.getItem(0);
+            this->potencialUnit = units.getItem(0);
+            this->potencialUnit->inZone = false;
         }
         else if (units.length > 1)
         {

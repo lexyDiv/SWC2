@@ -87,6 +87,14 @@ void ProtoGameField::fieldClick()
 {
 }
 
+void ProtoGameField::fieldClickRight()
+{
+}
+
+void ProtoGameField::getPotentialWay(ProtoObj* unit)
+{
+}
+
 ////////////////////////////////////
 
 // class GF : public ProtoGameField {

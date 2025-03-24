@@ -1,4 +1,4 @@
-#include "fonMenuDraw.cpp"
+#include "getPotentialWayControl.cpp"
 
 void Game::draw()
 {
@@ -57,11 +57,13 @@ void Game::draw()
         //                                             color);
         //     });
         // });
-        // this->gf->drawCell->cellsOnDraw.forEach([drawDeltaX, drawDeltaY](Array<ProtoObj* > drawLine){
-        //     drawLine.forEach([drawDeltaX, drawDeltaY](ProtoObj* cell){
-        //         ctx.StrokeRect(cell->x + drawDeltaX, cell->y + drawDeltaY, cell->gabX, cell->gabY, "yellow");
-        //     });
-        // });
+
+        /////////  setka
+        this->gf->drawCell->cellsOnDraw.forEach([drawDeltaX, drawDeltaY](Array<ProtoObj* > drawLine){
+            drawLine.forEach([drawDeltaX, drawDeltaY](ProtoObj* cell){
+                ctx.StrokeRect(cell->x + drawDeltaX, cell->y + drawDeltaY, cell->gabX, cell->gabY, "yellow");
+            });
+        });
 
 
 ////////////////////////////////////////////////// ???

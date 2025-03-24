@@ -29,6 +29,8 @@ public:
     virtual void getCellImageCellDrawIndexCellUnitInit();
     virtual void getVectorCells(ProtoObj *cell);
     virtual void fieldClick();
+    virtual void fieldClickRight();
+    virtual void getPotentialWay(ProtoObj* unit);
 
     virtual Color getDefaultColor(char lit);
 
@@ -66,6 +68,7 @@ public:
     int offsetStep = 10;
     bool init = false;
     double createCount = 0.0;
+
     // this->miniMap, 0, 0, this->gabarit, this->gabarit, 732, 100, 285, 285
     ////////////////////////////// => miniMap
     float miniMapX = 732;

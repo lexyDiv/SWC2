@@ -47,11 +47,15 @@ public:
     Image *goldIcon = new Image("images/gold.png");
     Image *oilIcon = new Image("images/oil.png");
     Image *woodIcon = new Image("images/wood.png");
+    Image *peonRed = new Image("images/images/peon_new.png");
 
 
     Imager() {};
     ~Imager()
     {
+       delete this->peonRed;
+       this->peonRed = nullptr;
+
        delete oilIcon;
        oilIcon = nullptr;
 

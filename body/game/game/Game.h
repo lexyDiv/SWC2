@@ -10,4 +10,6 @@ class Game : public ProtoGame {
     void draw() override;
     void preDraw() override;
     void fonMenuDraw() override;
+    void fractionsControl() override;
+    void getPotentialWayControl() override;
 };
