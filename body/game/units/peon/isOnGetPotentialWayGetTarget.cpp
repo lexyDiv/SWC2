@@ -1,7 +1,7 @@
 #include "getHandTarget.cpp"
 
 
-bool Peon::getPotentialWayTarget(ProtoObj* cell) {
+bool Peon::isOnGetPotentialWayGetTarget(ProtoObj* cell) {
     ProtoObj* tc = this->handTargetCell ? this->handTargetCell : this->targetCell;
     if (tc && tc == cell) {
        return true;

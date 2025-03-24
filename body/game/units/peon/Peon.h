@@ -8,6 +8,6 @@ class Peon : public ProtoObj {
     void draw() override;
     void getHandTarget(ProtoObj *cell) override;
     void preDraw();
-    bool getPotentialWayTarget(ProtoObj *cell) override;
+    bool isOnGetPotentialWayGetTarget(ProtoObj *cell) override;
 
 };

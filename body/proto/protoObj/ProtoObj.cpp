@@ -35,7 +35,11 @@ void ProtoObj::createUnitMenu()
 void ProtoObj::getHandTarget(ProtoObj *cell)
 {
 }
-bool ProtoObj::getPotentialWayTarget(ProtoObj* cell)
+bool ProtoObj::isOnGetPotentialWayGetTarget(ProtoObj* cell)
 {
+    return false;
+}
+
+bool ProtoObj::isNewCellOnGetWayValide(ProtoObj* cell) {
     return false;
 }

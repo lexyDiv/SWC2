@@ -1,4 +1,4 @@
-#include "getPotentialWayTarget.cpp"
+#include "isOnGetPotentialWayGetTarget.cpp"
 
 void Peon::draw() {
     this->preDraw();
