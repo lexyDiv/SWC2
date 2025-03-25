@@ -187,6 +187,14 @@ int main()
         });
       }
       
+      // openArr draw
+      game->gf->openArr.forEach([](ProtoObj *cell){
+          float drawDeltaX = game->gf->drawDeltaX;
+          float drawDeltaY = game->gf->drawDeltaY;
+          ctx.FillRect(cell->x + drawDeltaX, cell->y + drawDeltaY,
+          cell->gabX, cell->gabY, "blue");
+      });
+
     }
 
 

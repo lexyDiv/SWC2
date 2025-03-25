@@ -41,5 +41,5 @@ bool ProtoObj::isOnGetPotentialWayGetTarget(ProtoObj* cell)
 }
 
 bool ProtoObj::isNewCellOnGetWayValide(ProtoObj* cell) {
-    return false;
+    return !(bool)cell->groundUnit;
 }

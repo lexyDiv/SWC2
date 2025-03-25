@@ -58,6 +58,7 @@ public:
     void filterSelf(function<bool(T item)> fn);
     void sort(function<bool(T a, T b)> fn);
     ProtoObj *getMin(function<double(ProtoObj *item)> fn);
+    ProtoObj *getMAx(function<double(ProtoObj *item)> fn);
     Array<ProtoObj *> map(function<ProtoObj *(T item)> fn);
 
     void clear();
@@ -279,6 +280,28 @@ inline ProtoObj *Array<T>::getMin(function<double(ProtoObj *item)> fn)
             if (min > current)
             {
                 min = current;
+                el = e;
+            }
+        }
+        return el;
+    }
+    return nullptr;
+}
+
+template <typename T>
+inline ProtoObj *Array<T>::getMAx(function<double(ProtoObj *item)> fn)
+{
+    if (this->length)
+    {
+        ProtoObj *el = this->getItem(0);
+        double max = fn(el);
+        for (int i = 1; i < this->length; i++)
+        {
+            ProtoObj *e = this->vec[i];
+            double current = fn(e);
+            if (max < current)
+            {
+                max = current;
                 el = e;
             }
         }

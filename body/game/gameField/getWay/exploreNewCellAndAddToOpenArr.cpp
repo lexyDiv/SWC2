@@ -1,22 +1,21 @@
 #include "getPotentialWay.cpp"
 
-void GameField::exploreNewCellAndAddToOpenArr(ProtoObj *unit, ProtoObj *cell, ProtoObj *potentialCell)
+void GameField::exploreNewCellAndAddToOpenArr(ProtoObj *unit, ProtoObj *fatherCell, ProtoObj *potentialCell, ProtoObj *finishCell)
 {
-        // cell->F = 0;
-        // cell->G = 0;
-        // cell->H = 0;
-        // cell->createCountData = this->createCount;
-        // this->openArr.push(cell);
-        // console.log(to_string(this->openArr.length));
-        if (cell && unit->isNewCellOnGetWayValide(potentialCell))
+        if (potentialCell->createCountData != this->createCount &&
+            unit->isNewCellOnGetWayValide(potentialCell))
         {
-                ProtoObj *pc = potentialCell;
-                potentialCell->wayFather = cell;
-                int G = cell->top == pc ||
-                                cell->left == pc ||
-                                cell->right == pc ||
-                                cell->bottom == pc
-                            ? 10
-                            : 14;
+                potentialCell->wayFather = fatherCell;
+                potentialCell->createCountData = this->createCount;
+                int G = this->get_G(fatherCell, potentialCell);
+                int H = this->get_H(potentialCell, finishCell);
+
+                potentialCell->G = fatherCell ? G + fatherCell->G : G;
+                potentialCell->H = H;
+                potentialCell->F = potentialCell->G + potentialCell->H;
+
+                this->openArr.push(potentialCell);
         }
+
+        console.log("here");
 }
