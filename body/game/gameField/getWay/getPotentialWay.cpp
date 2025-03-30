@@ -1,11 +1,15 @@
 #include "get_G.cpp"
 
+ProtoObj *hzCell = nullptr;
+
 void GameField::getPotentialWay(ProtoObj *unit)
 {
     unit->potentialWay.clear();
     unit->isNeedReturnGetPotentialWay = false;
     ProtoObj *finishCell = unit->targetCell;
     ProtoObj *startCell = unit->cell;
+
+    hzCell = unit->targetCell;
 
     if (
         startCell &&
@@ -16,23 +20,37 @@ void GameField::getPotentialWay(ProtoObj *unit)
         startCell->createCountData = this->createCount;
         this->openArr.clear();
         this->openArr.push(startCell);
+        this->quickArr.clear();
 
-        // this->exploreNewCellAndAddToOpenArr(unit, nullptr, startCell, finishCell);
+        int iter = 0;
 
         while (true)
         {
+            iter++;
 
-            ProtoObj *max_F_cell = this->openArr.getMin([](ProtoObj *cell)
-                                                        { return cell->F; });
-            max_F_cell->aroundCells.forEach([this, unit, startCell, finishCell, max_F_cell](ProtoObj *pc)
-                                            { this->exploreNewCellAndAddToOpenArr(unit, max_F_cell, pc, finishCell); });
+            MinData md;
 
-            this->openArr.filterSelf([max_F_cell](ProtoObj *cell)
-                                     { return cell == max_F_cell; });
+            md = this->openArr.getMinData([](ProtoObj *cell)
+                                          { return cell->F; });
 
-            unit->isPotentialWayComplite = true;
-            break;
+            this->min_F_cell = md.cell;
+
+            for (int i = 0; i < this->min_F_cell->aroundCells.length; i++)
+            {
+                ProtoObj *pc = this->min_F_cell->aroundCells.getItem(i);
+                this->exploreNewCellAndAddToOpenArr(unit, this->min_F_cell, pc, finishCell);
+                if (unit->isPotentialWayComplite)
+                {
+                    break;
+                }
+            }
+
+            this->openArr.splice(md.index, 1);
+
+            if (unit->isPotentialWayComplite)
+            {
+                break;
+            }
         }
-        // console.log("scan way for unit");
     }
 };

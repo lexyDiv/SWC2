@@ -195,6 +195,13 @@ int main()
           cell->gabX, cell->gabY, "blue");
       });
 
+      if (hzCell) {
+          float drawDeltaX = game->gf->drawDeltaX;
+          float drawDeltaY = game->gf->drawDeltaY;
+          ctx.FillRect(hzCell->x + drawDeltaX, hzCell->y + drawDeltaY,
+          hzCell->gabX, hzCell->gabY, "white");
+      }
+
     }
 
 

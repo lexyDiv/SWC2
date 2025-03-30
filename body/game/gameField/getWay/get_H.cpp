@@ -10,5 +10,5 @@ int GameField::get_H(ProtoObj *potentialCell, ProtoObj *finishCell)
     int deltaHor = abs(finHor - pHor);
     int deltaVer = abs(finVer - pVer);
 
-    return deltaHor + deltaVer;
+    return (deltaHor + deltaVer) * 10;
 }

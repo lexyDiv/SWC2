@@ -5,6 +5,12 @@ void GameField::exploreNewCellAndAddToOpenArr(ProtoObj *unit, ProtoObj *fatherCe
         if (potentialCell->createCountData != this->createCount &&
             unit->isNewCellOnGetWayValide(potentialCell))
         {
+
+              if (unit->isOnGetPotentialWayGetTarget(potentialCell)) {
+                unit->isPotentialWayComplite = true;
+                return;
+              }
+
                 potentialCell->wayFather = fatherCell;
                 potentialCell->createCountData = this->createCount;
                 int G = this->get_G(fatherCell, potentialCell);
@@ -15,7 +21,8 @@ void GameField::exploreNewCellAndAddToOpenArr(ProtoObj *unit, ProtoObj *fatherCe
                 potentialCell->F = potentialCell->G + potentialCell->H;
 
                 this->openArr.push(potentialCell);
+                this->quickArr.push(potentialCell);
         }
 
-        console.log("here");
+       // console.log("here");
 }
