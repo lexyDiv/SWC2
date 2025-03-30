@@ -25,7 +25,7 @@ void GameField::getPotentialWay(ProtoObj *unit)
         this->min_F_cell = nullptr;
 
         int iter = 0;
-      //  auto start_time = std::chrono::steady_clock::now();
+        //  auto start_time = std::chrono::steady_clock::now();
         while (true)
         {
             iter++;
@@ -66,6 +66,16 @@ void GameField::getPotentialWay(ProtoObj *unit)
                     this->isQuick = true;
                     this->min_F_cell = md.cell;
                 }
+            }
+
+            if (unit->isOnGetPotentialWayGetTarget(this->min_F_cell) ||
+                unit->isNeedReturnGetPotentialWay)
+            {
+                if (!unit->isNeedReturnGetPotentialWay)
+                {
+                    this->potentialWayCreate(unit, this->min_F_cell);
+                }
+                return;
             }
 
             this->quickArr.forEach([this](ProtoObj *c)

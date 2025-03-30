@@ -2,8 +2,8 @@
 
 bool Peon::isNewCellOnGetWayValide(ProtoObj *cell)
 {
-    if (!cell->groundUnit &&
-    cell->plane->type != "sea")
+    if (!cell->groundUnit && this->cell &&
+        cell->plane == this->cell->plane)
     {
         return true;
     }

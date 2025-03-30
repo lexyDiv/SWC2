@@ -23,11 +23,6 @@ void GameField::exploreNewCellAndAddToOpenArr(ProtoObj *unit, ProtoObj *fatherCe
       unit->isNewCellOnGetWayValide(potentialCell))
   {
     potentialCell->wayFather = fatherCell;
-    if (unit->isOnGetPotentialWayGetTarget(potentialCell))
-    {
-      this->potentialWayCreate(unit, potentialCell);
-      return;
-    }
 
     potentialCell->createCountData = this->createCount;
     int G = this->get_G(fatherCell, potentialCell);

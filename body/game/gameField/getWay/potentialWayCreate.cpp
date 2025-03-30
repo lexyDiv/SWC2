@@ -2,23 +2,27 @@
 
 void GameField::potentialWayCreate(ProtoObj *unit, ProtoObj *finalCell)
 {
-    ProtoObj *nextCell = finalCell;
-    unit->potentialWay.push(nextCell);
-    while (true)
+    if (unit->cell &&
+        unit->cell != finalCell)
     {
-        if (nextCell->wayFather &&
-            nextCell->wayFather != unit->cell)
+        ProtoObj *nextCell = finalCell;
+        unit->potentialWay.push(nextCell);
+        while (true)
         {
-            nextCell = nextCell->wayFather;
-            unit->potentialWay.push(nextCell);
-           // console.log("process");
-        }
-        else
-        {
-          //  console.log("fin");
-            unit->isPotentialWayComplite = true;
-            break;
+            if (nextCell->wayFather &&
+                nextCell->wayFather != unit->cell)
+            {
+                nextCell = nextCell->wayFather;
+                unit->potentialWay.push(nextCell);
+                // console.log("process");
+            }
+            else
+            {
+                //  console.log("fin");
+                unit->isPotentialWayComplite = true;
+                break;
+            }
         }
     }
-  //  unit->isPotentialWayComplite = true;
+    //  unit->isPotentialWayComplite = true;
 }
