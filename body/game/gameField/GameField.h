@@ -98,6 +98,7 @@ public:
     int get_H(ProtoObj *potentialCell, ProtoObj* finishCell);
     Array<ProtoObj*> quickArr;
     ProtoObj *min_F_cell = nullptr;
+    bool isQuick = false;
     //////////////// <= get potential Way methods
 
     Color getDefaultColor(char lit) override;

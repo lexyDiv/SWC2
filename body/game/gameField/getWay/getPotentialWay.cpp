@@ -30,10 +30,17 @@ void GameField::getPotentialWay(ProtoObj *unit)
 
             MinData md;
 
-            md = this->openArr.getMinData([](ProtoObj *cell)
-                                          { return cell->F; });
+            this->quickArr.clear();
 
-            this->min_F_cell = md.cell;
+            if (!this->isQuick)
+            {
+                md = this->openArr.getMinData([](ProtoObj *cell)
+                                              { return cell->F; });
+                this->min_F_cell = md.cell;
+                this->openArr.splice(md.index, 1);
+            }
+
+            this->isQuick = false;
 
             for (int i = 0; i < this->min_F_cell->aroundCells.length; i++)
             {
@@ -45,8 +52,23 @@ void GameField::getPotentialWay(ProtoObj *unit)
                 }
             }
 
-            this->openArr.splice(md.index, 1);
+            md = this->quickArr.getMinData([](ProtoObj *cell)
+                                           { return cell->F; });
+            if (md.cell->F <= this->min_F_cell->F)
+            {
+                this->isQuick = true;
+                this->min_F_cell = md.cell;
+                 console.log("is quick");
+            }
 
+            this->quickArr.forEach([this](ProtoObj *c)
+                                   {
+                if (c != this->min_F_cell) {
+                    this->openArr.push(c);
+                } });
+
+           
+           // unit->isPotentialWayComplite = true;
             if (unit->isPotentialWayComplite)
             {
                 break;
