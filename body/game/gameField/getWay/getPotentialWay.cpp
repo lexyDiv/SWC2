@@ -21,9 +21,11 @@ void GameField::getPotentialWay(ProtoObj *unit)
         this->openArr.clear();
         this->openArr.push(startCell);
         this->quickArr.clear();
+        this->isQuick = false;
+        this->min_F_cell = nullptr;
 
         int iter = 0;
-
+        auto start_time = std::chrono::steady_clock::now();
         while (true)
         {
             iter++;
@@ -34,10 +36,13 @@ void GameField::getPotentialWay(ProtoObj *unit)
 
             if (!this->isQuick)
             {
-                md = this->openArr.getMinData([](ProtoObj *cell)
-                                              { return cell->F; });
-                this->min_F_cell = md.cell;
-                this->openArr.splice(md.index, 1);
+                if (this->openArr.length)
+                {
+                    md = this->openArr.getMinData([](ProtoObj *cell)
+                                                  { return cell->F; });
+                    this->min_F_cell = md.cell;
+                    this->openArr.splice(md.index, 1);
+                } 
             }
 
             this->isQuick = false;
@@ -52,13 +57,15 @@ void GameField::getPotentialWay(ProtoObj *unit)
                 }
             }
 
-            md = this->quickArr.getMinData([](ProtoObj *cell)
-                                           { return cell->F; });
-            if (md.cell->F <= this->min_F_cell->F)
+            if (this->quickArr.length)
             {
-                this->isQuick = true;
-                this->min_F_cell = md.cell;
-                 console.log("is quick");
+                md = this->quickArr.getMinData([](ProtoObj *cell)
+                                               { return cell->F; });
+                if (md.cell->F <= this->min_F_cell->F)
+                {
+                    this->isQuick = true;
+                    this->min_F_cell = md.cell;
+                }
             }
 
             this->quickArr.forEach([this](ProtoObj *c)
@@ -67,12 +74,18 @@ void GameField::getPotentialWay(ProtoObj *unit)
                     this->openArr.push(c);
                 } });
 
-           
-           // unit->isPotentialWayComplite = true;
+            // unit->isPotentialWayComplite = true;
+            if (!this->quickArr.length && !this->openArr.length) {
+                unit->isPotentialWayComplite = true;
+            }
             if (unit->isPotentialWayComplite)
             {
                 break;
             }
         }
+        // auto end_time = std::chrono::steady_clock::now();
+        // auto res = std::chrono::duration_cast<std::chrono::nanoseconds>(end_time - start_time);
+        // console.log(to_string(res.count()));
+        // console.log(to_string(iter));
     }
 };
