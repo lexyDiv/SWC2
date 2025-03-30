@@ -5,6 +5,7 @@ bool Peon::isOnGetPotentialWayGetTarget(ProtoObj *cell)
     ProtoObj *tc = this->targetCell;
     if (tc->groundUnit)
     {
+       // Array<ProtoObj *> potentialFinishCells;
         for (int i = 0; i < cell->aroundCells.length; i++)
         {
             ProtoObj *ac = cell->aroundCells.getItem(i);

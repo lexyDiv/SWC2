@@ -20,4 +20,5 @@ void GameField::potentialWayCreate(ProtoObj *unit, ProtoObj *finalCell)
             break;
         }
     }
+  //  unit->isPotentialWayComplite = true;
 }
