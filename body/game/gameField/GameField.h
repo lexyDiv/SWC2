@@ -93,8 +93,11 @@ public:
     void fieldClickRight() override;
     /////////// => get potential Way methods
     void getPotentialWay(ProtoObj* unit) override;
-    void cellFormat(ProtoObj* cell);
-    Array<ProtoObj *> openArr;
+    void exploreNewCellAndAddToOpenArr(ProtoObj *unit, ProtoObj* fatherCell, ProtoObj *potentialCell, ProtoObj *finishCell);
+    int get_G(ProtoObj *cell, ProtoObj *potentialCell);
+    int get_H(ProtoObj *potentialCell, ProtoObj* finishCell);
+    Array<ProtoObj*> quickArr;
+    ProtoObj *min_F_cell = nullptr;
     //////////////// <= get potential Way methods
 
     Color getDefaultColor(char lit) override;

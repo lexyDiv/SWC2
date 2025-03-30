@@ -1,4 +1,4 @@
-#include "MenuText.cpp"
+#include "../../../deleter/Deleter.cpp"
 
 class ProtoPlane;
 struct Water;
@@ -18,18 +18,16 @@ public:
     virtual void create(ProtoObj *cell);
     virtual int getLevel();
     virtual void createUnitMenu();
-    virtual void getHandTarget(ProtoObj* cell);
-    virtual bool getPotentialWayTarget(ProtoObj* cell);
-    ////////
+    virtual void getHandTarget(ProtoObj *cell);
 
+    ////////
+     int deleteTimer = 0;
     // all
-    
+
     ProtoGameField *gf = nullptr;
     ProtoGame *game = nullptr;
     ProtoPlane *plane = nullptr;
-    ProtoUnitMenu* unitMenu = nullptr;
-  
-
+    ProtoUnitMenu *unitMenu = nullptr;
 
     bool isDelete = false;
     // bool inUse = false;
@@ -67,9 +65,10 @@ public:
 
     // neitral & buildfings
     int gold = -1;
+    int wood = 0;
     int oil = 0;
-    Array<AnimLines *> lines; // oil anim line
-    float linePusherY = 0.0f; // oil anim
+    Array<AnimLines *> lines;    // oil anim line
+    float linePusherY = 0.0f;    // oil anim
     float linePullerY = -100.0f; // oil anim
     int linesCount = 20;
     bool inZone = false;
@@ -99,13 +98,15 @@ public:
     int sight = 1;
     int animTimer = 0;
 
-    ///////////////////  handTarget
+    /////////////////// => handTarget
     ProtoObj *handTargetCell = nullptr;
     ProtoObj *targetCell = nullptr;
     int handTargetTimer = 0;
     int handTargetMaxTime = 0;
-//////////////////////////
-    
+
+    ProtoObj *targetObj = nullptr;
+    string profession = "";
+    ////////////////////////// <= handTarget
     ProtoObj *cell = nullptr;
     Array<ProtoObj *> enemys;
     Array<ProtoObj *> way;
@@ -115,7 +116,10 @@ public:
     int G = 0;
     int F = 0;
     int H = 0;
-    ProtoObj* wayFather = nullptr;
+    ProtoObj *wayFather = nullptr;
+    bool isNeedReturnGetPotentialWay = false; // ???
+    virtual bool isOnGetPotentialWayGetTarget(ProtoObj *cell);
+    virtual bool isNewCellOnGetWayValide(ProtoObj *cell);
     ////////////////////////// <= way
     // Array<ProtoObj *> cells2X2;
     ////////////////////// =>  buildings

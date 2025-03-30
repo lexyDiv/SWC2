@@ -1,6 +1,6 @@
 // g++ main.cpp -I./include -o program `sdl2-config --cflags --libs` -lSDL2 -lSDL2_mixer -lSDL2_image -lSDL2_ttf -I./GLM/
 // ./program
-#include "methods/fraction/orderControl.cpp"
+#include "methods/deleter/process.cpp"
 
 
 
@@ -54,6 +54,8 @@ void goWork()
     if (game->isGFComplite) {
       game->objMenu->getCandidateCells();
       game->fractionsControl();
+
+      deleter.process();
     }
 
     listenner(e, quit);
@@ -185,6 +187,21 @@ int main()
         });
       }
       
+      // openArr draw
+      game->gf->openArr.forEach([](ProtoObj *cell){
+          float drawDeltaX = game->gf->drawDeltaX;
+          float drawDeltaY = game->gf->drawDeltaY;
+          ctx.FillRect(cell->x + drawDeltaX, cell->y + drawDeltaY,
+          cell->gabX, cell->gabY, "blue");
+      });
+
+      if (hzCell) {
+          float drawDeltaX = game->gf->drawDeltaX;
+          float drawDeltaY = game->gf->drawDeltaY;
+          ctx.FillRect(hzCell->x + drawDeltaX, hzCell->y + drawDeltaY,
+          hzCell->gabX, hzCell->gabY, "white");
+      }
+
     }
 
 
