@@ -7,6 +7,8 @@ void Peon::getHandTarget(ProtoObj *cell)
     //       this->isPotentialWayComplite = false;
     // this->game->unitsOnWay.push(this);
     ////////////////////////////////////////////////////////
+    this->profession = "";
+    this->way.clear();
     if (!this->cell ||
         (cell->plane != this->cell->plane))
     {
