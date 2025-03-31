@@ -11,6 +11,8 @@ void Mount::create(ProtoObj *cell)
     cell->right->bottom->groundUnit = this;
     this->myCells.push(cell->right->bottom);
 
+    this->cell = cell->right->bottom;
+
     this->x = cell->x + cell->gabX;
     this->y = cell->y + cell->gabY;
     this->drawIndexY = this->y;

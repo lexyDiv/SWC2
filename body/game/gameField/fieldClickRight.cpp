@@ -19,8 +19,9 @@ void GameField::fieldClickRight()
         if (clickRight && inField)
         {
             int indexX = ceil((x - drawDeltaX) / cellSize) - 1;
+           // console.log("index x = " + to_string(indexX));
             int indexY = ceil((y - drawDeltaY - this->y) / cellSize);
-            ProtoObj *cell = this->field.getItem(indexY).getItem(indexY);
+            ProtoObj *cell = this->field.getItem(indexY).getItem(indexX);
             Order *order = new Order;
             order->unit = unit;
             order->cell = cell;

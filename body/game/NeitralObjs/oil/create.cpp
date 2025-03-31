@@ -7,6 +7,8 @@ void Oil::create(ProtoObj *cell)
     this->get2x2myCells(cell);
     ProtoObj *exitCell = cell->left;
     ProtoObj *centerCell = cell->bottom_right;
+    this->cell = centerCell;
+
 
     this->getContactAndExitCells(cell, exitCell, centerCell);
 
