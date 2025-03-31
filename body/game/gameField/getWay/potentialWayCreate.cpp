@@ -19,10 +19,10 @@ void GameField::potentialWayCreate(ProtoObj *unit, ProtoObj *finalCell)
             else
             {
                 //  console.log("fin");
-                unit->isPotentialWayComplite = true;
+              //  unit->isPotentialWayComplite = true;
                 break;
             }
         }
     }
-    //  unit->isPotentialWayComplite = true;
+      unit->isPotentialWayComplite = true;
 }

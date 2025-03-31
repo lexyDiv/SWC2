@@ -5,20 +5,36 @@ bool Peon::isOnGetPotentialWayGetTarget(ProtoObj *cell)
     ProtoObj *tc = this->targetCell;
     if (tc->groundUnit)
     {
-       // Array<ProtoObj *> potentialFinishCells;
-        for (int i = 0; i < cell->aroundCells.length; i++)
+        if (cell->groundUnit && tc->groundUnit == cell->groundUnit)
         {
-            ProtoObj *ac = cell->aroundCells.getItem(i);
-            if (ac->groundUnit &&
-                ((ac->groundUnit == tc->groundUnit) ||
-                 (this->profession == "lesorub" &&
-                  ac->groundUnit->name == "tree")))
+            return true;
+        }
+        else if (this->profession == "lesorub")
+        {
+            Array<ProtoObj *> potentialFinishCells;
+            for (int i = 0; i < cell->aroundCells.length; i++)
             {
-                return true;
+                ProtoObj *ac = cell->aroundCells.getItem(i);
+                if (ac->groundUnit && ac->groundUnit->name == "tree")
+                {
+                    return true;
+                }
             }
         }
+        // Array<ProtoObj *> potentialFinishCells;
+        // for (int i = 0; i < cell->aroundCells.length; i++)
+        // {
+        //     ProtoObj *ac = cell->aroundCells.getItem(i);
+        //     if (ac->groundUnit &&
+        //         ((ac->groundUnit == tc->groundUnit) ||
+        //          (this->profession == "lesorub" &&
+        //           ac->groundUnit->name == "tree")))
+        //     {
+        //         return true;
+        //     }
+        // }
     }
-    if (tc == cell)
+    else if (tc == cell)
     {
         return true;
     }
