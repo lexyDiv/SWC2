@@ -9,7 +9,6 @@ void GameField::getPotentialWay(ProtoObj *unit)
     ProtoObj *finishCell = unit->targetCell;
     ProtoObj *startCell = unit->cell;
 
-
     if (
         startCell &&
         finishCell &&
@@ -26,7 +25,7 @@ void GameField::getPotentialWay(ProtoObj *unit)
         while (true)
         {
             iter++;
-
+            this->quickArr.clear();
             MinData md;
 
             for (int i = 0; i < this->min_F_cell->aroundCells.length; i++)
@@ -35,14 +34,39 @@ void GameField::getPotentialWay(ProtoObj *unit)
                 this->exploreNewCellAndAddToOpenArr(unit, this->min_F_cell, pc, finishCell);
             }
 
-            for (int i = this->openArr.length - 1; i >= 0; i--)
+            for (int i = 0; i < this->quickArr.length; i++)
             {
-                ProtoObj *cell = this->openArr.getItem(i);
+                ProtoObj *cell = this->quickArr.getItem(i);
                 if (!md.cell || md.cell->F >= cell->F)
                 {
                     md.cell = cell;
                     md.index = i;
                 }
+            }
+
+            bool ok = false;
+            if (md.cell && md.cell->F <= this->min_F_cell->F)
+            {
+                ok = true;
+                this->quickArr.splice(md.index, 1);
+            }
+            this->quickArr.forEach([md, this](ProtoObj *cell)
+                                   {
+                                       this->openArr.push(cell);
+                                   });
+            if (!ok)
+            {
+
+                for (int i = this->openArr.length - 1; i >= 0; i--)
+                {
+                    ProtoObj *cell = this->openArr.getItem(i);
+                    if (!md.cell || md.cell->F >= cell->F)
+                    {
+                        md.cell = cell;
+                        md.index = i;
+                    }
+                }
+                this->openArr.splice(md.index, 1);
             }
 
             // for (int i = 0; i < this->openArr.length; i++)
@@ -56,7 +80,7 @@ void GameField::getPotentialWay(ProtoObj *unit)
             // } // is ok!
 
             this->min_F_cell = md.cell;
-            this->openArr.splice(md.index, 1);
+
             ///////////////////////////////////////////////////////
 
             if (unit->isOnGetPotentialWayGetTarget(this->min_F_cell) ||
@@ -75,9 +99,9 @@ void GameField::getPotentialWay(ProtoObj *unit)
                 break;
             }
         }
-        // auto end_time = std::chrono::steady_clock::now();
-        // auto res = std::chrono::duration_cast<std::chrono::nanoseconds>(end_time - start_time);
-        //  console.log(to_string(res.count()));
+        auto end_time = std::chrono::steady_clock::now();
+        auto res = std::chrono::duration_cast<std::chrono::nanoseconds>(end_time - start_time);
+        console.log(to_string(res.count()));
         // console.log(to_string(iter));
     }
 };
