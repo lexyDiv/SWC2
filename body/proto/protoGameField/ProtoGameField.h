@@ -90,6 +90,7 @@ public:
     FieldClick *fieldClickPoint = nullptr;
 
         Array<ProtoObj *> openArr;
+        Array<Array<ProtoObj *>> exp;
 
 private:
 };

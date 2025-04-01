@@ -35,6 +35,8 @@ struct MinData
 {
     int index = 0;
     int min = 0;
+    int i = 0;
+    int k = 0;
     ProtoObj *cell = nullptr;
 };
 

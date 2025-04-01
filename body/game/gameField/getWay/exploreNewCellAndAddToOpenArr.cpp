@@ -1,19 +1,19 @@
 #include "potentialWayCreate.cpp"
 
-// Если соседняя клетка уже находится в открытом списке,
-// то сравниваем значение величин G у клетки в открытом списке и
-// текущей проверяемой клетки.
-// Если прежнее значение (в открытом списке) меньше нового,
-// то ничего не делаем. В обратном случае,
-// у клетки в открытом списке меняем значение G на новое,
-// также меняем указатель на родителя, чтобы он указывал на текущую проверяемую клетку.
+// Если клетка находится в открытом списке, 
+// то сравниваем её значение G со значением G таким, 
+// что если бы к ней пришли через текущую клетку. 
+// Если сохранённое в проверяемой клетке значение G больше нового, 
+// то меняем её значение G на новое, 
+// пересчитываем её значение F и изменяем указатель на родителя так, 
+// чтобы она указывала на текущую клетку.
 
 void GameField::exploreNewCellAndAddToOpenArr(ProtoObj *unit, ProtoObj *fatherCell, ProtoObj *potentialCell, ProtoObj *finishCell)
 {
   if (potentialCell->createCountData == this->createCount)
   {
     int G = this->get_G(fatherCell, potentialCell) + fatherCell->G;
-    if (potentialCell->G >= G)
+    if (potentialCell->G > G)
     {
       potentialCell->wayFather = fatherCell;
       potentialCell->G = G;
@@ -33,6 +33,7 @@ void GameField::exploreNewCellAndAddToOpenArr(ProtoObj *unit, ProtoObj *fatherCe
     potentialCell->F = potentialCell->G + potentialCell->H;
 
     this->quickArr.push(potentialCell);
+    this->openArr.push(potentialCell);
   }
 
   // console.log("here");
