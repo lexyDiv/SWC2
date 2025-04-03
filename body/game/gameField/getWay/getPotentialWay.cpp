@@ -25,7 +25,7 @@ void GameField::getPotentialWay(ProtoObj *unit)
         while (true)
         {
             iter++;
-            this->quickArr.clear();
+   
             MinData md;
 
             for (int i = 0; i < this->min_F_cell->aroundCells.length; i++)
@@ -34,40 +34,23 @@ void GameField::getPotentialWay(ProtoObj *unit)
                 this->exploreNewCellAndAddToOpenArr(unit, this->min_F_cell, pc, finishCell);
             }
 
-            for (int i = 0; i < this->quickArr.length; i++)
-            {
-                ProtoObj *cell = this->quickArr.getItem(i);
-                if (!md.cell || md.cell->F >= cell->F)
-                {
-                    md.cell = cell;
-                    md.index = i;
-                }
-            }
-
-            bool ok = false;
-            if (md.cell && md.cell->F <= this->min_F_cell->F)
-            {
-                ok = true;
-                this->quickArr.splice(md.index, 1);
-            }
-            this->quickArr.forEach([md, this](ProtoObj *cell)
-                                   {
-                                       this->openArr.push(cell);
-                                   });
-            if (!ok)
-            {
-
-                for (int i = this->openArr.length - 1; i >= 0; i--)
+                int index = this->openArr.length - 1;
+                md.cell = this->openArr.getItem(this->openArr.length - 1);
+                md.index = index;
+                for (int i = index; i >= 0; i--)
                 {
                     ProtoObj *cell = this->openArr.getItem(i);
-                    if (!md.cell || md.cell->F >= cell->F)
+                    if (md.cell->F >= cell->F)
                     {
                         md.cell = cell;
                         md.index = i;
+                        if (cell->F < this->min_F_cell->F) {
+                            break;
+                        }
                     }
                 }
                 this->openArr.splice(md.index, 1);
-            }
+            
 
             // for (int i = 0; i < this->openArr.length; i++)
             // {
