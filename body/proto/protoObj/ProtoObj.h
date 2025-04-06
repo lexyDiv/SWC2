@@ -120,6 +120,7 @@ public:
     bool isNeedReturnGetPotentialWay = false; // ???
     virtual bool isOnGetPotentialWayGetTarget(ProtoObj *cell);
     virtual bool isNewCellOnGetWayValide(ProtoObj *cell);
+    double explored = 0.0;
     ////////////////////////// <= way
     // Array<ProtoObj *> cells2X2;
     ////////////////////// =>  buildings

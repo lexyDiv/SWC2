@@ -1,39 +1,51 @@
 #include "potentialWayCreate.cpp"
 
-// Если соседняя клетка уже находится в открытом списке,
-// то сравниваем значение величин G у клетки в открытом списке и
-// текущей проверяемой клетки.
-// Если прежнее значение (в открытом списке) меньше нового,
-// то ничего не делаем. В обратном случае,
-// у клетки в открытом списке меняем значение G на новое,
-// также меняем указатель на родителя, чтобы он указывал на текущую проверяемую клетку.
+// Если клетка находится в открытом списке,
+// то сравниваем её значение G со значением G таким,
+// что если бы к ней пришли через текущую клетку.
+// Если сохранённое в проверяемой клетке значение G больше нового,
+// то меняем её значение G на новое,
+// пересчитываем её значение F и изменяем указатель на родителя так,
+// чтобы она указывала на текущую клетку.
+
+// [3, 1] уже находится в открытом списке,
+// поэтому сравниваем её значение F со значением F таким,
+// что если бы мы пришли на неё через текущую клетку.
+// Это значения 60 и 64, соответственно, а значит, данные проверяемой клетки не нужно обновлять.
+// Клетки с индексами [4, 1] и [4, 2] добавляем в открытый список,
+// предварительно вычислив их значения величин G, H и F,
+// а также установив указатель на родительскую клетку
 
 void GameField::exploreNewCellAndAddToOpenArr(ProtoObj *unit, ProtoObj *fatherCell, ProtoObj *potentialCell, ProtoObj *finishCell)
 {
-  if (potentialCell->createCountData == this->createCount)
+  if (potentialCell->explored != this->createCount)
   {
-    int G = this->get_G(fatherCell, potentialCell) + fatherCell->G;
-    if (potentialCell->G >= G)
+    if (potentialCell->createCountData == this->createCount)
+    {
+      int G = this->get_G(fatherCell, potentialCell) + fatherCell->G;
+      int F = G + potentialCell->H;
+      if (potentialCell->F > F)
+      {
+        potentialCell->wayFather = fatherCell;
+        potentialCell->G = G;
+        potentialCell->F = F;
+      }
+    }
+    else if (
+        unit->isNewCellOnGetWayValide(potentialCell))
     {
       potentialCell->wayFather = fatherCell;
-      potentialCell->G = G;
+
+      potentialCell->createCountData = this->createCount;
+      int G = this->get_G(fatherCell, potentialCell);
+      int H = this->get_H(potentialCell, finishCell);
+
+      potentialCell->G = fatherCell ? G + fatherCell->G : G;
+      potentialCell->H = H;
+      potentialCell->F = potentialCell->G + potentialCell->H;
+
+      this->openArr.push(potentialCell);
+      // this->quickArr.push(potentialCell);
     }
   }
-  else if (
-      unit->isNewCellOnGetWayValide(potentialCell))
-  {
-    potentialCell->wayFather = fatherCell;
-
-    potentialCell->createCountData = this->createCount;
-    int G = this->get_G(fatherCell, potentialCell);
-    int H = this->get_H(potentialCell, finishCell);
-
-    potentialCell->G = fatherCell ? G + fatherCell->G : G;
-    potentialCell->H = H;
-    potentialCell->F = potentialCell->G + potentialCell->H;
-
-    this->quickArr.push(potentialCell);
-  }
-
-  // console.log("here");
 }
