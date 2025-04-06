@@ -6,9 +6,11 @@ void GameField::getPotentialWay(ProtoObj *unit)
 {
     unit->potentialWay.clear();
     unit->isNeedReturnGetPotentialWay = false;
+    unit->getCurrentTargetCell();
+
     ProtoObj *finishCell = unit->targetCell;
     ProtoObj *startCell = unit->cell;
-
+    hzCell = finishCell;
     if (
         startCell &&
         finishCell &&
@@ -20,7 +22,7 @@ void GameField::getPotentialWay(ProtoObj *unit)
         this->min_F_cell = startCell;
 
         int iter = 0;
-       // auto start_time = std::chrono::steady_clock::now();
+        auto start_time = std::chrono::steady_clock::now();
 
         while (true)
         {
@@ -72,9 +74,9 @@ void GameField::getPotentialWay(ProtoObj *unit)
                 break;
             }
         }
-        // auto end_time = std::chrono::steady_clock::now();
-        // auto res = std::chrono::duration_cast<std::chrono::nanoseconds>(end_time - start_time);
-        // console.log(to_string(res.count()));
+         auto end_time = std::chrono::steady_clock::now();
+         auto res = std::chrono::duration_cast<std::chrono::nanoseconds>(end_time - start_time);
+        console.log(to_string(res.count()));
         // console.log(to_string(iter));
     }
 };

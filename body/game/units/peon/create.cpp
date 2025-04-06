@@ -1,10 +1,12 @@
-#include "isNewCellOnGetWayValide.cpp"
+#include "getCurrentTargetCell.cpp"
 
 void Peon::create(ProtoObj* cell) {
   
     this->unitMenu = unitMenuPack.peon;
     
     this->cell = cell;
+    this->myCells.push(cell);
+  //  this->getContactCells();
     this->cell->groundUnit = this;
     this->gf = cell->gf;
     this->game = cell->game;

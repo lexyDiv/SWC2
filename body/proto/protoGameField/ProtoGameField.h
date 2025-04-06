@@ -32,6 +32,8 @@ public:
     virtual void fieldClickRight();
     virtual void getPotentialWay(ProtoObj* unit);
 
+    double getMinCellsDis(ProtoObj* cell, ProtoObj* cell2);
+
     virtual Color getDefaultColor(char lit);
 
     // ProtoObjMenu* objMenu = nullptr;

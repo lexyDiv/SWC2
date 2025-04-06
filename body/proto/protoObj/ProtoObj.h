@@ -76,6 +76,7 @@ public:
     void get3x3myCells(ProtoObj *cell);
     void get2x2myCells(ProtoObj *cell);
     void getContactAndExitCells(ProtoObj *cell, ProtoObj *exitCell, ProtoObj *centerCell);
+    void getContactCells();
     // units
 
     Image *menuImage = nullptr;
@@ -118,9 +119,17 @@ public:
     int H = 0;
     ProtoObj *wayFather = nullptr;
     bool isNeedReturnGetPotentialWay = false; // ???
-    virtual bool isOnGetPotentialWayGetTarget(ProtoObj *cell);
-    virtual bool isNewCellOnGetWayValide(ProtoObj *cell);
+   // virtual bool isOnGetPotentialWayGetTarget(ProtoObj *cell);
+  //  virtual bool isNewCellOnGetWayValide(ProtoObj *cell);
+    function<bool(ProtoObj *cell)> isOnGetPotentialWayGetTarget = [](ProtoObj* cel){
+        return false;
+    };
+    function<bool(ProtoObj* cell)> isNewCellOnGetWayValide = [](ProtoObj* cell){
+        return false;
+    };
     double explored = 0.0;
+    virtual void getCurrentTargetCell();
+    double procCurr = 0;
     ////////////////////////// <= way
     // Array<ProtoObj *> cells2X2;
     ////////////////////// =>  buildings

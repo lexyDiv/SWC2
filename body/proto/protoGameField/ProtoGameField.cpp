@@ -95,6 +95,12 @@ void ProtoGameField::getPotentialWay(ProtoObj* unit)
 {
 }
 
+double ProtoGameField::getMinCellsDis(ProtoObj *cell, ProtoObj *cell2)
+{
+    
+    return 0.0;
+}
+
 ////////////////////////////////////
 
 // class GF : public ProtoGameField {

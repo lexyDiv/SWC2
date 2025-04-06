@@ -4,12 +4,12 @@ class ProtoPlane;
 
 void ProtoObj::getContactAndExitCells(ProtoObj *cell, ProtoObj *exitCell, ProtoObj *centerCell)
 {
-    Array<CellDis> proContactCells;
-    this->gf = cell->gf;
-    this->gf->createCount += 0.00001;
-    this->myCells.forEach([exitCell, &proContactCells, this](ProtoObj *mc)
-                          { mc->aroundCells.forEach([mc, this, exitCell, &proContactCells](ProtoObj *ac)
-                                                    {
+  Array<CellDis> proContactCells;
+  this->gf = cell->gf;
+  this->gf->createCount += 0.00001;
+  this->myCells.forEach([exitCell, &proContactCells, this](ProtoObj *mc)
+                        { mc->aroundCells.forEach([mc, this, exitCell, &proContactCells](ProtoObj *ac)
+                                                  {
           if (ac->plane == mc->plane &&
           ac->groundUnit != this &&
           this->gf->createCount != ac->createCountData
@@ -22,13 +22,13 @@ void ProtoObj::getContactAndExitCells(ProtoObj *cell, ProtoObj *exitCell, ProtoO
             cd.dis = getDis(&del);
             proContactCells.push(cd);
           } }); });
-    proContactCells.sort([](CellDis a, CellDis b)
-                         { return a.dis < b.dis; });
-    this->contactCells = proContactCells.map([](CellDis cd)
-                                             { return cd.cell; });
-    proContactCells.clear();
-    cell->plane->cells.forEach([this, centerCell, &proContactCells](ProtoObj *pc)
-                               {
+  proContactCells.sort([](CellDis a, CellDis b)
+                       { return a.dis < b.dis; });
+  this->contactCells = proContactCells.map([](CellDis cd)
+                                           { return cd.cell; });
+  proContactCells.clear();
+  cell->plane->cells.forEach([this, centerCell, &proContactCells](ProtoObj *pc)
+                             {
       if (pc->createCountData != this->gf->createCount &&
       pc->groundUnit != this) {
         pc->createCountData = this->gf->createCount;
@@ -39,8 +39,8 @@ void ProtoObj::getContactAndExitCells(ProtoObj *cell, ProtoObj *exitCell, ProtoO
             cd.dis = getDis(&del);
             proContactCells.push(cd);
       } });
-    proContactCells.sort([](CellDis a, CellDis b)
-                         { return a.dis < b.dis; });
-    this->exitCells = proContactCells.map([](CellDis cd)
-                                          { return cd.cell; });
+  proContactCells.sort([](CellDis a, CellDis b)
+                       { return a.dis < b.dis; });
+  this->exitCells = proContactCells.map([](CellDis cd)
+                                        { return cd.cell; });
 };
