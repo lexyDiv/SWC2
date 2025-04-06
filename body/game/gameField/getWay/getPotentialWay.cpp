@@ -63,6 +63,7 @@ void GameField::getPotentialWay(ProtoObj *unit)
             // } // is ok!
 
             this->min_F_cell = md.cell;
+            this->min_F_cell->explored = this->createCount;
 
             ///////////////////////////////////////////////////////
 

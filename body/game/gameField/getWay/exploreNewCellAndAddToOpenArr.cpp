@@ -18,33 +18,34 @@
 
 void GameField::exploreNewCellAndAddToOpenArr(ProtoObj *unit, ProtoObj *fatherCell, ProtoObj *potentialCell, ProtoObj *finishCell)
 {
-  if (potentialCell->createCountData == this->createCount)
+  if (potentialCell->explored != this->createCount)
   {
-    int G = this->get_G(fatherCell, potentialCell) + fatherCell->G;
-    int F = G + potentialCell->H;
-    if (potentialCell->F >= F)
+    if (potentialCell->createCountData == this->createCount)
+    {
+      int G = this->get_G(fatherCell, potentialCell) + fatherCell->G;
+      int F = G + potentialCell->H;
+      if (potentialCell->F > F)
+      {
+        potentialCell->wayFather = fatherCell;
+        potentialCell->G = G;
+        potentialCell->F = F;
+      }
+    }
+    else if (
+        unit->isNewCellOnGetWayValide(potentialCell))
     {
       potentialCell->wayFather = fatherCell;
-      potentialCell->G = G;
-      potentialCell->F = F;
+
+      potentialCell->createCountData = this->createCount;
+      int G = this->get_G(fatherCell, potentialCell);
+      int H = this->get_H(potentialCell, finishCell);
+
+      potentialCell->G = fatherCell ? G + fatherCell->G : G;
+      potentialCell->H = H;
+      potentialCell->F = potentialCell->G + potentialCell->H;
+
+      this->openArr.push(potentialCell);
+      // this->quickArr.push(potentialCell);
     }
   }
-  else if (
-      unit->isNewCellOnGetWayValide(potentialCell))
-  {
-    potentialCell->wayFather = fatherCell;
-
-    potentialCell->createCountData = this->createCount;
-    int G = this->get_G(fatherCell, potentialCell);
-    int H = this->get_H(potentialCell, finishCell);
-
-    potentialCell->G = fatherCell ? G + fatherCell->G : G;
-    potentialCell->H = H;
-    potentialCell->F = potentialCell->G + potentialCell->H;
-
-    this->openArr.push(potentialCell);
-  // this->quickArr.push(potentialCell);
-  }
-
-  // console.log("here");
 }
