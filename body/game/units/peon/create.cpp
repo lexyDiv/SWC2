@@ -1,4 +1,4 @@
-#include "getCurrentTargetCell.cpp"
+#include "activeProg.cpp"
 
 void Peon::create(ProtoObj* cell) {
   

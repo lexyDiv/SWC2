@@ -19,6 +19,7 @@ public:
     virtual int getLevel();
     virtual void createUnitMenu();
     virtual void getHandTarget(ProtoObj *cell);
+    virtual void activeProg();
 
     ////////
      int deleteTimer = 0;
@@ -130,6 +131,8 @@ public:
     double explored = 0.0;
     virtual void getCurrentTargetCell();
     double procCurr = 0;
+    int wayIndex = 0;
+    bool isGetMyCell = true;
     ////////////////////////// <= way
     // Array<ProtoObj *> cells2X2;
     ////////////////////// =>  buildings

@@ -136,6 +136,8 @@ int main()
 
     //  console.log("loading");
 
+
+
     ctx.CreateDrawZone(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT);
     ctx.FillRect(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT, "white");
 
@@ -144,23 +146,23 @@ int main()
       game->preDraw();
       game->draw();
       // potential way draw
-      if (game->objMenu->unit && game->objMenu->unit->isPotentialWayComplite)
-      {
-        game->objMenu->unit->potentialWay.forEach([](ProtoObj *cell)
-                                                  {
-          float drawDeltaX = game->gf->drawDeltaX;
-          float drawDeltaY = game->gf->drawDeltaY;
-          ctx.FillRect(cell->x + drawDeltaX, cell->y + drawDeltaY,
-          cell->gabX, cell->gabY, "red"); });
-      }
+      // if (game->objMenu->unit && game->objMenu->unit->isPotentialWayComplite)
+      // {
+      //   game->objMenu->unit->potentialWay.forEach([](ProtoObj *cell)
+      //                                             {
+      //     float drawDeltaX = game->gf->drawDeltaX;
+      //     float drawDeltaY = game->gf->drawDeltaY;
+      //     ctx.FillRect(cell->x + drawDeltaX, cell->y + drawDeltaY,
+      //     cell->gabX, cell->gabY, "red"); });
+      // }
 
-      if (hzCell) {
-        ProtoObj* cell = hzCell;
-          float drawDeltaX = game->gf->drawDeltaX;
-          float drawDeltaY = game->gf->drawDeltaY;
-          ctx.FillRect(cell->x + drawDeltaX, cell->y + drawDeltaY,
-          cell->gabX, cell->gabY, "violet");
-      }
+      // if (hzCell) {
+      //   ProtoObj* cell = hzCell;
+      //     float drawDeltaX = game->gf->drawDeltaX;
+      //     float drawDeltaY = game->gf->drawDeltaY;
+      //     ctx.FillRect(cell->x + drawDeltaX, cell->y + drawDeltaY,
+      //     cell->gabX, cell->gabY, "violet");
+      // }
 
       // openArr draw
       // game->gf->openArr.forEach([](ProtoObj *cell){

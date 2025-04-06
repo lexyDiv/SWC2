@@ -25,38 +25,22 @@ void Game::draw()
                                                 { drawLine.forEach([drawDeltaY, &DA, &max](ProtoObj *cell)
                                                                    {
                     cell->draw();
-                    if (cell->groundUnit && !cell->groundUnit->isAddOnDraw) {
+                    if (cell->groundUnit && !cell->groundUnit->isAddOnDraw
+                    ) {
                     int index = ceil((((cell->groundUnit->drawIndexY) + drawDeltaY) / 10) + 30);
                         cell->groundUnit->isAddOnDraw = true;
                        Array<ProtoObj *> &line = DA.getItem3(index);                    
                         line.push(cell->groundUnit);
                        max.push(index);
+                 //   cell->groundUnit->draw();
                     } }); });
 
-        //    if (max.length) {
-        //               max.sort([](int a, int b){
-        //         return a > b;
-        //     });
-        //     int mx = max.getItem(0);
-        //     int mn = max.getItem(max.length - 1);
-        //     console.log(to_string(mx));
-        //    }
 
         DA.forEach([](Array<ProtoObj *> line)
                    { line.forEach([](ProtoObj *unit)
                                   { unit->draw(); }); });
 
-        //             this->gf->drawCell->cellsOnDraw.forEach([drawDeltaX, drawDeltaY](Array<ProtoObj *> drawLine){
-        //     drawLine.forEach([drawDeltaX, drawDeltaY](ProtoObj* cell){
-        //         string color = cell->groundUnit ? "red" : "yellow";
-        //         ctx.StrokeRect(
-        //                                             cell->x + drawDeltaX,
-        //                                             cell->y + drawDeltaY,
-        //                                             cell->gabX,
-        //                                             cell->gabY,
-        //                                             color);
-        //     });
-        // });
+
 
         /////////  setka
         this->gf->drawCell->cellsOnDraw.forEach([drawDeltaX, drawDeltaY](Array<ProtoObj* > drawLine){

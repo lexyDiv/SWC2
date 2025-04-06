@@ -4,13 +4,18 @@ void Peon::getHandTarget(ProtoObj *cell)
 {
     this->preTargetCell = cell;
     this->profession = "";
-    this->way.clear();
+    this->potentialWay.clear();
+    this->wayIndex = 0;
     if (!this->cell ||
         (cell->plane != this->cell->plane) ||
         (cell->groundUnit == this))
     {
         return;
     }
+    // console.log("getHandTarget");
+    // if (cell->groundUnit) {
+    //     console.log("groungUnit");
+    // }
 
     this->targetCell = nullptr;
 
@@ -93,4 +98,8 @@ void Peon::getHandTarget(ProtoObj *cell)
     }
     //  this->getCurrentTargetCell(cell);
     this->game->unitsOnWay.push(this);
+    if (!this->isActive) {
+        this->isActive = true;
+        this->fraction->activeUnits.push(this);
+    }
 };

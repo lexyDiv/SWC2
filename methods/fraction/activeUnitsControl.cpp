@@ -1,0 +1,17 @@
+#include "controller.cpp"
+
+void Fraction::activeUnitsControl()
+{
+
+    this->activeUnits.forEach([](ProtoObj *unit){
+        unit->activeProg();
+    });
+
+    this->activeUnits.filterSelf([](ProtoObj *unit)
+                                 {
+        if (!unit->enemys.length &&
+        (!unit->potentialWay.length && unit->isPotentialWayComplite)) {
+            return true;
+        }
+        return false; });
+}

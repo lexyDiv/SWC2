@@ -2,6 +2,8 @@
 
 #include "union/FS/FS.h"
 
+bool nextMove = false;
+
 void listenner(SDL_Event e, bool &quit)
 {
     while (SDL_PollEvent(&e) != 0)
@@ -17,6 +19,7 @@ void listenner(SDL_Event e, bool &quit)
             // console.log(to_string(e.key.keysym.scancode)); // int 40
             if (e.key.keysym.scancode == 40)
             {
+                nextMove = true;
                 // console.log("eneter");
                 //  game->speed++;
                 //  game->pause = false;

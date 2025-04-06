@@ -7,5 +7,6 @@ class Fraction : public ProtoFraction {
      void create(ProtoGame* game) override;
      void orderControl() override;
      void controller() override;
+     void activeUnitsControl() override;
 
 };

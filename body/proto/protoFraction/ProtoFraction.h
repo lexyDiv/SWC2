@@ -10,6 +10,7 @@ class ProtoFraction {
 
    virtual void orderControl();
    virtual void controller();
+   virtual void activeUnitsControl();
 
     string name = "";
     string control = "";
