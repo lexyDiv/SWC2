@@ -70,6 +70,7 @@ public:
     int offsetStep = 10;
     bool init = false;
     double createCount = 0.0;
+    double procCurr = 0.0;
 
     // this->miniMap, 0, 0, this->gabarit, this->gabarit, 732, 100, 285, 285
     ////////////////////////////// => miniMap

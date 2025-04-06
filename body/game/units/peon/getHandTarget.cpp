@@ -2,17 +2,18 @@
 
 void Peon::getHandTarget(ProtoObj *cell)
 {
-    this->targetCell = cell;
+    this->preTargetCell = cell;
     this->profession = "";
     this->way.clear();
     if (!this->cell ||
-        (cell->plane != this->cell->plane))
+        (cell->plane != this->cell->plane) ||
+        (cell->groundUnit == this))
     {
         return;
     }
 
-    //  this->targetCell = cell->groundUnit ? cell->groundUnit->cell : cell;
- 
+    this->targetCell = nullptr;
+
     // this->handTargetTimer = this->handTargetMaxTime;
     this->isPotentialWayComplite = false;
     this->isNeedReturnGetPotentialWay = true;
@@ -71,7 +72,6 @@ void Peon::getHandTarget(ProtoObj *cell)
     }
     else
     {
-
         this->isOnGetPotentialWayGetTarget = [this](ProtoObj *cell)
         {
             if (cell == this->targetCell)
@@ -91,6 +91,6 @@ void Peon::getHandTarget(ProtoObj *cell)
             return false;
         };
     }
-  //  this->getCurrentTargetCell(cell);
+    //  this->getCurrentTargetCell(cell);
     this->game->unitsOnWay.push(this);
 };

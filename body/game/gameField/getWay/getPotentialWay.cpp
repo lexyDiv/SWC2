@@ -4,6 +4,8 @@ ProtoObj *hzCell = nullptr;
 
 void GameField::getPotentialWay(ProtoObj *unit)
 {
+        auto start_time = std::chrono::steady_clock::now();
+
     unit->potentialWay.clear();
     unit->isNeedReturnGetPotentialWay = false;
     unit->getCurrentTargetCell();
@@ -21,8 +23,8 @@ void GameField::getPotentialWay(ProtoObj *unit)
         this->openArr.clear();
         this->min_F_cell = startCell;
 
+
         int iter = 0;
-        auto start_time = std::chrono::steady_clock::now();
 
         while (true)
         {

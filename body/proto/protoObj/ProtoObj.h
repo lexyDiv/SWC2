@@ -100,7 +100,7 @@ public:
     int animTimer = 0;
 
     /////////////////// => handTarget
-    ProtoObj *handTargetCell = nullptr;
+    ProtoObj *preTargetCell = nullptr;
     ProtoObj *targetCell = nullptr;
     int handTargetTimer = 0;
     int handTargetMaxTime = 0;
