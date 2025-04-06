@@ -16,7 +16,7 @@
 // предварительно вычислив их значения величин G, H и F,
 // а также установив указатель на родительскую клетку
 
-void GameField::exploreNewCellAndAddToOpenArr(ProtoObj *unit, ProtoObj *fatherCell, ProtoObj *potentialCell, ProtoObj *finishCell)
+void GameField::exploreNewCellAndAddToOpenArr(ProtoObj *unit, ProtoObj *fatherCell, ProtoObj *potentialCell)
 {
   if (potentialCell->explored != this->createCount)
   {
@@ -38,7 +38,7 @@ void GameField::exploreNewCellAndAddToOpenArr(ProtoObj *unit, ProtoObj *fatherCe
 
       potentialCell->createCountData = this->createCount;
       int G = this->get_G(fatherCell, potentialCell);
-      int H = this->get_H(potentialCell, finishCell);
+      int H = this->get_H(potentialCell, unit->targetCell);
 
       potentialCell->G = fatherCell ? G + fatherCell->G : G;
       potentialCell->H = H;

@@ -4,7 +4,7 @@ ProtoObj *hzCell = nullptr;
 
 void GameField::getPotentialWay(ProtoObj *unit)
 {
-        auto start_time = std::chrono::steady_clock::now();
+     //   auto start_time = std::chrono::steady_clock::now();
 
     unit->potentialWay.clear();
     unit->isNeedReturnGetPotentialWay = false;
@@ -35,7 +35,7 @@ void GameField::getPotentialWay(ProtoObj *unit)
             for (int i = 0; i < this->min_F_cell->aroundCells.length; i++)
             {
                 ProtoObj *pc = this->min_F_cell->aroundCells.getItem(i);
-                this->exploreNewCellAndAddToOpenArr(unit, this->min_F_cell, pc, finishCell);
+                this->exploreNewCellAndAddToOpenArr(unit, this->min_F_cell, pc);
             }
 
                 int index = this->openArr.length - 1;
@@ -60,25 +60,26 @@ void GameField::getPotentialWay(ProtoObj *unit)
 
             ///////////////////////////////////////////////////////
 
-            if (unit->isOnGetPotentialWayGetTarget(this->min_F_cell) ||
-                unit->isNeedReturnGetPotentialWay)
+            if (unit->isOnGetPotentialWayGetTarget(this->min_F_cell))
             {
-                if (!unit->isNeedReturnGetPotentialWay)
-                {
                     this->potentialWayCreate(unit, this->min_F_cell);
-                }
-                break;
+                    break;
             }
 
-            if (!this->openArr.length)
+            if (!this->openArr.length || unit->isNeedReturnGetPotentialWay)
             {
+                if (unit->isNeedReturnGetPotentialWay) {
+                 //   console.log("return");
+                    return;
+                }
+               // console.log("is way");
                 unit->isPotentialWayComplite = true;
                 break;
             }
         }
-         auto end_time = std::chrono::steady_clock::now();
-         auto res = std::chrono::duration_cast<std::chrono::nanoseconds>(end_time - start_time);
-        console.log(to_string(res.count()));
-        // console.log(to_string(iter));
+        //  auto end_time = std::chrono::steady_clock::now();
+        //  auto res = std::chrono::duration_cast<std::chrono::nanoseconds>(end_time - start_time);
+        // console.log(to_string(res.count()));
+       // console.log(to_string(iter));
     }
 };

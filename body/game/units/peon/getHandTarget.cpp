@@ -84,7 +84,7 @@ void Peon::getHandTarget(ProtoObj *cell)
         {
             if (cell->plane == this->cell->plane &&
                 (!cell->groundUnit ||
-                 cell == this->targetCell))
+                 (this->targetCell->groundUnit && cell->groundUnit == this->targetCell->groundUnit)))
             {
                 return true;
             }

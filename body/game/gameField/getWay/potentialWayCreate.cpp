@@ -15,7 +15,7 @@ void GameField::potentialWayCreate(ProtoObj *unit, ProtoObj *finalCell)
             {
                 nextCell = nextCell->wayFather;
                 unit->potentialWay.push(nextCell);
-                large += this->get_G(nextCell, nextCell->wayFather);
+              //  large += this->get_G(nextCell, nextCell->wayFather);
                 // console.log("process");
             }
             else
@@ -25,7 +25,7 @@ void GameField::potentialWayCreate(ProtoObj *unit, ProtoObj *finalCell)
                 break;
             }
         }
-        console.log("large = " + to_string(large));
+       // console.log("large = " + to_string(large));
     }
       unit->isPotentialWayComplite = true;
 }
