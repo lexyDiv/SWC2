@@ -70,4 +70,10 @@ public:
     {
         return "";
     };
+
+    ////////////////////////// get way
+   //     bool isOnGetPotentialWayGetTarget(ProtoObj *cell) override;
+   // bool isNewCellOnGetWayValide(ProtoObj *cell) override;
+
 };
+

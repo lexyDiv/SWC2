@@ -66,7 +66,7 @@ void GameField::getPotentialWay(ProtoObj *unit)
                 break;
             }
 
-            if (!this->quickArr.length && !this->openArr.length)
+            if (!this->openArr.length)
             {
                 unit->isPotentialWayComplite = true;
                 break;
