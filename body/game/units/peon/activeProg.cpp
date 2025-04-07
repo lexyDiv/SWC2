@@ -3,7 +3,7 @@
 void Peon::activeProg() {
     //////
 
-    if (this->potentialWay.length) {
+    if (this->potentialWay.length && this->isPotentialWayComplite) {
         if (this->isGetMyCell && this->wayIndex
        //  && nextMove
          ) {

@@ -1,5 +1,6 @@
 #include "miniMapDraw.cpp"
 
+int iter = 0;
 
 void GameField::offsetControl()
 {
@@ -26,8 +27,6 @@ void GameField::offsetControl()
         this->offsetY += this->offsetStep;
     }
 
-
-
     if (this->offsetX < 0)
     {
         this->offsetX = 0;
@@ -46,8 +45,8 @@ void GameField::offsetControl()
         this->offsetY = maxOffsetY;
     }
 
-   this->drawOffsetX = this->x + this->offsetX + this->centerX;
-   this->drawOffsetY = this->y + this->offsetY + this->centerY;
+    this->drawOffsetX = this->x + this->offsetX + this->centerX;
+    this->drawOffsetY = this->y + this->offsetY + this->centerY;
 
     int offsetIndexX = (this->drawOffsetX) / this->cellSize;
     int offsetIndexY = (this->drawOffsetY - this->y) / this->cellSize;
@@ -60,4 +59,25 @@ void GameField::offsetControl()
     this->drawCell = this->field.getItem(offsetIndexY).getItem(offsetIndexX);
     this->drawDeltaX = this->x - this->offsetX;
     this->drawDeltaY = this->y - this->offsetY;
+
+     iter ++;
+    if (iter == 3)
+    {
+        iter = 0;
+        ProtoObj *unit = this->game->objMenu->unit;
+        if (unit 
+      //  && !unit->isActive
+        )
+        {
+            int indexX = intRand(0, 63); //ceil((x - drawDeltaX) / cellSize) - 1;
+            // console.log("index x = " + to_string(indexX));
+            int indexY = intRand(0, 63);//ceil((y - drawDeltaY - this->y) / cellSize);
+            ProtoObj *cell = this->field.getItem(indexY).getItem(indexX);
+            Order *order = new Order;
+            order->unit = unit;
+            order->cell = cell;
+            unit->fraction->orders.push(order);
+            order->isComplite = true;
+        }
+    }
 }

@@ -17,11 +17,13 @@ void Peon::getHandTarget(ProtoObj *cell)
     //     console.log("groungUnit");
     // }
 
-    this->targetCell = nullptr;
+
 
     // this->handTargetTimer = this->handTargetMaxTime;
     this->isPotentialWayComplite = false;
     this->isNeedReturnGetPotentialWay = true;
+    this->targetCell = nullptr;
+
 
     if (cell->groundUnit)
     {

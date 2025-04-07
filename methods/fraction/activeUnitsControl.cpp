@@ -11,6 +11,7 @@ void Fraction::activeUnitsControl()
                                  {
         if (!unit->enemys.length &&
         (!unit->potentialWay.length && unit->isPotentialWayComplite)) {
+            unit->isActive = false;
             return true;
         }
         return false; });
