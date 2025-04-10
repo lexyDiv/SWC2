@@ -114,7 +114,7 @@ public:
     Array<ProtoObj *> way;
     Array<ProtoObj *> potentialWay;
     //////////////////// =>  way
-    bool isPotentialWayComplite = false;
+    bool isPotentialWayComplite = true;
     int G = 0;
     int F = 0;
     int H = 0;

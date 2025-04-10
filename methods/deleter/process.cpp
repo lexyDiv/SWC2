@@ -2,20 +2,20 @@
 
 void Deleter::process()
 {
-    this->orders.forEach([](Order *order)
-                         {
-        if (order->deleteTimer) {
-            order->deleteTimer ++;
-            if (order->deleteTimer == 10) {
+
+    for (int i = 0; i < this->orders.length; i++)
+    {
+        Order *order = this->orders.getItem(i);
+        if (order->deleteTimer)
+        {
+              order->deleteTimer++;
+             if (order->deleteTimer == 100)
+             {
                 delete order;
                 order = nullptr;
+                this->orders.splice(i, 1);
+                i--;
             }
-        } });
-
-    this->orders.filterSelf([](Order *order)
-                            {
-            if (!order || !order->deleteTimer) {
-                return true;
-            }
-            return false; });
+        }
+    }
 };

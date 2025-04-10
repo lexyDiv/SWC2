@@ -13,7 +13,7 @@ void Game::draw()
         float drawDeltaY = this->gf->drawDeltaY;
 
         Array<Array<ProtoObj *>> DA;
-        for (int i = 0; i < 130; i++)
+        for (int i = 0; i < 230; i++)
         {
             Array<ProtoObj *> a;
             DA.push(a);
@@ -24,33 +24,29 @@ void Game::draw()
         this->gf->drawCell->cellsOnDraw.forEach([drawDeltaY, &DA, &max](Array<ProtoObj *> drawLine)
                                                 { drawLine.forEach([drawDeltaY, &DA, &max](ProtoObj *cell)
                                                                    {
-                    cell->draw();
+                     cell->draw();
                     if (cell->groundUnit && !cell->groundUnit->isAddOnDraw
                     ) {
                     int index = ceil((((cell->groundUnit->drawIndexY) + drawDeltaY) / 10) + 30);
+
                         cell->groundUnit->isAddOnDraw = true;
                        Array<ProtoObj *> &line = DA.getItem3(index);                    
                         line.push(cell->groundUnit);
                        max.push(index);
                  //   cell->groundUnit->draw();
-                    } }); });
-
+                    }
+                     }); });
 
         DA.forEach([](Array<ProtoObj *> line)
                    { line.forEach([](ProtoObj *unit)
                                   { unit->draw(); }); });
 
-
-
         /////////  setka
-        this->gf->drawCell->cellsOnDraw.forEach([drawDeltaX, drawDeltaY](Array<ProtoObj* > drawLine){
-            drawLine.forEach([drawDeltaX, drawDeltaY](ProtoObj* cell){
-                ctx.StrokeRect(cell->x + drawDeltaX, cell->y + drawDeltaY, cell->gabX, cell->gabY, "yellow");
-            });
-        });
+        this->gf->drawCell->cellsOnDraw.forEach([drawDeltaX, drawDeltaY](Array<ProtoObj *> drawLine)
+                                                { drawLine.forEach([drawDeltaX, drawDeltaY](ProtoObj *cell)
+                                                                   { ctx.StrokeRect(cell->x + drawDeltaX, cell->y + drawDeltaY, cell->gabX, cell->gabY, "yellow"); }); });
 
-
-////////////////////////////////////////////////// ???
+        ////////////////////////////////////////////////// ???
         // if (this->objMenu->unit)
         // {
         //     ProtoObj *unit = this->objMenu->unit;
@@ -59,8 +55,7 @@ void Game::draw()
 
         // this->objMenu->units.forEach([drawDeltaX, drawDeltaY](ProtoObj *unit)
         //                              { ctx.FillRect(unit->x + drawDeltaX, unit->y + drawDeltaY, unit->gabX, unit->gabY, "red"); });
-///////////////////////////////////////////////  ???
-
+        ///////////////////////////////////////////////  ???
 
         /////////////// zone
         FieldClick *fcp = this->gf->fieldClickPoint;
@@ -90,8 +85,8 @@ void Game::draw()
     this->fonMenuDraw();
     this->gf->miniMapDraw();
 
-        this->objMenu->draw();
-    
+    this->objMenu->draw();
+
     //   string s = "Papa Loh";
     //   string s2 = "War Craft 2";
     //   string s3 = "Wee UPSET!";

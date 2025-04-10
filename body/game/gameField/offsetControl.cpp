@@ -61,23 +61,26 @@ void GameField::offsetControl()
     this->drawDeltaY = this->y - this->offsetY;
 
      iter ++;
-    if (iter == 3)
+    if (iter == 1)
     {
         iter = 0;
         ProtoObj *unit = this->game->objMenu->unit;
-        if (unit 
+        if (unit //&& unit->isPotentialWayComplite
       //  && !unit->isActive
         )
         {
-            int indexX = intRand(0, 63); //ceil((x - drawDeltaX) / cellSize) - 1;
+           // console.log("here");
+            int indexX = intRand(0, 200); //ceil((x - drawDeltaX) / cellSize) - 1;
             // console.log("index x = " + to_string(indexX));
-            int indexY = intRand(0, 63);//ceil((y - drawDeltaY - this->y) / cellSize);
+            int indexY = intRand(0, 200);//ceil((y - drawDeltaY - this->y) / cellSize);
             ProtoObj *cell = this->field.getItem(indexY).getItem(indexX);
             Order *order = new Order;
             order->unit = unit;
             order->cell = cell;
             unit->fraction->orders.push(order);
             order->isComplite = true;
-        }
+
+         
+        } 
     }
 }

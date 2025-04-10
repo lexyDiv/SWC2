@@ -2,15 +2,14 @@
 
 void Game::getPotentialWayControl()
 {
-    // console.log(to_string(this->unitsOnWay.length));
     if (this->unitsOnWay.length)
     {
-        this->unitsOnWay.forEach([this](ProtoObj *unit)
-                                 { 
-                                    if (!unit->isPotentialWayComplite) {
-                                        this->gf->getPotentialWay(unit);
-                                    } });
-        this->unitsOnWay.filterSelf([](ProtoObj *unit)
-                                    { return unit->isPotentialWayComplite; });
+        for (int i = 0; i < this->unitsOnWay.length; i++)
+        {
+            ProtoObj *unit = this->unitsOnWay.getItem(i);
+            this->gf->getPotentialWay(unit);
+            this->unitsOnWay.shift();
+            i--;
+                }
     }
 };

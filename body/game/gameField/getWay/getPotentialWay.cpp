@@ -5,14 +5,18 @@ ProtoObj *hzCell = nullptr;
 void GameField::getPotentialWay(ProtoObj *unit)
 {
      // auto start_time = std::chrono::steady_clock::now();
+//console.log("here");
+
+if (unit->isPotentialWayComplite) {
+    console.log("unit->isPotentialWayComplite");
+    return;
+} 
 
     unit->potentialWay.clear();
     unit->isNeedReturnGetPotentialWay = false;
-    unit->getCurrentTargetCell();
+     unit->getCurrentTargetCell();
+  // unit->targetCell = unit->preTargetCell;
 
-    //   ProtoObj *finishCell = unit->targetCell;
-    //    ProtoObj *startCell = unit->cell;
-    // hzCell = finishCell;
     if (
         unit->hp > 0)
     {
@@ -25,17 +29,25 @@ void GameField::getPotentialWay(ProtoObj *unit)
 
         while (true)
         {
+
+//  if (!unit || !unit->cell) {
+//     return;
+//     console.log("here");
+//  }
+
             iter++;
 
             MinData md;
 
             // if (!this->min_F_cell) {
-            //     unit->isPotentialWayComplite = true;
+            //     console.log("no min cell");
             //     return;
-            // };
+            // }
 
             if (unit->isNeedReturnGetPotentialWay)
             {
+                console.log("unit->isNeedReturnGetPotentialWay");
+                unit->isPotentialWayComplite = true;
                 return;
             }
 
@@ -44,7 +56,7 @@ void GameField::getPotentialWay(ProtoObj *unit)
                 ProtoObj *pc = this->min_F_cell->aroundCells.getItem(i);
                 this->exploreNewCellAndAddToOpenArr(unit, this->min_F_cell, pc);
             }
-            // console.log("openArr.length = " + to_string(this->openArr.length));
+
             if (this->openArr.length)
             {
                 int index = this->openArr.length - 1;
@@ -64,6 +76,7 @@ void GameField::getPotentialWay(ProtoObj *unit)
                     }
                 }
                 this->openArr.splice(md.index, 1);
+
                 this->min_F_cell = md.cell;
                 this->min_F_cell->explored = this->createCount;
             } else {
@@ -76,13 +89,14 @@ void GameField::getPotentialWay(ProtoObj *unit)
 
             if (unit->isOnGetPotentialWayGetTarget(this->min_F_cell))
             {
-                this->potentialWayCreate(unit, this->min_F_cell);
+                //this->potentialWayCreate(unit, this->min_F_cell);
+   
                 break;
             }
 
 
 
-            //  if (iter == 2555) {
+            //  if (iter == 4000) {
             //     console.log("openArr.length = " + to_string(this->openArr.length));
             //     if (!this->min_F_cell) {
             //         console.log("no min");
@@ -90,6 +104,9 @@ void GameField::getPotentialWay(ProtoObj *unit)
             //     unit->isPotentialWayComplite = true;
             //     return;
             //  }
+
+
+
         }
         //  auto end_time = std::chrono::steady_clock::now();
         //  auto res = std::chrono::duration_cast<std::chrono::nanoseconds>(end_time - start_time);
