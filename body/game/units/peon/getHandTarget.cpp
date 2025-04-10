@@ -6,22 +6,19 @@ void Peon::getHandTarget(ProtoObj *cell)
     this->profession = "";
     this->potentialWay.clear();
     this->wayIndex = 0;
-    if (!this->cell ||
-        (cell->plane != this->cell->plane) ||
-        (cell->groundUnit == this))
-    {
-        return;
-    }
-    // console.log("getHandTarget");
-    // if (cell->groundUnit) {
-    //     console.log("groungUnit");
+
+    // if (!this->cell ||
+    //     (cell->plane != this->cell->plane) ||
+    //     (cell->groundUnit == this))
+    // {
+    //     return;
     // }
 
 
 
     // this->handTargetTimer = this->handTargetMaxTime;
     this->isPotentialWayComplite = false;
-    this->isNeedReturnGetPotentialWay = true;
+   // this->isNeedReturnGetPotentialWay = true;
     this->targetCell = nullptr;
 
 

@@ -22,7 +22,7 @@ public:
     virtual void activeProg();
 
     ////////
-     int deleteTimer = 0;
+    int deleteTimer = 0;
     // all
 
     ProtoGameField *gf = nullptr;
@@ -120,12 +120,14 @@ public:
     int H = 0;
     ProtoObj *wayFather = nullptr;
     bool isNeedReturnGetPotentialWay = false; // ???
-   // virtual bool isOnGetPotentialWayGetTarget(ProtoObj *cell);
-  //  virtual bool isNewCellOnGetWayValide(ProtoObj *cell);
-    function<bool(ProtoObj *cell)> isOnGetPotentialWayGetTarget = [](ProtoObj* cel){
+                                              // virtual bool isOnGetPotentialWayGetTarget(ProtoObj *cell);
+                                              //  virtual bool isNewCellOnGetWayValide(ProtoObj *cell);
+    function<bool(ProtoObj *cell)> isOnGetPotentialWayGetTarget = [](ProtoObj *cel)
+    {
         return false;
     };
-    function<bool(ProtoObj* cell)> isNewCellOnGetWayValide = [](ProtoObj* cell){
+    function<bool(ProtoObj *cell)> isNewCellOnGetWayValide = [](ProtoObj *cell)
+    {
         return false;
     };
     double explored = 0.0;
@@ -133,6 +135,8 @@ public:
     double procCurr = 0;
     int wayIndex = 0;
     bool isGetMyCell = true;
+    int ordersOnWayCurrent = 0;
+    Order *orderOnWay = nullptr;
     ////////////////////////// <= way
     // Array<ProtoObj *> cells2X2;
     ////////////////////// =>  buildings

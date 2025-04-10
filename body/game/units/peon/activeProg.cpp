@@ -2,6 +2,31 @@
 
 void Peon::activeProg()
 {
+
+  if (this->orderOnWay)
+  {
+    ProtoObj *oCell = this->orderOnWay->cell;
+    if (!this->cell ||
+        (oCell->plane != this->cell->plane) ||
+        (oCell->groundUnit == this))
+    {
+      this->orderOnWay->deleteTimer = 1;
+      deleter.orders.push(this->orderOnWay);
+      this->orderOnWay = nullptr;
+      return;
+    }
+
+    // this->ordersOnWayCurrent++;
+
+    if (this->isPotentialWayComplite)
+    {
+      this->getHandTarget(oCell);
+      this->orderOnWay->deleteTimer = 1;
+      deleter.orders.push(this->orderOnWay);
+      this->orderOnWay = nullptr;
+    }
+  }
+
   //////
 
   // if (this->potentialWay.length && this->isPotentialWayComplite)

@@ -9,7 +9,7 @@ void Deleter::process()
         if (order->deleteTimer)
         {
               order->deleteTimer++;
-             if (order->deleteTimer == 100)
+             if (order->deleteTimer == 10)
              {
                 delete order;
                 order = nullptr;

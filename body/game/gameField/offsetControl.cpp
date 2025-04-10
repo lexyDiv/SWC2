@@ -70,15 +70,25 @@ void GameField::offsetControl()
         )
         {
            // console.log("here");
-            int indexX = intRand(0, 200); //ceil((x - drawDeltaX) / cellSize) - 1;
+            int indexX = intRand(0, this->gabarit); //ceil((x - drawDeltaX) / cellSize) - 1;
             // console.log("index x = " + to_string(indexX));
-            int indexY = intRand(0, 200);//ceil((y - drawDeltaY - this->y) / cellSize);
-            ProtoObj *cell = this->field.getItem(indexY).getItem(indexX);
-            Order *order = new Order;
-            order->unit = unit;
-            order->cell = cell;
-            unit->fraction->orders.push(order);
-            order->isComplite = true;
+            int indexY = intRand(0, this->gabarit);//ceil((y - drawDeltaY - this->y) / cellSize);
+             Order *order = new Order;
+             ProtoObj *cell = this->field.getItem(indexY).getItem(indexX);
+             order->cell = cell;
+             unit->orderOnWay = order;
+             if (!unit->isActive) {
+                unit->isActive = true;
+                unit->fraction->activeUnits.push(unit);
+             }
+            // unit->ordersCurrent ++;
+
+            // ProtoObj *cell = this->field.getItem(indexY).getItem(indexX);
+            // Order *order = new Order;
+            // order->unit = unit;
+            // order->cell = cell;
+            // unit->fraction->orders.push(order);
+            // order->isComplite = true;
 
          
         } 

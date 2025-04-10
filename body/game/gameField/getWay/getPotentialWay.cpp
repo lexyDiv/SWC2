@@ -7,13 +7,13 @@ void GameField::getPotentialWay(ProtoObj *unit)
      // auto start_time = std::chrono::steady_clock::now();
 //console.log("here");
 
-if (unit->isPotentialWayComplite) {
-    console.log("unit->isPotentialWayComplite");
-    return;
-} 
+// if (unit->isPotentialWayComplite) {
+//     console.log("unit->isPotentialWayComplite");
+//     return;
+// } 
 
     unit->potentialWay.clear();
-    unit->isNeedReturnGetPotentialWay = false;
+   // unit->isNeedReturnGetPotentialWay = false;
      unit->getCurrentTargetCell();
   // unit->targetCell = unit->preTargetCell;
 
@@ -44,9 +44,11 @@ if (unit->isPotentialWayComplite) {
             //     return;
             // }
 
-            if (unit->isNeedReturnGetPotentialWay)
+            if (unit->orderOnWay)
             {
-                console.log("unit->isNeedReturnGetPotentialWay");
+               // console.log("unit->isNeedReturnGetPotentialWay");
+               // unit->ordersOnWayCurrent --;
+              //  unit->isNeedReturnGetPotentialWay = false;
                 unit->isPotentialWayComplite = true;
                 return;
             }
@@ -82,6 +84,7 @@ if (unit->isPotentialWayComplite) {
             } else {
                // console.log("need way");
                 unit->isPotentialWayComplite = true;
+               // unit->ordersOnWayCurrent --;
                 return;
             }
 
@@ -89,7 +92,7 @@ if (unit->isPotentialWayComplite) {
 
             if (unit->isOnGetPotentialWayGetTarget(this->min_F_cell))
             {
-                //this->potentialWayCreate(unit, this->min_F_cell);
+                this->potentialWayCreate(unit, this->min_F_cell);
    
                 break;
             }
