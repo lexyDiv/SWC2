@@ -44,7 +44,7 @@ void GameField::getPotentialWay(ProtoObj *unit)
             //     return;
             // }
 
-            if (unit->orderOnWay)
+            if (unit->orderOnWay && !unit->orderOnWay->isComplite)
             {
                // console.log("unit->isNeedReturnGetPotentialWay");
                // unit->ordersOnWayCurrent --;

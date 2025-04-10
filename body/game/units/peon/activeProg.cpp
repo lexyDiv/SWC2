@@ -3,16 +3,15 @@
 void Peon::activeProg()
 {
 
-  if (this->orderOnWay)
+  if (this->orderOnWay && !this->orderOnWay->isComplite)
   {
     ProtoObj *oCell = this->orderOnWay->cell;
     if (!this->cell ||
         (oCell->plane != this->cell->plane) ||
         (oCell->groundUnit == this))
     {
-      this->orderOnWay->deleteTimer = 1;
-      deleter.orders.push(this->orderOnWay);
-      this->orderOnWay = nullptr;
+ 
+      this->orderOnWay->isComplite = true;
       return;
     }
 
@@ -21,31 +20,30 @@ void Peon::activeProg()
     if (this->isPotentialWayComplite)
     {
       this->getHandTarget(oCell);
-      this->orderOnWay->deleteTimer = 1;
-      deleter.orders.push(this->orderOnWay);
-      this->orderOnWay = nullptr;
+  
+      this->orderOnWay->isComplite = true;
     }
   }
 
   //////
 
-  // if (this->potentialWay.length && this->isPotentialWayComplite)
-  // {
-  //   if (this->isGetMyCell && this->wayIndex)
-  //   {
+  if (this->potentialWay.length && this->isPotentialWayComplite)
+  {
+    if (this->isGetMyCell && this->wayIndex)
+    {
 
-  //     nextMove = false;
-  //     // this->isGetMyCell = false;
-  //     this->wayIndex--;
+      nextMove = false;
+      // this->isGetMyCell = false;
+      this->wayIndex--;
 
-  //     // console.log("wayIndex = " + to_string(this->wayIndex));
-  //     this->cell->groundUnit = nullptr;
-  //     this->cell = this->potentialWay.getItem(this->wayIndex);
-  //     this->cell->groundUnit = this;
-  //     /////////////
-  //     this->x = this->cell->x;
-  //     this->y = this->cell->y;
-  //     this->drawIndexY = this->y;
-  //   }
-  // }
+      // console.log("wayIndex = " + to_string(this->wayIndex));
+      this->cell->groundUnit = nullptr;
+      this->cell = this->potentialWay.getItem(this->wayIndex);
+      this->cell->groundUnit = this;
+      /////////////
+      this->x = this->cell->x;
+      this->y = this->cell->y;
+      this->drawIndexY = this->y;
+    }
+  }
 }

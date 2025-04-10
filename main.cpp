@@ -42,6 +42,8 @@ void goWork()
 
     if (game->isGFComplite)
     {
+    // game->preDraw();
+
       game->objMenu->getCandidateCells();
       game->fractionsControl();
 
@@ -51,7 +53,7 @@ void goWork()
     listenner(e, quit);
     console.proc(mouse.x, mouse.y, mouse.leftKey);
 
-    this_thread::sleep_for(chrono::milliseconds(1));
+    this_thread::sleep_for(chrono::milliseconds(15));
   }
 };
 
@@ -146,15 +148,15 @@ int main()
       game->preDraw();
       game->draw();
       // potential way draw
-      if (game->objMenu->unit && game->objMenu->unit->isPotentialWayComplite)
-      {
-        game->objMenu->unit->potentialWay.forEach([](ProtoObj *cell)
-                                                  {
-          float drawDeltaX = game->gf->drawDeltaX;
-          float drawDeltaY = game->gf->drawDeltaY;
-          ctx.FillRect(cell->x + drawDeltaX, cell->y + drawDeltaY,
-          cell->gabX, cell->gabY, "red"); });
-      }
+      // if (game->objMenu->unit && game->objMenu->unit->isPotentialWayComplite)
+      // {
+      //   game->objMenu->unit->potentialWay.forEach([](ProtoObj *cell)
+      //                                             {
+      //     float drawDeltaX = game->gf->drawDeltaX;
+      //     float drawDeltaY = game->gf->drawDeltaY;
+      //     ctx.FillRect(cell->x + drawDeltaX, cell->y + drawDeltaY,
+      //     cell->gabX, cell->gabY, "red"); });
+      // }
 
       // if (hzCell) {
       //   ProtoObj* cell = hzCell;
@@ -198,7 +200,7 @@ int main()
     console.draw();
     ctx.End();
 
-    this_thread::sleep_for(chrono::milliseconds(1));
+    this_thread::sleep_for(chrono::milliseconds(15));
   }
 
   delete game;
