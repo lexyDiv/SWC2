@@ -28,10 +28,21 @@ void Peon::getCurrentTargetCell()
     }
     else
     {
-        this->preTargetCell->groundUnit->contactCells.forEach([this, &acs](ProtoObj *cell)
-                                                              {
+
+        if (preTargetCell->groundUnit->contactCells.length)
+        {
+            this->preTargetCell->groundUnit->contactCells.forEach([this, &acs](ProtoObj *cell)
+                                                                  {
             cell->procCurr = this->gf->procCurr;
             acs.push(cell); });
+        }
+        else
+        {
+            this->preTargetCell->groundUnit->cell->aroundCells.forEach([this, &acs](ProtoObj *cell)
+                                                                  {
+            cell->procCurr = this->gf->procCurr;
+            acs.push(cell); });
+        }
     }
     int iter = 0;
 

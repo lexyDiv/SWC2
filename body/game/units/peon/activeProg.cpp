@@ -81,7 +81,7 @@ void Peon::activeProg()
       }
     }
   }
-  else if (this->isPotentialWayComplite && !this->wayIndex && this->potentialWay.length)
+  else if (!this->isGetMyCell)
   {
       this->stendOnCell();
   }

@@ -14,13 +14,10 @@ void Peon::getHandTarget(ProtoObj *cell)
     //     return;
     // }
 
-
-
     // this->handTargetTimer = this->handTargetMaxTime;
     this->isPotentialWayComplite = false;
-   // this->isNeedReturnGetPotentialWay = true;
+    // this->isNeedReturnGetPotentialWay = true;
     this->targetCell = nullptr;
-
 
     if (cell->groundUnit)
     {
@@ -66,7 +63,7 @@ void Peon::getHandTarget(ProtoObj *cell)
             {
                 if (cell->plane == this->cell->plane &&
                     (!cell->groundUnit ||
-                     cell->groundUnit->way.length))
+                     cell->groundUnit->potentialWay.length))
                 {
                     return true;
                 }
@@ -97,7 +94,8 @@ void Peon::getHandTarget(ProtoObj *cell)
     }
     //  this->getCurrentTargetCell(cell);
     this->game->unitsOnWay.push(this);
-    if (!this->isActive) {
+    if (!this->isActive)
+    {
         this->isActive = true;
         this->fraction->activeUnits.push(this);
     }
