@@ -10,6 +10,7 @@ class Peon : public ProtoObj {
     void preDraw();
     void getCurrentTargetCell() override;
     void activeProg() override;
+    void stendOnCell();
     // bool isOnGetPotentialWayGetTarget(ProtoObj *cell) override;
     // bool isNewCellOnGetWayValide(ProtoObj *cell) override;
 };

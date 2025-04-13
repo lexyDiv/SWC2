@@ -200,6 +200,6 @@ public:
         // if (unit->speedTale) {
         //     unit->wayTakts ++;
         // };
-        console.log("unit->speedTale = " + to_string(unit->speedTale));
+      //  console.log("unit->speedTale = " + to_string(unit->speedTale));
     };
 };

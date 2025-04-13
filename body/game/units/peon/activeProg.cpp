@@ -53,6 +53,10 @@ void Peon::activeProg()
       this->drawIndexY = this->y;
       this->isGetMyCell = false;
     }
+    else
+    {
+      this->stendOnCell();
+    }
   }
 
   if (this->wayTakts)
@@ -62,14 +66,23 @@ void Peon::activeProg()
     this->drawIndexY = this->y;
     this->wayTakts--;
     this->isGetMyCell = false;
+    this->animTimer++;
+    if (this->animTimer == 100)
+    {
+      this->animTimer = 1;
+    }
+    if (this->animTimer % 8 == 0)
+    {
+      // console.log(to_string(this->animY));
+      this->animY += this->animGabY;
+      if (this->animY == this->animGabY * 5)
+      {
+        this->animY = this->animGabY;
+      }
+    }
   }
   else if (this->isPotentialWayComplite && !this->wayIndex && this->potentialWay.length)
   {
-    this->x = this->cell->x;
-    this->y = this->cell->y;
-    this->drawIndexY = this->y;
-    this->speedTale = 0;
-    this->isGetMyCell = true;
-    this->potentialWay.clear();
+      this->stendOnCell();
   }
 }

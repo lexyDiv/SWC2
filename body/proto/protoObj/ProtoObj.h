@@ -173,7 +173,7 @@ public:
   double wayDeltaX = 0;
   double wayDeltaY = 0;
   double conor = 0;
-  int animTimer = 0;
+
  //////////////////////// <= go way
 
     // Array<ProtoObj *> guardCells;
