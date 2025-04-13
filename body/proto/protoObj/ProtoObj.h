@@ -167,6 +167,15 @@ public:
     ProtoObj *bottom_left = nullptr;
     ProtoObj *bottom_right = nullptr;
 
+ ///////////////////////// go way =>
+  int wayTakts = 0;
+  double speedTale = 0;
+  double wayDeltaX = 0;
+  double wayDeltaY = 0;
+  double conor = 0;
+  int animTimer = 0;
+ //////////////////////// <= go way
+
     // Array<ProtoObj *> guardCells;
     Array<ProtoObj *> booms;
     Array<ProtoObj *> bullets;

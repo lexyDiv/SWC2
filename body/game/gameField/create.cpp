@@ -18,6 +18,9 @@ void GameField::create()
    //  writeStr(&sPath, to_string(j));
     ///////////////////////////
    // this->width = array.length * this->cellSize;
+  // console.log(to_string(this->cellSize));
+   //  double d = sqrt(48 * 48 + 48 * 48);
+   //  console.log(to_string(d));
     this->gabarit = array.getItem(0).size();
     this->height = this->gabarit * this->cellSize;
     this->width = this->height;

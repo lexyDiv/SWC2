@@ -25,28 +25,51 @@ void Peon::activeProg()
     }
   }
 
-  //////
+  ////// go way
 
-  if (this->potentialWay.length && this->isPotentialWayComplite)
+  if (
+      this->potentialWay.length &&
+      this->isPotentialWayComplite &&
+      this->wayIndex &&
+      !this->wayTakts)
   {
-    if (this->isGetMyCell && this->wayIndex)
-    {
+    ProtoObj *nextCell = this->potentialWay.getItem(this->wayIndex - 1);
 
-      nextMove = false;
-      // this->isGetMyCell = false;
+    if (!nextCell->groundUnit)
+    {
+      // console.log("here");
+      // this->speedTaleStart = 1;
+
       this->wayIndex--;
-      // console.log("wayIndex = " + to_string(this->wayIndex));
-      this->cell->groundUnit = nullptr;
-      this->cell = this->potentialWay.getItem(this->wayIndex);
-      this->cell->groundUnit = this;
-      /////////////
       this->x = this->cell->x;
       this->y = this->cell->y;
+      double saveSpeedTale = this->speedTale;
+      this->unitMenu->getDeltasXY(this, nextCell);
+      this->cell->groundUnit = nullptr;
+      this->cell = nextCell;
+      this->cell->groundUnit = this;
+      this->x += cos(this->conor) * this->speedTale;
+      this->y += sin(this->conor) * this->speedTale;
       this->drawIndexY = this->y;
-      if (!this->wayIndex)
-      {
-        this->potentialWay.clear();
-      }
+      this->isGetMyCell = false;
     }
+  }
+
+  if (this->wayTakts)
+  {
+    this->x += this->wayDeltaX;
+    this->y += this->wayDeltaY;
+    this->drawIndexY = this->y;
+    this->wayTakts--;
+    this->isGetMyCell = false;
+  }
+  else if (this->isPotentialWayComplite && !this->wayIndex && this->potentialWay.length)
+  {
+    this->x = this->cell->x;
+    this->y = this->cell->y;
+    this->drawIndexY = this->y;
+    this->speedTale = 0;
+    this->isGetMyCell = true;
+    this->potentialWay.clear();
   }
 }
