@@ -60,32 +60,32 @@ void GameField::offsetControl()
     this->drawDeltaX = this->x - this->offsetX;
     this->drawDeltaY = this->y - this->offsetY;
 
-    iter++;
-    if (iter == 1)
-    {
-        iter = 0;
-        ProtoObj *unit = this->game->objMenu->unit;
-        if (unit //&& unit->isPotentialWayComplite
-                 //  && !unit->isActive
-        )
-        {
-            // console.log("here");
-            int indexX = intRand(0, this->gabarit); // ceil((x - drawDeltaX) / cellSize) - 1;
-            // console.log("index x = " + to_string(indexX));
-            int indexY = intRand(0, this->gabarit); // ceil((y - drawDeltaY - this->y) / cellSize);
-            Order *order = new Order;
-            ProtoObj *cell = this->field.getItem(indexY).getItem(indexX);
-            order->cell = cell;
-            if (unit->orderOnWay)
-            {
-                deleter.orders.push(unit->orderOnWay);
-            }
-            unit->orderOnWay = order;
-            if (!unit->isActive)
-            {
-                unit->isActive = true;
-                unit->fraction->activeUnits.push(unit);
-            }
-        }
-    }
+    // iter++;
+    // if (iter == 1)
+    // {
+    //     iter = 0;
+    //     ProtoObj *unit = this->game->objMenu->unit;
+    //     if (unit //&& unit->isPotentialWayComplite
+    //              //  && !unit->isActive
+    //     )
+    //     {
+    //         // console.log("here");
+    //         int indexX = intRand(0, this->gabarit); // ceil((x - drawDeltaX) / cellSize) - 1;
+    //         // console.log("index x = " + to_string(indexX));
+    //         int indexY = intRand(0, this->gabarit); // ceil((y - drawDeltaY - this->y) / cellSize);
+    //         Order *order = new Order;
+    //         ProtoObj *cell = this->field.getItem(indexY).getItem(indexX);
+    //         order->cell = cell;
+    //         if (unit->orderOnWay)
+    //         {
+    //             deleter.orders.push(unit->orderOnWay);
+    //         }
+    //         unit->orderOnWay = order;
+    //         if (!unit->isActive)
+    //         {
+    //             unit->isActive = true;
+    //             unit->fraction->activeUnits.push(unit);
+    //         }
+    //     }
+    // }
 }
