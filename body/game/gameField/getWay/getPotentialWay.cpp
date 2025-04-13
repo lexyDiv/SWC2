@@ -4,18 +4,18 @@ ProtoObj *hzCell = nullptr;
 
 void GameField::getPotentialWay(ProtoObj *unit)
 {
-     // auto start_time = std::chrono::steady_clock::now();
-//console.log("here");
+    // auto start_time = std::chrono::steady_clock::now();
+    // console.log("here");
 
-// if (unit->isPotentialWayComplite) {
-//     console.log("unit->isPotentialWayComplite");
-//     return;
-// } 
+    // if (unit->isPotentialWayComplite) {
+    //     console.log("unit->isPotentialWayComplite");
+    //     return;
+    // }
 
     unit->potentialWay.clear();
-   // unit->isNeedReturnGetPotentialWay = false;
-     unit->getCurrentTargetCell();
-  // unit->targetCell = unit->preTargetCell;
+    // unit->isNeedReturnGetPotentialWay = false;
+    unit->getCurrentTargetCell();
+    // unit->targetCell = unit->preTargetCell;
 
     if (
         unit->hp > 0)
@@ -24,31 +24,19 @@ void GameField::getPotentialWay(ProtoObj *unit)
         unit->cell->createCountData = this->createCount;
         this->openArr.clear();
         this->min_F_cell = unit->cell;
+        this->globalMin_H_cell = nullptr;
 
         int iter = 0;
 
         while (true)
         {
 
-//  if (!unit || !unit->cell) {
-//     return;
-//     console.log("here");
-//  }
-
             iter++;
 
             MinData md;
 
-            // if (!this->min_F_cell) {
-            //     console.log("no min cell");
-            //     return;
-            // }
-
             if (unit->orderOnWay && !unit->orderOnWay->isComplite)
             {
-               // console.log("unit->isNeedReturnGetPotentialWay");
-               // unit->ordersOnWayCurrent --;
-              //  unit->isNeedReturnGetPotentialWay = false;
                 unit->isPotentialWayComplite = true;
                 return;
             }
@@ -81,10 +69,21 @@ void GameField::getPotentialWay(ProtoObj *unit)
 
                 this->min_F_cell = md.cell;
                 this->min_F_cell->explored = this->createCount;
-            } else {
-               // console.log("need way");
-                unit->isPotentialWayComplite = true;
-               // unit->ordersOnWayCurrent --;
+                if (!this->globalMin_H_cell || this->globalMin_H_cell->H > this->min_F_cell->H)
+                {
+                    this->globalMin_H_cell = this->min_F_cell;
+                }
+            }
+            else
+            {
+                if (!this->globalMin_H_cell)
+                {
+                    unit->isPotentialWayComplite = true;
+                }
+                else
+                {
+                    this->potentialWayCreate(unit, this->globalMin_H_cell);
+                }
                 return;
             }
 
@@ -93,11 +92,9 @@ void GameField::getPotentialWay(ProtoObj *unit)
             if (unit->isOnGetPotentialWayGetTarget(this->min_F_cell))
             {
                 this->potentialWayCreate(unit, this->min_F_cell);
-   
+
                 break;
             }
-
-
 
             //  if (iter == 4000) {
             //     console.log("openArr.length = " + to_string(this->openArr.length));
@@ -107,9 +104,6 @@ void GameField::getPotentialWay(ProtoObj *unit)
             //     unit->isPotentialWayComplite = true;
             //     return;
             //  }
-
-
-
         }
         //  auto end_time = std::chrono::steady_clock::now();
         //  auto res = std::chrono::duration_cast<std::chrono::nanoseconds>(end_time - start_time);

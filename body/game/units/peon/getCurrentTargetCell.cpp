@@ -43,7 +43,7 @@ void Peon::getCurrentTargetCell()
             ProtoObj *c = acs.getItem(i);
             if ((!c->groundUnit || c->groundUnit->way.length ||
                  (this->profession == "lesorub" && c->groundUnit->name == "tree")) &&
-                !isBlocked(c, this))
+                (!isBlocked(c, this) || c == this->preTargetCell))
             {
                 freeCells.push(c);
             }
