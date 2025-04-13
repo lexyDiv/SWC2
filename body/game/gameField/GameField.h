@@ -93,12 +93,13 @@ public:
     void fieldClickRight() override;
     /////////// => get potential Way methods
     void getPotentialWay(ProtoObj* unit) override;
-    void exploreNewCellAndAddToOpenArr(ProtoObj *unit, ProtoObj* fatherCell, ProtoObj *potentialCell, ProtoObj *finishCell);
+    void exploreNewCellAndAddToOpenArr(ProtoObj *unit, ProtoObj* fatherCell, ProtoObj *potentialCell);
     int get_G(ProtoObj *cell, ProtoObj *potentialCell);
     int get_H(ProtoObj *potentialCell, ProtoObj* finishCell);
-    Array<ProtoObj*> quickArr;
+    //Array<ProtoObj*> quickArr;
     ProtoObj *min_F_cell = nullptr;
-    bool isQuick = false;
+    ProtoObj *globalMin_F_cell = nullptr;
+   // bool isQuick = false;
     void potentialWayCreate(ProtoObj *unit, ProtoObj *finalCell);
     //////////////// <= get potential Way methods
 

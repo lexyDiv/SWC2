@@ -19,3 +19,7 @@ void ProtoFraction::orderControl()
 void ProtoFraction::controller()
 {
 }
+
+void ProtoFraction::activeUnitsControl()
+{
+}

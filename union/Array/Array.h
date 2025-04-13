@@ -70,6 +70,7 @@ public:
     MinData getMinData(function<double(ProtoObj *item)> fn);
     ProtoObj *getMAx(function<double(ProtoObj *item)> fn);
     Array<ProtoObj *> map(function<ProtoObj *(T item)> fn);
+    void copy(Array<T> arr);
 
     void clear();
 
@@ -350,6 +351,13 @@ inline Array<ProtoObj *> Array<T>::map(function<ProtoObj *(T item)> fn)
     this->forEach([&newArr, fn](T item)
                   { newArr.push(fn(item)); });
     return *&newArr;
+}
+
+template <typename T>
+inline void Array<T>::copy(Array<T> arr)
+{
+    this->vec = arr.vec;
+    this->length = this->vec.size();
 }
 
 template <typename T>

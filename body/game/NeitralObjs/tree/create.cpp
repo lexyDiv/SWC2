@@ -5,6 +5,7 @@ void Tree::create(ProtoObj * cell) {
     cell->groundUnit = this;
     this->myCells.push(cell);
     this->cell = cell;
+    this->getContactCells();
     this->name = "tree";
     this->type = "building";
     this->mapColor = {R: 0, G: 150, B: 0};

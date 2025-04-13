@@ -19,9 +19,10 @@ public:
     virtual int getLevel();
     virtual void createUnitMenu();
     virtual void getHandTarget(ProtoObj *cell);
+    virtual void activeProg();
 
     ////////
-     int deleteTimer = 0;
+    int deleteTimer = 0;
     // all
 
     ProtoGameField *gf = nullptr;
@@ -76,6 +77,7 @@ public:
     void get3x3myCells(ProtoObj *cell);
     void get2x2myCells(ProtoObj *cell);
     void getContactAndExitCells(ProtoObj *cell, ProtoObj *exitCell, ProtoObj *centerCell);
+    void getContactCells();
     // units
 
     Image *menuImage = nullptr;
@@ -99,7 +101,7 @@ public:
     int animTimer = 0;
 
     /////////////////// => handTarget
-    ProtoObj *handTargetCell = nullptr;
+    ProtoObj *preTargetCell = nullptr;
     ProtoObj *targetCell = nullptr;
     int handTargetTimer = 0;
     int handTargetMaxTime = 0;
@@ -112,15 +114,29 @@ public:
     Array<ProtoObj *> way;
     Array<ProtoObj *> potentialWay;
     //////////////////// =>  way
-    bool isPotentialWayComplite = false;
+    bool isPotentialWayComplite = true;
     int G = 0;
     int F = 0;
     int H = 0;
     ProtoObj *wayFather = nullptr;
     bool isNeedReturnGetPotentialWay = false; // ???
-    virtual bool isOnGetPotentialWayGetTarget(ProtoObj *cell);
-    virtual bool isNewCellOnGetWayValide(ProtoObj *cell);
+                                              // virtual bool isOnGetPotentialWayGetTarget(ProtoObj *cell);
+                                              //  virtual bool isNewCellOnGetWayValide(ProtoObj *cell);
+    function<bool(ProtoObj *cell)> isOnGetPotentialWayGetTarget = [](ProtoObj *cel)
+    {
+        return false;
+    };
+    function<bool(ProtoObj *cell)> isNewCellOnGetWayValide = [](ProtoObj *cell)
+    {
+        return false;
+    };
     double explored = 0.0;
+    virtual void getCurrentTargetCell();
+    double procCurr = 0;
+    int wayIndex = 0;
+    bool isGetMyCell = true;
+    int ordersOnWayCurrent = 0;
+    Order *orderOnWay = nullptr;
     ////////////////////////// <= way
     // Array<ProtoObj *> cells2X2;
     ////////////////////// =>  buildings
