@@ -61,7 +61,7 @@ void GameField::offsetControl()
     this->drawDeltaY = this->y - this->offsetY;
 
     iter++;
-    if (iter == 1)
+    if (iter == 500)
     {
         iter = 0;
         ProtoObj *unit = this->game->objMenu->unit;

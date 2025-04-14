@@ -8,7 +8,8 @@ void Fraction::activeUnitsControl()
         if (unit->enemys.length ||
             unit->potentialWay.length ||
             !unit->isPotentialWayComplite ||
-            (unit->orderOnWay && !unit->orderOnWay->isComplite))
+            (unit->orderOnWay && !unit->orderOnWay->isComplite) ||
+            !unit->isGetMyCell) 
         {
             unit->activeProg();
         }
