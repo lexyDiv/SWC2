@@ -21,6 +21,9 @@ void Peon::getHandTarget(ProtoObj *cell)
 
     if (cell->groundUnit)
     {
+         this->targetObj = cell->groundUnit;
+         this->handTargetTimer = this->handTargetMaxTime;
+
         if (cell->groundUnit->name == "tree")
         {
             this->profession = "lesorub";
