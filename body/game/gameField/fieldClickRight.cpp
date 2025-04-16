@@ -21,12 +21,15 @@ void GameField::fieldClickRight()
             int indexX = ceil((x - drawDeltaX) / cellSize) - 1;
             int indexY = ceil((y - drawDeltaY - this->y) / cellSize);
 
-            Order *order = unit->orderOnWay ? unit->orderOnWay : new Order;
+            unit->orderOnWay = unit->orderOnWay ? unit->orderOnWay : new Order;
             ProtoObj *cell = this->field.getItem(indexY).getItem(indexX);
-            order->cell = cell;
-            order->isComplite = false;
+            unit->orderOnWay->cell = cell;
+            unit->orderOnWay->isComplite = false;
+            
+            // console.log("order");
             if (!unit->isActive)
             {
+               // console.log("push active");
                 unit->isActive = true;
                 unit->fraction->activeUnits.push(unit);
             }

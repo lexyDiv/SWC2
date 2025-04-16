@@ -5,7 +5,7 @@ ProtoObj *hzCell = nullptr;
 void GameField::getPotentialWay(ProtoObj *unit)
 {
     // auto start_time = std::chrono::steady_clock::now();
-    // console.log("here");
+    // console.log("scan way");
 
     // if (unit->isPotentialWayComplite) {
     //     console.log("unit->isPotentialWayComplite");

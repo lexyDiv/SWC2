@@ -2,7 +2,7 @@
 
 void Peon::activeProg()
 {
-
+  // console.log("here");
   if (this->orderOnWay && !this->orderOnWay->isComplite)
   {
     ProtoObj *oCell = this->orderOnWay->cell;
@@ -15,8 +15,6 @@ void Peon::activeProg()
       return;
     }
 
-    // this->ordersOnWayCurrent++;
-
     if (this->isPotentialWayComplite)
     {
       this->getHandTarget(oCell);
@@ -26,6 +24,43 @@ void Peon::activeProg()
   }
 
   ////// go way
+  ProtoObj *nextCell = this->potentialWay.length ? this->potentialWay.getItem(this->wayIndex - 1) : nullptr;
+  if (nextCell)
+  {
+    if (
+        this->potentialWay.length &&
+        this->isPotentialWayComplite &&
+        this->isGetMyCell &&
+        (!nextCell->groundUnit))
+    {
+      // this->cell->groundUnit = nullptr;
+      // nextCell->groundUnit = this;
+      this->isGetMyCell = false;
+      // this->wayIndex--;
+      this->wayTakts = 0;
+       console.log("here 1");
+    }
+
+    if (!this->isGetMyCell)
+    {
+      if (!this->wayTakts)
+      {
+         console.log("here 2");
+         this->cell->groundUnit = nullptr;
+         this->cell = nextCell;
+         this->cell->groundUnit = this;
+      }
+    }
+  }
+  else if (this->wayTakts)
+  {
+    console.log("here 3");
+  }
+  else
+  {
+    console.log("here 4");
+    this->stendOnCell();
+  }
 
   // if (
   //     this->potentialWay.length &&

@@ -15,6 +15,7 @@ void Fraction::activeUnitsControl()
         }
         else
         {
+           // console.log("active delete");
             unit->isActive = false;
             this->activeUnits.splice(i, 1);
             i--;
