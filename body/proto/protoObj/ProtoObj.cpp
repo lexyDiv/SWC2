@@ -58,6 +58,9 @@ void ProtoObj::getContactCells()
                 } }); });
     }
 }
+
+void ProtoObj::stendOnCell() {};
+
 // bool ProtoObj::isOnGetPotentialWayGetTarget(ProtoObj* cell)
 // {
 //     return false;

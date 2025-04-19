@@ -20,6 +20,7 @@ public:
     virtual void createUnitMenu();
     virtual void getHandTarget(ProtoObj *cell);
     virtual void activeProg();
+    virtual void stendOnCell();
 
     ////////
     int deleteTimer = 0;

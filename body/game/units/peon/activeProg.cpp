@@ -24,43 +24,69 @@ void Peon::activeProg()
   }
 
   ////// go way
-  ProtoObj *nextCell = this->potentialWay.length ? this->potentialWay.getItem(this->wayIndex - 1) : nullptr;
-  if (nextCell)
-  {
-    if (
-        this->potentialWay.length &&
-        this->isPotentialWayComplite &&
-        this->isGetMyCell &&
-        (!nextCell->groundUnit))
-    {
-      // this->cell->groundUnit = nullptr;
-      // nextCell->groundUnit = this;
-      this->isGetMyCell = false;
-      // this->wayIndex--;
-      this->wayTakts = 0;
-       console.log("here 1");
-    }
 
-    if (!this->isGetMyCell)
+  if (!this->wayTakts)
+  {
+    if (this->isPotentialWayComplite &&
+        this->potentialWay.length &&
+        this->wayIndex > 0)
     {
-      if (!this->wayTakts)
+      ProtoObj *nextCell = this->potentialWay.getItem(this->wayIndex - 1);
+      if (nextCell && !nextCell->groundUnit)
       {
-         console.log("here 2");
-         this->cell->groundUnit = nullptr;
-         this->cell = nextCell;
-         this->cell->groundUnit = this;
+        this->wayIndex--;
+        this->x = this->cell->x;
+        this->y = this->cell->y;
+        double saveSpeedTale = this->speedTale;
+        this->unitMenu->getDeltasXY(this, nextCell);
+        this->cell->groundUnit = nullptr;
+        this->cell = nextCell;
+        this->cell->groundUnit = this;
+        this->x += cos(this->conor) * saveSpeedTale;
+        this->y += sin(this->conor) * saveSpeedTale;
+        this->drawIndexY = this->y;
+        this->isGetMyCell = false;
+      } else {
+        this->stendOnCell();
       }
+    }
+    else
+    {
+      this->stendOnCell();
     }
   }
   else if (this->wayTakts)
   {
-    console.log("here 3");
+    this->x += this->wayDeltaX;
+    this->y += this->wayDeltaY;
+    this->drawIndexY = this->y;
+    this->wayTakts--;
+    this->animTimer++;
+    if (this->animTimer == 100)
+    {
+      this->animTimer = 1;
+    }
+    if (this->animTimer % 8 == 0)
+    {
+      // console.log(to_string(this->animY));
+      this->animY += this->animGabY;
+      if (this->animY == this->animGabY * 5)
+      {
+        this->animY = this->animGabY;
+      }
+    }
   }
-  else
-  {
-    console.log("here 4");
-    this->stendOnCell();
-  }
+
+  // ProtoObj *nextCell = nullptr;
+  // if (this->isPotentialWayComplite && this->potentialWay.length) {
+  //   nextCell = this->potentialWay.getItem(this->potentialWay.length - 1);
+  // }
+
+  // if (nextCell) {
+  //  // console.log("next");
+  // } else {
+  //  // console.log("no next");
+  // }
 
   // if (
   //     this->potentialWay.length &&
