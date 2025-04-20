@@ -19,25 +19,17 @@ void GameField::fieldClickRight()
         if (clickRight && inField)
         {
             int indexX = ceil((x - drawDeltaX) / cellSize) - 1;
-            //    // console.log("index x = " + to_string(indexX));
             int indexY = ceil((y - drawDeltaY - this->y) / cellSize);
-            //     ProtoObj *cell = this->field.getItem(indexY).getItem(indexX);
-            //     Order *order = new Order;
-            //     order->unit = unit;
-            //     order->cell = cell;
-            //     unit->fraction->orders.push(order);
-            //     order->isComplite = true;
 
-            Order *order = new Order;
+            unit->orderOnWay = unit->orderOnWay ? unit->orderOnWay : new Order;
             ProtoObj *cell = this->field.getItem(indexY).getItem(indexX);
-            order->cell = cell;
-            if (unit->orderOnWay)
-            {
-                deleter.orders.push(unit->orderOnWay);
-            }
-            unit->orderOnWay = order;
+            unit->orderOnWay->cell = cell;
+            unit->orderOnWay->isComplite = false;
+            
+            // console.log("order");
             if (!unit->isActive)
             {
+               // console.log("push active");
                 unit->isActive = true;
                 unit->fraction->activeUnits.push(unit);
             }

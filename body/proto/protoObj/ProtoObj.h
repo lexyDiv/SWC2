@@ -20,6 +20,8 @@ public:
     virtual void createUnitMenu();
     virtual void getHandTarget(ProtoObj *cell);
     virtual void activeProg();
+    virtual void stendOnCell();
+    virtual void stendOnCellWait();
 
     ////////
     int deleteTimer = 0;
@@ -166,6 +168,15 @@ public:
     ProtoObj *top_right = nullptr;
     ProtoObj *bottom_left = nullptr;
     ProtoObj *bottom_right = nullptr;
+
+ ///////////////////////// go way =>
+  int wayTakts = 0;
+  double speedTale = 0;
+  double wayDeltaX = 0;
+  double wayDeltaY = 0;
+  double conor = 0;
+
+ //////////////////////// <= go way
 
     // Array<ProtoObj *> guardCells;
     Array<ProtoObj *> booms;

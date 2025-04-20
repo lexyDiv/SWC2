@@ -28,10 +28,21 @@ void Peon::getCurrentTargetCell()
     }
     else
     {
-        this->preTargetCell->groundUnit->contactCells.forEach([this, &acs](ProtoObj *cell)
-                                                              {
+
+        if (preTargetCell->groundUnit->contactCells.length)
+        {
+            this->preTargetCell->groundUnit->contactCells.forEach([this, &acs](ProtoObj *cell)
+                                                                  {
             cell->procCurr = this->gf->procCurr;
             acs.push(cell); });
+        }
+        else
+        {
+            this->preTargetCell->groundUnit->cell->aroundCells.forEach([this, &acs](ProtoObj *cell)
+                                                                  {
+            cell->procCurr = this->gf->procCurr;
+            acs.push(cell); });
+        }
     }
     int iter = 0;
 
@@ -43,7 +54,7 @@ void Peon::getCurrentTargetCell()
             ProtoObj *c = acs.getItem(i);
             if ((!c->groundUnit || c->groundUnit->way.length ||
                  (this->profession == "lesorub" && c->groundUnit->name == "tree")) &&
-                !isBlocked(c, this))
+                (!isBlocked(c, this) || c == this->preTargetCell))
             {
                 freeCells.push(c);
             }

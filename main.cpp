@@ -200,7 +200,7 @@ int main()
     console.draw();
     ctx.End();
 
-    this_thread::sleep_for(chrono::milliseconds(15));
+    this_thread::sleep_for(chrono::milliseconds(15)); // 15 ok
   }
 
   delete game;
