@@ -1,4 +1,4 @@
-#include "getCurrentTargetCell.cpp"
+#include "stendOnCellWait.cpp"
 
 void Peon::activeProg()
 {
@@ -6,16 +6,17 @@ void Peon::activeProg()
   if (this->orderOnWay && !this->orderOnWay->isComplite)
   {
     ProtoObj *oCell = this->orderOnWay->cell;
+    bool isNot = false;
     if (!this->cell ||
         (oCell->plane != this->cell->plane) ||
         (oCell->groundUnit == this))
     {
 
       this->orderOnWay->isComplite = true;
-      return;
+      isNot = true;
     }
 
-    if (this->isPotentialWayComplite)
+    if (this->isPotentialWayComplite && !isNot)
     {
       this->getHandTarget(oCell);
 
@@ -46,7 +47,9 @@ void Peon::activeProg()
         this->y += sin(this->conor) * saveSpeedTale;
         this->drawIndexY = this->y;
         this->isGetMyCell = false;
-      } else {
+      }
+      else
+      {
         this->stendOnCell();
       }
     }

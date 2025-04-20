@@ -21,6 +21,7 @@ public:
     virtual void getHandTarget(ProtoObj *cell);
     virtual void activeProg();
     virtual void stendOnCell();
+    virtual void stendOnCellWait();
 
     ////////
     int deleteTimer = 0;
