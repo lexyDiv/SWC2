@@ -11,4 +11,7 @@ void ObjMenu::draw()
         }
         this->priceDraw();
     }
+    else if (this->potencialUnits.length) {
+       // console.log("here");
+    }
 };
