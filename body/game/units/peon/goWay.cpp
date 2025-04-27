@@ -27,15 +27,24 @@ void Peon::goWay()
                 }
                 this->drawIndexY = this->y;
                 this->goWayAnimation();
-            } 
-            else if (this->isNeedHoldGoWay(nextCell)) 
+            }
+            else if (this->isNeedHoldGoWay(nextCell))
             {
-                 this->stendOnCellWait();
-                 console.log("here");
+                this->stendOnCellWait();
+                console.log("hold");
             }
             else
             {
                 this->stendOnCell();
+                if (this->preTargetCell)
+                {
+               // std::cout<<"NEW WAY"<<std::endl;
+                    console.log("new way");
+                     this->getHandTarget(this->preTargetCell);
+
+                     this->orderOnWay->isComplite = true;
+                     return;
+                }
             }
         }
         else
