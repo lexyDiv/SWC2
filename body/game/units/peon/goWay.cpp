@@ -9,7 +9,7 @@ void Peon::goWay()
             this->wayIndex > 0)
         {
             ProtoObj *nextCell = this->potentialWay.getItem(this->wayIndex - 1);
-            if (!nextCell->groundUnit)
+            if (this->isNextCellFreeToGoWay(nextCell))
             {
                 this->wayIndex--;
                 this->x = this->cell->x;
@@ -27,6 +27,11 @@ void Peon::goWay()
                 }
                 this->drawIndexY = this->y;
                 this->goWayAnimation();
+            } 
+            else if (this->isNeedHoldGoWay(nextCell)) 
+            {
+                 this->stendOnCellWait();
+                 console.log("here");
             }
             else
             {

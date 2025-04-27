@@ -9,7 +9,6 @@ void Peon::goWayAnimation()
     }
     if (this->animTimer % 8 == 0)
     {
-        // console.log(to_string(this->animY));
         this->animY += this->animGabY;
         if (this->animY == this->animGabY * 5)
         {

@@ -16,6 +16,8 @@ class Peon : public ProtoObj {
     void orderOnWayControl();
     void goWayAnimation();
     void goWay();
+    bool isNextCellFreeToGoWay(ProtoObj *nextCell);
+    bool isNeedHoldGoWay(ProtoObj *nextCell);
     // bool isOnGetPotentialWayGetTarget(ProtoObj *cell) override;
     // bool isNewCellOnGetWayValide(ProtoObj *cell) override;
 };
