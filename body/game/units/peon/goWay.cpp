@@ -38,12 +38,12 @@ void Peon::goWay()
                 this->stendOnCell();
                 if (this->preTargetCell)
                 {
-               // std::cout<<"NEW WAY"<<std::endl;
+                    // std::cout<<"NEW WAY"<<std::endl;
                     console.log("new way");
-                     this->getHandTarget(this->preTargetCell);
+                    this->getHandTarget(this->preTargetCell);
 
-                     this->orderOnWay->isComplite = true;
-                     return;
+                    this->orderOnWay->isComplite = true;
+                    return;
                 }
             }
         }

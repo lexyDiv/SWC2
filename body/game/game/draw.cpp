@@ -42,9 +42,9 @@ void Game::draw()
                                   { unit->draw(); }); });
 
         /////////  setka
-        // this->gf->drawCell->cellsOnDraw.forEach([drawDeltaX, drawDeltaY](Array<ProtoObj *> drawLine)
-        //                                         { drawLine.forEach([drawDeltaX, drawDeltaY](ProtoObj *cell)
-        //                                                            { ctx.StrokeRect(cell->x + drawDeltaX, cell->y + drawDeltaY, cell->gabX, cell->gabY, "yellow"); }); });
+        this->gf->drawCell->cellsOnDraw.forEach([drawDeltaX, drawDeltaY](Array<ProtoObj *> drawLine)
+                                                { drawLine.forEach([drawDeltaX, drawDeltaY](ProtoObj *cell)
+                                                                   { ctx.StrokeRect(cell->x + drawDeltaX, cell->y + drawDeltaY, cell->gabX, cell->gabY, "yellow"); }); });
 
         ////////////////////////////////////////////////// ???
         // if (this->objMenu->unit)
