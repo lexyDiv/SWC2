@@ -37,7 +37,9 @@ void Peon::goWay()
             else
             {
                 this->stendOnCell();
-                if (this->preTargetCell)
+                if (this->preTargetCell
+                // && this->wayIndex > 1
+                 )
                 {
                     // std::cout<<"NEW WAY"<<std::endl;
                   //  console.log("new way");
