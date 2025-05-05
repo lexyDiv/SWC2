@@ -1,10 +1,11 @@
-#include "../../unitMenu/create.cpp"
+#include "../protoUnits/sweemingUnit/goWay.cpp"
 
-class Peon : public ProtoObj {
-    public:
+class Peon : public GroundUnit
+{
+public:
     Peon();
     ~Peon();
-    void create(ProtoObj* cell) override;
+    void create(ProtoObj *cell) override;
     void draw() override;
     void getHandTarget(ProtoObj *cell) override;
     void preDraw();
@@ -13,11 +14,11 @@ class Peon : public ProtoObj {
     void stendOnCell() override;
     void stendOnCellWait() override;
 
-    void orderOnWayControl();
-    void goWayAnimation();
-    void goWay();
-    bool isNextCellFreeToGoWay(ProtoObj *nextCell);
-    bool isNeedHoldGoWay(ProtoObj *nextCell);
+    // void orderOnWayControl() override;
+    //  void goWayAnimation() override;
+    // void goWay() override;
+    // bool isNextCellFreeToGoWay(ProtoObj *nextCell) override;
+    //  bool isNeedHoldGoWay(ProtoObj *nextCell) override;
     // bool isOnGetPotentialWayGetTarget(ProtoObj *cell) override;
     // bool isNewCellOnGetWayValide(ProtoObj *cell) override;
 };
