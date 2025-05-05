@@ -197,9 +197,5 @@ public:
         int preTaktsFloor = floor(preTakts);
         unit->speedTale = preTakts - preTaktsFloor;
         unit->wayTakts = preTaktsFloor;
-        // if (unit->speedTale) {
-        //     unit->wayTakts ++;
-        // };
-      //  console.log("unit->speedTale = " + to_string(unit->speedTale));
     };
 };

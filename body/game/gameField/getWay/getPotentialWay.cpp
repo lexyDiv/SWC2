@@ -20,13 +20,29 @@ void GameField::getPotentialWay(ProtoObj *unit)
     if (
         unit->hp > 0)
     {
-        this->createCount += 0.0000001;
+
+        this->createCount += 0.001;
+        if (this->createCount >= 100000000) {
+            this->createCount = 0;
+            console.log("default");
+        }
         unit->cell->createCountData = this->createCount;
         this->openArr.clear();
         this->min_F_cell = unit->cell;
+        this->min_F_cell->F = 0;
+        this->min_F_cell->H = 0;
+        this->min_F_cell->G = 0;
         this->globalMin_H_cell = nullptr;
 
         int iter = 0;
+
+        ///////////////////////////  poka tak!
+        unit->cell->aroundCells.forEach([this](ProtoObj *cell)
+                                        {
+            if (cell->groundUnit) {
+                cell->explored = this->createCount;
+            } });
+        ///////////////////////
 
         while (true)
         {

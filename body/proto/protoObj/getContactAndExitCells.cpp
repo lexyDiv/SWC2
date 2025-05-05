@@ -6,7 +6,7 @@ void ProtoObj::getContactAndExitCells(ProtoObj *cell, ProtoObj *exitCell, ProtoO
 {
   Array<CellDis> proContactCells;
   this->gf = cell->gf;
-  this->gf->createCount += 0.00001;
+  this->gf->createCount += 0.001;
   this->myCells.forEach([exitCell, &proContactCells, this](ProtoObj *mc)
                         { mc->aroundCells.forEach([mc, this, exitCell, &proContactCells](ProtoObj *ac)
                                                   {

@@ -45,7 +45,6 @@ void GameField::exploreNewCellAndAddToOpenArr(ProtoObj *unit, ProtoObj *fatherCe
       potentialCell->F = potentialCell->G + potentialCell->H;
 
       this->openArr.push(potentialCell);
-      // this->quickArr.push(potentialCell);
     }
   }
 }

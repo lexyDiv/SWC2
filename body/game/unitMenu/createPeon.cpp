@@ -88,8 +88,6 @@ void UnitMenu::createPeon()
     conorLeft = degToRad(180);
     leftDeltaX = cos(conorLeft) * this->speed;
     leftDeltaY = sin(conorLeft) * this->speed;
-    // this->wayTaktsToLeft = ((int)this->cellSize % (int)this->speed == 0) ? this->cellSize / this->speed : floor(this->cellSize / this->speed) + 1;
-    // console.log("wayTaktsToLeft = " + to_string(wayTaktsToLeft));
     conorRight = degToRad(0);
     rightDeltaX = cos(conorRight) * this->speed;
     rightDeltaY = sin(conorRight) * this->speed;
