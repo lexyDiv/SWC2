@@ -28,19 +28,27 @@ void ObjMenu::getCandidateCells()
         Array<ProtoObj *> ships;
         Array<ProtoObj *> fly;
 
+        Array<ProtoObj *> allUnits;
+
         for (int ver = indexY; ver < intY; ver++)
         {
             for (int hor = indexX; hor < intX; hor++)
             {
                 ProtoObj *unit = this->gf->field.getItem(ver).getItem(hor)->groundUnit;
+
                 if (unit && !unit->inZone && unit->unitMenu)
                 {
+                  //  console.log(unit->name);
+                   unit->inZone = true;
+                   allUnits.push(unit);
+
+
                     if (unit->fraction &&
                         unit->fraction->control == "human" &&
                         unit->type == "life")
                     {
                         units.push(unit);
-                        unit->inZone = true;
+                       // unit->inZone = true;
                         //  console.log("life");
                     }
 
@@ -50,12 +58,15 @@ void ObjMenu::getCandidateCells()
                         (!unit->fraction || unit->fraction->control == "human"))
                     {
                         building = unit;
-                        unit->inZone = true;
+                      //  unit->inZone = true;
                         // console.log("building");
                     }
                 }
             }
         }
+
+
+        
         if (units.length == 1)
         {
             this->potencialUnit = units.getItem(0);
@@ -65,6 +76,7 @@ void ObjMenu::getCandidateCells()
         {
             units.forEach([this](ProtoObj *unit)
                           { this->potencialUnits.push(unit); });
+                         // console.log(to_string(this->potencialUnits.length));
         }
         else if (building)
         {
@@ -76,11 +88,9 @@ void ObjMenu::getCandidateCells()
             // console.log("out");
         }
         ////////////////////////////////////////
-        if (building)
-        {
-            building->inZone = false;
-        }
-        this->units.forEach([](ProtoObj *unit)
-                            { unit->inZone = false; });
+        allUnits.forEach([](ProtoObj* unit){
+            unit->inZone = false;
+        });
+
     };
 };

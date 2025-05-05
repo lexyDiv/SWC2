@@ -1,4 +1,4 @@
-#include "activeProg.cpp"
+#include "goWay.cpp"
 
 void Peon::create(ProtoObj* cell) {
   

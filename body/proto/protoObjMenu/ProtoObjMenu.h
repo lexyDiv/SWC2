@@ -35,6 +35,7 @@ public:
     int slice = 0;
     bool needUpdate = false;
     int alpha = 255;
+    bool isWarriors = false;
 
     TitleUnit titleUnit;
     ButtonsBar buttonsBar;

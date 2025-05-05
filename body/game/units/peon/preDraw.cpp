@@ -1,4 +1,4 @@
-#include "stendOnCell.cpp"
+#include "isNextCellFreeToGoWay.cpp"
 
 void Peon::preDraw()
 {

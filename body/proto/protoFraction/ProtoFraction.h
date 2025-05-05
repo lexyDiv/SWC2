@@ -18,4 +18,5 @@ class ProtoFraction {
     Array<Order*> orders;
     Array<ProtoObj*> activeUnits;
     ProtoGame *game = nullptr;
+    Array<ProtoObj *> peons;
 };

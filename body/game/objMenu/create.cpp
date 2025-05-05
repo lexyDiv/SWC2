@@ -1,4 +1,4 @@
-#include "getCandidateCells.cpp"
+#include "drawGroup.cpp"
 
 void ObjMenu::create(ProtoGameField *gf)
 {

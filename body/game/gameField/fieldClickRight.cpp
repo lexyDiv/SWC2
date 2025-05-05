@@ -25,11 +25,11 @@ void GameField::fieldClickRight()
             ProtoObj *cell = this->field.getItem(indexY).getItem(indexX);
             unit->orderOnWay->cell = cell;
             unit->orderOnWay->isComplite = false;
-            
+
             // console.log("order");
             if (!unit->isActive)
             {
-               // console.log("push active");
+                // console.log("push active");
                 unit->isActive = true;
                 unit->fraction->activeUnits.push(unit);
             }
