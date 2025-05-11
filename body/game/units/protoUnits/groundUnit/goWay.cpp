@@ -1,4 +1,4 @@
-#include "isNeedHoldGoWay.cpp"
+#include "isGetTarget.cpp"
 
 void GroundUnit::goWay()
 {
@@ -12,6 +12,7 @@ void GroundUnit::goWay()
             bool isNeedHold = this->isNeedHoldGoWay(nextCell);
             if (this->isNextCellFreeToGoWay(nextCell) && !isNeedHold)
             {
+                this->holdWayCount = 0;
                 this->wayIndex--;
                 this->x = this->cell->x;
                 this->y = this->cell->y;
@@ -42,11 +43,11 @@ void GroundUnit::goWay()
                 )
                 {
                     // std::cout<<"NEW WAY"<<std::endl;
-                    //  console.log("new way");
-                    this->getHandTarget(this->preTargetCell);
+                      console.log("new way");
+                    // this->getHandTarget(this->preTargetCell);
 
-                    this->orderOnWay->isComplite = true;
-                    return;
+                    // this->orderOnWay->isComplite = true;
+                    // return;
                 }
             }
         }
@@ -61,6 +62,7 @@ void GroundUnit::goWay()
         this->y += this->wayDeltaY;
         this->drawIndexY = this->y;
         this->wayTakts--;
+        this->holdWayCount = 0;
         this->goWayAnimation();
     }
 };

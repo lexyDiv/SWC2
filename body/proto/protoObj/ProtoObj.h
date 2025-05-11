@@ -109,6 +109,7 @@ public:
     int handTargetMaxTime = 0;
 
     ProtoObj *targetObj = nullptr;
+    ProtoObj *lesorub = nullptr;
     string profession = "";
     ////////////////////////// <= handTarget
     ProtoObj *cell = nullptr;
@@ -175,7 +176,7 @@ public:
   double wayDeltaX = 0;
   double wayDeltaY = 0;
   double conor = 0;
-
+  int holdWayCount = 0;
  //////////////////////// <= go way
 
     // Array<ProtoObj *> guardCells;

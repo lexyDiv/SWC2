@@ -32,6 +32,7 @@ void Peon::getHandTarget(ProtoObj *cell)
                 if (cell == this->targetCell ||
                     cell->groundUnit && cell->groundUnit->name == "tree")
                 {
+                   // console.log("tree");
                     return true;
                 }
                 return false;
@@ -57,7 +58,8 @@ void Peon::getHandTarget(ProtoObj *cell)
             };
             this->isOnGetPotentialWayGetTarget = [this](ProtoObj *cell)
             {
-                if (cell == this->targetCell)
+                if (cell == this->targetCell ||
+                cell->groundUnit == this->targetObj)
                 {
                     return true;
                 }
@@ -67,7 +69,8 @@ void Peon::getHandTarget(ProtoObj *cell)
             {
                 if (cell->plane == this->cell->plane &&
                     (!cell->groundUnit ||
-                     cell->groundUnit->potentialWay.length))
+                     cell->groundUnit->potentialWay.length ||
+                cell->groundUnit == this->targetObj))
                 {
                     return true;
                 }

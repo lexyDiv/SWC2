@@ -9,4 +9,5 @@ void Peon::stendOnCellWait()
     this->isGetMyCell = true;
     this->animTimer = 0;
     this->animY = 0;
+    this->holdWayCount ++;
 };

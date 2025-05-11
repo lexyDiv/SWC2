@@ -13,6 +13,7 @@ public:
     void activeProg() override;
     void stendOnCell() override;
     void stendOnCellWait() override;
+    bool isGetTarget() override;
 
     // void orderOnWayControl() override;
     //  void goWayAnimation() override;

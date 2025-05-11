@@ -10,4 +10,5 @@ class GroundUnit : public ProtoObj {
    virtual void goWay();
    virtual bool isNextCellFreeToGoWay(ProtoObj *nextCell);
    virtual bool isNeedHoldGoWay(ProtoObj *nextCell);
+   virtual bool isGetTarget();
 };

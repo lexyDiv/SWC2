@@ -11,4 +11,5 @@ void Peon::stendOnCell()
     this->wayIndex = 0;
     this->animTimer = 0;
     this->animY = 0;
+    this->holdWayCount = 0;
 };
