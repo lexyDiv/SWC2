@@ -43,11 +43,11 @@ void GroundUnit::goWay()
                 )
                 {
                     // std::cout<<"NEW WAY"<<std::endl;
-                      console.log("new way");
-                    // this->getHandTarget(this->preTargetCell);
+                    //  console.log("new way");
+                    this->getHandTarget(this->preTargetCell);
 
-                    // this->orderOnWay->isComplite = true;
-                    // return;
+                    this->orderOnWay->isComplite = true;
+                    return;
                 }
             }
         }
