@@ -44,7 +44,7 @@ void ObjMenu::getCandidateCells()
 
 
                     if (unit->fraction &&
-                        unit->fraction->control == "human" &&
+                      //  unit->fraction->control == "human" && // chenge here
                         unit->type == "life")
                     {
                         units.push(unit);

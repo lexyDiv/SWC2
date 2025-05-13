@@ -33,20 +33,29 @@ void GroundUnit::goWay()
             else if (isNeedHold)
             {
                 this->stendOnCellWait();
-                // console.log("hold");
             }
             else
             {
                 this->stendOnCell();
-                if (this->preTargetCell
-                    // && this->wayIndex > 1
-                )
+                if (this->preTargetCell)
                 {
-                    // std::cout<<"NEW WAY"<<std::endl;
-                    //  console.log("new way");
-                    this->getHandTarget(this->preTargetCell);
-
-                    this->orderOnWay->isComplite = true;
+                    if (this->fraction->control == "human")
+                    {
+                        this->getHandTarget(this->preTargetCell);
+                        this->orderOnWay->isComplite = true;
+                    }
+                    else
+                    {
+                        if (!nextCell->groundUnit->isActive)
+                        {
+                            console.log("poshel na huy !!!");
+                        }
+                        else
+                        {
+                            this->getHandTarget(this->preTargetCell);
+                            this->orderOnWay->isComplite = true;
+                        }
+                    }
                     return;
                 }
             }

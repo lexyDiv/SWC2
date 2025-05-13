@@ -9,7 +9,6 @@ bool Peon::isGetTarget()
         this->wayIndex <= 2 &&
         this->isPotentialWayComplite)
     {
-      //  console.log("check");
         if (this->profession == "lesorub")
         {
             for (int i = 0; i < this->cell->aroundCells.length; i++)

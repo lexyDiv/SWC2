@@ -23,7 +23,7 @@ void Peon::getHandTarget(ProtoObj *cell)
     {
         // if (cell->groundUnit->name == "shaht")
         // {
-            this->targetObj = cell->groundUnit;
+        this->targetObj = cell->groundUnit;
         // }
         this->handTargetTimer = this->handTargetMaxTime;
 
@@ -40,25 +40,42 @@ void Peon::getHandTarget(ProtoObj *cell)
                 }
                 return false;
             };
-            this->isNewCellOnGetWayValide = [this](ProtoObj *cell)
+            if (this->fraction->control == "human")
             {
-                if (cell->plane == this->cell->plane &&
-                    (!cell->groundUnit ||
-                     cell->groundUnit->potentialWay.length ||
-                     cell == this->targetCell ||
-                     (cell->groundUnit && cell->groundUnit->name == "tree")))
+                this->isNewCellOnGetWayValide = [this](ProtoObj *cell)
                 {
-                    return true;
-                }
-                return false;
-            };
+                    if (cell->plane == this->cell->plane &&
+                        (!cell->groundUnit ||
+                         cell->groundUnit->potentialWay.length ||
+                         cell == this->targetCell ||
+                         (cell->groundUnit && cell->groundUnit->name == "tree")))
+                    {
+                        return true;
+                    }
+                    return false;
+                };
+            }
+            else
+            {
+                this->isNewCellOnGetWayValide = [this](ProtoObj *cell)
+                {
+                    if (cell->plane == this->cell->plane &&
+                        (!cell->groundUnit ||
+                         cell->groundUnit->type == "life" ||
+                         cell == this->targetCell ||
+                         (cell->groundUnit && cell->groundUnit->name == "tree")))
+                    {
+                        return true;
+                    }
+                    return false;
+                };
+            }
         }
         else
         {
             if (cell->groundUnit->name == "shaht")
             {
                 this->profession = "shahter";
-                //this->targetObj = cell->groundUnit;
             };
             this->isOnGetPotentialWayGetTarget = [this](ProtoObj *cell)
             {
@@ -69,17 +86,34 @@ void Peon::getHandTarget(ProtoObj *cell)
                 }
                 return false;
             };
-            this->isNewCellOnGetWayValide = [this](ProtoObj *cell)
+            if (this->fraction->control == "human")
             {
-                if (cell->plane == this->cell->plane &&
-                    (!cell->groundUnit ||
-                     cell->groundUnit->potentialWay.length ||
-                     cell->groundUnit == this->targetObj))
+                this->isNewCellOnGetWayValide = [this](ProtoObj *cell)
                 {
-                    return true;
-                }
-                return false;
-            };
+                    if (cell->plane == this->cell->plane &&
+                        (!cell->groundUnit ||
+                         cell->groundUnit->potentialWay.length ||
+                         cell->groundUnit == this->targetObj))
+                    {
+                        return true;
+                    }
+                    return false;
+                };
+            }
+            else
+            {
+                this->isNewCellOnGetWayValide = [this](ProtoObj *cell)
+                {
+                    if (cell->plane == this->cell->plane &&
+                        (!cell->groundUnit ||
+                         cell->groundUnit->type == "life" ||
+                         cell->groundUnit == this->targetObj))
+                    {
+                        return true;
+                    }
+                    return false;
+                };
+            }
         }
     }
     else
@@ -92,19 +126,34 @@ void Peon::getHandTarget(ProtoObj *cell)
             }
             return false;
         };
-        this->isNewCellOnGetWayValide = [this](ProtoObj *cell)
+        if (this->fraction->control == "human")
         {
-            if (cell->plane == this->cell->plane &&
-                (!cell->groundUnit ||
-                 cell->groundUnit->potentialWay.length ||
-                 (this->targetCell->groundUnit && cell->groundUnit == this->targetCell->groundUnit)))
+            this->isNewCellOnGetWayValide = [this](ProtoObj *cell)
             {
-                //  console.log("ok cell");
-                return true;
-            }
-            // console.log("bad cell");
-            return false;
-        };
+                if (cell->plane == this->cell->plane &&
+                    (!cell->groundUnit ||
+                     cell->groundUnit->potentialWay.length ||
+                     (this->targetCell->groundUnit && cell->groundUnit == this->targetCell->groundUnit)))
+                {
+                    return true;
+                }
+                return false;
+            };
+        }
+        else
+        {
+            this->isNewCellOnGetWayValide = [this](ProtoObj *cell)
+            {
+                if (cell->plane == this->cell->plane &&
+                    (!cell->groundUnit ||
+                     cell->groundUnit->type == "life" ||
+                     (this->targetCell->groundUnit && cell->groundUnit == this->targetCell->groundUnit)))
+                {
+                    return true;
+                }
+                return false;
+            };
+        }
     }
     //  this->getCurrentTargetCell(cell);
     this->game->unitsOnWay.push(this);
