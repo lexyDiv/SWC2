@@ -1,4 +1,4 @@
-#include "isGetTarget.cpp"
+#include "isTargetObjValide.cpp"
 
 void GroundUnit::goWay()
 {

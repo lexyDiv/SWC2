@@ -42,6 +42,14 @@ void ProtoObj::getCurrentTargetCell() {
 
 };
 
+// bool ProtoObj::isBlocked(ProtoObj *unit) {
+//     return false;
+// }
+
+bool ProtoObj::isBlockedd(ProtoObj *unit) {
+return false;
+};
+
 void ProtoObj::getContactCells()
 {
     if (this->myCells.length <= 1)

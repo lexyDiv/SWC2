@@ -49,7 +49,7 @@ void GameField::getPotentialWay(ProtoObj *unit)
         {
 
             iter++;
-
+            // console.log(to_string(iter));
             MinData md;
 
             if (unit->orderOnWay && !unit->orderOnWay->isComplite)

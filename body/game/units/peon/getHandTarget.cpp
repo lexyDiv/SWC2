@@ -21,7 +21,10 @@ void Peon::getHandTarget(ProtoObj *cell)
 
     if (cell->groundUnit)
     {
-        this->targetObj = cell->groundUnit;
+        // if (cell->groundUnit->name == "shaht")
+        // {
+            this->targetObj = cell->groundUnit;
+        // }
         this->handTargetTimer = this->handTargetMaxTime;
 
         if (cell->groundUnit->name == "tree")
@@ -32,7 +35,7 @@ void Peon::getHandTarget(ProtoObj *cell)
                 if (cell == this->targetCell ||
                     cell->groundUnit && cell->groundUnit->name == "tree")
                 {
-                   // console.log("tree");
+                    this->targetObj = cell->groundUnit;
                     return true;
                 }
                 return false;
@@ -55,11 +58,12 @@ void Peon::getHandTarget(ProtoObj *cell)
             if (cell->groundUnit->name == "shaht")
             {
                 this->profession = "shahter";
+                //this->targetObj = cell->groundUnit;
             };
             this->isOnGetPotentialWayGetTarget = [this](ProtoObj *cell)
             {
                 if (cell == this->targetCell ||
-                cell->groundUnit == this->targetObj)
+                    cell->groundUnit == this->targetObj)
                 {
                     return true;
                 }
@@ -70,7 +74,7 @@ void Peon::getHandTarget(ProtoObj *cell)
                 if (cell->plane == this->cell->plane &&
                     (!cell->groundUnit ||
                      cell->groundUnit->potentialWay.length ||
-                cell->groundUnit == this->targetObj))
+                     cell->groundUnit == this->targetObj))
                 {
                     return true;
                 }
@@ -92,13 +96,13 @@ void Peon::getHandTarget(ProtoObj *cell)
         {
             if (cell->plane == this->cell->plane &&
                 (!cell->groundUnit ||
-                cell->groundUnit->potentialWay.length ||
+                 cell->groundUnit->potentialWay.length ||
                  (this->targetCell->groundUnit && cell->groundUnit == this->targetCell->groundUnit)))
             {
-              //  console.log("ok cell");
+                //  console.log("ok cell");
                 return true;
             }
-           // console.log("bad cell");
+            // console.log("bad cell");
             return false;
         };
     }
