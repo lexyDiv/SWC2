@@ -22,7 +22,8 @@ void GameField::getPotentialWay(ProtoObj *unit)
     {
 
         this->createCount += 0.001;
-        if (this->createCount >= 100000000) {
+        if (this->createCount >= 100000000)
+        {
             this->createCount = 0;
             console.log("default");
         }
@@ -48,7 +49,7 @@ void GameField::getPotentialWay(ProtoObj *unit)
         {
 
             iter++;
-
+            // console.log(to_string(iter));
             MinData md;
 
             if (unit->orderOnWay && !unit->orderOnWay->isComplite)
@@ -99,6 +100,7 @@ void GameField::getPotentialWay(ProtoObj *unit)
                 else
                 {
                     this->potentialWayCreate(unit, this->globalMin_H_cell);
+                    unit->targetCell = this->globalMin_H_cell;
                 }
                 return;
             }

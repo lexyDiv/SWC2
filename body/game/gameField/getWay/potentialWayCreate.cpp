@@ -27,8 +27,10 @@ void GameField::potentialWayCreate(ProtoObj *unit, ProtoObj *finalCell)
         }
        // console.log("large = " + to_string(large));
     }
+    // if (unit->potentialWay.length) {
+    //   ProtoObj *lastCell = unit->potentialWay.getItem(0);
+      
+    // }
       unit->wayIndex = unit->potentialWay.length;
-     // unit->ordersOnWayCurrent --;
-    // console.log("ver = " + to_string(unit->potentialWay.getItem(0)->ver) + " hor = " + to_string(unit->potentialWay.getItem(0)->hor));
       unit->isPotentialWayComplite = true;
 }

@@ -2,7 +2,8 @@
 
 bool Peon::isGetTarget()
 {
-    if (this->targetCell &&
+    if (!this->holdWayCount &&
+        this->targetCell &&
         !this->wayTakts &&
         this->potentialWay.length &&
         this->wayIndex <= 2 &&

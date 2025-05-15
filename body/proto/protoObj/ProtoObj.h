@@ -148,7 +148,8 @@ public:
     Array<ProtoObj *> interUnits;
     //////////////////////  <= buildings
     ProtoFraction *fraction = nullptr;
-
+   // virtual bool isBlocked(ProtoObj* unit);
+    virtual bool isBlockedd(ProtoObj *unit);
     // cells
 
     ProtoObj *groundUnit = nullptr;

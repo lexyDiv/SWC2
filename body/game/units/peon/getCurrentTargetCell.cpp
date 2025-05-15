@@ -17,7 +17,7 @@ bool isBlocked(ProtoObj *cell, ProtoObj *unit)
 void Peon::getCurrentTargetCell()
 {
 
-    this->gf->procCurr += 0.0000001;
+    this->gf->procCurr += 0.0001;
     Array<ProtoObj *> acs;
     Array<ProtoObj *> freeCells;
 
@@ -28,20 +28,27 @@ void Peon::getCurrentTargetCell()
     }
     else
     {
-
-        if (preTargetCell->groundUnit->contactCells.length)
+        if (!this->preTargetCell->groundUnit->isBlockedd(this))
         {
-            this->preTargetCell->groundUnit->contactCells.forEach([this, &acs](ProtoObj *cell)
-                                                                  {
-            cell->procCurr = this->gf->procCurr;
-            acs.push(cell); });
+            this->targetCell = this->preTargetCell->groundUnit->cell;
+            return;
         }
         else
         {
-            this->preTargetCell->groundUnit->cell->aroundCells.forEach([this, &acs](ProtoObj *cell)
-                                                                  {
+            if (preTargetCell->groundUnit->contactCells.length)
+            {
+                this->preTargetCell->groundUnit->contactCells.forEach([this, &acs](ProtoObj *cell)
+                                                                      {
             cell->procCurr = this->gf->procCurr;
             acs.push(cell); });
+            }
+            else
+            {
+                this->preTargetCell->groundUnit->cell->aroundCells.forEach([this, &acs](ProtoObj *cell)
+                                                                           {
+            cell->procCurr = this->gf->procCurr;
+            acs.push(cell); });
+            }
         }
     }
     int iter = 0;

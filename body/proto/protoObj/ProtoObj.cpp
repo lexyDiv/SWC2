@@ -1,6 +1,5 @@
 #include "get3x3myCells.cpp"
 
-
 ProtoObj::ProtoObj()
 {
 }
@@ -42,6 +41,25 @@ void ProtoObj::getCurrentTargetCell() {
 
 };
 
+// bool ProtoObj::isBlocked(ProtoObj *unit) {
+//     return false;
+// }
+
+bool ProtoObj::isBlockedd(ProtoObj *unit)
+{
+    for (int i = 0; i < this->myCells.length; i++)
+    {
+        ProtoObj *cell = this->myCells.getItem(i);
+        if (!cell->groundUnit ||
+            cell->groundUnit->potentialWay.length ||
+            cell->groundUnit == this)
+        {
+            return false;
+        }
+    }
+    return true;
+};
+
 void ProtoObj::getContactCells()
 {
     if (this->myCells.length <= 1)
@@ -60,7 +78,7 @@ void ProtoObj::getContactCells()
 }
 
 void ProtoObj::stendOnCell() {};
-void ProtoObj::stendOnCellWait(){};
+void ProtoObj::stendOnCellWait() {};
 
 // bool ProtoObj::isOnGetPotentialWayGetTarget(ProtoObj* cell)
 // {
