@@ -49,18 +49,17 @@ public:
     Image *woodIcon = new Image("images/wood.png");
     Image *peonRed = new Image("images/images/peon_new.png");
 
-
     Imager() {};
     ~Imager()
     {
-       delete this->peonRed;
-       this->peonRed = nullptr;
+        delete this->peonRed;
+        this->peonRed = nullptr;
 
-       delete oilIcon;
-       oilIcon = nullptr;
+        delete oilIcon;
+        oilIcon = nullptr;
 
-       delete woodIcon;
-       woodIcon = nullptr;
+        delete woodIcon;
+        woodIcon = nullptr;
 
         delete goldIcon;
         goldIcon = nullptr;
@@ -139,3 +138,46 @@ public:
 };
 
 Imager imager;
+
+class Nation
+{
+public:
+    Nation(string type, string color)
+    {
+        this->type = type;
+        this->color = color;
+        if (type == "orc")
+        {
+            if (color == "red")
+            {
+                this->peon = imager.peonRed;
+            }
+        }
+        else
+        {
+        }
+    };
+    string type = "";
+    string color = "";
+    Image *peon = nullptr;
+    Image *peonWithWood = nullptr;
+    Image *peonWithGold = nullptr;
+    Image *greateHoll = nullptr;
+    Image *greateHoll2 = nullptr;
+    Image *greateHoll3 = nullptr;
+};
+
+Nation redOrcs("orc", "red");
+
+class NationsHub
+{
+public:
+    NationsHub()
+    {
+        this->orcs.push(redOrcs);
+    }
+    Array<Nation> orcs;
+    Array<Nation> humans;
+};
+
+NationsHub *nationsHub = new NationsHub;

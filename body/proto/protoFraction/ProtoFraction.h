@@ -19,4 +19,8 @@ class ProtoFraction {
     Array<ProtoObj*> activeUnits;
     ProtoGame *game = nullptr;
     Array<ProtoObj *> peons;
+
+    int unionCase = 0;
+
+   // Nation nation = nationsHub.
 };

@@ -13,6 +13,8 @@ Game::~Game()
         fr = nullptr;
     });
     
+    delete nationsHub;
+    nationsHub = nullptr;
 }
 
 void Game::create()

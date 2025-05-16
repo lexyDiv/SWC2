@@ -17,7 +17,7 @@ void Peon::create(ProtoObj* cell) {
     this->name = "peon";
     this->type = "life";
     this->mapColor = {R : 255, G : 255, B : 255};
-    this->image = imager.peonRed;
+    this->image = imager.peonRed; //  !!!!
     this->x = cell->x;
     this->y = cell->y;
     this->getGabX = cell->gabX;
