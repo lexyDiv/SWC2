@@ -142,6 +142,7 @@ Imager imager;
 class Nation
 {
 public:
+    Nation() {};
     Nation(string type, string color)
     {
         this->type = type;
@@ -150,7 +151,7 @@ public:
         {
             if (color == "red")
             {
-                this->peon = imager.peonRed;
+                this->image = imager.peonRed;
             }
         }
         else
@@ -159,22 +160,24 @@ public:
     };
     string type = "";
     string color = "";
-    Image *peon = nullptr;
-    Image *peonWithWood = nullptr;
-    Image *peonWithGold = nullptr;
+    Image *image = nullptr;
+    Image *image2 = nullptr;
+    Image *image3 = nullptr;
     Image *greateHoll = nullptr;
     Image *greateHoll2 = nullptr;
     Image *greateHoll3 = nullptr;
 };
 
-Nation redOrcs("orc", "red");
+
 
 class NationsHub
 {
 public:
+Nation redOrcs = Nation("orc", "red");
+
     NationsHub()
     {
-        this->orcs.push(redOrcs);
+        this->orcs.push(this->redOrcs);
     }
     Array<Nation> orcs;
     Array<Nation> humans;

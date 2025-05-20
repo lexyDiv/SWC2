@@ -1,7 +1,9 @@
 #include "activeUnitsControl.cpp"
 
-void Fraction::create(ProtoGame* game) {
+void Fraction::create(ProtoGame* game, Nation &nation) {
    // console.log("fraction created");
+   this->nation = nation;
+  // console.log(this->nation.color);
    this->game = game;
    ProtoObj* peon = new Peon;
    peon->fraction = this;

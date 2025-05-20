@@ -47,6 +47,8 @@ void Peon::getHandTarget(ProtoObj *cell)
                     if (cell->plane == this->cell->plane &&
                         (!cell->groundUnit ||
                          cell->groundUnit->potentialWay.length ||
+                         (cell->groundUnit->fraction->unionCase != this->fraction->unionCase &&
+                          cell->groundUnit->isWarrior) ||
                          cell == this->targetCell ||
                          (cell->groundUnit && cell->groundUnit->name == "tree")))
                     {

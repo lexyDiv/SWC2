@@ -28,7 +28,7 @@ void Game::create()
     
     ////////////////////////////// fractons
      ProtoFraction* fraction = new Fraction;
-     fraction->create(this);
+     fraction->create(this, nationsHub->orcs.getItem3(0));
      fraction->control = "";
      this->fractions.push(fraction);
     //////////////////////////////

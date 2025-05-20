@@ -6,7 +6,7 @@ class ProtoFraction {
     public:
     ProtoFraction();
    virtual ~ProtoFraction();
-   virtual void create(ProtoGame* game);
+   virtual void create(ProtoGame* game, Nation &nation);
 
    virtual void orderControl();
    virtual void controller();
@@ -19,6 +19,8 @@ class ProtoFraction {
     Array<ProtoObj*> activeUnits;
     ProtoGame *game = nullptr;
     Array<ProtoObj *> peons;
+
+    Nation nation = Nation();
 
     int unionCase = 0;
 
