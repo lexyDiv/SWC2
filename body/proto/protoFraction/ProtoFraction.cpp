@@ -8,7 +8,7 @@ ProtoFraction::~ProtoFraction()
 {
 }
 
-void ProtoFraction::create(ProtoGame* game)
+void ProtoFraction::create(ProtoGame* game, Nation &nation)
 {
 }
 
