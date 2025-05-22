@@ -80,11 +80,7 @@ void ProtoObj::getContactCells()
 void ProtoObj::stendOnCell() {};
 void ProtoObj::stendOnCellWait() {};
 
-// bool ProtoObj::isOnGetPotentialWayGetTarget(ProtoObj* cell)
-// {
-//     return false;
-// }
-
-// bool ProtoObj::isNewCellOnGetWayValide(ProtoObj* cell) {
-//     return !(bool)cell->groundUnit;
-// }
+struct UnitPack {
+    ProtoObj *unit = nullptr;
+    int bornCount = 0;
+};

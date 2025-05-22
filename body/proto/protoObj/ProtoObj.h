@@ -206,7 +206,8 @@ public:
 
     // buildings
     Array<ProtoObj *> myCells;
-
+    ProtoObj *bornCell = nullptr;
+    int bornCount = 0;
     // land objects
 
     // wall
@@ -335,3 +336,5 @@ struct CellDis
     ProtoObj *cell = nullptr;
     double dis = 0.0;
 };
+
+
