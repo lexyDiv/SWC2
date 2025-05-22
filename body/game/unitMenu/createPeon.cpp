@@ -70,7 +70,7 @@ void UnitMenu::createPeon()
 
     this->targetObjControl = [](ProtoObj *unit)
     {
-        unit->targetObj = nullptr;
+        unit->targetObj.unit = nullptr;
     };
 
     this->targetObjControlWood = [](ProtoObj *unit)
@@ -78,12 +78,12 @@ void UnitMenu::createPeon()
         ProtoObj *cell = unit->potentialWay.getItem(0);
         if (!cell->groundUnit || cell->groundUnit->name != "tree")
         {
-            unit->targetObj = nullptr;
+            unit->targetObj.unit = nullptr;
             unit->profession = "";
         }
         else
         {
-            unit->targetObj = cell->groundUnit;
+            unit->targetObj.unit = cell->groundUnit;
         }
     };
 
@@ -92,12 +92,12 @@ void UnitMenu::createPeon()
         ProtoObj *cell = unit->potentialWay.getItem(0);
         if (!cell->groundUnit || cell->groundUnit->name != "shaht")
         {
-            unit->targetObj = nullptr;
+            unit->targetObj.unit = nullptr;
             unit->profession = "";
         }
         else
         {
-            unit->targetObj = cell->groundUnit;
+            unit->targetObj.unit = cell->groundUnit;
         }
     };
 

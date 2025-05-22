@@ -54,6 +54,7 @@ public:
     void push(T el);
     void unshift(T el);
     T pop();
+    T &pop2();
     T shift();
     void changeEl(T item, int i);
     void forEachDel(function<bool(T item, int index, vector<T> vec)> fn);
@@ -136,6 +137,21 @@ inline T Array<T>::pop()
         return el;
     }
     return T();
+}
+
+template <typename T>
+inline T &Array<T>::pop2()
+{
+    //  if (this->length)
+    //  {
+       
+        int lastIndex = vec.size() - 1;
+        T &el = vec[lastIndex];
+        vec.erase(vec.begin() + lastIndex);
+        this->length = vec.size();
+        return *&el;
+    //  }
+    //  return T();
 }
 
 template <typename T>

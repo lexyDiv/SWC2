@@ -6,6 +6,12 @@ struct AnimLines;
 class ProtoFraction;
 class ProtoUnitMenu;
 
+struct UnitPack
+{
+    ProtoObj *unit = nullptr;
+    int bornCount = 0;
+};
+
 class ProtoObj
 {
 public:
@@ -108,12 +114,12 @@ public:
     int handTargetTimer = 0;
     int handTargetMaxTime = 0;
 
-    ProtoObj *targetObj = nullptr;
+    UnitPack targetObj;
     ProtoObj *lesorub = nullptr;
     string profession = "";
     ////////////////////////// <= handTarget
     ProtoObj *cell = nullptr;
-    Array<ProtoObj *> enemys;
+    Array<UnitPack> enemys;
     Array<ProtoObj *> way;
     Array<ProtoObj *> potentialWay;
     //////////////////// =>  way
@@ -149,7 +155,7 @@ public:
     Array<ProtoObj *> interUnits;
     //////////////////////  <= buildings
     ProtoFraction *fraction = nullptr;
-   // virtual bool isBlocked(ProtoObj* unit);
+    // virtual bool isBlocked(ProtoObj* unit);
     virtual bool isBlockedd(ProtoObj *unit);
     // cells
 
@@ -172,14 +178,14 @@ public:
     ProtoObj *bottom_left = nullptr;
     ProtoObj *bottom_right = nullptr;
 
- ///////////////////////// go way =>
-  int wayTakts = 0;
-  double speedTale = 0;
-  double wayDeltaX = 0;
-  double wayDeltaY = 0;
-  double conor = 0;
-  int holdWayCount = 0;
- //////////////////////// <= go way
+    ///////////////////////// go way =>
+    int wayTakts = 0;
+    double speedTale = 0;
+    double wayDeltaX = 0;
+    double wayDeltaY = 0;
+    double conor = 0;
+    int holdWayCount = 0;
+    //////////////////////// <= go way
 
     // Array<ProtoObj *> guardCells;
     Array<ProtoObj *> booms;
@@ -336,5 +342,3 @@ struct CellDis
     ProtoObj *cell = nullptr;
     double dis = 0.0;
 };
-
-

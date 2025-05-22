@@ -24,7 +24,7 @@ void Peon::getHandTarget(ProtoObj *cell)
     {
         // if (cell->groundUnit->name == "shaht")
         // {
-        this->targetObj = cell->groundUnit;
+        this->targetObj.unit = cell->groundUnit;
         // }
         this->handTargetTimer = this->handTargetMaxTime;
 
@@ -37,7 +37,7 @@ void Peon::getHandTarget(ProtoObj *cell)
                 if (cell == this->targetCell ||
                     cell->groundUnit && cell->groundUnit->name == "tree")
                 {
-                    this->targetObj = cell->groundUnit;
+                    this->targetObj.unit = cell->groundUnit;
                     return true;
                 }
                 return false;
@@ -85,7 +85,7 @@ void Peon::getHandTarget(ProtoObj *cell)
             this->isOnGetPotentialWayGetTarget = [this](ProtoObj *cell)
             {
                 if (cell == this->targetCell ||
-                    cell->groundUnit == this->targetObj)
+                    cell->groundUnit == this->targetObj.unit)
                 {
                     return true;
                 }
@@ -98,7 +98,7 @@ void Peon::getHandTarget(ProtoObj *cell)
                     if (cell->plane == this->cell->plane &&
                         (!cell->groundUnit ||
                          cell->groundUnit->potentialWay.length ||
-                         cell->groundUnit == this->targetObj))
+                         cell->groundUnit == this->targetObj.unit))
                     {
                         return true;
                     }
@@ -112,7 +112,7 @@ void Peon::getHandTarget(ProtoObj *cell)
                     if (cell->plane == this->cell->plane &&
                         (!cell->groundUnit ||
                          cell->groundUnit->type == "life" ||
-                         cell->groundUnit == this->targetObj))
+                         cell->groundUnit == this->targetObj.unit))
                     {
                         return true;
                     }

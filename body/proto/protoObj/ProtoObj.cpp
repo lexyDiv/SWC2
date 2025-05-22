@@ -80,7 +80,3 @@ void ProtoObj::getContactCells()
 void ProtoObj::stendOnCell() {};
 void ProtoObj::stendOnCellWait() {};
 
-struct UnitPack {
-    ProtoObj *unit = nullptr;
-    int bornCount = 0;
-};
