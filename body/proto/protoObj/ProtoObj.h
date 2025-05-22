@@ -140,6 +140,7 @@ public:
     bool isGetMyCell = true;
     int ordersOnWayCurrent = 0;
     Order *orderOnWay = nullptr;
+    function<void(ProtoObj *unit)> targetObjControl = [](ProtoObj *unit) {};
     ////////////////////////// <= way
     // Array<ProtoObj *> cells2X2;
     ////////////////////// =>  buildings

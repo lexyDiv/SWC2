@@ -72,6 +72,12 @@ public:
         return "";
     };
 
+    function<void(ProtoObj *unit)> targetObjControlWood = [](ProtoObj *unit) {};
+    function<void(ProtoObj *unit)> targetObjControlGold = [](ProtoObj *unit) {};
+    function<void(ProtoObj *unit)> targetObjControl = [](ProtoObj *unit) {};
+
+    function<void(ProtoObj *unit)> targetObjControlEnemy = [](ProtoObj *unit) {};
+
     ////////////////////////// get way
     //     bool isOnGetPotentialWayGetTarget(ProtoObj *cell) override;
     // bool isNewCellOnGetWayValide(ProtoObj *cell) override;

@@ -68,6 +68,39 @@ void UnitMenu::createPeon()
         return true;
     };
 
+    this->targetObjControl = [](ProtoObj *unit)
+    {
+        unit->targetObj = nullptr;
+    };
+
+    this->targetObjControlWood = [](ProtoObj *unit)
+    {
+        ProtoObj *cell = unit->potentialWay.getItem(0);
+        if (!cell->groundUnit || cell->groundUnit->name != "tree")
+        {
+            unit->targetObj = nullptr;
+            unit->profession = "";
+        }
+        else
+        {
+            unit->targetObj = cell->groundUnit;
+        }
+    };
+
+    this->targetObjControlGold = [](ProtoObj *unit)
+    {
+        ProtoObj *cell = unit->potentialWay.getItem(0);
+        if (!cell->groundUnit || cell->groundUnit->name != "shaht")
+        {
+            unit->targetObj = nullptr;
+            unit->profession = "";
+        }
+        else
+        {
+            unit->targetObj = cell->groundUnit;
+        }
+    };
+
     //////////////////////////// conirs
     //     ProtoObj *left = nullptr;
     // ProtoObj *right = nullptr;
@@ -83,7 +116,6 @@ void UnitMenu::createPeon()
     // double degDis = 67.882251;
     // double wayTaktCountForward = 0;
     // double wayTaktCountDeg = 0;
-
 
     conorLeft = degToRad(180);
     leftDeltaX = cos(conorLeft) * this->speed;

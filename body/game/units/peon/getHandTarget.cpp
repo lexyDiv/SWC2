@@ -18,6 +18,7 @@ void Peon::getHandTarget(ProtoObj *cell)
     this->isPotentialWayComplite = false;
     // this->isNeedReturnGetPotentialWay = true;
     this->targetCell = nullptr;
+    this->targetObjControl = this->unitMenu->targetObjControl;
 
     if (cell->groundUnit)
     {
@@ -30,6 +31,7 @@ void Peon::getHandTarget(ProtoObj *cell)
         if (cell->groundUnit->name == "tree")
         {
             this->profession = "lesorub";
+            this->targetObjControl = this->unitMenu->targetObjControlWood;
             this->isOnGetPotentialWayGetTarget = [this](ProtoObj *cell)
             {
                 if (cell == this->targetCell ||
@@ -78,6 +80,7 @@ void Peon::getHandTarget(ProtoObj *cell)
             if (cell->groundUnit->name == "shaht")
             {
                 this->profession = "shahter";
+                this->targetObjControl = this->unitMenu->targetObjControlGold;
             };
             this->isOnGetPotentialWayGetTarget = [this](ProtoObj *cell)
             {

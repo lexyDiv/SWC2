@@ -151,7 +151,7 @@ public:
         {
             if (color == "red")
             {
-                this->image = imager.peonRed;
+                this->peon = imager.peonRed;
             }
         }
         else
@@ -160,9 +160,9 @@ public:
     };
     string type = "";
     string color = "";
-    Image *image = nullptr;
-    Image *image2 = nullptr;
-    Image *image3 = nullptr;
+    Image *peon = nullptr;
+    Image *peonWithWood = nullptr;
+    Image *peonWithGold = nullptr;
     Image *greateHoll = nullptr;
     Image *greateHoll2 = nullptr;
     Image *greateHoll3 = nullptr;

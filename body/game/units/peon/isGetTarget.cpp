@@ -27,7 +27,7 @@ bool Peon::isGetTarget()
             for (int i = 0; i < this->cell->aroundCells.length; i++)
             {
                 ProtoObj *cell = this->cell->aroundCells.getItem(i);
-                if (cell->groundUnit == this->targetObj)
+                if (cell->groundUnit && cell->groundUnit == this->targetObj)
                 {
                     return true;
                 }
