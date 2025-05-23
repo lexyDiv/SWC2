@@ -14,7 +14,7 @@ void Fraction::create(ProtoGame *game, Nation &nation)
    peon2->fraction = this;
    peon2->create(game->gf->field.getItem(10).getItem(6));
 
-   ////////////////////////////
+   //////////////////////////
    // for (int i = 0; i < 10; i++)
    // {
    //    ProtoObj *unit = new Peon;
@@ -24,7 +24,14 @@ void Fraction::create(ProtoGame *game, Nation &nation)
    //    peon->enemys.push(up);
    // }
 
+   // int index = peon->enemys.indexOf2([](UnitPack up)
+   //                                   {
+   //    if (up.unit->name == "50 peon") {
+   //       return true;
+   //    }
+   //    return false; });
 
+   // console.log(to_string(index));
    ////////////////////////////
 
    this->peons.push(peon);
