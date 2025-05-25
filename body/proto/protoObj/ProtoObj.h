@@ -147,6 +147,7 @@ public:
     int ordersOnWayCurrent = 0;
     Order *orderOnWay = nullptr;
     function<void(ProtoObj *unit)> targetObjControl = [](ProtoObj *unit) {};
+    bool iNeedFreeWay = false;
     ////////////////////////// <= way
     // Array<ProtoObj *> cells2X2;
     ////////////////////// =>  buildings

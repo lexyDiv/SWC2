@@ -76,28 +76,32 @@ void UnitMenu::createPeon()
     this->targetObjControlWood = [](ProtoObj *unit)
     {
         ProtoObj *cell = unit->potentialWay.getItem(0);
-        if (!cell->groundUnit || cell->groundUnit->name != "tree")
+        ProtoObj *gu = cell->groundUnit;
+        if (!gu || gu->name != "tree")
         {
             unit->targetObj.unit = nullptr;
             unit->profession = "";
         }
         else
         {
-            unit->targetObj.unit = cell->groundUnit;
+            unit->targetObj.unit = gu;
+            unit->targetObj.bornCount = gu->bornCount;
         }
     };
 
     this->targetObjControlGold = [](ProtoObj *unit)
     {
         ProtoObj *cell = unit->potentialWay.getItem(0);
-        if (!cell->groundUnit || cell->groundUnit->name != "shaht")
+        ProtoObj *gu = cell->groundUnit;
+        if (!gu || gu->name != "shaht")
         {
             unit->targetObj.unit = nullptr;
             unit->profession = "";
         }
         else
         {
-            unit->targetObj.unit = cell->groundUnit;
+            unit->targetObj.unit = gu;
+            unit->targetObj.bornCount = gu->bornCount;
         }
     };
 
