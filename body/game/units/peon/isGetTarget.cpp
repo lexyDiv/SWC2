@@ -6,30 +6,36 @@ bool Peon::isGetTarget()
         this->targetCell &&
         !this->wayTakts &&
         this->potentialWay.length &&
-        this->wayIndex <= 2 &&
+        this->wayIndex <= 5 &&
         this->isPotentialWayComplite)
     {
-        if (this->profession == "lesorub")
+        ProtoObj *to = this->targetObj.unit;
+        if (to)
         {
-            for (int i = 0; i < this->cell->aroundCells.length; i++)
+            if (to->name == "tree")
             {
-                ProtoObj *cell = this->cell->aroundCells.getItem(i);
-                if (cell->groundUnit &&
-                    cell->groundUnit->name == "tree" &&
-                    !cell->groundUnit->lesorub)
+                for (int i = 0; i < this->cell->aroundCells.length; i++)
                 {
-                    return true;
+                    ProtoObj *cell = this->cell->aroundCells.getItem(i);
+                    if (cell->groundUnit &&
+                        cell->groundUnit->name == "tree" &&
+                        !cell->groundUnit->lesorub)
+                    {
+                        this->iNeedFreeWay = false;
+                        return true;
+                    }
                 }
             }
-        }
-        else if (this->profession == "shahter")
-        {
-            for (int i = 0; i < this->cell->aroundCells.length; i++)
+            else
             {
-                ProtoObj *cell = this->cell->aroundCells.getItem(i);
-                if (cell->groundUnit && cell->groundUnit == this->targetObj.unit)
+                for (int i = 0; i < this->cell->aroundCells.length; i++)
                 {
-                    return true;
+                    ProtoObj *cell = this->cell->aroundCells.getItem(i);
+                    if (cell->groundUnit && cell->groundUnit == to)
+                    {
+                        this->iNeedFreeWay = false;
+                        return true;
+                    }
                 }
             }
         }
@@ -39,6 +45,7 @@ bool Peon::isGetTarget()
                 (this->wayIndex == 1 &&
                  this->potentialWay.getItem(0)->groundUnit))
             {
+                this->iNeedFreeWay = false;
                 return true;
             }
         }

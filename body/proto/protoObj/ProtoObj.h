@@ -119,7 +119,7 @@ public:
     string profession = "";
     ////////////////////////// <= handTarget
     ProtoObj *cell = nullptr;
-    Array<UnitPack> enemys;
+    Array<ProtoObj *> enemys;
     Array<ProtoObj *> way;
     Array<ProtoObj *> potentialWay;
     //////////////////// =>  way

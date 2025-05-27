@@ -89,19 +89,46 @@ void UnitMenu::createPeon()
         }
     };
 
-    this->targetObjControlGold = [](ProtoObj *unit)
+    this->targetObjControlBuilding = [](ProtoObj *unit)
     {
         ProtoObj *cell = unit->potentialWay.getItem(0);
         ProtoObj *gu = cell->groundUnit;
-        if (!gu || gu->name != "shaht")
+        if (!gu || gu != unit->targetObj.unit ||
+            unit->targetObj.bornCount != gu->bornCount || (gu->fraction && gu->fraction->unionCase != unit->fraction->unionCase))
         {
             unit->targetObj.unit = nullptr;
             unit->profession = "";
         }
-        else
+    };
+
+    this->targetObjControlWoodComp = [](ProtoObj *unit)
+    {
+        ProtoObj *cell = unit->potentialWay.getItem(0);
+        ProtoObj *gu = cell->groundUnit;
+        if (!gu ||
+            gu->name != "tree")
         {
-            unit->targetObj.unit = gu;
-            unit->targetObj.bornCount = gu->bornCount;
+            console.log("i need free way to new tree !!!");
+        }
+    };
+
+    this->targetObjControlBuildingComp = [](ProtoObj *unit)
+    {
+        ProtoObj *cell = unit->potentialWay.getItem(0);
+        ProtoObj *gu = cell->groundUnit;
+        if (unit->targetObj.bornCount != gu->bornCount ||
+            gu->hp <= 0)
+        {
+            unit->targetObj.unit = nullptr;
+            unit->profession = "";
+            return;
+        }
+        if (!unit->iNeedFreeWay &&
+            (!gu || gu != unit->targetObj.unit))
+        {
+            console.log("i need free way to building");
+            unit->iNeedFreeWay = true;
+            unit->getHandTarget(unit->preTargetCell);
         }
     };
 
