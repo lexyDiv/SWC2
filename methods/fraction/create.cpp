@@ -14,6 +14,9 @@ void Fraction::create(ProtoGame *game, Nation &nation)
    peon2->fraction = this;
    peon2->create(game->gf->field.getItem(10).getItem(6));
 
+   this->game->AllFractionsUnits.push(peon);
+   this->game->AllFractionsUnits.push(peon2);
+
    //////////////////////////
    // for (int i = 0; i < 10; i++)
    // {

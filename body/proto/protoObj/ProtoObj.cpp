@@ -47,9 +47,9 @@ void ProtoObj::getCurrentTargetCell() {
 
 bool ProtoObj::isBlockedd(ProtoObj *unit)
 {
-    for (int i = 0; i < this->myCells.length; i++)
+    for (int i = 0; i < this->contactCells.length; i++)
     {
-        ProtoObj *cell = this->myCells.getItem(i);
+        ProtoObj *cell = this->contactCells.getItem(i);
         if (!cell->groundUnit ||
             cell->groundUnit->potentialWay.length ||
             cell->groundUnit == this)

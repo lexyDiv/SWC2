@@ -20,6 +20,10 @@ class ProtoFraction {
     ProtoGame *game = nullptr;
     Array<ProtoObj *> peons;
 
+    ///////////////////  reserv
+    Array<ProtoObj *> reservPeons;
+    //////////////////
+
     Nation nation = Nation();
 
     int unionCase = 0;
