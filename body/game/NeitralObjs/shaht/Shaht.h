@@ -8,4 +8,5 @@ class Shaht : public ProtoObj {
     void create(ProtoObj * cell) override;
     void draw() override;
     void createUnitMenu() override;
+    bool isBlockedd(ProtoObj *unit) override;
 };

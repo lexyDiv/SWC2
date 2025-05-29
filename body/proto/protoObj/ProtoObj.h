@@ -158,6 +158,7 @@ public:
     ProtoFraction *fraction = nullptr;
     // virtual bool isBlocked(ProtoObj* unit);
     virtual bool isBlockedd(ProtoObj *unit);
+    bool isIgetMyTarget = false;
     // cells
 
     ProtoObj *groundUnit = nullptr;

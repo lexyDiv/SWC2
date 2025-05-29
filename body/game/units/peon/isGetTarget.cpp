@@ -2,14 +2,16 @@
 
 bool Peon::isGetTarget()
 {
+    ProtoObj *to = this->targetObj.unit;
     if (!this->holdWayCount &&
-        this->targetCell &&
-        !this->wayTakts &&
-        this->potentialWay.length &&
-        this->wayIndex <= 5 &&
-        this->isPotentialWayComplite)
+        this->targetCell// &&
+       // !to &&
+      //  !this->wayTakts &&
+        // this->potentialWay.length &&
+       // this->wayIndex <= 5 &&
+      //  this->isPotentialWayComplite
+        )
     {
-        ProtoObj *to = this->targetObj.unit;
         if (to)
         {
             if (to->name == "tree")
@@ -21,7 +23,10 @@ bool Peon::isGetTarget()
                         cell->groundUnit->name == "tree" &&
                         !cell->groundUnit->lesorub)
                     {
+                        this->targetObj.unit = cell->groundUnit;
+                        this->targetObj.bornCount = cell->groundUnit->bornCount;
                         this->iNeedFreeWay = false;
+                        this->isIgetMyTarget = true;
                         return true;
                     }
                 }
@@ -34,6 +39,7 @@ bool Peon::isGetTarget()
                     if (cell->groundUnit && cell->groundUnit == to)
                     {
                         this->iNeedFreeWay = false;
+                        this->isIgetMyTarget = true;
                         return true;
                     }
                 }
@@ -46,6 +52,7 @@ bool Peon::isGetTarget()
                  this->potentialWay.getItem(0)->groundUnit))
             {
                 this->iNeedFreeWay = false;
+                this->isIgetMyTarget = true;
                 return true;
             }
         }
