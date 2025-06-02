@@ -1,5 +1,9 @@
 #include "order/Order.cpp"
 
+struct FractionTownHoll {
+    Array<ProtoObj *> townHolls;
+};
+
 
 
 class ProtoFraction {
