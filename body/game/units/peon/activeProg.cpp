@@ -3,20 +3,24 @@
 void Peon::activeProg()
 {
   if (!this->wayTakts &&
-  this->wayIndex <= 5 &&
-  this->isPotentialWayComplite &&
-  this->orderOnWay->isComplite)
+      this->wayIndex <= 5 &&
+      this->isPotentialWayComplite &&
+      this->orderOnWay->isComplite)
   {
 
-   // targetObj validation & get Target//
-   if (this->targetObj.unit) {
-    this->targetObj.unit->isBlockedd(this);
-   }
-
+    // targetObj validation & get Target//
+    if (this->targetObj.unit)
+    {
+      bool isTOValide = this->isTargetObjValide();
+      if (!isTOValide)
+      {
+        console.log("this is not valid target");
+      }
+    }
 
     if (!this->isIgetMyTarget)
     {
-      this->isGetTarget(); 
+      this->isGetTarget();
     }
 
     if (this->isIgetMyTarget)

@@ -94,7 +94,10 @@ void UnitMenu::createPeon()
         ProtoObj *cell = unit->potentialWay.getItem(0);
         ProtoObj *gu = cell->groundUnit;
         if (!gu || gu != unit->targetObj.unit ||
-            unit->targetObj.bornCount != gu->bornCount || (gu->fraction && gu->fraction->unionCase != unit->fraction->unionCase))
+            gu->type == "life" ||
+            gu->hp <= 0 ||
+            unit->targetObj.bornCount != gu->bornCount ||
+            (gu->fraction && gu->fraction != unit->fraction))
         {
             unit->targetObj.unit = nullptr;
             unit->profession = "";
@@ -116,7 +119,9 @@ void UnitMenu::createPeon()
     {
         ProtoObj *cell = unit->potentialWay.getItem(0);
         ProtoObj *gu = cell->groundUnit;
-        if (unit->targetObj.bornCount != gu->bornCount ||
+        if (!gu ||
+            gu->type == "life" ||
+            unit->targetObj.bornCount != gu->bornCount ||
             gu->hp <= 0)
         {
             unit->targetObj.unit = nullptr;

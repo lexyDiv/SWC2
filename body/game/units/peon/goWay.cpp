@@ -1,4 +1,4 @@
-#include "goWayAnimation.cpp"
+#include "isTargetObjValide.cpp"
 
 // void Peon::goWay()
 // {

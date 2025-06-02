@@ -1,5 +1,6 @@
 #include "isGetTarget.cpp"
 
-bool GroundUnit::isTargetObjValide() {
+bool GroundUnit::isTargetObjValide()
+{
     return true;
 }
