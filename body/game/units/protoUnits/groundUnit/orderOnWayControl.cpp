@@ -20,5 +20,6 @@ void GroundUnit::orderOnWayControl()
 
             this->orderOnWay->isComplite = true;
         }
+        this->iNeedFreeWay = false;
     }
 };

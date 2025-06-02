@@ -115,6 +115,7 @@ int main()
 
  //console.log(nationsHub->orcs.getItem(0).color); // ok
 
+
   srand(time(0));
 
   //  console.log("papa loh");

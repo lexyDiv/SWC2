@@ -4,6 +4,7 @@
 void GameField::create()
 {
     Array<string> array = readMap(&this->path);
+    console.log(to_string(array.length));
     /////////////////////////
    //  json j;
    //  j["name"] = "test_bigest_500";

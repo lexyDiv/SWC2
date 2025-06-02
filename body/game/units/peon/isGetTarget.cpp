@@ -2,34 +2,46 @@
 
 bool Peon::isGetTarget()
 {
+    ProtoObj *to = this->targetObj.unit;
     if (!this->holdWayCount &&
-        this->targetCell &&
-        !this->wayTakts &&
-        this->potentialWay.length &&
-        this->wayIndex <= 2 &&
-        this->isPotentialWayComplite)
+        this->targetCell// &&
+       // !to &&
+      //  !this->wayTakts &&
+        // this->potentialWay.length &&
+       // this->wayIndex <= 5 &&
+      //  this->isPotentialWayComplite
+        )
     {
-        if (this->profession == "lesorub")
+        if (to)
         {
-            for (int i = 0; i < this->cell->aroundCells.length; i++)
+            if (to->name == "tree")
             {
-                ProtoObj *cell = this->cell->aroundCells.getItem(i);
-                if (cell->groundUnit &&
-                    cell->groundUnit->name == "tree" &&
-                    !cell->groundUnit->lesorub)
+                for (int i = 0; i < this->cell->aroundCells.length; i++)
                 {
-                    return true;
+                    ProtoObj *cell = this->cell->aroundCells.getItem(i);
+                    if (cell->groundUnit &&
+                        cell->groundUnit->name == "tree" &&
+                        !cell->groundUnit->lesorub)
+                    {
+                        this->targetObj.unit = cell->groundUnit;
+                        this->targetObj.bornCount = cell->groundUnit->bornCount;
+                        this->iNeedFreeWay = false;
+                        this->isIgetMyTarget = true;
+                        return true;
+                    }
                 }
             }
-        }
-        else if (this->profession == "shahter")
-        {
-            for (int i = 0; i < this->cell->aroundCells.length; i++)
+            else
             {
-                ProtoObj *cell = this->cell->aroundCells.getItem(i);
-                if (cell->groundUnit && cell->groundUnit == this->targetObj)
+                for (int i = 0; i < this->cell->aroundCells.length; i++)
                 {
-                    return true;
+                    ProtoObj *cell = this->cell->aroundCells.getItem(i);
+                    if (cell->groundUnit && cell->groundUnit == to)
+                    {
+                        this->iNeedFreeWay = false;
+                        this->isIgetMyTarget = true;
+                        return true;
+                    }
                 }
             }
         }
@@ -39,6 +51,8 @@ bool Peon::isGetTarget()
                 (this->wayIndex == 1 &&
                  this->potentialWay.getItem(0)->groundUnit))
             {
+                this->iNeedFreeWay = false;
+                this->isIgetMyTarget = true;
                 return true;
             }
         }

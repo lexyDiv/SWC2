@@ -54,6 +54,7 @@ public:
     void push(T el);
     void unshift(T el);
     T pop();
+    T &pop2();
     T shift();
     void changeEl(T item, int i);
     void forEachDel(function<bool(T item, int index, vector<T> vec)> fn);
@@ -61,6 +62,7 @@ public:
     void forEach(function<void(T item, int index)> fn);
     void forEach(function<void(T item)> fn);
     int indexOf(T el);
+    int indexOf2(function<bool(T item)> fn);
     T find(function<bool(T item)> fn);
     void splice(int index, int count, T el);
     void splice(int index, int count);
@@ -136,6 +138,21 @@ inline T Array<T>::pop()
         return el;
     }
     return T();
+}
+
+template <typename T>
+inline T &Array<T>::pop2()
+{
+    //  if (this->length)
+    //  {
+
+    int lastIndex = vec.size() - 1;
+    T &el = vec[lastIndex];
+    vec.erase(vec.begin() + lastIndex);
+    this->length = vec.size();
+    return *&el;
+    //  }
+    //  return T();
 }
 
 template <typename T>
@@ -219,6 +236,21 @@ inline int Array<T>::indexOf(T el)
     {
         int index = it - begin;
         return index;
+    }
+    return -1;
+}
+
+template <typename T>
+inline int Array<T>::indexOf2(function<bool(T item)> fn)
+{
+    int len = this->vec.size();
+    for (int i = 0; i < len; i++)
+    {
+        T el = this->vec[i];
+        if (fn(el))
+        {
+            return i;
+        }
     }
     return -1;
 }

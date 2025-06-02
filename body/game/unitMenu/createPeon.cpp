@@ -70,34 +70,71 @@ void UnitMenu::createPeon()
 
     this->targetObjControl = [](ProtoObj *unit)
     {
-        unit->targetObj = nullptr;
+        unit->targetObj.unit = nullptr;
     };
 
     this->targetObjControlWood = [](ProtoObj *unit)
     {
         ProtoObj *cell = unit->potentialWay.getItem(0);
-        if (!cell->groundUnit || cell->groundUnit->name != "tree")
+        ProtoObj *gu = cell->groundUnit;
+        if (!gu || gu->name != "tree")
         {
-            unit->targetObj = nullptr;
+            unit->targetObj.unit = nullptr;
             unit->profession = "";
         }
         else
         {
-            unit->targetObj = cell->groundUnit;
+            unit->targetObj.unit = gu;
+            unit->targetObj.bornCount = gu->bornCount;
         }
     };
 
-    this->targetObjControlGold = [](ProtoObj *unit)
+    this->targetObjControlBuilding = [](ProtoObj *unit)
     {
         ProtoObj *cell = unit->potentialWay.getItem(0);
-        if (!cell->groundUnit || cell->groundUnit->name != "shaht")
+        ProtoObj *gu = cell->groundUnit;
+        if (!gu || gu != unit->targetObj.unit ||
+            gu->type == "life" ||
+            gu->hp <= 0 ||
+            unit->targetObj.bornCount != gu->bornCount ||
+            (gu->fraction && gu->fraction != unit->fraction))
         {
-            unit->targetObj = nullptr;
+            unit->targetObj.unit = nullptr;
             unit->profession = "";
         }
-        else
+    };
+
+    this->targetObjControlWoodComp = [](ProtoObj *unit)
+    {
+        ProtoObj *cell = unit->potentialWay.getItem(0);
+        ProtoObj *gu = cell->groundUnit;
+        if (!gu ||
+            gu->name != "tree")
         {
-            unit->targetObj = cell->groundUnit;
+            console.log("i dont see valide trees !!!");
+            console.log("targetObjControlWoodComp");
+        }
+    };
+
+    this->targetObjControlBuildingComp = [](ProtoObj *unit)
+    {
+        ProtoObj *cell = unit->potentialWay.getItem(0);
+        ProtoObj *gu = cell->groundUnit;
+        if (!gu ||
+            gu->type == "life" ||
+            unit->targetObj.bornCount != gu->bornCount ||
+            gu->hp <= 0)
+        {
+            unit->targetObj.unit = nullptr;
+            unit->profession = "";
+            return;
+        }
+        if (!unit->iNeedFreeWay &&
+            (!gu || gu != unit->targetObj.unit))
+        {
+            console.log("i need free way to building");
+            unit->iNeedFreeWay = true;
+            unit->getHandTarget(unit->preTargetCell);
         }
     };
 

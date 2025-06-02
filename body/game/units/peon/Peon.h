@@ -14,6 +14,7 @@ public:
     void stendOnCell() override;
     void stendOnCellWait() override;
     bool isGetTarget() override;
+    bool isTargetObjValide() override;
 
     // void orderOnWayControl() override;
     //  void goWayAnimation() override;

@@ -73,7 +73,9 @@ public:
     };
 
     function<void(ProtoObj *unit)> targetObjControlWood = [](ProtoObj *unit) {};
-    function<void(ProtoObj *unit)> targetObjControlGold = [](ProtoObj *unit) {};
+    function<void(ProtoObj *unit)> targetObjControlBuilding = [](ProtoObj *unit) {};
+    function<void(ProtoObj *unit)> targetObjControlWoodComp = [](ProtoObj *unit) {};
+    function<void(ProtoObj *unit)> targetObjControlBuildingComp = [](ProtoObj *unit) {};
     function<void(ProtoObj *unit)> targetObjControl = [](ProtoObj *unit) {};
 
     function<void(ProtoObj *unit)> targetObjControlEnemy = [](ProtoObj *unit) {};
@@ -98,7 +100,7 @@ public:
     double wayTaktCountForward = 0;
     double wayTaktCountDeg = 0;
 
-   // double conor = 0;      // radToDeg(135);
+    // double conor = 0;      // radToDeg(135);
     double leftDeltaX = 0; // cos(conor) * 1;
     double leftDeltaY = 0; // sin(conor) * 1;
     double conorLeft = 0;
@@ -110,7 +112,6 @@ public:
     double conorTop = 0;
     double bottomDeltaX = 0; // cos(conor) * 1;
     double bottomDeltaY = 0; // sin(conor) * 1;
-
 
     double conorBottom = 0;
     double top_leftDeltaX = 0; // cos(conor) * 1;
@@ -132,7 +133,7 @@ public:
     function<void(ProtoObj *unit, ProtoObj *nextCell)> getDeltasXY = [this](ProtoObj *unit, ProtoObj *nextCell)
     {
         double startDis = 0;
-       // unit->wayTakts = 0;
+        // unit->wayTakts = 0;
         if (unit->cell->left == nextCell)
         {
             unit->wayDeltaX = this->leftDeltaX;
@@ -197,7 +198,7 @@ public:
             unit->conor = this->conorBottom_right;
             unit->animX = 3 * unit->animGabX;
         }
-        
+
         startDis -= unit->speedTale;
         double preTakts = startDis / this->speed;
         int preTaktsFloor = floor(preTakts);

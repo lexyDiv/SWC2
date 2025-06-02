@@ -36,26 +36,38 @@ void GroundUnit::goWay()
             }
             else
             {
-                this->stendOnCell();
                 if (this->preTargetCell)
                 {
-                    if (this->fraction->control == "human")
+
+                    if (this->iNeedFreeWay)
                     {
-                        this->getHandTarget(this->preTargetCell);
-                        this->orderOnWay->isComplite = true;
+                        console.log("poshel na huy!");
+                        this->stendOnCellWait();
                     }
                     else
                     {
-                        if (!nextCell->groundUnit->isActive)
-                        {
-                            console.log("poshel na huy !!!");
-                        }
-                        else
-                        {
-                            this->getHandTarget(this->preTargetCell);
-                            this->orderOnWay->isComplite = true;
-                        }
+                        this->stendOnCell();
+                        this->getHandTarget(this->preTargetCell);
+                        this->orderOnWay->isComplite = true;
                     }
+
+                    // if (this->fraction->control == "human")
+                    // {
+                    //     this->getHandTarget(this->preTargetCell);
+                    //     this->orderOnWay->isComplite = true;
+                    // }
+                    // else
+                    // {
+                    //     if (!nextCell->groundUnit->isActive)
+                    //     {
+                    //         console.log("poshel na huy !!!");
+                    //     }
+                    //     else
+                    //     {
+                    //         this->getHandTarget(this->preTargetCell);
+                    //         this->orderOnWay->isComplite = true;
+                    //     }
+                    // }
                     return;
                 }
             }
