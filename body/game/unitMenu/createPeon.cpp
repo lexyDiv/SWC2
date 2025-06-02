@@ -111,7 +111,8 @@ void UnitMenu::createPeon()
         if (!gu ||
             gu->name != "tree")
         {
-            console.log("i need free way to new tree !!!");
+            console.log("i dont see valide trees !!!");
+            console.log("targetObjControlWoodComp");
         }
     };
 
