@@ -11,7 +11,8 @@ void GroundUnit::orderOnWayControl()
             (oCell->plane != this->cell->plane) ||
             (oCell->groundUnit == this) ||
             (finishCell == oCell) ||
-            (tarObj && tarObj == oCell->groundUnit)
+            (tarObj && tarObj == oCell->groundUnit) ||
+            (this->preTargetCell && this->preTargetCell == oCell)
             )
         {
           //  console.log("return");
