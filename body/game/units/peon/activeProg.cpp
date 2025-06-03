@@ -21,15 +21,18 @@ void Peon::activeProg()
     if (!this->isIgetMyTarget)
     {
       this->isGetTarget();
+      if (this->isIgetMyTarget)
+      {
+        this->targetCell = nullptr;
+        this->preTargetCell = nullptr;
+        this->stendOnCell();
+        console.log("get target");
+        this->isIgetMyTarget = false; // !!!
+      }
     }
 
     if (this->isIgetMyTarget)
     {
-      this->targetCell = nullptr;
-      this->preTargetCell = nullptr;
-      this->stendOnCell();
-      console.log("get target");
-      this->isIgetMyTarget = false; // !!!
     }
   }
 

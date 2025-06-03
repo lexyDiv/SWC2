@@ -188,6 +188,7 @@ public:
     double conor = 0;
     int holdWayCount = 0;
     //////////////////////// <= go way
+    ProtoObj *gettingTarget = nullptr;
 
     // Array<ProtoObj *> guardCells;
     Array<ProtoObj *> booms;
