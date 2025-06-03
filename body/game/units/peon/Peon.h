@@ -16,6 +16,8 @@ public:
     bool isGetTarget() override;
     bool isTargetObjValide() override;
 
+    void getAnyTree();
+
     // void orderOnWayControl() override;
     //  void goWayAnimation() override;
     // void goWay() override;

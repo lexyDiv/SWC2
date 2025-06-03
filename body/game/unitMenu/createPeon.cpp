@@ -120,6 +120,9 @@ void UnitMenu::createPeon()
     {
         ProtoObj *cell = unit->potentialWay.getItem(0);
         ProtoObj *gu = cell->groundUnit;
+        // if (!gu) {
+        //     console.log("here");
+        // }
         if (!gu ||
             gu->type == "life" ||
             unit->targetObj.bornCount != gu->bornCount ||

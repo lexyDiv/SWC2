@@ -1,4 +1,4 @@
-#include "isOnGetPotentialWayGetTarget.cpp"
+#include "getAnyTree.cpp"
 
 void Peon::draw()
 {

@@ -82,7 +82,7 @@ void Peon::getHandTarget(ProtoObj *cell)
             this->isOnGetPotentialWayGetTarget = [this](ProtoObj *cell)
             {
                 ProtoObj *gu = cell->groundUnit;
-                if (cell == this->targetCell ||
+                if (//cell == this->targetCell ||
                     gu == this->targetObj.unit)
                 {
                     return true;
