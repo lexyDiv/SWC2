@@ -119,6 +119,7 @@ public:
     UnitPack targetObj;
     ProtoObj *lesorub = nullptr;
     string profession = "";
+    virtual void fightControl() {};
     ////////////////////////// <= handTarget
     ProtoObj *cell = nullptr;
     Array<ProtoObj *> enemys;

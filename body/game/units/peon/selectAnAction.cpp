@@ -8,6 +8,7 @@ void Peon::selectAnAction()
         if (gu->name == "tree")
         {
             this->inFight = true;
+            this->unitMenu->getConor(this, gu->cell);
         }
         else if (gu->fraction == this->fraction &&
                  gu->type != "life" &&

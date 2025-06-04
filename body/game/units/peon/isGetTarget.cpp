@@ -23,8 +23,8 @@ bool Peon::isGetTarget()
                         cell->groundUnit->name == "tree" &&
                         !cell->groundUnit->lesorub)
                     {
-                        //this->targetObj.unit = cell->groundUnit;
-                       // this->targetObj.bornCount = cell->groundUnit->bornCount;
+                        this->targetObj.unit = cell->groundUnit;
+                        this->targetObj.bornCount = cell->groundUnit->bornCount;
                       //  this->gettingTarget = cell->groundUnit;
                         this->iNeedFreeWay = false;
                         this->isIgetMyTarget = true;

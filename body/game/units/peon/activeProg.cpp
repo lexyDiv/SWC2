@@ -34,10 +34,11 @@ void Peon::activeProg()
   }
 
   if (this->inFight) {
-   // console.log("ready to jobe");
+   this->fightControl();
+  } else {
+    this->goWay();
   }
 
     this->orderOnWayControl();
-    this->goWay();
-  
+ 
 }

@@ -16,6 +16,7 @@ public:
     bool isGetTarget() override;
     bool isTargetObjValide() override;
     void selectAnAction() override;
+    void fightControl() override;
 
     void getAnyTree();
 
