@@ -21,6 +21,13 @@ void Peon::getHandTarget(ProtoObj *cell)
 
         if (cell->groundUnit->name == "tree")
         {
+            if (this->wood) {
+                ProtoObj* base = this->getBaseForUnloading();
+                if (base) {
+                    this->getHandTarget(base->cell);
+                    return;
+                }
+            }
             this->profession = "lesorub";
             this->targetObjControl = this->fraction->control == "" ? this->unitMenu->targetObjControlWoodComp : this->unitMenu->targetObjControlWood;
             this->isOnGetPotentialWayGetTarget = [this](ProtoObj *cell)

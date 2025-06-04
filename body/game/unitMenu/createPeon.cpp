@@ -77,7 +77,7 @@ void UnitMenu::createPeon()
     {
         ProtoObj *cell = unit->potentialWay.getItem(0);
         ProtoObj *gu = cell->groundUnit;
-        if (!gu || gu->name != "tree")
+        if (!gu || gu->name != "tree" || unit->wood)
         {
             unit->targetObj.unit = nullptr;
             unit->profession = "";
@@ -109,8 +109,10 @@ void UnitMenu::createPeon()
         ProtoObj *cell = unit->potentialWay.getItem(0);
         ProtoObj *gu = cell->groundUnit;
         if (!gu ||
-            gu->name != "tree")
+            gu->name != "tree" || unit->wood)
         {
+            unit->targetObj.unit = nullptr;
+            unit->profession = "";
             console.log("i dont see valide trees !!!");
             console.log("targetObjControlWoodComp");
         }

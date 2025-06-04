@@ -19,6 +19,7 @@ public:
     void fightControl() override;
 
     void getAnyTree();
+    ProtoObj* getBaseForUnloading();
 
     // void orderOnWayControl() override;
     //  void goWayAnimation() override;

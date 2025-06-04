@@ -25,8 +25,9 @@ void Peon::fightControl()
                 this->inFight = false;
                 this->animY = 0;
                 this->image = this->fraction->nation.peonWithWood;
+                this->wood = 100;
             }
-            if (!this->orderOnWay->isComplite)
+            else if (!this->orderOnWay->isComplite)
             {
                 this->targetObj.unit = nullptr;
                 this->inFight = false;
