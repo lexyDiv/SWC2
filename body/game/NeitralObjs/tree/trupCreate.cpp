@@ -7,5 +7,6 @@ void Tree::trupCreate() {
         this->cell->groundUnit = nullptr;
     } else if (this->deleteTimer == 49) {
         this->cell->ripUnits.push(this);
+        this->x = this->saveX;
     }
 };

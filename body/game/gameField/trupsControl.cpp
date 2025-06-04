@@ -10,4 +10,5 @@ void GameField::trupsControl()
         return true;
      }
      return false; });
+   //  console.log(to_string(this->trupsOnDelete.length));
 };

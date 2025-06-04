@@ -25,6 +25,7 @@ void Game::draw()
                                                 { drawLine.forEach([drawDeltaY, &DA, &max](ProtoObj *cell)
                                                                    {
                      cell->draw();
+
                     if (cell->groundUnit && !cell->groundUnit->isAddOnDraw
                     ) {
                     int index = ceil((((cell->groundUnit->drawIndexY) + drawDeltaY) / 10) + 30);
@@ -34,7 +35,14 @@ void Game::draw()
                         line.push(cell->groundUnit);
                        max.push(index);
                  //   cell->groundUnit->draw();
-                    }
+                    } }); });
+
+        this->gf->drawCell->cellsOnDraw.forEach([drawDeltaY, &DA, &max](Array<ProtoObj *> drawLine)
+                                                { drawLine.forEach([drawDeltaY, &DA, &max](ProtoObj *cell)
+                                                                   {
+                      cell->ripUnits.forEach([](ProtoObj* trup){
+                        trup->drawTrup();
+                      });
                      }); });
 
         DA.forEach([](Array<ProtoObj *> line)
@@ -44,10 +52,10 @@ void Game::draw()
         /////////  setka
         // this->gf->drawCell->cellsOnDraw.forEach([drawDeltaX, drawDeltaY](Array<ProtoObj *> drawLine)
         //                                         { drawLine.forEach([drawDeltaX, drawDeltaY](ProtoObj *cell)
-        //                                                            { 
+        //                                                            {
         //                                                             ctx.StrokeRect(cell->x + drawDeltaX, cell->y + drawDeltaY, cell->gabX, cell->gabY, "yellow");
         //                                                             ctx.DrawText(cell->x + drawDeltaX, cell->y + drawDeltaY + 10, 10, "v= " + to_string((int)cell->ver));
-        //                                                             ctx.DrawText(cell->x + drawDeltaX, cell->y + drawDeltaY + 20, 10, "h= " + to_string((int)cell->hor));  
+        //                                                             ctx.DrawText(cell->x + drawDeltaX, cell->y + drawDeltaY + 20, 10, "h= " + to_string((int)cell->hor));
         //                                                             }); });
 
         ////////////////////////////////////////////////// ???

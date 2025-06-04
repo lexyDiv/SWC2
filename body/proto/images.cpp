@@ -48,10 +48,14 @@ public:
     Image *oilIcon = new Image("images/oil.png");
     Image *woodIcon = new Image("images/wood.png");
     Image *peonRed = new Image("images/images/peon_new.png");
+    Image *peonWithWood = new Image("images/images/peon_with_wood.png");
 
     Imager() {};
     ~Imager()
     {
+        delete this->peonWithWood;
+        this->peonWithWood = nullptr;
+
         delete this->peonRed;
         this->peonRed = nullptr;
 
@@ -152,6 +156,7 @@ public:
             if (color == "red")
             {
                 this->peon = imager.peonRed;
+                this->peonWithWood = imager.peonWithWood;
             }
         }
         else

@@ -38,8 +38,8 @@ bool Peon::isGetTarget()
                 }
                 if (valideTree)
                 {
-                    this->targetObj.unit = cell->groundUnit;
-                    this->targetObj.bornCount = cell->groundUnit->bornCount;
+                    this->targetObj.unit = valideTree;
+                    this->targetObj.bornCount = valideTree->bornCount;
 
                     this->iNeedFreeWay = false;
                     this->isIgetMyTarget = true;
