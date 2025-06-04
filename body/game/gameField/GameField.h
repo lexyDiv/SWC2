@@ -104,6 +104,7 @@ public:
     //////////////// <= get potential Way methods
 
     void trupsControl() override;
+    void activeShahtsControl() override;
 
     Color getDefaultColor(char lit) override;
     //

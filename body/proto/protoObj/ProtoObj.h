@@ -31,7 +31,7 @@ public:
     virtual void selectAnAction();
 
     ////////
-   // int deleteTimer = 0;
+    // int deleteTimer = 0;
     // all
 
     ProtoGameField *gf = nullptr;
@@ -111,9 +111,9 @@ public:
     int animTimer = 0;
     int alpha = 255;
 
-    int stress = 0; // for tree
+    int stress = 0;                  // for tree
     virtual void stressControl() {}; // tree
-    int saveX = 0; // tree
+    int saveX = 0;                   // tree
 
     /////////////////// => handTarget
     ProtoObj *preTargetCell = nullptr;
@@ -179,10 +179,12 @@ public:
     Array<Array<ProtoObj *>> cellsOnDraw;
     /////// => trupy
     Array<ProtoObj *> ripUnits; // trupy
-    virtual void trupCreate() {}; 
+    virtual void trupCreate() {};
     int deleteTimer = 0;
     virtual void drawTrup() {};
     /////// <= trupy
+    Array<ProtoObj *> wellComeCells;
+    void getWellComeCells();
     Array<ProtoObj *> landDecorationObjs;
 
     ProtoObj *left = nullptr;
@@ -202,7 +204,7 @@ public:
     double conor = 0;
     int holdWayCount = 0;
     //////////////////////// <= go way
-   // ProtoObj *gettingTarget = nullptr;
+    // ProtoObj *gettingTarget = nullptr;
 
     // Array<ProtoObj *> guardCells;
     Array<ProtoObj *> booms;

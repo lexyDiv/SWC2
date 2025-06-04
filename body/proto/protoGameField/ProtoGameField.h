@@ -45,9 +45,11 @@ public:
     Array<ProtoPlane *> planes;
     Array<string> goldData;
     Array<string> oilData;
+    Array<ProtoObj *> activeShahts;
 
     Array<ProtoObj *> trupsOnDelete;
     virtual void trupsControl() {};
+    virtual void activeShahtsControl() {};
 
     Image *miniMap = nullptr;
     ProtoObj *drawCell = nullptr;
