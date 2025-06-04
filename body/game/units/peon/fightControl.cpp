@@ -5,8 +5,16 @@ void Peon::fightControl() {
     if (gu &&
         gu->name == "tree") {
         this->inFightTimer ++;
-        // if (this->inFightTimer < 10) {
-        //     this->animY = 500;
-        // } else if (this->)
+        if (this->inFightTimer == 50) {
+            gu->stress = 6;
+            gu->hp -= 5;
+            if (!gu->hp) {
+                console.log("kaput");
+            }
+        }
+        if (this->inFightTimer == 70) {
+            this->inFightTimer = 0;
+        }
+        gu->stressControl();
     }
 };

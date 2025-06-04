@@ -6,7 +6,9 @@ void Peon::activeProg()
       this->wayIndex <= 5 &&
       this->isPotentialWayComplite &&
       this->orderOnWay->isComplite && 
-      this->potentialWay.length)
+      this->potentialWay.length && 
+      !this->holdWayCount &&
+      !this->inFight)
   {
     if (!this->isIgetMyTarget)
     {
@@ -16,6 +18,10 @@ void Peon::activeProg()
         bool isTOValide = this->isTargetObjValide();
         if (!isTOValide)
         {
+        this->targetCell = nullptr;
+        this->preTargetCell = nullptr;
+        this->stendOnCell();
+        this->targetObj.unit = nullptr;
           console.log("this is not valid target");
         }
       }
@@ -37,8 +43,7 @@ void Peon::activeProg()
    this->fightControl();
   } else {
     this->goWay();
+    this->orderOnWayControl();
   }
 
-    this->orderOnWayControl();
- 
 }

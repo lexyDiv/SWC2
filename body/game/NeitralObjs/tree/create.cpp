@@ -22,8 +22,9 @@ void Tree::create(ProtoObj * cell) {
 
     this->x = randXVec ? cell->centerX + randX : cell->centerX - randX; 
     this->y = randYVec ? cell->centerY + randY : cell->centerY - randY; 
+    this->saveX = this->x;
     this->drawIndexY = this->y;
-    this->hp = 50;
+    this->hp = 100;
     this->animGabX = 200;
     this->animGabY = 200;
     this->animStepX = 200;

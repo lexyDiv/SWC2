@@ -7,8 +7,10 @@ void Peon::selectAnAction()
     {
         if (gu->name == "tree")
         {
+            console.log("here tree");
             this->inFight = true;
             this->unitMenu->getConor(this, gu->cell);
+            gu->lesorub = this;
         }
         else if (gu->fraction == this->fraction &&
                  gu->type != "life" &&

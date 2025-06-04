@@ -110,6 +110,10 @@ public:
     int sight = 1;
     int animTimer = 0;
 
+    int stress = 0; // for tree
+    virtual void stressControl() {}; // tree
+    int saveX = 0; // tree
+
     /////////////////// => handTarget
     ProtoObj *preTargetCell = nullptr;
     ProtoObj *targetCell = nullptr;

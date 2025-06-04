@@ -1,4 +1,4 @@
-#include "Tree.cpp"
+#include "stressControl.cpp"
 
 void Tree::draw()
 {
