@@ -6,11 +6,13 @@ void Fraction::activeUnitsControl()
     {
         ProtoObj *unit = this->activeUnits.getItem(i);
         if (unit &&
+            unit->cell &&
             (unit->enemys.length ||
              unit->potentialWay.length ||
              !unit->isPotentialWayComplite ||
              (unit->orderOnWay && !unit->orderOnWay->isComplite) ||
-             !unit->isGetMyCell))
+             !unit->isGetMyCell ||
+             unit->gettingTarget))
         {
             unit->activeProg();
         }
@@ -24,4 +26,5 @@ void Fraction::activeUnitsControl()
     }
     this->activeUnits.filterSelf([](ProtoObj *unit)
                                  { return !unit; });
+                             //    console.log(to_string(this->activeUnits.length));
 }

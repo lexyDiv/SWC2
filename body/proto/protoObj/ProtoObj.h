@@ -82,6 +82,7 @@ public:
     int linesCount = 20;
     bool inZone = false;
     Array<ProtoObj *> clients;
+    Array<ProtoObj *> potentialClients;
     void get3x3myCells(ProtoObj *cell);
     void get2x2myCells(ProtoObj *cell);
     void getContactAndExitCells(ProtoObj *cell, ProtoObj *exitCell, ProtoObj *centerCell);
