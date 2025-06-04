@@ -12,8 +12,8 @@ void Peon::activeProg()
   {
     if (!this->isIgetMyTarget)
     {
-
-      if (this->targetObj.unit)
+      ProtoObj* to = this->targetObj.unit;
+      if (to)
       {
         bool isTOValide = this->isTargetObjValide();
         if (!isTOValide)
@@ -21,8 +21,14 @@ void Peon::activeProg()
         this->targetCell = nullptr;
         this->preTargetCell = nullptr;
         this->stendOnCell();
-        this->targetObj.unit = nullptr;
-          console.log("this is not valid target");
+        if (to->name == "tree") {
+         ProtoObj* newTree = this->getAnyTree();
+         if (newTree) {
+          this->orderOnWay->isComplite = false;
+          this->orderOnWay->cell = newTree->cell;
+         }
+        }
+       // this->targetObj.unit = nullptr;
         }
       }
 

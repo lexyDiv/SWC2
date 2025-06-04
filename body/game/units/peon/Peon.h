@@ -18,7 +18,7 @@ public:
     void selectAnAction() override;
     void fightControl() override;
 
-    void getAnyTree();
+    ProtoObj* getAnyTree();
     ProtoObj* getBaseForUnloading();
 
     // void orderOnWayControl() override;
