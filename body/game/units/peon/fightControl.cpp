@@ -9,7 +9,9 @@ void Peon::fightControl() {
             gu->stress = 6;
             gu->hp -= 5;
             if (!gu->hp) {
-                console.log("kaput");
+                //console.log("kaput");
+                this->cell->gf->trupsOnDelete.push(gu);
+                this->targetObj.unit = nullptr;
             }
         }
         if (this->inFightTimer == 70) {

@@ -1,4 +1,4 @@
-#include "miniMapDraw.cpp"
+#include "trupsControl.cpp"
 
 int iter = 0;
 

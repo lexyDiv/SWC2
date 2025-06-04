@@ -1,13 +1,18 @@
-#include "Tree.cpp"
+#include "isBlocked.cpp"
 
-void Tree::stressControl() {
+void Tree::stressControl()
+{
     this->x = this->saveX;
-    if (this->stress) {
-        if (stress % 2 == 0) {
+     if (this->stress)
+     {
+        if (this->stress % 2 == 0)
+        {
             this->x += this->stress;
-        } else {
+        }
+        else
+        {
             this->x -= this->stress;
         }
-            this->stress --;
+        this->stress --;
     }
 }

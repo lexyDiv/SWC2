@@ -8,5 +8,7 @@ class Tree : public ProtoObj {
     void create(ProtoObj * cell) override;
     void draw() override;
     bool isBlockedd(ProtoObj *unit) override;
+    void trupCreate() override;
+    void drawTrup() override;
     void stressControl() override;
 };

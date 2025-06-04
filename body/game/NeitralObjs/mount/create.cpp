@@ -14,6 +14,7 @@ void Mount::create(ProtoObj *cell)
     this->get2x2myCells(cell);
 
     this->cell = cell->right->bottom;
+    this->cell->game->AllUnits.push(this);
     this->getContactCells();
 
     this->x = cell->x + cell->gabX;

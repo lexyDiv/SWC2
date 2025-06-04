@@ -46,6 +46,9 @@ public:
     Array<string> goldData;
     Array<string> oilData;
 
+    Array<ProtoObj *> trupsOnDelete;
+    virtual void trupsControl() {};
+
     Image *miniMap = nullptr;
     ProtoObj *drawCell = nullptr;
     string path;

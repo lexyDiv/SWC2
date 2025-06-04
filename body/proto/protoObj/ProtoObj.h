@@ -31,7 +31,7 @@ public:
     virtual void selectAnAction();
 
     ////////
-    int deleteTimer = 0;
+   // int deleteTimer = 0;
     // all
 
     ProtoGameField *gf = nullptr;
@@ -109,6 +109,7 @@ public:
     int mana = 0;
     int sight = 1;
     int animTimer = 0;
+    int alpha = 255;
 
     int stress = 0; // for tree
     virtual void stressControl() {}; // tree
@@ -176,7 +177,12 @@ public:
     Array<double> maxAroundCellsDis;
     Array<ProtoObj *> drawCells;
     Array<Array<ProtoObj *>> cellsOnDraw;
-    Array<ProtoObj *> ripUnits;
+    /////// => trupy
+    Array<ProtoObj *> ripUnits; // trupy
+    virtual void trupCreate() {}; 
+    int deleteTimer = 0;
+    virtual void drawTrup() {};
+    /////// <= trupy
     Array<ProtoObj *> landDecorationObjs;
 
     ProtoObj *left = nullptr;

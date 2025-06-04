@@ -1,7 +1,8 @@
-#include "isBlocked.cpp"
+#include "stressControl.cpp"
 
 
 void Tree::create(ProtoObj * cell) {
+    this->deleteTimer = 50;
     cell->groundUnit = this;
     this->myCells.push(cell);
     this->cell = cell;
@@ -23,8 +24,9 @@ void Tree::create(ProtoObj * cell) {
     this->x = randXVec ? cell->centerX + randX : cell->centerX - randX; 
     this->y = randYVec ? cell->centerY + randY : cell->centerY - randY; 
     this->saveX = this->x;
+    
     this->drawIndexY = this->y;
-    this->hp = 100;
+    this->hp = 50;
     this->animGabX = 200;
     this->animGabY = 200;
     this->animStepX = 200;

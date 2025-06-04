@@ -12,6 +12,7 @@ void Shaht::create(ProtoObj *cell)
     ProtoObj *exitCell = cell->bottom->bottom->bottom_left;
     ProtoObj *centerCell = cell->bottom_right;
     this->cell = centerCell;
+    this->cell->game->AllUnits.push(this);
 
     this->getContactAndExitCells(cell, exitCell, centerCell);
 
