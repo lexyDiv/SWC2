@@ -28,6 +28,7 @@ public:
     virtual void activeProg();
     virtual void stendOnCell();
     virtual void stendOnCellWait();
+    virtual void selectAnAction();
 
     ////////
     int deleteTimer = 0;
@@ -154,7 +155,8 @@ public:
     ////////////////////// =>  buildings
     Array<ProtoObj *> contactCells;
     Array<ProtoObj *> exitCells;
-    Array<ProtoObj *> interUnits;
+    bool isComplite = false;
+    virtual void wellCome(ProtoObj *peon) {};
     //////////////////////  <= buildings
     ProtoFraction *fraction = nullptr;
     // virtual bool isBlocked(ProtoObj* unit);
@@ -189,7 +191,7 @@ public:
     double conor = 0;
     int holdWayCount = 0;
     //////////////////////// <= go way
-    ProtoObj *gettingTarget = nullptr;
+   // ProtoObj *gettingTarget = nullptr;
 
     // Array<ProtoObj *> guardCells;
     Array<ProtoObj *> booms;
@@ -206,6 +208,11 @@ public:
     Image *cellImage = nullptr;
     Image *cellImage2 = nullptr;
     Image *cellImage3 = nullptr;
+
+    //////////////// fight
+    bool inFight = false;
+    int inFightTimer = 0;
+    ///////////////
 
     // bullets
 

@@ -25,7 +25,7 @@ bool Peon::isGetTarget()
                     {
                         //this->targetObj.unit = cell->groundUnit;
                        // this->targetObj.bornCount = cell->groundUnit->bornCount;
-                        this->gettingTarget = cell->groundUnit;
+                      //  this->gettingTarget = cell->groundUnit;
                         this->iNeedFreeWay = false;
                         this->isIgetMyTarget = true;
                         return true;
@@ -41,7 +41,7 @@ bool Peon::isGetTarget()
                     {
                         this->iNeedFreeWay = false;
                         this->isIgetMyTarget = true;
-                        this->gettingTarget = cell->groundUnit;
+                       // this->gettingTarget = cell->groundUnit;
                         return true;
                     }
                 }

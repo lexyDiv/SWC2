@@ -5,10 +5,9 @@ void Peon::activeProg()
   if (!this->wayTakts &&
       this->wayIndex <= 5 &&
       this->isPotentialWayComplite &&
-      this->orderOnWay->isComplite &&
-      !this->gettingTarget)
+      this->orderOnWay->isComplite && 
+      this->potentialWay.length)
   {
-
     if (!this->isIgetMyTarget)
     {
 
@@ -28,24 +27,17 @@ void Peon::activeProg()
         this->preTargetCell = nullptr;
         this->stendOnCell();
         this->isIgetMyTarget = false;
+        this->selectAnAction();
         console.log("get target");
       }
     }
   }
 
-  this->orderOnWayControl();
-  if (this->gettingTarget)
-  {
-    // if (this->gettingTarget->name == "shaht" &&
-    //     this->gold <= 0)
-    // {
-    //   this->cell->groundUnit = nullptr;
-    //   this->cell = nullptr;
-    //     }
-    
+  if (this->inFight) {
+   // console.log("ready to jobe");
   }
-  else if (!this->gettingTarget)
-  {
+
+    this->orderOnWayControl();
     this->goWay();
-  }
+  
 }

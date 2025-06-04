@@ -28,7 +28,7 @@ void GroundUnit::goWay()
                     this->y += sin(this->conor) * saveSpeedTale;
                 }
                 this->drawIndexY = this->y;
-                this->goWayAnimation();
+                    this->goWayAnimation(); 
             }
             else if (isNeedHold)
             {

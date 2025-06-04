@@ -8,7 +8,6 @@ void Peon::draw()
   //                            UnitPack up = this->enemys.pop2();
   //                    console.log("deleted " + up.unit->name);
   //    }
-
   this->preDraw();
   float drawDeltaX = this->gf->drawDeltaX;
   float drawDeltaY = this->gf->drawDeltaY;

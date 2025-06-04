@@ -9,4 +9,7 @@ class Shaht : public ProtoObj {
     void draw() override;
     void createUnitMenu() override;
     bool isBlockedd(ProtoObj *unit) override;
+    void wellCome(ProtoObj *peon) override;
+
+    Array<ProtoObj *> interUnits;
 };

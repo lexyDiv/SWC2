@@ -1,4 +1,4 @@
-#include "isNextCellFreeToGoWay.cpp"
+#include "selectAnAction.cpp"
 
 void Peon::preDraw()
 {

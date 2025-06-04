@@ -15,6 +15,7 @@ public:
     void stendOnCellWait() override;
     bool isGetTarget() override;
     bool isTargetObjValide() override;
+    void selectAnAction() override;
 
     void getAnyTree();
 

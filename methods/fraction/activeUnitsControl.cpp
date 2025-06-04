@@ -12,7 +12,7 @@ void Fraction::activeUnitsControl()
              !unit->isPotentialWayComplite ||
              (unit->orderOnWay && !unit->orderOnWay->isComplite) ||
              !unit->isGetMyCell ||
-             unit->gettingTarget))
+             unit->inFight))
         {
             unit->activeProg();
         }
