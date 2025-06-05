@@ -1,4 +1,4 @@
-#include "isBlockedd.cpp"
+#include "activeProg.cpp"
 
 void Shaht::draw() {
     this->isAddOnDraw = false;
@@ -12,10 +12,10 @@ int animY = !this->clients.length ? 0 : this->animStepY;
    this->x + drawDeltaX - 8, this->y + drawDeltaY - 30,
    160, 195);
 
-   this->contactCells.forEach([drawDeltaX, drawDeltaY](ProtoObj* cell, int i){
-    ctx.StrokeRect(cell->x + drawDeltaX, cell->y + drawDeltaY, cell->gabX, cell->gabY);
-    ctx.DrawText(cell->x + drawDeltaX, cell->y + drawDeltaY, 20, to_string(i));
-   });
+  //  this->contactCells.forEach([drawDeltaX, drawDeltaY](ProtoObj* cell, int i){
+  //   ctx.StrokeRect(cell->x + drawDeltaX, cell->y + drawDeltaY, cell->gabX, cell->gabY);
+  //   ctx.DrawText(cell->x + drawDeltaX, cell->y + drawDeltaY, 20, to_string(i));
+  //  });
   //   this->exitCells.forEach([drawDeltaX, drawDeltaY](ProtoObj* cell, int i){
   //   ctx.StrokeRect(cell->x + drawDeltaX, cell->y + drawDeltaY, cell->gabX, cell->gabY);
   //   ctx.DrawText(cell->x + drawDeltaX, cell->y + drawDeltaY, 20, to_string(i));

@@ -25,14 +25,14 @@ void Game::draw()
                                                 { drawLine.forEach([drawDeltaY, &DA, &max](ProtoObj *cell)
                                                                    {
                      cell->draw();
-
-                    if (cell->groundUnit && !cell->groundUnit->isAddOnDraw
+                    ProtoObj *groundUnit = cell->groundUnit;
+                    if (groundUnit && !groundUnit->isAddOnDraw
                     ) {
-                    int index = ceil((((cell->groundUnit->drawIndexY) + drawDeltaY) / 10) + 30);
+                    int index = ceil((((groundUnit->drawIndexY) + drawDeltaY) / 10) + 30);
 
-                        cell->groundUnit->isAddOnDraw = true;
+                        groundUnit->isAddOnDraw = true;
                        Array<ProtoObj *> &line = DA.getItem3(index);                    
-                        line.push(cell->groundUnit);
+                        line.push(groundUnit);
                        max.push(index);
                  //   cell->groundUnit->draw();
                     } }); });

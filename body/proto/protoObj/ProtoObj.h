@@ -239,6 +239,9 @@ public:
     ProtoObj *bornCell = nullptr;
     int bornCount = 0;
     // land objects
+    // 
+    int inOutTimer = 0;
+    bool inSave = false;
 
     // wall
 

@@ -40,7 +40,8 @@ void Peon::activeProg()
         this->stendOnCell();
         this->isIgetMyTarget = false;
         this->selectAnAction();
-        console.log("get target");
+       // return;
+      //  console.log("get target");
       }
     }
   }

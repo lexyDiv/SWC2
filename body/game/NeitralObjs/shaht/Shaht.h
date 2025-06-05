@@ -10,6 +10,7 @@ class Shaht : public ProtoObj {
     void createUnitMenu() override;
     bool isBlockedd(ProtoObj *unit) override;
     void wellCome(ProtoObj *peon) override;
+    void activeProg() override;
 
     Array<ProtoObj *> interUnits;
 };

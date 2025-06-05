@@ -3,7 +3,7 @@
 void Peon::preDraw()
 {
     this->isAddOnDraw = false;
-    if (!this->isActive)
+    if (!this->isActive && !this->inSave)
     {
         this->animTimer++;
         if (this->animTimer == 150)
@@ -14,7 +14,7 @@ void Peon::preDraw()
     }
     else
     {
-        if (!this->isGetMyCell)
+        if (!this->isGetMyCell || this->inSave)
         {
             this->goWayAnimation();
         }

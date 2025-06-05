@@ -46,6 +46,8 @@ void goWork()
 
       game->objMenu->getCandidateCells();
       game->fractionsControl();
+      game->gf->trupsControl();
+      game->gf->activeShahtsControl();
 
       deleter.process();
     }
