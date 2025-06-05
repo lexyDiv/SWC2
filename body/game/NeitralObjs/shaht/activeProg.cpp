@@ -29,7 +29,7 @@ void Shaht::activeProg()
     this->clients.forEach([this](ProtoObj *peon)
                           {
         peon->inOutTimer ++;
-        if (peon->inOutTimer == 100) {
+        if (peon->inOutTimer == 500) {
             peon->inOutTimer = 0;
             this->outClients.push(peon);
         } });
@@ -62,9 +62,11 @@ void Shaht::activeProg()
                                             peon->inOutCount = ceil(md.min / peon->unitMenu->speed);
                                             peon->x = peon->cell->x;
                                             peon->y = peon->cell->y;
+                                            peon->drawIndexY = peon->y;
                                             peon->unitMenu->getDeltasXY(peon, oc);
                                             peon->cell = oc;
                                             peon->inOutMashtabCount = (1 - peon->inOutMashtabMin) / peon->inOutCount;
+                                            peon->image = peon->fraction->nation.peonWithGold;
                                             oc->groundUnit = peon;
                                          }
                                          else
@@ -76,6 +78,7 @@ void Shaht::activeProg()
                                  if (peon->inOutTimer < peon->inOutCount) {
                                            peon->x += peon->wayDeltaX;
                                            peon->y += peon->wayDeltaY;
+                                           peon->drawIndexY = peon->y;
                                            peon->animMashtab += peon->inOutMashtabCount;
 
                                  peon->inOutTimer++;
@@ -83,12 +86,8 @@ void Shaht::activeProg()
                                  else {
                                     peon->inOutTimer = 0;
                                     peon->animMashtab = 1;
-                                    peon->inSave = false;
-                                    peon->isGetMyCell = true;
-                                    peon->targetCell = nullptr;
-                                    peon->preTargetCell = nullptr;
-                                    peon->targetObj.unit = nullptr;
-                                    peon->wayTakts = 0;
+                                    peon->inSave = false;                                  
+                                    peon->targetObj.unit = nullptr;                                   
                                     peon->stendOnCell();
                                  } });
 
@@ -99,5 +98,5 @@ void Shaht::activeProg()
         }
         return false; });
 
-      //  console.log(to_string(this->outClients.length));
+    //  console.log(to_string(this->outClients.length));
 };

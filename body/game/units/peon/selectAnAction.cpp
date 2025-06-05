@@ -7,7 +7,7 @@ void Peon::selectAnAction()
     {
         if (gu->name == "tree")
         {
-            console.log("here tree");
+            this->gold = 0;
             this->inFight = true;
             this->unitMenu->getConor(this, gu->cell);
             gu->lesorub = this;
