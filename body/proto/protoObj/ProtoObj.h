@@ -59,6 +59,7 @@ public:
     int animGabY = 0;
     int animStepX = 0;
     int animStepY = 0;
+    double animMashtab = 1;
     int gabX = 0;
     int gabY = 0;
     int drawGabaritX = 120;
@@ -84,6 +85,7 @@ public:
     bool inZone = false;
     Array<ProtoObj *> clients;
     Array<ProtoObj *> potentialClients;
+    Array<ProtoObj *> outClients;
     void get3x3myCells(ProtoObj *cell);
     void get2x2myCells(ProtoObj *cell);
     void getContactAndExitCells(ProtoObj *cell, ProtoObj *exitCell, ProtoObj *centerCell);

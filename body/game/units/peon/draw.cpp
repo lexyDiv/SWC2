@@ -18,14 +18,38 @@ void Peon::draw()
   //                this->targetCell->y + drawDeltaY, 40, 40, "red");
   // }
 
-  ctx.DrawImage(
-      this->image,
-      this->animX,
-      this->animY,
-      this->animGabX,
-      this->animGabY,
-      this->x + drawDeltaX - 25,
-      this->y + drawDeltaY - 25,
-      100,
-      100);
+  if (!this->inSave)
+  {
+    ctx.DrawImage(
+        this->image,
+        this->animX,
+        this->animY,
+        this->animGabX,
+        this->animGabY,
+        this->x + drawDeltaX - 25,
+        this->y + drawDeltaY - 25,
+        100,
+        100);
+  }
+  else
+  {
+    double gabX = 100 * this->animMashtab;
+    double gabY = 100 * this->animMashtab;
+    double cx = this->x + drawDeltaX - 25 + 50;
+    double cy = this->y + drawDeltaY - 25 + 50;
+    double dx = this->x + drawDeltaX - 25;
+    double dy = this->y + drawDeltaY - 25;
+
+    ctx.DrawImage(
+        this->image,
+        this->animX,
+        this->animY,
+        this->animGabX,
+        this->animGabY,
+        cx - gabX / 2,
+        cy - gabY / 2,
+        gabX,
+        gabY);
+       // ctx.FillRect(cx, cy, 3, 3, "blue");
+  }
 };
