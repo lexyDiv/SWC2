@@ -4,12 +4,14 @@ void Shaht::activeProg()
 {
     this->potentialClients.forEach([this](ProtoObj *peon)
                                    {
-                                       if (peon->inOutTimer < 55)
+                                       if (peon->inOutTimer < 75)
                                        {
                                            peon->x += peon->wayDeltaX;
                                            peon->y += peon->wayDeltaY;
                                            peon->inOutTimer++;
-                                           peon->animMashtab -= 0.01;
+                                           peon->animMashtab -= 0.008;
+                                           peon->wayDeltaX *= 0.99;
+                                           peon->wayDeltaY *= 0.99;
                                        }
                                        else
                                        {
