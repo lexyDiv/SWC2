@@ -1,4 +1,4 @@
-#include "activeProg.cpp"
+#include "getPeonOutCell.cpp"
 
 void Shaht::draw() {
     this->isAddOnDraw = false;

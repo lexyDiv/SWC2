@@ -42,7 +42,40 @@ void Shaht::activeProg()
         }
         return false; });
 
-        this->outClients.forEach([](ProtoObj *peon){
-           // console.log("i ready to out !");
-        });
+    this->outClients.forEach([this](ProtoObj *peon)
+                             {
+                                 if (!peon->inOutTimer)
+                                 {
+                                     MinData md = this->getPeonOutCell();
+                                     int index = md.index;
+                                     ProtoObj *oc = md.cell;
+                                     if (!oc)
+                                     {
+                                         console.log("no exit cell");
+                                     }
+                                     else
+                                     {
+                                         if (index != -1)
+                                         {
+                                            peon->cell = this->wellComeCells.getItem(index);
+                                            peon->x = peon->cell->x;
+                                            peon->y = peon->cell->y;
+                                            peon->unitMenu->getDeltasXY(peon, oc);
+                                            peon->cell = oc;
+                                            oc->groundUnit = peon;
+                                         }
+                                         else
+                                         {
+                                         }
+                                     }
+                                 }
+                                 peon->inOutTimer++;
+                             });
+
+    this->outClients.filterSelf([](ProtoObj *peon)
+                                {
+            if (!peon->inOutTimer) {
+            return true;
+        }
+        return false; });
 };

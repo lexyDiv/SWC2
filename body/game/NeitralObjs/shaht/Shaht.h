@@ -1,5 +1,6 @@
 #include "../../units/peon/draw.cpp"
 
+
 class Shaht : public ProtoObj {
     public:
     Shaht() : ProtoObj(){};
@@ -11,6 +12,7 @@ class Shaht : public ProtoObj {
     bool isBlockedd(ProtoObj *unit) override;
     void wellCome(ProtoObj *peon) override;
     void activeProg() override;
+    MinData getPeonOutCell();
 
     Array<ProtoObj *> interUnits;
 };
