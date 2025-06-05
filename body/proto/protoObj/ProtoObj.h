@@ -185,8 +185,11 @@ public:
     int deleteTimer = 0;
     virtual void drawTrup() {};
     /////// <= trupy
-    Array<ProtoObj *> wellComeCells;
-    void getWellComeCells();
+    Array<MinData> wellComeCells;
+    virtual void getWellComeCells();
+    double inOutCount = 0;
+    double inOutMashtabCount = 0;
+    double inOutMashtabMin = 0.456000;
     Array<ProtoObj *> landDecorationObjs;
 
     ProtoObj *left = nullptr;

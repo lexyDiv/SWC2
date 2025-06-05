@@ -15,7 +15,13 @@ void Peon::draw()
   // if (this->targetCell)
   // {
   //   ctx.FillRect(this->targetCell->x + drawDeltaX,
-  //                this->targetCell->y + drawDeltaY, 40, 40, "red");
+  //                this->targetCell->y + drawDeltaY, 48, 48, "red");
+  // }
+
+  //   if (this->cell)
+  // {
+  //   ctx.FillRect(this->cell->x + drawDeltaX,
+  //                this->cell->y + drawDeltaY, 48, 48, "red");
   // }
 
   if (!this->inSave)

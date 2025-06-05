@@ -11,5 +11,5 @@ void ProtoObj::getWellComeCells()
                                                         Delta delta = getDeltas(&pointThis, &pointLM);
                                                         double dis = getDis(&delta);
                                                         return dis; });
-                                    this->wellComeCells.push(md.cell); });
+                                    this->wellComeCells.push(md); });
 };
