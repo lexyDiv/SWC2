@@ -1,4 +1,4 @@
-#include "isTargetObjValide.cpp"
+#include "inFightAnimation.cpp"
 
 void GroundUnit::goWay()
 {
