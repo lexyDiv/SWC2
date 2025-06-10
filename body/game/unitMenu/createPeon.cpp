@@ -97,7 +97,8 @@ void UnitMenu::createPeon()
             gu->type == "life" ||
             gu->hp <= 0 ||
             unit->targetObj.bornCount != gu->bornCount ||
-            (gu->fraction && gu->fraction != unit->fraction))
+            (gu->fraction && gu->fraction != unit->fraction) ||
+            (unit->gold > 0 && gu->name == "shaht"))
         {
             unit->targetObj.unit = nullptr;
             unit->profession = "";
@@ -108,6 +109,16 @@ void UnitMenu::createPeon()
     {
         ProtoObj *cell = unit->potentialWay.getItem(0);
         ProtoObj *gu = cell->groundUnit;
+
+        if (!unit->iNeedFreeWay &&
+            (!gu || gu->name != "tree"))
+        {
+            console.log("i need free way to tree");
+            unit->iNeedFreeWay = true;
+            unit->getHandTarget(unit->preTargetCell);
+            return;
+        }
+
         if (!gu ||
             gu->name != "tree" || unit->wood)
         {
@@ -122,13 +133,11 @@ void UnitMenu::createPeon()
     {
         ProtoObj *cell = unit->potentialWay.getItem(0);
         ProtoObj *gu = cell->groundUnit;
-        // if (!gu) {
-        //     console.log("here");
-        // }
         if (!gu ||
             gu->type == "life" ||
             unit->targetObj.bornCount != gu->bornCount ||
-            gu->hp <= 0)
+            gu->hp <= 0 ||
+            (unit->gold > 0 && gu->name == "shaht"))
         {
             unit->targetObj.unit = nullptr;
             unit->profession = "";

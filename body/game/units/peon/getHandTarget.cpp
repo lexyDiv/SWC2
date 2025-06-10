@@ -21,9 +21,11 @@ void Peon::getHandTarget(ProtoObj *cell)
 
         if (cell->groundUnit->name == "tree")
         {
-            if (this->wood) {
-                ProtoObj* base = this->getBaseForUnloading();
-                if (base) {
+            if (this->wood)
+            {
+                ProtoObj *base = this->getBaseForUnloading();
+                if (base)
+                {
                     this->getHandTarget(base->cell);
                     return;
                 }
@@ -81,6 +83,15 @@ void Peon::getHandTarget(ProtoObj *cell)
             if (cell->groundUnit->name == "shaht")
             {
                 this->profession = "shahter";
+                if (this->gold > 0)
+                {
+                    ProtoObj *base = this->getBaseForUnloadingGold();
+                    if (base)
+                    {
+                        this->getHandTarget(base->cell);
+                        return;
+                    }
+                }
             };
             if (cell->groundUnit->type != "life")
             {
@@ -89,7 +100,7 @@ void Peon::getHandTarget(ProtoObj *cell)
             this->isOnGetPotentialWayGetTarget = [this](ProtoObj *cell)
             {
                 ProtoObj *gu = cell->groundUnit;
-                if (//cell == this->targetCell ||
+                if ( // cell == this->targetCell ||
                     gu == this->targetObj.unit)
                 {
                     return true;

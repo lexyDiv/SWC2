@@ -20,6 +20,7 @@ public:
 
     ProtoObj* getAnyTree();
     ProtoObj* getBaseForUnloading();
+    ProtoObj* getBaseForUnloadingGold();
 
     // void orderOnWayControl() override;
     //  void goWayAnimation() override;
