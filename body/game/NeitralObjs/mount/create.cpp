@@ -1,4 +1,4 @@
-#include "draw.cpp"
+#include "isIValideOnWay.cpp"
 
 void Mount::create(ProtoObj *cell)
 {

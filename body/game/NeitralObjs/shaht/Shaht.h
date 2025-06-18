@@ -12,6 +12,7 @@ class Shaht : public ProtoObj {
     bool isBlockedd(ProtoObj *unit) override;
     void wellCome(ProtoObj *peon) override;
     void activeProg() override;
+    bool isIValideOnWay(ProtoObj *unit) override;
     MinData getPeonOutCell();
 
     Array<ProtoObj *> interUnits;

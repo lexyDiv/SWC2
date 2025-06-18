@@ -11,4 +11,5 @@ class Tree : public ProtoObj {
     void trupCreate() override;
     void drawTrup() override;
     void stressControl() override;
+    bool isIValideOnWay(ProtoObj *unit) override;
 };

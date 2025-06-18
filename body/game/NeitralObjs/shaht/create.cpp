@@ -1,4 +1,4 @@
-#include "wellCome.cpp"
+#include "isIValideOnWay.cpp"
 
 void Shaht::create(ProtoObj *cell)
 {

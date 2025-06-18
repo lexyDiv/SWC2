@@ -1,4 +1,4 @@
-#include "drawTrup.cpp"
+#include "isIValideOnWay.cpp"
 
 bool Tree::isBlockedd(ProtoObj *unit)
 {

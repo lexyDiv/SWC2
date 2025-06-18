@@ -158,6 +158,9 @@ public:
     Order *orderOnWay = nullptr;
     function<void(ProtoObj *unit)> targetObjControl = [](ProtoObj *unit) {};
     bool iNeedFreeWay = false;
+    virtual bool isIValideOnWay(ProtoObj *unit) {
+        return true;
+    };
     ////////////////////////// <= way
     // Array<ProtoObj *> cells2X2;
     ////////////////////// =>  buildings
@@ -247,6 +250,10 @@ public:
     // 
     int inOutTimer = 0;
     bool inSave = false;
+    ////////////////// => remove
+    // void reMove() {};
+    // int reMoveTimer = 0;
+    ///////////////// <= remove
 
     // wall
 
