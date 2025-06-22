@@ -50,7 +50,7 @@ public:
     Image *peonRed = new Image("images/images/peon_new.png");
     Image *peonWithWoodRed = new Image("images/images/peon_with_wood.png");
     Image *peonWithGoldRed = new Image("images/images/peon_with_gold.png");
-    Image *townHallOrcRed = new Image("images/images/townHoll_orc_red.png");
+    Image *townHallOrcRed = new Image("images/orcs/red/buildings/great_hall.png");
 
     Imager() {};
     ~Imager()
