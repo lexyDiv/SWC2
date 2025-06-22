@@ -14,29 +14,13 @@ void Fraction::create(ProtoGame *game, Nation &nation)
    peon2->fraction = this;
    peon2->create(game->gf->field.getItem(10).getItem(6));
 
-  // this->game->AllUnits.push(peon);
-  // this->game->AllUnits.push(peon2);
-
-   //////////////////////////
-   // for (int i = 0; i < 10; i++)
-   // {
-   //    ProtoObj *unit = new Peon;
-   //    unit->name = to_string(i) + " peon";
-   //    UnitPack up;
-   //    up.unit = unit;
-   //    peon->enemys.push(up);
-   // }
-
-   // int index = peon->enemys.indexOf2([](UnitPack up)
-   //                                   {
-   //    if (up.unit->name == "50 peon") {
-   //       return true;
-   //    }
-   //    return false; });
-
-   // console.log(to_string(index));
-   ////////////////////////////
 
    this->peons.push(peon);
    this->peons.push(peon2);
+
+   ////////////////// townHall
+
+   ProtoObj *townHall = new TownHall;
+   townHall->fraction = this;
+   townHall->create(game->gf->field.getItem(1).getItem(20));
 };

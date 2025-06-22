@@ -167,6 +167,7 @@ public:
                 this->peonWithWood = imager.peonWithWoodRed;
                 this->peonWithGold = imager.peonWithGoldRed;
                 this->greateHall = imager.townHallOrcRed;
+                this->mapColor = { R: 255, G: 0, B: 0 };
             }
         }
         else
@@ -175,6 +176,7 @@ public:
     };
     string type = "";
     string color = "";
+    Color mapColor;
     Image *peon = nullptr;
     Image *peonWithWood = nullptr;
     Image *peonWithGold = nullptr;
