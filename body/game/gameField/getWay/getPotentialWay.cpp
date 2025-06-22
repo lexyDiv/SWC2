@@ -38,9 +38,11 @@ void GameField::getPotentialWay(ProtoObj *unit)
         int iter = 0;
 
         ///////////////////////////  poka tak!
-        unit->cell->aroundCells.forEach([this](ProtoObj *cell)
+        unit->cell->aroundCells.forEach([this, unit](ProtoObj *cell)
                                         {
-            if (cell->groundUnit) {
+            if (cell->groundUnit 
+            && cell->groundUnit != unit->targetCell->groundUnit
+            ) {
                 cell->explored = this->createCount;
             } });
         ///////////////////////

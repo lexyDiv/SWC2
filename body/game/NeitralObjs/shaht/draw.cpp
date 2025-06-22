@@ -1,4 +1,4 @@
-#include "isBlockedd.cpp"
+#include "getPeonOutCell.cpp"
 
 void Shaht::draw() {
     this->isAddOnDraw = false;

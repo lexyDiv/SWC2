@@ -5,11 +5,17 @@ void GroundUnit::orderOnWayControl()
     if (this->orderOnWay && !this->orderOnWay->isComplite)
     {
         ProtoObj *oCell = this->orderOnWay->cell;
-        if (!this->cell ||
+        ProtoObj *finishCell = this->potentialWay.length ? this->potentialWay.getItem(0) : nullptr;
+        ProtoObj *tarObj = this->targetObj.unit ? this->targetObj.unit : nullptr;
+     if (!this->cell ||
             (oCell->plane != this->cell->plane) ||
-            (oCell->groundUnit == this))
+            (oCell->groundUnit == this) ||
+            (finishCell == oCell) ||
+            (tarObj && tarObj == oCell->groundUnit) ||
+            (this->preTargetCell && this->preTargetCell == oCell)
+            )
         {
-
+          //  console.log("return");
             this->orderOnWay->isComplite = true;
             return;
         }

@@ -205,4 +205,51 @@ public:
         unit->speedTale = preTakts - preTaktsFloor;
         unit->wayTakts = preTaktsFloor;
     };
+
+
+    function<void(ProtoObj *unit, ProtoObj *nextCell)> getConor = [this](ProtoObj *unit, ProtoObj *nextCell)
+    {
+        if (unit->cell->left == nextCell)
+        {
+            unit->conor = this->conorLeft;
+            unit->animX = 6 * unit->animGabX;
+        }
+        else if (unit->cell->right == nextCell)
+        {
+            unit->conor = this->conorRight;
+            unit->animX = 2 * unit->animGabX;
+        }
+        else if (unit->cell->top == nextCell)
+        {
+            unit->conor = this->conorTop;
+            unit->animX = 0 * unit->animGabX;
+        }
+        else if (unit->cell->bottom == nextCell)
+        {
+            unit->conor = this->conorBottom;
+            unit->animX = 4 * unit->animGabX;
+        }
+        else if (unit->cell->top_left == nextCell)
+        {
+            unit->conor = this->conorTop_left;
+            unit->animX = 7 * unit->animGabX;
+        }
+        else if (unit->cell->top_right == nextCell)
+        {
+            unit->conor = this->conorTop_right;
+            unit->animX = 1 * unit->animGabX;
+        }
+        else if (unit->cell->bottom_left == nextCell)
+        {
+            unit->conor = this->conorBottom_left;
+            unit->animX = 5 * unit->animGabX;
+        }
+        else if (unit->cell->bottom_right == nextCell)
+        {
+            unit->conor = this->conorBottom_right;
+            unit->animX = 3 * unit->animGabX;
+        }
+    };
+
+
 };

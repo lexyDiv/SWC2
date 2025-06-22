@@ -7,14 +7,14 @@ Cell::~Cell()
                          {
     delete water;
     water = nullptr; });
-    if (this->groundUnit != nullptr &&
-        !this->groundUnit->isDelete &&
-        !this->groundUnit->fraction)
-    {
-        this->groundUnit->isDelete = true;
-        delete this->groundUnit;
-        this->groundUnit = nullptr;
-    }
+    // if (this->groundUnit != nullptr &&
+    //     !this->groundUnit->isDelete &&
+    //     !this->groundUnit->fraction)
+    // {
+    //     this->groundUnit->isDelete = true;
+    //     delete this->groundUnit;
+    //     this->groundUnit = nullptr;
+    // }
 }
 
 Color Cell::getMapColor()

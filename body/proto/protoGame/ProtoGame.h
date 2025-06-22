@@ -23,7 +23,7 @@ public:
     Array<ProtoFraction*> fractions;
     Array<ProtoObj *> unitsOnWay;
 
-    Array<ProtoObj *> AllFractionsUnits;
+    Array<ProtoObj *> AllUnits;
 
     // bool isAllOrdersPushed = false;
     // bool isAllUnitsPusedOnGetPotentialWay = false;

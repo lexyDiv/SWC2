@@ -46,6 +46,8 @@ void goWork()
 
       game->objMenu->getCandidateCells();
       game->fractionsControl();
+      game->gf->trupsControl();
+      game->gf->activeShahtsControl();
 
       deleter.process();
     }
@@ -150,6 +152,15 @@ int main()
     {
       game->preDraw();
       game->draw();
+
+    //  if (game->objMenu->unit && game->objMenu->unit->targetObj.unit) {
+    //       float drawDeltaX = game->gf->drawDeltaX;
+    //       float drawDeltaY = game->gf->drawDeltaY;
+    //       ProtoObj *cell = game->objMenu->unit->targetObj.unit->cell;
+    //       ctx.FillRect(cell->x + drawDeltaX, cell->y + drawDeltaY,
+    //        cell->gabX, cell->gabY, "red");
+    //  }
+
       // potential way draw
       // if (game->objMenu->unit && game->objMenu->unit->isPotentialWayComplite)
       // {

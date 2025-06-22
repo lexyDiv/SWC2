@@ -8,7 +8,7 @@ Game::~Game()
     delete this->objMenu;
     this->objMenu = nullptr;
 
-    this->AllFractionsUnits.forEach([](ProtoObj *unit)
+    this->AllUnits.forEach([](ProtoObj *unit)
                                     {
         delete unit;
         unit = nullptr; });

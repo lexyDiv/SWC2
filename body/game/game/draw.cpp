@@ -25,16 +25,24 @@ void Game::draw()
                                                 { drawLine.forEach([drawDeltaY, &DA, &max](ProtoObj *cell)
                                                                    {
                      cell->draw();
-                    if (cell->groundUnit && !cell->groundUnit->isAddOnDraw
+                    ProtoObj *groundUnit = cell->groundUnit;
+                    if (groundUnit && !groundUnit->isAddOnDraw
                     ) {
-                    int index = ceil((((cell->groundUnit->drawIndexY) + drawDeltaY) / 10) + 30);
+                    int index = ceil((((groundUnit->drawIndexY) + drawDeltaY) / 10) + 30);
 
-                        cell->groundUnit->isAddOnDraw = true;
+                        groundUnit->isAddOnDraw = true;
                        Array<ProtoObj *> &line = DA.getItem3(index);                    
-                        line.push(cell->groundUnit);
+                        line.push(groundUnit);
                        max.push(index);
                  //   cell->groundUnit->draw();
-                    }
+                    } }); });
+
+        this->gf->drawCell->cellsOnDraw.forEach([drawDeltaY, &DA, &max](Array<ProtoObj *> drawLine)
+                                                { drawLine.forEach([drawDeltaY, &DA, &max](ProtoObj *cell)
+                                                                   {
+                      cell->ripUnits.forEach([](ProtoObj* trup){
+                        trup->drawTrup();
+                      });
                      }); });
 
         DA.forEach([](Array<ProtoObj *> line)
@@ -44,10 +52,10 @@ void Game::draw()
         /////////  setka
         // this->gf->drawCell->cellsOnDraw.forEach([drawDeltaX, drawDeltaY](Array<ProtoObj *> drawLine)
         //                                         { drawLine.forEach([drawDeltaX, drawDeltaY](ProtoObj *cell)
-        //                                                            { 
+        //                                                            {
         //                                                             ctx.StrokeRect(cell->x + drawDeltaX, cell->y + drawDeltaY, cell->gabX, cell->gabY, "yellow");
-        //                                                             ctx.DrawText(cell->x + drawDeltaX, cell->y + drawDeltaY + 10, 10, "v= " + to_string((int)cell->ver));
-        //                                                             ctx.DrawText(cell->x + drawDeltaX, cell->y + drawDeltaY + 20, 10, "h= " + to_string((int)cell->hor));  
+        //                                                           //  ctx.DrawText(cell->x + drawDeltaX, cell->y + drawDeltaY + 10, 10, "v= " + to_string((int)cell->ver));
+        //                                                           //  ctx.DrawText(cell->x + drawDeltaX, cell->y + drawDeltaY + 20, 10, "h= " + to_string((int)cell->hor));
         //                                                             }); });
 
         ////////////////////////////////////////////////// ???

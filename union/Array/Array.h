@@ -34,9 +34,10 @@ class ProtoObj;
 struct MinData
 {
     int index = 0;
-    int min = 0;
+    double min = 0;
     int i = 0;
     int k = 0;
+   // double dis = 0;
     ProtoObj *cell = nullptr;
 };
 

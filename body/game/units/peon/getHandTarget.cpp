@@ -21,6 +21,15 @@ void Peon::getHandTarget(ProtoObj *cell)
 
         if (cell->groundUnit->name == "tree")
         {
+            if (this->wood)
+            {
+                ProtoObj *base = this->getBaseForUnloading();
+                if (base)
+                {
+                    this->getHandTarget(base->cell);
+                    return;
+                }
+            }
             this->profession = "lesorub";
             this->targetObjControl = this->fraction->control == "" ? this->unitMenu->targetObjControlWoodComp : this->unitMenu->targetObjControlWood;
             this->isOnGetPotentialWayGetTarget = [this](ProtoObj *cell)
@@ -41,7 +50,9 @@ void Peon::getHandTarget(ProtoObj *cell)
                 this->isNewCellOnGetWayValide = [this](ProtoObj *cell)
                 {
                     ProtoObj *gu = cell->groundUnit;
-                    if (cell->plane == this->cell->plane &&
+                    ProtoObj *tc = this->cell;
+                    if (tc &&
+                        cell->plane == tc->plane &&
                         (!gu ||
                          gu->potentialWay.length ||
                          (gu->fraction && gu->fraction->unionCase != this->fraction->unionCase &&
@@ -58,7 +69,9 @@ void Peon::getHandTarget(ProtoObj *cell)
                 this->isNewCellOnGetWayValide = [this](ProtoObj *cell)
                 {
                     ProtoObj *gu = cell->groundUnit;
-                    if (cell->plane == this->cell->plane &&
+                    ProtoObj *tc = this->cell;
+                    if (tc &&
+                        cell->plane == tc->plane &&
                         (!gu ||
                          gu->type == "life" ||
                          gu->name == "tree" && !gu->lesorub))
@@ -74,6 +87,15 @@ void Peon::getHandTarget(ProtoObj *cell)
             if (cell->groundUnit->name == "shaht")
             {
                 this->profession = "shahter";
+                if (this->gold > 0)
+                {
+                    ProtoObj *base = this->getBaseForUnloadingGold();
+                    if (base)
+                    {
+                        this->getHandTarget(base->cell);
+                        return;
+                    }
+                }
             };
             if (cell->groundUnit->type != "life")
             {
@@ -82,7 +104,7 @@ void Peon::getHandTarget(ProtoObj *cell)
             this->isOnGetPotentialWayGetTarget = [this](ProtoObj *cell)
             {
                 ProtoObj *gu = cell->groundUnit;
-                if (cell == this->targetCell ||
+                if ( // cell == this->targetCell ||
                     gu == this->targetObj.unit)
                 {
                     return true;
@@ -95,7 +117,9 @@ void Peon::getHandTarget(ProtoObj *cell)
                 this->isNewCellOnGetWayValide = [this](ProtoObj *cell)
                 {
                     ProtoObj *gu = cell->groundUnit;
-                    if (cell->plane == this->cell->plane &&
+                    ProtoObj *tc = this->cell;
+                    if (tc &&
+                        cell->plane == tc->plane &&
                         (!gu ||
                          gu->potentialWay.length ||
                          gu == this->targetObj.unit))
@@ -110,7 +134,9 @@ void Peon::getHandTarget(ProtoObj *cell)
                 this->isNewCellOnGetWayValide = [this](ProtoObj *cell)
                 {
                     ProtoObj *gu = cell->groundUnit;
-                    if (cell->plane == this->cell->plane &&
+                    ProtoObj *tc = this->cell;
+                    if (tc &&
+                        cell->plane == tc->plane &&
                         (!gu ||
                          gu->type == "life" ||
                          gu == this->targetObj.unit))
@@ -136,7 +162,9 @@ void Peon::getHandTarget(ProtoObj *cell)
         this->isNewCellOnGetWayValide = [this](ProtoObj *cell)
         {
             ProtoObj *gu = cell->groundUnit;
-            if (cell->plane == this->cell->plane &&
+            ProtoObj *tc = this->cell;
+            if (tc &&
+                cell->plane == tc->plane &&
                 (!gu ||
                  gu->potentialWay.length))
             {

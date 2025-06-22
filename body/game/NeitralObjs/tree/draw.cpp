@@ -6,19 +6,17 @@ void Tree::draw()
   this->isAddOnDraw = false;
   float drawDeltaX = this->gf->drawDeltaX;
   float drawDeltaY = this->gf->drawDeltaY;
-  if (this->hp > 0)
-  {
 
     ctx.DrawImage(this->image,
                   this->animX, this->animY,
                   this->animGabX, this->animGabY,
                   (this->x - this->drawGabaritX / 2) + drawDeltaX,
                   (this->y - this->drawGabaritY) + 13 + drawDeltaY,
-                  this->drawGabaritX, this->drawGabaritY);
+                  this->drawGabaritX, this->drawGabaritY, SDL_FLIP_NONE, 0, this->alpha);
 
    // ctx.FillRect(this->x + drawDeltaX, this->y + drawDeltaY, 5, 5, "blue");
 
-  }
+
 
   this->animTakt++;
 

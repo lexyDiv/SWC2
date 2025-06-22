@@ -41,6 +41,10 @@ void ProtoObj::getCurrentTargetCell() {
 
 };
 
+void ProtoObj::selectAnAction() {
+    
+};
+
 // bool ProtoObj::isBlocked(ProtoObj *unit) {
 //     return false;
 // }

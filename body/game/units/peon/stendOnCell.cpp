@@ -4,6 +4,7 @@ void Peon::stendOnCell()
 {
     this->x = this->cell->x;
     this->y = this->cell->y;
+    this->wayTakts = 0;
     this->drawIndexY = this->y;
     this->speedTale = 0;
     this->isGetMyCell = true;

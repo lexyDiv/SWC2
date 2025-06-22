@@ -8,5 +8,5 @@ public:
   ~Mount();
   void create(ProtoObj * cell) override;
   void draw() override;
-
+  bool isIValideOnWay(ProtoObj *unit) override;
 };

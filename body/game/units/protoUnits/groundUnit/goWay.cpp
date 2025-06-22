@@ -1,4 +1,4 @@
-#include "isTargetObjValide.cpp"
+#include "inFightAnimation.cpp"
 
 void GroundUnit::goWay()
 {
@@ -28,7 +28,7 @@ void GroundUnit::goWay()
                     this->y += sin(this->conor) * saveSpeedTale;
                 }
                 this->drawIndexY = this->y;
-                this->goWayAnimation();
+                  //  this->goWayAnimation(); 
             }
             else if (isNeedHold)
             {
@@ -84,6 +84,6 @@ void GroundUnit::goWay()
         this->drawIndexY = this->y;
         this->wayTakts--;
         this->holdWayCount = 0;
-        this->goWayAnimation();
+      //  this->goWayAnimation();
     }
 };

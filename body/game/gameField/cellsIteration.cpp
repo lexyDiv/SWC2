@@ -1,4 +1,4 @@
-#include "getContinents.cpp"
+#include "activeShahtsControl.cpp"
 
 void GameField::cellsIteration(function<void(ProtoObj *cell)> fn)
 {

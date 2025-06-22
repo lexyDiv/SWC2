@@ -15,6 +15,12 @@ public:
     void stendOnCellWait() override;
     bool isGetTarget() override;
     bool isTargetObjValide() override;
+    void selectAnAction() override;
+    void fightControl() override;
+
+    ProtoObj* getAnyTree();
+    ProtoObj* getBaseForUnloading();
+    ProtoObj* getBaseForUnloadingGold();
 
     // void orderOnWayControl() override;
     //  void goWayAnimation() override;

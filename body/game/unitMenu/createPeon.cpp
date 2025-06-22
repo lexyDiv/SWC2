@@ -75,9 +75,9 @@ void UnitMenu::createPeon()
 
     this->targetObjControlWood = [](ProtoObj *unit)
     {
-        ProtoObj *cell = unit->potentialWay.getItem(0);
-        ProtoObj *gu = cell->groundUnit;
-        if (!gu || gu->name != "tree")
+        //  ProtoObj *cell = unit->potentialWay.length ? unit->potentialWay.getItem(0) : nullptr;
+        ProtoObj *gu = unit->potentialWay.length ? unit->potentialWay.getItem(0)->groundUnit : nullptr;
+        if (!gu || gu->name != "tree" || unit->wood)
         {
             unit->targetObj.unit = nullptr;
             unit->profession = "";
@@ -91,13 +91,14 @@ void UnitMenu::createPeon()
 
     this->targetObjControlBuilding = [](ProtoObj *unit)
     {
-        ProtoObj *cell = unit->potentialWay.getItem(0);
-        ProtoObj *gu = cell->groundUnit;
+        //  ProtoObj *cell = unit->potentialWay.getItem(0);
+        ProtoObj *gu = unit->potentialWay.length ? unit->potentialWay.getItem(0)->groundUnit : nullptr;
         if (!gu || gu != unit->targetObj.unit ||
             gu->type == "life" ||
             gu->hp <= 0 ||
             unit->targetObj.bornCount != gu->bornCount ||
-            (gu->fraction && gu->fraction != unit->fraction))
+            (gu->fraction && gu->fraction != unit->fraction) ||
+            (unit->gold > 0 && gu->name == "shaht"))
         {
             unit->targetObj.unit = nullptr;
             unit->profession = "";
@@ -106,11 +107,23 @@ void UnitMenu::createPeon()
 
     this->targetObjControlWoodComp = [](ProtoObj *unit)
     {
-        ProtoObj *cell = unit->potentialWay.getItem(0);
-        ProtoObj *gu = cell->groundUnit;
-        if (!gu ||
-            gu->name != "tree")
+        // ProtoObj *cell = unit->potentialWay.getItem(0);
+        ProtoObj *gu = unit->potentialWay.length ? unit->potentialWay.getItem(0)->groundUnit : nullptr;
+
+        if (!unit->iNeedFreeWay &&
+            (!gu || gu->name != "tree"))
         {
+            console.log("i need free way to tree");
+            unit->iNeedFreeWay = true;
+            unit->getHandTarget(unit->preTargetCell);
+            return;
+        }
+
+        if (!gu ||
+            gu->name != "tree" || unit->wood)
+        {
+            unit->targetObj.unit = nullptr;
+            unit->profession = "";
             console.log("i dont see valide trees !!!");
             console.log("targetObjControlWoodComp");
         }
@@ -118,12 +131,13 @@ void UnitMenu::createPeon()
 
     this->targetObjControlBuildingComp = [](ProtoObj *unit)
     {
-        ProtoObj *cell = unit->potentialWay.getItem(0);
-        ProtoObj *gu = cell->groundUnit;
+        // ProtoObj *cell = unit->potentialWay.getItem(0);
+        ProtoObj *gu = unit->potentialWay.length ? unit->potentialWay.getItem(0)->groundUnit : nullptr;
         if (!gu ||
             gu->type == "life" ||
             unit->targetObj.bornCount != gu->bornCount ||
-            gu->hp <= 0)
+            gu->hp <= 0 ||
+            (unit->gold > 0 && gu->name == "shaht"))
         {
             unit->targetObj.unit = nullptr;
             unit->profession = "";

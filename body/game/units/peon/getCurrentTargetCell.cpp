@@ -30,6 +30,7 @@ void Peon::getCurrentTargetCell()
     {
         if (!this->preTargetCell->groundUnit->isBlockedd(this))
         {
+          //  console.log("here");
             this->targetCell = this->preTargetCell->groundUnit->cell;
             return;
         }

@@ -1,5 +1,34 @@
 #include "order/Order.cpp"
 
+class Upgrade {
+    public:
+    int current = 0;
+    int complite = 0;
+    string name = "";
+    Upgrade(int complite, string name) {
+       this->complite = complite;
+       this->name = name;
+    };
+};
+
+struct FractionTownHall {
+    Array<ProtoObj *> townHolls;
+    int level_1_townHollsCount = 0;
+    int level_2_townHollsCount = 0;
+    int level_3_townHollsCount = 0;
+};
+
+struct FractionLamberMill {
+    Array<ProtoObj *> lamberMills;
+    Array<Upgrade> seengUpgrades;
+    Array<Upgrade> damageUpgrades;
+    Array<Upgrade> regenerationUpgrades;
+    int seengLevel = 0;
+    int damageLevel = 0;
+    int regenerationLevel = 0;
+
+};
+
 
 
 class ProtoFraction {
@@ -12,16 +41,25 @@ class ProtoFraction {
    virtual void controller();
    virtual void activeUnitsControl();
 
+   /////////////////////  union buildings
+    FractionTownHall fTownHoll;
+    FractionLamberMill fLamberMill;
+   ////////////////////
+
     string name = "";
     string control = "";
+    int level = 0;
     Array<ProtoObj *> units;
-    Array<Order*> orders;
+   // Array<Order*> orders;
     Array<ProtoObj*> activeUnits;
     ProtoGame *game = nullptr;
     Array<ProtoObj *> peons;
+    Array<ProtoObj *> peonsOnWood;
+    Array<ProtoObj *> peonsOnGold;
 
     ///////////////////  reserv
     Array<ProtoObj *> reservPeons;
+    Array<ProtoObj *> reservTownHolls;
     //////////////////
 
     Nation nation = Nation();

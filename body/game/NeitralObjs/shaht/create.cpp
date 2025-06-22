@@ -1,4 +1,4 @@
-#include "Shaht.cpp"
+#include "isIValideOnWay.cpp"
 
 void Shaht::create(ProtoObj *cell)
 {
@@ -12,9 +12,10 @@ void Shaht::create(ProtoObj *cell)
     ProtoObj *exitCell = cell->bottom->bottom->bottom_left;
     ProtoObj *centerCell = cell->bottom_right;
     this->cell = centerCell;
+    this->cell->game->AllUnits.push(this);
 
     this->getContactAndExitCells(cell, exitCell, centerCell);
-
+    this->getWellComeCells();
     this->name = "shaht";
     this->type = "building";
     this->mapColor = {R : 255, G : 255, B : 0};

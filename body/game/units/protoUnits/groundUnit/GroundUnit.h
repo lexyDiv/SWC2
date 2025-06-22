@@ -7,6 +7,7 @@ class GroundUnit : public ProtoObj {
 
    virtual void orderOnWayControl();
    virtual void goWayAnimation();
+   virtual void inFightAnimation();
    virtual void goWay();
    virtual bool isNextCellFreeToGoWay(ProtoObj *nextCell);
    virtual bool isNeedHoldGoWay(ProtoObj *nextCell);

@@ -103,6 +103,9 @@ public:
     void potentialWayCreate(ProtoObj *unit, ProtoObj *finalCell);
     //////////////// <= get potential Way methods
 
+    void trupsControl() override;
+    void activeShahtsControl() override;
+
     Color getDefaultColor(char lit) override;
     //
 };

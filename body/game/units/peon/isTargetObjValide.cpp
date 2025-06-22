@@ -7,7 +7,7 @@ bool Peon::isTargetObjValide()
     {
         if (to->lesorub ||
             to->hp <= 0 ||
-            !to->cell ||
+           // !to->cell ||
             to->isBlockedd(this)
            )
         {

@@ -28,9 +28,10 @@ public:
     virtual void activeProg();
     virtual void stendOnCell();
     virtual void stendOnCellWait();
+    virtual void selectAnAction();
 
     ////////
-    int deleteTimer = 0;
+    // int deleteTimer = 0;
     // all
 
     ProtoGameField *gf = nullptr;
@@ -58,6 +59,7 @@ public:
     int animGabY = 0;
     int animStepX = 0;
     int animStepY = 0;
+    double animMashtab = 1;
     int gabX = 0;
     int gabY = 0;
     int drawGabaritX = 120;
@@ -82,6 +84,8 @@ public:
     int linesCount = 20;
     bool inZone = false;
     Array<ProtoObj *> clients;
+    Array<ProtoObj *> potentialClients;
+    Array<ProtoObj *> outClients;
     void get3x3myCells(ProtoObj *cell);
     void get2x2myCells(ProtoObj *cell);
     void getContactAndExitCells(ProtoObj *cell, ProtoObj *exitCell, ProtoObj *centerCell);
@@ -107,6 +111,11 @@ public:
     int mana = 0;
     int sight = 1;
     int animTimer = 0;
+    int alpha = 255;
+
+    int stress = 0;                  // for tree
+    virtual void stressControl() {}; // tree
+    int saveX = 0;                   // tree
 
     /////////////////// => handTarget
     ProtoObj *preTargetCell = nullptr;
@@ -117,6 +126,7 @@ public:
     UnitPack targetObj;
     ProtoObj *lesorub = nullptr;
     string profession = "";
+    virtual void fightControl() {};
     ////////////////////////// <= handTarget
     ProtoObj *cell = nullptr;
     Array<ProtoObj *> enemys;
@@ -148,12 +158,16 @@ public:
     Order *orderOnWay = nullptr;
     function<void(ProtoObj *unit)> targetObjControl = [](ProtoObj *unit) {};
     bool iNeedFreeWay = false;
+    virtual bool isIValideOnWay(ProtoObj *unit) {
+        return true;
+    };
     ////////////////////////// <= way
     // Array<ProtoObj *> cells2X2;
     ////////////////////// =>  buildings
     Array<ProtoObj *> contactCells;
     Array<ProtoObj *> exitCells;
-    Array<ProtoObj *> interUnits;
+    bool isComplite = false;
+    virtual void wellCome(ProtoObj *peon) {};
     //////////////////////  <= buildings
     ProtoFraction *fraction = nullptr;
     // virtual bool isBlocked(ProtoObj* unit);
@@ -168,7 +182,17 @@ public:
     Array<double> maxAroundCellsDis;
     Array<ProtoObj *> drawCells;
     Array<Array<ProtoObj *>> cellsOnDraw;
-    Array<ProtoObj *> ripUnits;
+    /////// => trupy
+    Array<ProtoObj *> ripUnits; // trupy
+    virtual void trupCreate() {};
+    int deleteTimer = 0;
+    virtual void drawTrup() {};
+    /////// <= trupy
+    Array<MinData> wellComeCells;
+    virtual void getWellComeCells();
+    double inOutCount = 0;
+    double inOutMashtabCount = 0;
+    double inOutMashtabMin = 0.456000;
     Array<ProtoObj *> landDecorationObjs;
 
     ProtoObj *left = nullptr;
@@ -188,6 +212,7 @@ public:
     double conor = 0;
     int holdWayCount = 0;
     //////////////////////// <= go way
+    // ProtoObj *gettingTarget = nullptr;
 
     // Array<ProtoObj *> guardCells;
     Array<ProtoObj *> booms;
@@ -205,6 +230,11 @@ public:
     Image *cellImage2 = nullptr;
     Image *cellImage3 = nullptr;
 
+    //////////////// fight
+    bool inFight = false;
+    int inFightTimer = 0;
+    ///////////////
+
     // bullets
 
     // flying units
@@ -217,6 +247,13 @@ public:
     ProtoObj *bornCell = nullptr;
     int bornCount = 0;
     // land objects
+    // 
+    int inOutTimer = 0;
+    bool inSave = false;
+    ////////////////// => remove
+    // void reMove() {};
+    // int reMoveTimer = 0;
+    ///////////////// <= remove
 
     // wall
 
