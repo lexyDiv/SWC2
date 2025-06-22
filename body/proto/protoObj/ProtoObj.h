@@ -86,6 +86,7 @@ public:
     Array<ProtoObj *> clients;
     Array<ProtoObj *> potentialClients;
     Array<ProtoObj *> outClients;
+    void get4x4myCells(ProtoObj *cell);
     void get3x3myCells(ProtoObj *cell);
     void get2x2myCells(ProtoObj *cell);
     void getContactAndExitCells(ProtoObj *cell, ProtoObj *exitCell, ProtoObj *centerCell);
