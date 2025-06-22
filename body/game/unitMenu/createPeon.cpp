@@ -75,8 +75,8 @@ void UnitMenu::createPeon()
 
     this->targetObjControlWood = [](ProtoObj *unit)
     {
-        ProtoObj *cell = unit->potentialWay.getItem(0);
-        ProtoObj *gu = cell->groundUnit;
+        //  ProtoObj *cell = unit->potentialWay.length ? unit->potentialWay.getItem(0) : nullptr;
+        ProtoObj *gu = unit->potentialWay.length ? unit->potentialWay.getItem(0)->groundUnit : nullptr;
         if (!gu || gu->name != "tree" || unit->wood)
         {
             unit->targetObj.unit = nullptr;
@@ -91,8 +91,8 @@ void UnitMenu::createPeon()
 
     this->targetObjControlBuilding = [](ProtoObj *unit)
     {
-        ProtoObj *cell = unit->potentialWay.getItem(0);
-        ProtoObj *gu = cell->groundUnit;
+        //  ProtoObj *cell = unit->potentialWay.getItem(0);
+        ProtoObj *gu = unit->potentialWay.length ? unit->potentialWay.getItem(0)->groundUnit : nullptr;
         if (!gu || gu != unit->targetObj.unit ||
             gu->type == "life" ||
             gu->hp <= 0 ||
@@ -107,8 +107,8 @@ void UnitMenu::createPeon()
 
     this->targetObjControlWoodComp = [](ProtoObj *unit)
     {
-        ProtoObj *cell = unit->potentialWay.getItem(0);
-        ProtoObj *gu = cell->groundUnit;
+        // ProtoObj *cell = unit->potentialWay.getItem(0);
+        ProtoObj *gu = unit->potentialWay.length ? unit->potentialWay.getItem(0)->groundUnit : nullptr;
 
         if (!unit->iNeedFreeWay &&
             (!gu || gu->name != "tree"))
@@ -131,8 +131,8 @@ void UnitMenu::createPeon()
 
     this->targetObjControlBuildingComp = [](ProtoObj *unit)
     {
-        ProtoObj *cell = unit->potentialWay.getItem(0);
-        ProtoObj *gu = cell->groundUnit;
+        // ProtoObj *cell = unit->potentialWay.getItem(0);
+        ProtoObj *gu = unit->potentialWay.length ? unit->potentialWay.getItem(0)->groundUnit : nullptr;
         if (!gu ||
             gu->type == "life" ||
             unit->targetObj.bornCount != gu->bornCount ||

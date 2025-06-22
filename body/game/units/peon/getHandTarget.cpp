@@ -50,7 +50,9 @@ void Peon::getHandTarget(ProtoObj *cell)
                 this->isNewCellOnGetWayValide = [this](ProtoObj *cell)
                 {
                     ProtoObj *gu = cell->groundUnit;
-                    if (cell->plane == this->cell->plane &&
+                    ProtoObj *tc = this->cell;
+                    if (tc &&
+                        cell->plane == tc->plane &&
                         (!gu ||
                          gu->potentialWay.length ||
                          (gu->fraction && gu->fraction->unionCase != this->fraction->unionCase &&
@@ -67,7 +69,9 @@ void Peon::getHandTarget(ProtoObj *cell)
                 this->isNewCellOnGetWayValide = [this](ProtoObj *cell)
                 {
                     ProtoObj *gu = cell->groundUnit;
-                    if (cell->plane == this->cell->plane &&
+                    ProtoObj *tc = this->cell;
+                    if (tc &&
+                        cell->plane == tc->plane &&
                         (!gu ||
                          gu->type == "life" ||
                          gu->name == "tree" && !gu->lesorub))
@@ -113,7 +117,9 @@ void Peon::getHandTarget(ProtoObj *cell)
                 this->isNewCellOnGetWayValide = [this](ProtoObj *cell)
                 {
                     ProtoObj *gu = cell->groundUnit;
-                    if (cell->plane == this->cell->plane &&
+                    ProtoObj *tc = this->cell;
+                    if (tc &&
+                        cell->plane == tc->plane &&
                         (!gu ||
                          gu->potentialWay.length ||
                          gu == this->targetObj.unit))
@@ -128,7 +134,9 @@ void Peon::getHandTarget(ProtoObj *cell)
                 this->isNewCellOnGetWayValide = [this](ProtoObj *cell)
                 {
                     ProtoObj *gu = cell->groundUnit;
-                    if (cell->plane == this->cell->plane &&
+                    ProtoObj *tc = this->cell;
+                    if (tc &&
+                        cell->plane == tc->plane &&
                         (!gu ||
                          gu->type == "life" ||
                          gu == this->targetObj.unit))
@@ -154,7 +162,9 @@ void Peon::getHandTarget(ProtoObj *cell)
         this->isNewCellOnGetWayValide = [this](ProtoObj *cell)
         {
             ProtoObj *gu = cell->groundUnit;
-            if (cell->plane == this->cell->plane &&
+            ProtoObj *tc = this->cell;
+            if (tc &&
+                cell->plane == tc->plane &&
                 (!gu ||
                  gu->potentialWay.length))
             {
