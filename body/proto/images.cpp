@@ -50,10 +50,14 @@ public:
     Image *peonRed = new Image("images/images/peon_new.png");
     Image *peonWithWoodRed = new Image("images/images/peon_with_wood.png");
     Image *peonWithGoldRed = new Image("images/images/peon_with_gold.png");
+    Image *townHallOrcRed = new Image("images/images/townHoll_orc_red.png");
 
     Imager() {};
     ~Imager()
     {
+        delete this->townHallOrcRed;
+        this->townHallOrcRed = nullptr;
+
         delete this->peonWithWoodRed;
         this->peonWithWoodRed = nullptr;
 
@@ -162,6 +166,7 @@ public:
                 this->peon = imager.peonRed;
                 this->peonWithWood = imager.peonWithWoodRed;
                 this->peonWithGold = imager.peonWithGoldRed;
+                this->greateHall = imager.townHallOrcRed;
             }
         }
         else
@@ -173,17 +178,15 @@ public:
     Image *peon = nullptr;
     Image *peonWithWood = nullptr;
     Image *peonWithGold = nullptr;
-    Image *greateHoll = nullptr;
-    Image *greateHoll2 = nullptr;
-    Image *greateHoll3 = nullptr;
+    Image *greateHall = nullptr;
+    Image *greateHall2 = nullptr;
+    Image *greateHall3 = nullptr;
 };
-
-
 
 class NationsHub
 {
 public:
-Nation redOrcs = Nation("orc", "red");
+    Nation redOrcs = Nation("orc", "red");
 
     NationsHub()
     {
