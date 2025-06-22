@@ -1,5 +1,8 @@
 // g++ main.cpp -I./include -o program `sdl2-config --cflags --libs` -lSDL2 -lSDL2_mixer -lSDL2_image -lSDL2_ttf -I./GLM/
 // ./program
+
+// g++ main.cpp -I./include -fmax-include-depth=3000 -o program `sdl2-config --cflags --libs` -lSDL2 -lSDL2_mixer -lSDL2_image -lSDL2_ttf -I./GLM/
+
 #include "methods/deleter/process.cpp"
 
 bool quit = false;
