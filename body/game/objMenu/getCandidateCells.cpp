@@ -45,7 +45,9 @@ void ObjMenu::getCandidateCells()
 
                     if (unit->fraction &&
                       //  unit->fraction->control == "human" && // chenge here
-                        unit->type == "life")
+                        unit->type == "life" &&
+                        unit->hp > 0 &&
+                        !unit->inSave)
                     {
                         units.push(unit);
                        // unit->inZone = true;

@@ -52,6 +52,7 @@ class ProtoFraction {
     Array<ProtoObj *> units;
    // Array<Order*> orders;
     Array<ProtoObj*> activeUnits;
+    Array<ProtoObj *> activeBuildings;
     ProtoGame *game = nullptr;
     Array<ProtoObj *> peons;
     Array<ProtoObj *> peonsOnWood;

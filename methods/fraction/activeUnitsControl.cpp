@@ -2,6 +2,21 @@
 
 void Fraction::activeUnitsControl()
 {
+
+    this->activeBuildings.forEach([](ProtoObj *building)
+                                  { building->activeProg(); });
+    this->activeBuildings.filterSelf([](ProtoObj *building)
+                                     {
+        if (!building->clients.length && 
+        !building->potentialClients.length &&
+        !building->outClients.length &&
+        building->isComplite &&
+        building->hp == building->hpMax) {
+            building->isActive = false;
+            return true;
+        }
+        return false; });
+
     for (int i = 0; i < this->activeUnits.length; i++)
     {
         ProtoObj *unit = this->activeUnits.getItem(i);
@@ -27,5 +42,5 @@ void Fraction::activeUnitsControl()
     }
     this->activeUnits.filterSelf([](ProtoObj *unit)
                                  { return !unit; });
-                             //    console.log(to_string(this->activeUnits.length));
+    //    console.log(to_string(this->activeUnits.length));
 }

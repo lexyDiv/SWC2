@@ -9,10 +9,10 @@ class TownHall : public ProtoObj {
     void draw() override;
     // void createUnitMenu() override;
     // bool isBlockedd(ProtoObj *unit) override;
-    // void wellCome(ProtoObj *peon) override;
-    // void activeProg() override;
+     void wellCome(ProtoObj *peon) override;
+     void activeProg() override;
     // bool isIValideOnWay(ProtoObj *unit) override;
-    // MinData getPeonOutCell();
+     MinData getPeonOutCell();
 
     Array<ProtoObj *> interUnits;
 };

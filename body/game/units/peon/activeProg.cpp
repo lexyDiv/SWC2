@@ -6,7 +6,7 @@ void Peon::activeProg()
   if (this->outHoldTimer)
   {
     this->outHoldTimer--;
-    if (!this->outHoldTimer)
+    if (!this->outHoldTimer && this->orderOnWay->isComplite)
     {
       if (this->profession == "g")
       {
@@ -25,7 +25,7 @@ void Peon::activeProg()
         }
       }
     }
-    else
+    else if (this->orderOnWay->isComplite)
     {
       return;
     }
