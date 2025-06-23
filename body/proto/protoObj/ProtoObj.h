@@ -212,6 +212,7 @@ public:
     double wayDeltaY = 0;
     double conor = 0;
     int holdWayCount = 0;
+    int outHoldTimer = 0;
     //////////////////////// <= go way
     // ProtoObj *gettingTarget = nullptr;
 

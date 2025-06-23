@@ -89,6 +89,10 @@ void Shaht::activeProg()
                                     peon->inSave = false;                                  
                                     peon->targetObj.unit = nullptr;                                   
                                     peon->stendOnCell();
+                                    peon->profession = "g";
+                                    peon->outHoldTimer = 30;
+                                    peon->isActive = true;
+                                    peon->fraction->activeUnits.push(peon);
                                     //// experement
                                     // ProtoObj *base = peon->getBase
                                     // peon->orderOnWay->isComplite = false;
