@@ -159,7 +159,8 @@ public:
     Order *orderOnWay = nullptr;
     function<void(ProtoObj *unit)> targetObjControl = [](ProtoObj *unit) {};
     bool iNeedFreeWay = false;
-    virtual bool isIValideOnWay(ProtoObj *unit) {
+    virtual bool isIValideOnWay(ProtoObj *unit)
+    {
         return true;
     };
     ////////////////////////// <= way
@@ -183,6 +184,11 @@ public:
     Array<double> maxAroundCellsDis;
     Array<ProtoObj *> drawCells;
     Array<Array<ProtoObj *>> cellsOnDraw;
+    Array<ProtoObj *> orderedTrees;
+    Array<ProtoObj *> orderedShahts;
+    int createTimer = 0;
+    int updateTimer = 0;
+    int level = 1;
     /////// => trupy
     Array<ProtoObj *> ripUnits; // trupy
     virtual void trupCreate() {};
@@ -249,7 +255,7 @@ public:
     ProtoObj *bornCell = nullptr;
     int bornCount = 0;
     // land objects
-    // 
+    //
     int inOutTimer = 0;
     bool inSave = false;
     ////////////////// => remove

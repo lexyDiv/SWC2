@@ -2,6 +2,17 @@
 
 void TownHall::activeProg()
 {
+    if (this->createTimer) {
+        this->createTimer --;
+        if (!this->createTimer) {
+            console.log("create peon");
+            //this->createTimer = 100;
+            ProtoObj *peon = new Peon;
+            
+        }
+    }
+
+    ////////////////////////
     this->potentialClients.forEach([this](ProtoObj *peon)
                                    {
                                        if (peon->inOutTimer < peon->inOutCount)

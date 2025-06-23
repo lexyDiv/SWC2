@@ -5,7 +5,15 @@ ProtoObj *Peon::getAnyTree()
     ProtoObj *base = this->getBaseForUnloading();
     if (base)
     {
-        console.log("logic for scan optimal tree");
+        for (int i = 0; i < base->orderedTrees.length; i++)
+        {
+            ProtoObj *tree = base->orderedTrees.getItem(i);
+            if (tree->hp > 0 &&
+                !tree->lesorub)
+            {
+                return tree;
+            }
+        }
     }
     else
     {

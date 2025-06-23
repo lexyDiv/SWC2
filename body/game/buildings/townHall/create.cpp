@@ -15,6 +15,8 @@ void TownHall::create(ProtoObj *cell)
 
      this->getContactAndExitCells(cell, exitCell, centerCell);
      this->getWellComeCells();
+     this->getTrees();
+     this->getShahts();
      this->name = "greatHall";
      this->type = "building";
      this->mapColor = this->fraction->nation.mapColor;

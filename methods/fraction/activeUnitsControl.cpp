@@ -11,7 +11,9 @@ void Fraction::activeUnitsControl()
         !building->potentialClients.length &&
         !building->outClients.length &&
         building->isComplite &&
-        building->hp == building->hpMax) {
+        building->hp == building->hpMax &&
+        !building->createTimer &&
+        !building->updateTimer) {
             building->isActive = false;
             return true;
         }

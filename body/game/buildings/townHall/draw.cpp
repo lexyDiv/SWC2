@@ -1,4 +1,4 @@
-#include "activeProg.cpp"
+#include "getTrees.cpp"
 
 void TownHall::draw()
 {

@@ -26,4 +26,8 @@ void Fraction::create(ProtoGame *game, Nation &nation)
    this->fTownHoll.level_1_townHollsCount ++;
    this->fTownHoll.townHolls.push(townHall);
    townHall->isComplite = true;
+   ////////////////////
+   townHall->createTimer = 100;
+   townHall->isActive = true;
+   this->activeBuildings.push(townHall);
 };
