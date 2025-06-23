@@ -23,4 +23,7 @@ void Fraction::create(ProtoGame *game, Nation &nation)
    ProtoObj *townHall = new TownHall;
    townHall->fraction = this;
    townHall->create(game->gf->field.getItem(2).getItem(20));
+   this->fTownHoll.level_1_townHollsCount ++;
+   this->fTownHoll.townHolls.push(townHall);
+   townHall->isComplite = true;
 };

@@ -9,7 +9,7 @@ void TownHall::draw()
 
     ctx.DrawImage(this->image,
                   0, 0,
-                  128, 128,
+                  this->animGabX, this->animGabY,
                   (this->cell->x - 90) + drawDeltaX,
                   (this->cell->y - 120) + drawDeltaY,
                   285, 290);
