@@ -8,7 +8,7 @@ void TownHall::create(ProtoObj *cell)
 
      this->get4x4myCells(cell);
 
-     ProtoObj *exitCell = cell->bottom_right->bottom_right->bottom_right;
+     ProtoObj *exitCell = cell->bottom_right->bottom_right->bottom_right->bottom_right;
      ProtoObj *centerCell = cell->bottom_right;
      this->cell = centerCell;
      this->cell->game->AllUnits.push(this);

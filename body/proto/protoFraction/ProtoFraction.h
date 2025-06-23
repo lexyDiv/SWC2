@@ -66,6 +66,9 @@ class ProtoFraction {
     Nation nation = Nation();
 
     int unionCase = 0;
+    int gold = 0;
+    int oil = 0;
+    int wood = 0;
 
    // Nation nation = nationsHub.
 };

@@ -1,7 +1,8 @@
 #include "getPeonOutCell.cpp"
 
-void TownHall::activeProg() {
-        this->potentialClients.forEach([this](ProtoObj *peon)
+void TownHall::activeProg()
+{
+    this->potentialClients.forEach([this](ProtoObj *peon)
                                    {
                                        if (peon->inOutTimer < peon->inOutCount)
                                        {
@@ -17,6 +18,19 @@ void TownHall::activeProg() {
                                            peon->cell = nullptr;
                                            peon->inOutTimer = 0;
                                            peon->animMashtab = peon->inOutMashtabMin;
+                                           if (this->fraction->fTownHoll.level_3_townHollsCount) {
+                                            this->fraction->gold = peon->gold ? this->fraction->gold + 150 : this->fraction->gold;
+                                            this->fraction->wood = peon->wood ? this->fraction->wood + 150 : this->fraction->wood;
+                                           } else if (this->fraction->fTownHoll.level_2_townHollsCount) {
+                                            this->fraction->gold = peon->gold ? this->fraction->gold + 125 : this->fraction->gold;
+                                            this->fraction->wood = peon->wood ? this->fraction->wood + 125 : this->fraction->wood;
+                                           } else {
+                                            this->fraction->gold = peon->gold ? this->fraction->gold + 100 : this->fraction->gold;
+                                            this->fraction->wood = peon->wood ? this->fraction->wood + 100 : this->fraction->wood;
+                                           }
+                                           peon->wood = 0;
+                                           peon->gold = 0;
+
                                        } });
     this->potentialClients.filterSelf([](ProtoObj *peon)
                                       {
@@ -65,7 +79,7 @@ void TownHall::activeProg() {
                                             peon->unitMenu->getDeltasXY(peon, oc);
                                             peon->cell = oc;
                                             peon->inOutMashtabCount = (1 - peon->inOutMashtabMin) / peon->inOutCount;
-                                            peon->image = peon->fraction->nation.peonWithGold;
+                                            peon->image = peon->fraction->nation.peon;
                                             oc->groundUnit = peon;
                                          }
                                          else
@@ -88,7 +102,7 @@ void TownHall::activeProg() {
                                     peon->inSave = false;                                  
                                     peon->targetObj.unit = nullptr;                                   
                                     peon->stendOnCell();
-                                    peon->profession = "g";
+                                   // peon->profession = "g";
                                     peon->outHoldTimer = 30;
                                     peon->isActive = true;
                                     peon->fraction->activeUnits.push(peon);

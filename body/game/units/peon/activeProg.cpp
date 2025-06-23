@@ -23,6 +23,9 @@ void Peon::activeProg()
         {
           console.log("i need shaht");
         }
+      } else if (this->profession == "w") {
+         console.log("i need tree");
+         ProtoObj *tree = this->getAnyTree();
       }
     }
     else if (this->orderOnWay->isComplite)
@@ -30,7 +33,7 @@ void Peon::activeProg()
       return;
     }
   }
-
+///////////////////////////////////////////////////////////////
   if (!this->wayTakts &&
       this->wayIndex <= 5 &&
       this->isPotentialWayComplite &&

@@ -27,6 +27,7 @@ void Peon::fightControl()
                 this->image = this->fraction->nation.peonWithWood;
                 this->wood = 100;
                 //// experement
+                this->profession = "w";
                 ProtoObj* base = this->getBaseForUnloading();
                 if (base) {
                     this->orderOnWay->isComplite = false;
@@ -38,6 +39,7 @@ void Peon::fightControl()
                 this->targetObj.unit = nullptr;
                 this->inFight = false;
                 this->animY = 0;
+                this->profession = "";
                 gu->lesorub = nullptr;
             }
         }
