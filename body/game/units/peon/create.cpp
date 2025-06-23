@@ -1,4 +1,4 @@
-#include "isGetTarget.cpp"
+#include "createInside.cpp"
 
 void Peon::create(ProtoObj *cell)
 {
@@ -35,4 +35,5 @@ void Peon::create(ProtoObj *cell)
   this->animY = 0;
   this->hpMax = 50;
   this->hp = 50;
+  this->orderOnWay = new Order;
 };

@@ -22,6 +22,7 @@ public:
 
     /////////
     virtual void create(ProtoObj *cell);
+    virtual void createInside(ProtoObj *c) {};
     virtual int getLevel();
     virtual void createUnitMenu();
     virtual void getHandTarget(ProtoObj *cell);

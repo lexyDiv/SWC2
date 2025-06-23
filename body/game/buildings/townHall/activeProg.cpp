@@ -2,13 +2,21 @@
 
 void TownHall::activeProg()
 {
-    if (this->createTimer) {
-        this->createTimer --;
-        if (!this->createTimer) {
+    if (this->createTimer)
+    {
+        this->createTimer--;
+        if (!this->createTimer)
+        {
             console.log("create peon");
-            //this->createTimer = 100;
+            // this->createTimer = 100;
             ProtoObj *peon = new Peon;
-            
+            peon->fraction = this->fraction;
+            peon->createInside(this->cell);
+            peon->inOutTimer = 0;
+            peon->inSave = true;
+            this->outClients.push(peon);
+            //    delete peon;
+            //    peon = nullptr;
         }
     }
 
@@ -108,15 +116,14 @@ void TownHall::activeProg()
                                  peon->inOutTimer++;
                                  }
                                  else {
-                                    peon->inOutTimer = 0;
-                                    peon->animMashtab = 1;
-                                    peon->inSave = false;                                  
-                                    peon->targetObj.unit = nullptr;                                   
-                                    peon->stendOnCell();
-                                   // peon->profession = "g";
-                                    peon->outHoldTimer = 30;
-                                    peon->isActive = true;
-                                    peon->fraction->activeUnits.push(peon);
+                                     peon->inOutTimer = 0;
+                                     peon->animMashtab = 1;
+                                     peon->inSave = false;                                  
+                                     peon->targetObj.unit = nullptr;                                   
+                                     peon->stendOnCell();
+                                     peon->outHoldTimer = 30;
+                                     peon->isActive = true;
+                                     peon->fraction->activeUnits.push(peon);
                                     //// experement
                                     // ProtoObj *base = peon->getBase
                                     // peon->orderOnWay->isComplite = false;

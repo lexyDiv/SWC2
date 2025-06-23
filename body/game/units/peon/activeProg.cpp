@@ -10,7 +10,7 @@ void Peon::activeProg()
     {
       if (this->profession == "g")
       {
-        if (this->gold)
+        if (this->gold > 0)
         {
           ProtoObj *base = this->getBaseForUnloadingGold();
           if (base)
@@ -40,6 +40,7 @@ void Peon::activeProg()
       return;
     }
   }
+
   ///////////////////////////////////////////////////////////////
   if (!this->wayTakts &&
       this->wayIndex <= 5 &&

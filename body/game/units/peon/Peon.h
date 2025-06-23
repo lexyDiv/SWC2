@@ -17,6 +17,7 @@ public:
     bool isTargetObjValide() override;
     void selectAnAction() override;
     void fightControl() override;
+    void createInside(ProtoObj* c) override; 
 
     ProtoObj* getAnyTree();
     ProtoObj* getBaseForUnloading();
