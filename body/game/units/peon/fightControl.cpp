@@ -26,6 +26,12 @@ void Peon::fightControl()
                 this->animY = 0;
                 this->image = this->fraction->nation.peonWithWood;
                 this->wood = 100;
+                //// experement
+                ProtoObj* base = this->getBaseForUnloading();
+                if (base) {
+                    this->orderOnWay->isComplite = false;
+                    this->orderOnWay->cell = base->cell;
+                }
             }
             else if (!this->orderOnWay->isComplite)
             {

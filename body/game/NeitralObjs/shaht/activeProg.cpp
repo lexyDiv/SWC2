@@ -89,6 +89,10 @@ void Shaht::activeProg()
                                     peon->inSave = false;                                  
                                     peon->targetObj.unit = nullptr;                                   
                                     peon->stendOnCell();
+                                    //// experement
+                                    // ProtoObj *base = peon->getBase
+                                    // peon->orderOnWay->isComplite = false;
+                                    // peon->orderOnWay->cell = peon
                                  } });
 
     this->outClients.filterSelf([](ProtoObj *peon)
