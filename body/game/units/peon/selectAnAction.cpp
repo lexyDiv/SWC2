@@ -12,13 +12,22 @@ void Peon::selectAnAction()
             this->unitMenu->getConor(this, gu->cell);
             gu->lesorub = this;
         }
-        else if (gu->fraction == this->fraction &&
-                 gu->type != "life" &&
-                 !(gu->isComplite || gu->hp < gu->hpMax))
+        else if ((gu->fraction == this->fraction || !gu->fraction) &&
+                 gu->type != "life")
         {
-            this->inFight = true;
-        } else {
-            gu->wellCome(this);
+            if (
+                !(gu->isComplite || gu->hp < gu->hpMax))
+            {
+                this->inFight = true;
+            }
+            else
+            {
+                gu->wellCome(this);
+            }
         }
+        // else
+        // {
+        //     gu->wellCome(this);
+        // }
     }
 };

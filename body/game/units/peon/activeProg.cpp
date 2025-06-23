@@ -72,7 +72,7 @@ void Peon::activeProg()
         this->isIgetMyTarget = false;
         this->selectAnAction();
         // return;
-        //  console.log("get target");
+        // console.log("get target");
       }
     }
   }
