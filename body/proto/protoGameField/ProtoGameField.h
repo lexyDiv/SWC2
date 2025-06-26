@@ -30,9 +30,9 @@ public:
     virtual void getVectorCells(ProtoObj *cell);
     virtual void fieldClick();
     virtual void fieldClickRight();
-    virtual void getPotentialWay(ProtoObj* unit);
+    virtual void getPotentialWay(ProtoObj *unit);
 
-    double getMinCellsDis(ProtoObj* cell, ProtoObj* cell2);
+    double getMinCellsDis(ProtoObj *cell, ProtoObj *cell2);
 
     virtual Color getDefaultColor(char lit);
 
@@ -97,8 +97,17 @@ public:
 
     FieldClick *fieldClickPoint = nullptr;
 
-        Array<ProtoObj *> openArr;
-        Array<Array<ProtoObj *>> exp;
+    Array<ProtoObj *> openArr;
+    Array<Array<ProtoObj *>> exp;
+
+    virtual void exploreNewCellAndAddToOpenArr(ProtoObj *unit, ProtoObj *fatherCell, ProtoObj *potentialCell) {};
+    virtual int get_G(ProtoObj *cell, ProtoObj *potentialCell) { return 0; };
+    virtual int get_H(ProtoObj *potentialCell, ProtoObj *finishCell) { return 0; };
+    // Array<ProtoObj*> quickArr;
+    ProtoObj *min_F_cell = nullptr;
+    ProtoObj *globalMin_H_cell = nullptr;
+    // bool isQuick = false;
+    virtual void potentialWayCreate(ProtoObj *unit, ProtoObj *finalCell) {};
 
 private:
 };

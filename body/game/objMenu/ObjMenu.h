@@ -13,6 +13,6 @@ class ObjMenu : public ProtoObjMenu {
     void draw() override;
     void defaultData() override;
 
-    void priceDraw();
-    void drawGropup();
+    void priceDraw() override;
+    void drawGropup() override;
 };

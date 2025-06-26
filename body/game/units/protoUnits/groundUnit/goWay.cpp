@@ -28,7 +28,7 @@ void GroundUnit::goWay()
                     this->y += sin(this->conor) * saveSpeedTale;
                 }
                 this->drawIndexY = this->y;
-                  //  this->goWayAnimation(); 
+                //  this->goWayAnimation();
             }
             else if (isNeedHold)
             {
@@ -47,8 +47,28 @@ void GroundUnit::goWay()
                     else
                     {
                         this->stendOnCell();
-                        this->getHandTarget(this->preTargetCell);
-                        this->orderOnWay->isComplite = true;
+                        // this->getHandTarget(this->preTargetCell);
+                        // this->orderOnWay->isComplite = true;
+                        if (this->targetObj.unit &&
+                            this->targetObj.unit->name == "tree")
+                        {
+                            ProtoObj *tree = this->getAnyTree();
+                            if (tree)
+                            {
+                                this->getHandTarget(tree->cell);
+                                this->orderOnWay->isComplite = true;
+                            }
+                            else
+                            {
+                                console.log("no tree");
+                            }
+                        }
+                        else
+                        {
+                            this->targetObj.unit = nullptr;
+                            this->getHandTarget(this->preTargetCell);
+                            this->orderOnWay->isComplite = true;
+                        }
                     }
 
                     // if (this->fraction->control == "human")
@@ -84,6 +104,6 @@ void GroundUnit::goWay()
         this->drawIndexY = this->y;
         this->wayTakts--;
         this->holdWayCount = 0;
-      //  this->goWayAnimation();
+        //  this->goWayAnimation();
     }
 };

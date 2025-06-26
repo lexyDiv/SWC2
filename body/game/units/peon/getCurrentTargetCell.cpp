@@ -16,7 +16,6 @@ bool isBlocked(ProtoObj *cell, ProtoObj *unit)
 
 void Peon::getCurrentTargetCell()
 {
-
     this->gf->procCurr += 0.0001;
     Array<ProtoObj *> acs;
     Array<ProtoObj *> freeCells;

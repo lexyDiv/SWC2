@@ -3,6 +3,51 @@
 void Peon::activeProg()
 {
 
+  if (!this->isPotentialWayComplite)
+  {
+    this->noIsCompliteTimer++;
+    if (this->noIsCompliteTimer >= 200)
+    {
+      console.log("i am istukan !!!");
+      this->isPotentialWayComplite = true;
+    }
+  }
+  else
+  {
+    this->noIsCompliteTimer = 0;
+  }
+  ///////////////////////////////////////////// <= test
+
+  if (this->isPotentialWayComplite &&
+      this->pw.length)
+  {
+    this->potentialWay.copy(this->pw);
+    this->targetObjControl(this);
+    this->pw.clear();
+    // ProtoObj *obj = this->potentialWay.length ? this->potentialWay.getItem(0)->groundUnit : this->targetObj.unit;
+    // this->targetObj.unit = obj;
+    // if (obj && obj->name == "tree")
+    // {
+    //    //if (obj->lesorub && obj->lesorub != this)
+    //    obj->lesorub = this;
+    // }
+    // else
+    // {
+    //  // console.log("not obj");
+    // }
+    // // this->targetObj.unit = obj;
+    // // if (!this->targetObj.unit)
+    // // {
+
+    // //   console.log("-------------");
+    // //   console.log("NOT");
+    // //   if (obj)
+    // //   {
+    // //     console.log(obj->name);
+    // //   }
+    // // }
+  }
+
   if (this->outHoldTimer)
   {
     this->outHoldTimer--;
@@ -24,9 +69,9 @@ void Peon::activeProg()
           console.log("i need shaht");
         }
       }
-      else if (this->profession == "w")
+      else if (this->targetObj.unit &&
+               this->targetObj.unit->name == "tree")
       {
-        console.log("wood : " + to_string(this->fraction->wood));
         ProtoObj *tree = this->getAnyTree();
         if (tree)
         {
@@ -43,7 +88,7 @@ void Peon::activeProg()
 
   ///////////////////////////////////////////////////////////////
   if (!this->wayTakts &&
-      this->wayIndex <= 5 &&
+      // this->wayIndex <= 5 &&
       this->isPotentialWayComplite &&
       this->orderOnWay->isComplite &&
       this->potentialWay.length &&
@@ -85,6 +130,9 @@ void Peon::activeProg()
         // return;
         // console.log("get target");
       }
+    }
+    else
+    {
     }
   }
 

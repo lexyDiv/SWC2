@@ -19,22 +19,30 @@ ProtoGame *game = new Game();
 
 // vector<ProtoObj *> *vec = new vector<ProtoObj *>;
 
+bool hardReady = true;
+bool doHard = false;
+
 void hard()
 {
 
-  game->create();
-
   while (!quit)
   {
-
+    hardReady = false;
     if (game->isGFComplite)
     {
       game->getPotentialWayControl();
     }
+    else
+    {
+      game->create();
+    }
+    hardReady = true;
 
     this_thread::sleep_for(chrono::milliseconds(1));
   }
 }
+
+bool goWorkReady = true;
 
 void goWork()
 {
@@ -42,10 +50,10 @@ void goWork()
   SDL_Event e;
   while (!quit)
   {
-
+    goWorkReady = false;
     if (game->isGFComplite)
     {
-    // game->preDraw();
+      // game->preDraw();
 
       game->objMenu->getCandidateCells();
       game->fractionsControl();
@@ -53,20 +61,42 @@ void goWork()
       game->gf->activeShahtsControl();
 
       deleter.process();
+
+     //  game->getPotentialWayControl();
     }
 
     listenner(e, quit);
     console.proc(mouse.x, mouse.y, mouse.leftKey);
 
-    this_thread::sleep_for(chrono::milliseconds(15));
+    goWorkReady = true;
+
+    this_thread::sleep_for(chrono::milliseconds(1)); // 15
   }
 };
 
 ///////////////////////////////  kata
 //////////////////////////////////
 
+// class Hz {
+//   public:
+//   Hz() {};
+//   ~Hz() {};
+// };
+
+// class HH : public Hz {
+//    public:
+//    HH() : Hz() {};
+//    ~HH() {};
+//    ProtoObj *j = nullptr;
+// };
+
 int main()
 {
+
+  // Hz hz;
+  // HH hh;
+  // console.log("Hz: " + to_string(sizeof(hz)));
+  // console.log("HH: " + to_string(sizeof(hh)));
 
   // string literas = "!#$%&(),-;@+=0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.:/' ";
   // for (int i = 0; i < literas.size(); i++) {
@@ -118,8 +148,7 @@ int main()
   //////////////////////////////////// kata res
   ////////////////////
 
- //console.log(nationsHub->orcs.getItem(0).color); // ok
-
+  // console.log(nationsHub->orcs.getItem(0).color); // ok
 
   srand(time(0));
 
@@ -127,103 +156,112 @@ int main()
 
   ctx.getFont();
 
-  thread th_h(hard);
   thread th(goWork);
+  //th.join();
+  thread th_h(hard);
+ // th_h.join();
   //  SDL_Event e;
 
   int stop = 0;
 
-  while (!quit)
+  // ProtoGame po;
+  // console.log("ProtoObj: " + to_string(sizeof(po)));
+  // Game cl;
+  // console.log("ProtoObj: " + to_string(sizeof(cl)));
+
+  while (true)
   {
 
-    //   if (tik % 100 == 0) {
-    //   delete game;
-    //   game = nullptr;
-    //   game = new Game();
-    //   game->create();
-    // }
-    // if (game) {
-
-    //  console.log("loading");
-
-
-
-    ctx.CreateDrawZone(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT);
-    ctx.FillRect(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT, "white");
-
-    if (game->isGFComplite)
+    if (!quit)
     {
-      game->preDraw();
-      game->draw();
-
-    //  if (game->objMenu->unit && game->objMenu->unit->targetObj.unit) {
-    //       float drawDeltaX = game->gf->drawDeltaX;
-    //       float drawDeltaY = game->gf->drawDeltaY;
-    //       ProtoObj *cell = game->objMenu->unit->targetObj.unit->cell;
-    //       ctx.FillRect(cell->x + drawDeltaX, cell->y + drawDeltaY,
-    //        cell->gabX, cell->gabY, "red");
-    //  }
-
-      // potential way draw
-      // if (game->objMenu->unit && game->objMenu->unit->isPotentialWayComplite)
-      // {
-      //   game->objMenu->unit->potentialWay.forEach([](ProtoObj *cell)
-      //                                             {
-      //     float drawDeltaX = game->gf->drawDeltaX;
-      //     float drawDeltaY = game->gf->drawDeltaY;
-      //     ctx.FillRect(cell->x + drawDeltaX, cell->y + drawDeltaY,
-      //     cell->gabX, cell->gabY, "red"); });
+      //   if (tik % 100 == 0) {
+      //   delete game;
+      //   game = nullptr;
+      //   game = new Game();
+      //   game->create();
       // }
+      // if (game) {
 
-      // if (hzCell) {
-      //   ProtoObj* cell = hzCell;
+      //  console.log("loading");
+
+      ctx.CreateDrawZone(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT);
+      ctx.FillRect(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT, "white");
+
+      if (game->isGFComplite)
+      {
+        game->preDraw();
+        game->draw();
+
+        //  if (game->objMenu->unit && game->objMenu->unit->targetObj.unit) {
+        //       float drawDeltaX = game->gf->drawDeltaX;
+        //       float drawDeltaY = game->gf->drawDeltaY;
+        //       ProtoObj *cell = game->objMenu->unit->targetObj.unit->cell;
+        //       ctx.FillRect(cell->x + drawDeltaX, cell->y + drawDeltaY,
+        //        cell->gabX, cell->gabY, "red");
+        //  }
+
+        // potential way draw
+        // if (game->objMenu->unit && game->objMenu->unit->isPotentialWayComplite)
+        // {
+        //   game->objMenu->unit->potentialWay.forEach([](ProtoObj *cell)
+        //                                             {
+        //     float drawDeltaX = game->gf->drawDeltaX;
+        //     float drawDeltaY = game->gf->drawDeltaY;
+        //     ctx.FillRect(cell->x + drawDeltaX, cell->y + drawDeltaY,
+        //     cell->gabX, cell->gabY, "red"); });
+        // }
+
+        // if (hzCell) {
+        //   ProtoObj* cell = hzCell;
+        //     float drawDeltaX = game->gf->drawDeltaX;
+        //     float drawDeltaY = game->gf->drawDeltaY;
+        //     ctx.FillRect(cell->x + drawDeltaX, cell->y + drawDeltaY,
+        //     cell->gabX, cell->gabY, "violet");
+        // }
+
+        // openArr draw
+        // game->gf->openArr.forEach([](ProtoObj *cell){
+        //     float drawDeltaX = game->gf->drawDeltaX;
+        //     float drawDeltaY = game->gf->drawDeltaY;
+        //     ctx.FillRect(cell->x + drawDeltaX, cell->y + drawDeltaY,
+        //     cell->gabX, cell->gabY, "blue");
+        // });
+      }
+
+      //  ctx.DrawImage(groundBasic, 0, 0, 100, 100, 100, 100, 200, 200);
+
+      //  if ( game && game->gf && game->gf->init) {
+      //    ProtoObj *cell = game->gf->field.getItem(0).getItem(0);
+      //     cell->maxAroundCells
+      //     .forEach([cell](ProtoObj *c, int i){
+      //       int dis = cell->maxAroundCellsDis.getItem(i);
       //     float drawDeltaX = game->gf->drawDeltaX;
       //     float drawDeltaY = game->gf->drawDeltaY;
-      //     ctx.FillRect(cell->x + drawDeltaX, cell->y + drawDeltaY,
-      //     cell->gabX, cell->gabY, "violet");
-      // }
 
-      // openArr draw
-      // game->gf->openArr.forEach([](ProtoObj *cell){
-      //     float drawDeltaX = game->gf->drawDeltaX;
-      //     float drawDeltaY = game->gf->drawDeltaY;
-      //     ctx.FillRect(cell->x + drawDeltaX, cell->y + drawDeltaY,
-      //     cell->gabX, cell->gabY, "blue");
-      // });
+      //        if (dis <= c->gabX * 11) {
+      //         c->mapColor.R = 255;
+      //        }
+      //             if ( dis <= c->gabX * 9.5) {
+      //          c->mapColor.G = 0;
+      //         }
+      //        ctx.DrawText(c->x + drawDeltaX, c->y + drawDeltaY + 5, 10,  to_string(dis), 255);
+      //     });
+      //  }
 
-
+      console.draw();
+      ctx.End();
     }
+    else if (hardReady && goWorkReady)
+    {
+      delete game;
+      game = nullptr;
 
-    //  ctx.DrawImage(groundBasic, 0, 0, 100, 100, 100, 100, 200, 200);
-
-    //  if ( game && game->gf && game->gf->init) {
-    //    ProtoObj *cell = game->gf->field.getItem(0).getItem(0);
-    //     cell->maxAroundCells
-    //     .forEach([cell](ProtoObj *c, int i){
-    //       int dis = cell->maxAroundCellsDis.getItem(i);
-    //     float drawDeltaX = game->gf->drawDeltaX;
-    //     float drawDeltaY = game->gf->drawDeltaY;
-
-    //        if (dis <= c->gabX * 11) {
-    //         c->mapColor.R = 255;
-    //        }
-    //             if ( dis <= c->gabX * 9.5) {
-    //          c->mapColor.G = 0;
-    //         }
-    //        ctx.DrawText(c->x + drawDeltaX, c->y + drawDeltaY + 5, 10,  to_string(dis), 255);
-    //     });
-    //  }
-
-    console.draw();
-    ctx.End();
+      ctx.Close();
+      break;
+    }
 
     this_thread::sleep_for(chrono::milliseconds(15)); // 15 ok
   }
-
-  delete game;
-  game = nullptr;
-
-  ctx.Close();
 
   th_h.join();
   th.join();

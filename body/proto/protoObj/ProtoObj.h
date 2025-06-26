@@ -30,7 +30,11 @@ public:
     virtual void stendOnCell();
     virtual void stendOnCellWait();
     virtual void selectAnAction();
-
+    virtual ProtoObj *getAnyTree()
+    {
+        return nullptr;
+    };
+    int persNum = 0;
     ////////
     // int deleteTimer = 0;
     // all
@@ -92,6 +96,7 @@ public:
     void get2x2myCells(ProtoObj *cell);
     void getContactAndExitCells(ProtoObj *cell, ProtoObj *exitCell, ProtoObj *centerCell);
     void getContactCells();
+    virtual ProtoObj *getTreeNear() { return nullptr; };
     // units
 
     Image *menuImage = nullptr;
@@ -114,6 +119,7 @@ public:
     int sight = 1;
     int animTimer = 0;
     int alpha = 255;
+    double startAnimMashtab = 0.456000;
 
     int stress = 0;                  // for tree
     virtual void stressControl() {}; // tree
@@ -134,6 +140,7 @@ public:
     Array<ProtoObj *> enemys;
     Array<ProtoObj *> way;
     Array<ProtoObj *> potentialWay;
+    Array<ProtoObj *> pw;
     //////////////////// =>  way
     bool isPotentialWayComplite = true;
     int G = 0;
@@ -188,7 +195,9 @@ public:
     Array<ProtoObj *> orderedTrees;
     Array<ProtoObj *> orderedShahts;
     int createTimer = 0;
+    int createTimerMax = 100;
     int updateTimer = 0;
+    int updateTimerMax = 1000;
     int level = 1;
     /////// => trupy
     Array<ProtoObj *> ripUnits; // trupy
@@ -263,8 +272,38 @@ public:
     // void reMove() {};
     // int reMoveTimer = 0;
     ///////////////// <= remove
+    virtual void orderOnWayControl() {};
+    virtual void goWayAnimation() {};
+    virtual void inFightAnimation() {};
+    virtual void goWay() {};
+    virtual bool isNextCellFreeToGoWay(ProtoObj *nextCell) {return true;};
+    virtual bool isNeedHoldGoWay(ProtoObj *nextCell) {return true;};
+    virtual bool isGetTarget() {return true;};
+    virtual bool isTargetObjValide() {return true;};
+    virtual ProtoObj *getBaseForUnloading() { return nullptr; };
+    virtual ProtoObj *getBaseForUnloadingGold() { return nullptr; };
+    virtual void preDraw() {};
+    virtual void getTrees() {};
+    virtual void getShahts() {};
+    // bool isIValideOnWay(ProtoObj *unit) override;
+    virtual MinData getPeonOutCell()
+    {
+        MinData md;
+        return md;
+    };
+    virtual MinData getPeonExtrimeOutCell()
+    {
+        MinData md;
+        return md;
+    };
+    ;
+
+    Array<ProtoObj *> interUnits;
 
     // wall
+    ///// test
+    bool focus = false;
+    int noIsCompliteTimer = 0;
 
 private:
 };

@@ -11,12 +11,13 @@ class TownHall : public ProtoObj {
     // bool isBlockedd(ProtoObj *unit) override;
      void wellCome(ProtoObj *peon) override;
      void activeProg() override;
-     void getTrees();
-     void getShahts();
+     void getTrees() override;
+     void getShahts() override;
     // bool isIValideOnWay(ProtoObj *unit) override;
-     MinData getPeonOutCell();
+     MinData getPeonOutCell() override;
+     MinData getPeonExtrimeOutCell() override;
 
-    Array<ProtoObj *> interUnits;
+
 
     // Array<ProtoObj *> orderedTrees;
     // Array<ProtoObj *> orderedShahts;

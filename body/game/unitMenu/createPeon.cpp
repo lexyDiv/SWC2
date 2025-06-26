@@ -77,12 +77,7 @@ void UnitMenu::createPeon()
     {
         //  ProtoObj *cell = unit->potentialWay.length ? unit->potentialWay.getItem(0) : nullptr;
         ProtoObj *gu = unit->potentialWay.length ? unit->potentialWay.getItem(0)->groundUnit : nullptr;
-        if (!gu || gu->name != "tree" || unit->wood)
-        {
-            unit->targetObj.unit = nullptr;
-            unit->profession = "";
-        }
-        else
+        if (gu && gu->name == "tree")
         {
             unit->targetObj.unit = gu;
             unit->targetObj.bornCount = gu->bornCount;
@@ -101,7 +96,7 @@ void UnitMenu::createPeon()
             (unit->gold > 0 && gu->name == "shaht"))
         {
             unit->targetObj.unit = nullptr;
-            unit->profession = "";
+            // unit->profession = "";
         }
     };
 
@@ -123,7 +118,7 @@ void UnitMenu::createPeon()
             gu->name != "tree" || unit->wood)
         {
             unit->targetObj.unit = nullptr;
-            unit->profession = "";
+            // unit->profession = "";
             console.log("i dont see valide trees !!!");
             console.log("targetObjControlWoodComp");
         }
@@ -140,7 +135,7 @@ void UnitMenu::createPeon()
             (unit->gold > 0 && gu->name == "shaht"))
         {
             unit->targetObj.unit = nullptr;
-            unit->profession = "";
+            //  unit->profession = "";
             return;
         }
         if (!unit->iNeedFreeWay &&

@@ -27,7 +27,7 @@ public:
     virtual void create();
     virtual void createShaht();
     virtual void createPeon();
-
+    virtual void createOil() {};
     // int titleMenuX = 0;
     // int titleMenuY = 0;
 

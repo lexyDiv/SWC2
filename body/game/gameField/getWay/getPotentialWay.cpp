@@ -12,7 +12,8 @@ void GameField::getPotentialWay(ProtoObj *unit)
     //     return;
     // }
 
-    unit->potentialWay.clear();
+
+   // unit->potentialWay.clear();
     // unit->isNeedReturnGetPotentialWay = false;
     unit->getCurrentTargetCell();
     // unit->targetCell = unit->preTargetCell;
@@ -49,7 +50,6 @@ void GameField::getPotentialWay(ProtoObj *unit)
 
         while (true)
         {
-
             iter++;
             // console.log(to_string(iter));
             MinData md;
@@ -66,7 +66,7 @@ void GameField::getPotentialWay(ProtoObj *unit)
                 this->exploreNewCellAndAddToOpenArr(unit, this->min_F_cell, pc);
             }
 
-            if (this->openArr.length)
+            if (this->openArr.length && iter < 5000)
             {
                 int index = this->openArr.length - 1;
                 md.cell = this->openArr.getItem(this->openArr.length - 1);
@@ -95,6 +95,7 @@ void GameField::getPotentialWay(ProtoObj *unit)
             }
             else
             {
+                unit->isPotentialWayComplite = true;
                 if (!this->globalMin_H_cell)
                 {
                     unit->isPotentialWayComplite = true;

@@ -24,7 +24,7 @@ public:
     Array<ProtoObj *> unitsOnWay;
 
     Array<ProtoObj *> AllUnits;
-
+Array<ProtoObj *> allPeons;
     // bool isAllOrdersPushed = false;
     // bool isAllUnitsPusedOnGetPotentialWay = false;
 };

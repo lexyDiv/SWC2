@@ -8,7 +8,6 @@ public:
     void create(ProtoObj *cell) override;
     void draw() override;
     void getHandTarget(ProtoObj *cell) override;
-    void preDraw();
     void getCurrentTargetCell() override;
     void activeProg() override;
     void stendOnCell() override;
@@ -19,9 +18,12 @@ public:
     void fightControl() override;
     void createInside(ProtoObj* c) override; 
 
-    ProtoObj* getAnyTree();
-    ProtoObj* getBaseForUnloading();
-    ProtoObj* getBaseForUnloadingGold();
+
+    ProtoObj* getAnyTree() override;
+    ProtoObj* getTreeNear() override;
+    ProtoObj* getBaseForUnloading() override;
+    ProtoObj* getBaseForUnloadingGold() override;
+        void preDraw() override;
 
     // void orderOnWayControl() override;
     //  void goWayAnimation() override;

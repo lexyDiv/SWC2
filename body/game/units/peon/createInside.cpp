@@ -34,4 +34,7 @@ void Peon::createInside(ProtoObj *c)
     this->hpMax = 50;
     this->hp = 50;
     this->orderOnWay = new Order;
+    this->inOutTimer = 0;
+    this->inSave = true;
+    this->animMashtab = this->startAnimMashtab;
 }

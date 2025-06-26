@@ -1,4 +1,4 @@
-#include "preDraw.cpp"
+#include "getTreeNear.cpp"
 
 void Peon::getHandTarget(ProtoObj *cell)
 {
@@ -10,6 +10,7 @@ void Peon::getHandTarget(ProtoObj *cell)
     this->isPotentialWayComplite = false;
     this->targetCell = nullptr;
     this->targetObjControl = this->unitMenu->targetObjControl;
+    this->targetObj.unit = nullptr;
 
     if (cell->groundUnit)
     {

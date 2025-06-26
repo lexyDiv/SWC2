@@ -6,7 +6,7 @@ class UnitMenu : public ProtoUnitMenu {
     UnitMenu() : ProtoUnitMenu(){};
     ~UnitMenu();
 
-    void createOil();
+    void createOil() override;
 
     void create() override;
     void createShaht() override;

@@ -24,7 +24,7 @@ Game::~Game()
 
 void Game::create()
 {
-    this->gf = new GameField(&this->pathes[0], 1);
+    this->gf = new GameField(&this->pathes[1], 1);
     this->gf->game = this;
     this->gf->create();
 
@@ -34,7 +34,7 @@ void Game::create()
     ////////////////////////////// fractons
     ProtoFraction *fraction = new Fraction;
     fraction->create(this, nationsHub->orcs.getItem3(0));
-    fraction->control = "";
+    fraction->control = "human";
     this->fractions.push(fraction);
     //////////////////////////////
 

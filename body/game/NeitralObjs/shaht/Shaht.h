@@ -13,7 +13,6 @@ class Shaht : public ProtoObj {
     void wellCome(ProtoObj *peon) override;
     void activeProg() override;
     bool isIValideOnWay(ProtoObj *unit) override;
-    MinData getPeonOutCell();
+    MinData getPeonOutCell() override;
 
-    Array<ProtoObj *> interUnits;
 };

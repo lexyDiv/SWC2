@@ -1,4 +1,4 @@
-#include "wellCome.cpp"
+#include "getPeonExtrimeOutCell.cpp"
 
 MinData TownHall::getPeonOutCell()
 {
@@ -17,17 +17,17 @@ MinData TownHall::getPeonOutCell()
         }
     }
 
-    int ol = this->exitCells.length;
-    for (int i = 0; i < ol; i++)
-    {
-        ProtoObj *cell = this->exitCells.getItem(i);
-        if (!cell->groundUnit)
-        {
-            md.cell = cell;
-            md.index = -1;
-            return md;
-        }
-    }
+    // int ol = this->exitCells.length;
+    // for (int i = 0; i < ol; i++)
+    // {
+    //     ProtoObj *cell = this->exitCells.getItem(i);
+    //     if (!cell->groundUnit)
+    //     {
+    //         md.cell = cell;
+    //         md.index = i;
+    //         return md;
+    //     }
+    // }
 
     return md;
 }

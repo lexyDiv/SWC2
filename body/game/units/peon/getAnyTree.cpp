@@ -2,6 +2,12 @@
 
 ProtoObj *Peon::getAnyTree()
 {
+
+    ProtoObj* t = this->getTreeNear();
+    if (t) {
+        return t;
+    }
+
     ProtoObj *base = this->getBaseForUnloading();
     if (base)
     {

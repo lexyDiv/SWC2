@@ -4,7 +4,31 @@ void Fraction::controller()
 {
     if (this->control == "human")
     {
-        this->orderControl();
+        // this->orderControl();
+        this->controlTimer++;
+        if (this->controlTimer == 100)
+        {
+            this->controlTimer = 0;
+            this->peons.filterSelf([](ProtoObj *peon)
+                                   {
+            if (peon) {
+                return false;
+            }
+            return true; });
+            this->peons.forEach([this](ProtoObj *peon){
+                if (!peon->inSave &&
+                !peon->isActive &&
+                peon->profession == "w") {
+                    ProtoObj *tree = peon->getAnyTree();
+                    if (tree) {
+                        peon->orderOnWay->isComplite = false;
+                        peon->orderOnWay->cell = tree->cell;
+                        peon->isActive = true;
+                        this->activeUnits.push(peon);
+                    }
+                }
+            });
+        }
     }
     this->activeUnitsControl();
 
@@ -18,7 +42,7 @@ void Fraction::controller()
 
     // this->peons.forEach([one, too, one1, too1](ProtoObj *peon, int i)
     //                     {
- 
+
     //     if (!i) {
     //              int rand = intRand(0, 10);
     // if (!peon->isActive && !rand) {
@@ -34,7 +58,7 @@ void Fraction::controller()
     //             peon->isActive = true;
     //             peon->fraction->activeUnits.push(peon);
     //         }
-    // } 
+    // }
     //     }
     //     else {
     //              int rand = intRand(0, 10);
@@ -51,8 +75,8 @@ void Fraction::controller()
     //             peon->isActive = true;
     //             peon->fraction->activeUnits.push(peon);
     //         }
-    // } 
+    // }
     //     }
-    
+
     // });
 };

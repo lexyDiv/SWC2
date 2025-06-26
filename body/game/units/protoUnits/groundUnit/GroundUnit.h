@@ -5,12 +5,12 @@ class GroundUnit : public ProtoObj {
     GroundUnit();
     ~GroundUnit();
 
-   virtual void orderOnWayControl();
-   virtual void goWayAnimation();
-   virtual void inFightAnimation();
-   virtual void goWay();
-   virtual bool isNextCellFreeToGoWay(ProtoObj *nextCell);
-   virtual bool isNeedHoldGoWay(ProtoObj *nextCell);
-   virtual bool isGetTarget();
-   virtual bool isTargetObjValide();
+    void orderOnWayControl() override;
+    void goWayAnimation() override;
+    void inFightAnimation() override;
+    void goWay() override;
+    bool isNextCellFreeToGoWay(ProtoObj *nextCell) override;
+    bool isNeedHoldGoWay(ProtoObj *nextCell) override;
+    bool isGetTarget() override;
+    bool isTargetObjValide() override;
 };

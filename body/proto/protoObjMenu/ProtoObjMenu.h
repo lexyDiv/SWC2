@@ -30,6 +30,8 @@ public:
     virtual void control();
     virtual void draw();
     virtual void defaultData();
+    virtual void priceDraw() {};
+    virtual void drawGropup() {};
 
     int mX, gabX, centerX;
     int slice = 0;
