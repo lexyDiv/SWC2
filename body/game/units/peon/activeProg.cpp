@@ -94,7 +94,7 @@ void Peon::activeProg()
 
   ///////////////////////////////////////////////////////////////
   if (!this->wayTakts &&
-      // this->wayIndex <= 5 &&
+       this->wayIndex <= 5 &&
       this->isPotentialWayComplite &&
       this->orderOnWay->isComplite &&
       this->potentialWay.length &&
