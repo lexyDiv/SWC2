@@ -5,13 +5,34 @@ bool ok = false;
 void TownHall::activeProg()
 {
 
-    if (!ok)
-    {
-        ok = true;
+    // if (!ok)
+    // {
+    //     ok = true;
 
-        for (int i = 0; i < 1000; i++)
+    //     for (int i = 0; i < 1000; i++)
+    //     {
+    //         this->fraction->unitCount++;
+    //         ProtoObj *peon = new Peon;
+    //         peon->persNum = this->fraction->unitCount;
+    //         peon->fraction = this->fraction;
+    //         peon->createInside(this->cell);
+    //         peon->profession = "w";
+    //         this->fraction->peons.push(peon);
+    //         this->outClients.push(peon);
+    //         this->cell->game->allPeons.push(peon);
+    //     }
+    // }
+    if (this->createTimer)
+    {
+        this->createTimer--;
+        if (!this->createTimer)
         {
-            this->fraction->unitCount++;
+            //  console.log("create peon");
+            if (this->fraction->peons.length < 2000) // 6000 crash
+            {
+                this->createTimer = 1; // this->createTimerMax;
+            }
+            this->fraction->unitCount ++;
             ProtoObj *peon = new Peon;
             peon->persNum = this->fraction->unitCount;
             peon->fraction = this->fraction;
@@ -20,30 +41,10 @@ void TownHall::activeProg()
             this->fraction->peons.push(peon);
             this->outClients.push(peon);
             this->cell->game->allPeons.push(peon);
+            //    delete peon;
+            //    peon = nullptr;
         }
     }
-    // if (this->createTimer)
-    // {
-    //     this->createTimer--;
-    //     if (!this->createTimer)
-    //     {
-    //         //  console.log("create peon");
-    //         if (this->fraction->peons.length < 500)
-    //         {
-    //             this->createTimer = 1; // this->createTimerMax;
-    //         }
-    //         this->fraction->unitCount ++;
-    //         ProtoObj *peon = new Peon;
-    //         peon->persNum = this->fraction->unitCount;
-    //         peon->fraction = this->fraction;
-    //         peon->createInside(this->cell);
-    //         peon->profession = "w";
-    //         this->fraction->peons.push(peon);
-    //         this->outClients.push(peon);
-    //         //    delete peon;
-    //         //    peon = nullptr;
-    //     }
-    // }
 
     ////////////////////////
     this->potentialClients.forEach([this](ProtoObj *peon)

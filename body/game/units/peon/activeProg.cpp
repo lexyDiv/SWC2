@@ -6,10 +6,10 @@ void Peon::activeProg()
   if (!this->isPotentialWayComplite)
   {
     this->noIsCompliteTimer++;
-    if (this->noIsCompliteTimer >= 200)
+    if (this->noIsCompliteTimer >= 500)
     {
-    //  console.log("i am istukan !!!");
-     // this->isPotentialWayComplite = true;
+      //  console.log("i am istukan !!!");
+      // this->isPotentialWayComplite = true;
     }
   }
   else
@@ -78,6 +78,12 @@ void Peon::activeProg()
           this->orderOnWay->isComplite = false;
           this->orderOnWay->cell = tree->cell;
         }
+        else
+        {
+          this->profession = "";
+          this->targetObj.unit = nullptr;
+          console.log("no tree 1");
+        }
       }
     }
     else if (this->orderOnWay->isComplite)
@@ -113,6 +119,12 @@ void Peon::activeProg()
             {
               this->orderOnWay->isComplite = false;
               this->orderOnWay->cell = newTree->cell;
+            }
+            else
+            {
+              this->profession = "";
+              this->targetObj.unit = nullptr;
+              console.log("no tree 2");
             }
           }
           // this->targetObj.unit = nullptr;

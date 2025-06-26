@@ -1,15 +1,21 @@
 #include "get_G.cpp"
 
-
+//bool hardReady = true;
+//bool goWorkReady = true;
+bool needReturn = false;
+int hold = 0;
 
 ProtoObj *hzCell = nullptr;
 
 void GameField::getPotentialWay(ProtoObj *unit)
 {
-
-    if (unit->focus) {
-        console.log("scan now");
+    if (needReturn)
+    {
+        return;
     }
+    // if (unit->focus) {
+    //     console.log("scan now");
+    // }
     // auto start_time = std::chrono::steady_clock::now();
     // console.log("scan way");
 
@@ -18,8 +24,7 @@ void GameField::getPotentialWay(ProtoObj *unit)
     //     return;
     // }
 
-
-   // unit->potentialWay.clear();
+    // unit->potentialWay.clear();
     // unit->isNeedReturnGetPotentialWay = false;
     unit->getCurrentTargetCell();
     // unit->targetCell = unit->preTargetCell;
@@ -56,6 +61,10 @@ void GameField::getPotentialWay(ProtoObj *unit)
 
         while (true)
         {
+            if (needReturn)
+            {
+                return;
+            }
             iter++;
             // console.log(to_string(iter));
             MinData md;

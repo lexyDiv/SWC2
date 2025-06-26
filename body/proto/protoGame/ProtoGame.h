@@ -25,6 +25,7 @@ public:
 
     Array<ProtoObj *> AllUnits;
 Array<ProtoObj *> allPeons;
+int scanIndex = 0;
     // bool isAllOrdersPushed = false;
     // bool isAllUnitsPusedOnGetPotentialWay = false;
 };

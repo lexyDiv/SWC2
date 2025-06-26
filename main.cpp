@@ -5,6 +5,9 @@
 
 #include "methods/deleter/process.cpp"
 
+std::mutex lock1;
+std::mutex lock2;
+
 bool quit = false;
 int tik = 0;
 
@@ -19,58 +22,60 @@ ProtoGame *game = new Game();
 
 // vector<ProtoObj *> *vec = new vector<ProtoObj *>;
 
-bool hardReady = true;
-bool doHard = false;
+// void hard()
+// {
 
-void hard()
-{
+//   while (!quit)
+//   {
+//     hardReady = false;
+//     if (game->isGFComplite)
+//     {
+//       game->getPotentialWayControl();
+//     }
+//     else
+//     {
+//       game->create();
+//     }
+//     hardReady = true;
 
-  while (!quit)
-  {
-    hardReady = false;
-    if (game->isGFComplite)
-    {
-      game->getPotentialWayControl();
-    }
-    else
-    {
-      game->create();
-    }
-    hardReady = true;
-
-    this_thread::sleep_for(chrono::milliseconds(1));
-  }
-}
+//     this_thread::sleep_for(chrono::milliseconds(1));
+//   }
+// }
 
 bool goWorkReady = true;
 
 void goWork()
 {
-
+  game->create();
   SDL_Event e;
   while (!quit)
   {
-    goWorkReady = false;
-    if (game->isGFComplite)
+
+    // console.log(to_string(needReturn));
+    if (!needReturn)
     {
+      lock1.lock();
+      goWorkReady = false;
+      lock1.unlock();
       // game->preDraw();
 
-      game->objMenu->getCandidateCells();
-      game->fractionsControl();
-      game->gf->trupsControl();
-      game->gf->activeShahtsControl();
+      // game->objMenu->getCandidateCells();
+      // game->fractionsControl();
+      // game->gf->trupsControl();
+      // game->gf->activeShahtsControl();
 
-      deleter.process();
+      // deleter.process();
 
-     //  game->getPotentialWayControl();
+      game->getPotentialWayControl();
+      lock1.lock();
+      goWorkReady = true;
+      lock1.unlock();
     }
 
-    listenner(e, quit);
-    console.proc(mouse.x, mouse.y, mouse.leftKey);
+    // listenner(e, quit);
+    // console.proc(mouse.x, mouse.y, mouse.leftKey);
 
-    goWorkReady = true;
-
-    this_thread::sleep_for(chrono::milliseconds(15)); // 15
+     this_thread::sleep_for(chrono::nanoseconds(1)); // 15
   }
 };
 
@@ -156,11 +161,11 @@ int main()
 
   ctx.getFont();
 
-  thread th(goWork);
-  //th.join();
-  thread th_h(hard);
- // th_h.join();
-  //  SDL_Event e;
+  // thread th(goWork);// ok
+  // th.join();
+  // thread th_h(hard);
+  // th_h.join();
+  SDL_Event e;
 
   int stop = 0;
 
@@ -169,90 +174,54 @@ int main()
   // Game cl;
   // console.log("ProtoObj: " + to_string(sizeof(cl)));
 
+
+  thread th(goWork); // ok
+  th.detach();
+
   while (true)
   {
 
     if (!quit)
     {
-      //   if (tik % 100 == 0) {
-      //   delete game;
-      //   game = nullptr;
-      //   game = new Game();
-      //   game->create();
-      // }
-      // if (game) {
+      lock2.lock();
+      needReturn = true;
+      lock2.unlock();
 
-      //  console.log("loading");
+      this_thread::sleep_for(chrono::milliseconds(1));
 
-      ctx.CreateDrawZone(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT);
-      ctx.FillRect(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT, "white");
-
-      if (game->isGFComplite)
+      if (goWorkReady)
       {
-        game->preDraw();
-        game->draw();
+        ctx.CreateDrawZone(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT);
+        ctx.FillRect(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT, "white");
 
-        //  if (game->objMenu->unit && game->objMenu->unit->targetObj.unit) {
-        //       float drawDeltaX = game->gf->drawDeltaX;
-        //       float drawDeltaY = game->gf->drawDeltaY;
-        //       ProtoObj *cell = game->objMenu->unit->targetObj.unit->cell;
-        //       ctx.FillRect(cell->x + drawDeltaX, cell->y + drawDeltaY,
-        //        cell->gabX, cell->gabY, "red");
-        //  }
+        if (game->isGFComplite)
+        {
 
-        // potential way draw
-        // if (game->objMenu->unit && game->objMenu->unit->isPotentialWayComplite)
-        // {
-        //   game->objMenu->unit->potentialWay.forEach([](ProtoObj *cell)
-        //                                             {
-        //     float drawDeltaX = game->gf->drawDeltaX;
-        //     float drawDeltaY = game->gf->drawDeltaY;
-        //     ctx.FillRect(cell->x + drawDeltaX, cell->y + drawDeltaY,
-        //     cell->gabX, cell->gabY, "red"); });
-        // }
+          game->objMenu->getCandidateCells();
+          game->fractionsControl();
+          game->gf->trupsControl();
+          game->gf->activeShahtsControl();
 
-        // if (hzCell) {
-        //   ProtoObj* cell = hzCell;
-        //     float drawDeltaX = game->gf->drawDeltaX;
-        //     float drawDeltaY = game->gf->drawDeltaY;
-        //     ctx.FillRect(cell->x + drawDeltaX, cell->y + drawDeltaY,
-        //     cell->gabX, cell->gabY, "violet");
-        // }
+          deleter.process();
 
-        // openArr draw
-        // game->gf->openArr.forEach([](ProtoObj *cell){
-        //     float drawDeltaX = game->gf->drawDeltaX;
-        //     float drawDeltaY = game->gf->drawDeltaY;
-        //     ctx.FillRect(cell->x + drawDeltaX, cell->y + drawDeltaY,
-        //     cell->gabX, cell->gabY, "blue");
-        // });
+          game->preDraw();
+          game->draw();
+        }
+
+        listenner(e, quit);
+        console.proc(mouse.x, mouse.y, mouse.leftKey);
+
+        console.draw();
+        ctx.End();
       }
 
-      //  ctx.DrawImage(groundBasic, 0, 0, 100, 100, 100, 100, 200, 200);
-
-      //  if ( game && game->gf && game->gf->init) {
-      //    ProtoObj *cell = game->gf->field.getItem(0).getItem(0);
-      //     cell->maxAroundCells
-      //     .forEach([cell](ProtoObj *c, int i){
-      //       int dis = cell->maxAroundCellsDis.getItem(i);
-      //     float drawDeltaX = game->gf->drawDeltaX;
-      //     float drawDeltaY = game->gf->drawDeltaY;
-
-      //        if (dis <= c->gabX * 11) {
-      //         c->mapColor.R = 255;
-      //        }
-      //             if ( dis <= c->gabX * 9.5) {
-      //          c->mapColor.G = 0;
-      //         }
-      //        ctx.DrawText(c->x + drawDeltaX, c->y + drawDeltaY + 5, 10,  to_string(dis), 255);
-      //     });
-      //  }
-
-      console.draw();
-      ctx.End();
+      lock2.lock();
+      needReturn = false;
+      lock2.unlock();
     }
-    else if (hardReady && goWorkReady)
+    else
     {
+
       delete game;
       game = nullptr;
 
@@ -260,11 +229,11 @@ int main()
       break;
     }
 
-    this_thread::sleep_for(chrono::milliseconds(15)); // 15 ok
+    this_thread::sleep_for(chrono::milliseconds(14)); // 15 ok
   }
 
-  th_h.join();
-  th.join();
+  // th_h.join();
+  // th.join();
 
   return 0;
 }

@@ -60,7 +60,10 @@ void GroundUnit::goWay()
                             }
                             else
                             {
-                                console.log("no tree");
+                                this->targetObj.unit = nullptr;
+                                this->profession = "";
+
+                                console.log("no tree 3");
                             }
                         }
                         else

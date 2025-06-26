@@ -1,20 +1,25 @@
 #include "fractionsControl.cpp"
 
-
-
 void Game::getPotentialWayControl()
 {
-    
-    for (int i = 0; i < this->allPeons.length; i++) {
-        
+
+    for (int i = hold; i < this->allPeons.length; i++)
+    {
+        if (needReturn)
+        {
+           // console.log("hold: " + to_string(hold));
+            return;
+        }
+        hold = i;
         ProtoObj *peon = this->allPeons.getItem(i);
-        if (!peon->isPotentialWayComplite) {
+        if (!peon->isPotentialWayComplite)
+        {
             this->gf->getPotentialWay(peon);
             peon->isPotentialWayComplite = true;
         }
     };
-    
- //  hold = 0;
+
+      hold = 0;
     // for (int i = 0; i < this->unitsOnWay.length; i++)
     // {
     //     ProtoObj *unit = this->unitsOnWay.getItem(i);

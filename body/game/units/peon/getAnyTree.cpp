@@ -34,5 +34,6 @@ ProtoObj *Peon::getAnyTree()
         ProtoObj *minDisTree = md.cell->hp > 0 && !md.cell->lesorub ? md.cell : nullptr;
         return minDisTree;
     }
+   // this->plane->trees.clear();
     return nullptr;
 }
