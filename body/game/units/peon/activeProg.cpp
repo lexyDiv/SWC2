@@ -8,8 +8,8 @@ void Peon::activeProg()
     this->noIsCompliteTimer++;
     if (this->noIsCompliteTimer >= 200)
     {
-      console.log("i am istukan !!!");
-      this->isPotentialWayComplite = true;
+    //  console.log("i am istukan !!!");
+     // this->isPotentialWayComplite = true;
     }
   }
   else

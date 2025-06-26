@@ -13,4 +13,5 @@ class GroundUnit : public ProtoObj {
     bool isNeedHoldGoWay(ProtoObj *nextCell) override;
     bool isGetTarget() override;
     bool isTargetObjValide() override;
+    bool isBlockedd(ProtoObj *unit) override;
 };

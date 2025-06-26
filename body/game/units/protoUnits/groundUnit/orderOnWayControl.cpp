@@ -12,11 +12,13 @@ void GroundUnit::orderOnWayControl()
             (oCell->groundUnit == this) ||
             (finishCell == oCell) ||
             (tarObj && tarObj == oCell->groundUnit && this->potentialWay.length)
+            || this->isBlockedd(this)
             //  ||
             // (this->preTargetCell && this->preTargetCell == oCell)
             )
         {
-            //  console.log("return");
+              
+
             this->orderOnWay->isComplite = true;
             return;
         }
@@ -24,7 +26,6 @@ void GroundUnit::orderOnWayControl()
         if (this->isPotentialWayComplite)
         {
             this->getHandTarget(oCell);
-
             this->orderOnWay->isComplite = true;
         }
         this->iNeedFreeWay = false;

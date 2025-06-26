@@ -304,6 +304,8 @@ public:
     ///// test
     bool focus = false;
     int noIsCompliteTimer = 0;
+    bool frashWay = false;
+    bool closed = false;
 
 private:
 };

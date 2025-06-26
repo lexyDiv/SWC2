@@ -70,7 +70,7 @@ void goWork()
 
     goWorkReady = true;
 
-    this_thread::sleep_for(chrono::milliseconds(1)); // 15
+    this_thread::sleep_for(chrono::milliseconds(15)); // 15
   }
 };
 

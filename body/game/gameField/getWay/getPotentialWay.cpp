@@ -1,9 +1,15 @@
 #include "get_G.cpp"
 
+
+
 ProtoObj *hzCell = nullptr;
 
 void GameField::getPotentialWay(ProtoObj *unit)
 {
+
+    if (unit->focus) {
+        console.log("scan now");
+    }
     // auto start_time = std::chrono::steady_clock::now();
     // console.log("scan way");
 
@@ -54,7 +60,7 @@ void GameField::getPotentialWay(ProtoObj *unit)
             // console.log(to_string(iter));
             MinData md;
 
-            if (unit->orderOnWay && !unit->orderOnWay->isComplite)
+            if ((unit->orderOnWay && !unit->orderOnWay->isComplite))
             {
                 unit->isPotentialWayComplite = true;
                 return;
