@@ -71,6 +71,7 @@ class ProtoFraction {
     int wood = 0;
     int controlTimer = 0;
     int unitCount = 0;
+    int hold = 0;
 
    // Nation nation = nationsHub.
 };

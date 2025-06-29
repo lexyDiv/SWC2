@@ -20,6 +20,9 @@ void Game::getPotentialWayControl()
     };
 
       hold = 0;
+
+    ///////////////////////////////////////////// <= ok
+
     // for (int i = 0; i < this->unitsOnWay.length; i++)
     // {
     //     ProtoObj *unit = this->unitsOnWay.getItem(i);
@@ -33,7 +36,25 @@ void Game::getPotentialWayControl()
     //     }
     //     return false; });
 
-    // console.log(to_string(this->unitsOnWay.length));
+    //  console.log(to_string(this->unitsOnWay.length));
+
+    // while (!needReturn)
+    // {
+    //     if (this->unitsOnWay.length)
+    //     {
+    //         ProtoObj *unit = this->unitsOnWay.getItem(0);
+    //         if (unit)
+    //         {
+    //             this->gf->getPotentialWay(unit);
+    //         }
+    //         if (!unit->isPotentialWayComplite)
+    //         {
+    //             return;
+    //         }
+
+    //         this->unitsOnWay.shift();
+    //     }
+    // }
 
     // while (true)
     // {

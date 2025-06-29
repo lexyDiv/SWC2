@@ -3,7 +3,7 @@
 void Peon::getHandTarget(ProtoObj *cell)
 {
     this->preTargetCell = cell;
-   // this->profession = "";
+    // this->profession = "";
     this->potentialWay.clear();
     this->wayIndex = 0;
 
@@ -31,7 +31,7 @@ void Peon::getHandTarget(ProtoObj *cell)
                     return;
                 }
             }
-           // this->profession = "lesorub";
+            // this->profession = "lesorub";
             this->targetObjControl = this->fraction->control == "" ? this->unitMenu->targetObjControlWoodComp : this->unitMenu->targetObjControlWood;
             this->isOnGetPotentialWayGetTarget = [this](ProtoObj *cell)
             {
@@ -87,7 +87,7 @@ void Peon::getHandTarget(ProtoObj *cell)
         {
             if (cell->groundUnit->name == "shaht")
             {
-              //  this->profession = "shahter";
+                //  this->profession = "shahter";
                 if (this->gold > 0)
                 {
                     ProtoObj *base = this->getBaseForUnloadingGold();
@@ -175,7 +175,10 @@ void Peon::getHandTarget(ProtoObj *cell)
         };
     }
 
-    this->game->unitsOnWay.push(this);
+    // if (this->cell && this->cell->game->unitsOnWay.indexOf(this) == -1)
+    // {
+    //     this->game->unitsOnWay.push(this);
+    // }
     if (!this->isActive)
     {
         this->isActive = true;

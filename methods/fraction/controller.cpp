@@ -15,19 +15,40 @@ void Fraction::controller()
                 return false;
             }
             return true; });
-            this->peons.forEach([this](ProtoObj *peon){
+            int current = 0;
+            if (this->hold >= this->peons.length - 1)
+            {
+                console.log("obnul");
+                this->hold = 0;
+            }
+            console.log("hold: " + to_string(this->hold));
+            console.log("length: " + to_string(this->peons.length));
+            console.log("-------------------");
+            for (int i = this->hold; i < this->peons.length; i++)
+            {
+               // current++;
+                this->hold = i;
+                ProtoObj *peon = this->peons.getItem(i);
                 if (!peon->inSave &&
-                !peon->isActive &&
-                peon->profession == "w") {
+                    !peon->isActive &&
+                    peon->profession == "w" &&
+                    !peon->isBlockedd(peon))
+                {
+                    current++;
                     ProtoObj *tree = peon->getAnyTree();
-                    if (tree) {
+                    if (tree)
+                    {
                         peon->orderOnWay->isComplite = false;
                         peon->orderOnWay->cell = tree->cell;
                         peon->isActive = true;
                         this->activeUnits.push(peon);
                     }
                 }
-            });
+                if (current == 100)
+                {
+                    break;
+                }
+            };
         }
     }
     this->activeUnitsControl();

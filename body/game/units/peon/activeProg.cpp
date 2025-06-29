@@ -69,8 +69,7 @@ void Peon::activeProg()
           console.log("i need shaht");
         }
       }
-      else if (this->targetObj.unit &&
-               this->targetObj.unit->name == "tree")
+      else if (this->profession == "w")
       {
         ProtoObj *tree = this->getAnyTree();
         if (tree)

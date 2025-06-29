@@ -28,9 +28,9 @@ void TownHall::activeProg()
         if (!this->createTimer)
         {
             //  console.log("create peon");
-            if (this->fraction->peons.length < 600) // 6000 crash
+            if (this->fraction->peons.length < 10000) // 6000 crash
             {
-                this->createTimer = 10; // this->createTimerMax;
+                this->createTimer = 300; // this->createTimerMax;
             }
             this->fraction->unitCount ++;
             ProtoObj *peon = new Peon;
