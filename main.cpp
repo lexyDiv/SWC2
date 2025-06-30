@@ -75,7 +75,7 @@ void goWork()
     // listenner(e, quit);
     // console.proc(mouse.x, mouse.y, mouse.leftKey);
 
-     this_thread::sleep_for(chrono::nanoseconds(1)); // 15
+    this_thread::sleep_for(chrono::nanoseconds(1)); // 15
   }
 };
 
@@ -174,9 +174,8 @@ int main()
   // Game cl;
   // console.log("ProtoObj: " + to_string(sizeof(cl)));
 
-
   thread th(goWork); // ok
-  th.detach();
+  // th.detach();
 
   while (true)
   {
@@ -187,7 +186,8 @@ int main()
       needReturn = true;
       lock2.unlock();
 
-      this_thread::sleep_for(chrono::milliseconds(1));
+      this_thread::sleep_for(chrono::nanoseconds(1));
+    // th.join();
 
       if (goWorkReady)
       {
@@ -221,12 +221,19 @@ int main()
     }
     else
     {
+      lock2.lock();
+      needReturn = true;
+      lock2.unlock();
+      th.join();
+      this_thread::sleep_for(chrono::milliseconds(1));
+      if (goWorkReady)
+      {
+        delete game;
+        game = nullptr;
 
-      delete game;
-      game = nullptr;
-
-      ctx.Close();
-      break;
+        ctx.Close();
+        break;
+      }
     }
 
     this_thread::sleep_for(chrono::milliseconds(14)); // 15 ok
