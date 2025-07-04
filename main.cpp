@@ -22,25 +22,28 @@ ProtoGame *game = new Game();
 
 // vector<ProtoObj *> *vec = new vector<ProtoObj *>;
 
-// void hard()
-// {
+bool hardReady = true;
+  // int hold2 = 0;
+void hard()
+{
 
-//   while (!quit)
-//   {
-//     hardReady = false;
-//     if (game->isGFComplite)
-//     {
-//       game->getPotentialWayControl();
-//     }
-//     else
-//     {
-//       game->create();
-//     }
-//     hardReady = true;
 
-//     this_thread::sleep_for(chrono::milliseconds(1));
-//   }
-// }
+
+  while (!quit)
+  {
+    hardReady = false;
+    //  console.log(to_string(needReturn));
+    if (game->isGFComplite &&
+        !needReturn)
+    {
+   game->getPotentialWayControl2();
+    }
+
+    hardReady = true;
+
+    this_thread::sleep_for(chrono::nanoseconds(1));
+  }
+}
 
 bool goWorkReady = true;
 
@@ -175,6 +178,7 @@ int main()
   // console.log("ProtoObj: " + to_string(sizeof(cl)));
 
   thread th(goWork); // ok
+  thread th_h(hard);
   // th.detach();
 
   while (true)
@@ -187,9 +191,9 @@ int main()
       lock2.unlock();
 
       this_thread::sleep_for(chrono::nanoseconds(1));
-    // th.join();
+      // th.join();
 
-      if (goWorkReady)
+      if (goWorkReady && hardReady)
       {
         ctx.CreateDrawZone(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT);
         ctx.FillRect(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT, "white");
@@ -225,6 +229,7 @@ int main()
       needReturn = true;
       lock2.unlock();
       th.join();
+      th_h.join();
       this_thread::sleep_for(chrono::milliseconds(1));
       if (goWorkReady)
       {

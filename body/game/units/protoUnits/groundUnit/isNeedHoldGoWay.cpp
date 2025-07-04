@@ -22,10 +22,13 @@ bool GroundUnit::isNeedHoldGoWay(ProtoObj *nextCell)
   ProtoObj *gu = nextCell->groundUnit;
   if (gu &&
       (!gu->isPotentialWayComplite ||
-       (gu->potentialWay.length &&
-        gu->wayIndex &&
+      gu->inSave ||
+       (
+        (gu->potentialWay.length) &&
+        (gu->wayIndex) &&
         (this->wayIndex > 1 &&
-         gu->potentialWay.getItem(gu->wayIndex - 1) == this->potentialWay.getItem(this->wayIndex - 2)) &&
+         (gu->potentialWay.getItem(gu->wayIndex - 1) == this->potentialWay.getItem(this->wayIndex - 2))) &&
+         gu->targetObj.unit == this->targetObj.unit &&
         gu->targetObj.unit && (gu->gold > 0 || gu->wood) && (this->gold > 0 || this->wood) && (gu->targetObj.unit->name == "shaht" || gu->targetObj.unit->name == "greatHall"))))
   {
     return true;

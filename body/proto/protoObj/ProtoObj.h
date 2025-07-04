@@ -147,6 +147,13 @@ public:
     int F = 0;
     int H = 0;
     ProtoObj *wayFather = nullptr;
+
+    int G2 = 0;
+    int F2 = 0;
+    int H2 = 0;
+    ProtoObj *wayFather2 = nullptr;
+    double createCountData2 = 0.0;
+
     bool isNeedReturnGetPotentialWay = false; // ???
                                               // virtual bool isOnGetPotentialWayGetTarget(ProtoObj *cell);
                                               //  virtual bool isNewCellOnGetWayValide(ProtoObj *cell);
@@ -159,8 +166,11 @@ public:
         return false;
     };
     double explored = 0.0;
+    double explored2 = 0.0;
     virtual void getCurrentTargetCell();
+    virtual void getCurrentTargetCell2(){};
     double procCurr = 0;
+    double procCurr2 = 0;
     int wayIndex = 0;
     bool isGetMyCell = true;
     int ordersOnWayCurrent = 0;

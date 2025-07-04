@@ -16,6 +16,8 @@ void Fraction::create(ProtoGame *game, Nation &nation)
 
    this->peons.push(peon);
    this->peons.push(peon2);
+   this->game->allPeons.push(peon);
+    this->game->allPeons.push(peon2);
 
    ////////////////// townHall
 

@@ -9,6 +9,7 @@ public:
     void draw() override;
     void getHandTarget(ProtoObj *cell) override;
     void getCurrentTargetCell() override;
+    void getCurrentTargetCell2() override;
     void activeProg() override;
     void stendOnCell() override;
     void stendOnCellWait() override;

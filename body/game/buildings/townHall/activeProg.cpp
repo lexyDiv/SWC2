@@ -1,34 +1,19 @@
 #include "getPeonOutCell.cpp"
 
 bool ok = false;
+//int tt = 0;
 
 void TownHall::activeProg()
 {
 
-    // if (!ok)
-    // {
-    //     ok = true;
 
-    //     for (int i = 0; i < 1000; i++)
-    //     {
-    //         this->fraction->unitCount++;
-    //         ProtoObj *peon = new Peon;
-    //         peon->persNum = this->fraction->unitCount;
-    //         peon->fraction = this->fraction;
-    //         peon->createInside(this->cell);
-    //         peon->profession = "w";
-    //         this->fraction->peons.push(peon);
-    //         this->outClients.push(peon);
-    //         this->cell->game->allPeons.push(peon);
-    //     }
-    // }
     if (this->createTimer)
     {
         this->createTimer--;
         if (!this->createTimer)
         {
             //  console.log("create peon");
-            if (this->fraction->peons.length < 6000) // 6000 crash
+            if (this->fraction->peons.length < 2000) // 6000 crash
             {
                 this->createTimer = 1; // this->createTimerMax;
             }
@@ -40,7 +25,11 @@ void TownHall::activeProg()
             peon->profession = "w";
             this->fraction->peons.push(peon);
             this->outClients.push(peon);
-            this->cell->game->allPeons.push(peon);
+            if (this->fraction->unitCount % 2 == 0) {
+                this->cell->game->allPeons.push(peon);
+            } else {
+                this->cell->game->allPeons2.push(peon);
+            }
             //    delete peon;
             //    peon = nullptr;
         }

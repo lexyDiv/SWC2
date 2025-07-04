@@ -96,9 +96,15 @@ public:
     void exploreNewCellAndAddToOpenArr(ProtoObj *unit, ProtoObj* fatherCell, ProtoObj *potentialCell) override;
     int get_G(ProtoObj *cell, ProtoObj *potentialCell) override;
     int get_H(ProtoObj *potentialCell, ProtoObj* finishCell) override;
+
+        void getPotentialWay2(ProtoObj* unit) override;
+    void exploreNewCellAndAddToOpenArr2(ProtoObj *unit, ProtoObj* fatherCell, ProtoObj *potentialCell) override;
+    int get_G2(ProtoObj *cell, ProtoObj *potentialCell) override;
+    int get_H2(ProtoObj *potentialCell, ProtoObj* finishCell) override;
     //Array<ProtoObj*> quickArr;
    // bool isQuick = false;
     void potentialWayCreate(ProtoObj *unit, ProtoObj *finalCell) override;
+        void potentialWayCreate2(ProtoObj *unit, ProtoObj *finalCell) override;
     //////////////// <= get potential Way methods
 
     void trupsControl() override;

@@ -5,6 +5,7 @@ void Fraction::controller()
     if (this->control == "human")
     {
         // this->orderControl();
+        int ordinar = 100;
         this->controlTimer++;
         if (this->controlTimer == 100)
         {
@@ -18,12 +19,12 @@ void Fraction::controller()
             int current = 0;
             if (this->hold >= this->peons.length - 1)
             {
-                console.log("obnul");
+               // console.log("obnul");
                 this->hold = 0;
             }
-            console.log("hold: " + to_string(this->hold));
-            console.log("length: " + to_string(this->peons.length));
-            console.log("-------------------");
+            // console.log("hold: " + to_string(this->hold));
+            // console.log("length: " + to_string(this->peons.length));
+            // console.log("-------------------");
             for (int i = this->hold; i < this->peons.length; i++)
             {
                // current++;
@@ -44,7 +45,7 @@ void Fraction::controller()
                         this->activeUnits.push(peon);
                     }
                 }
-                if (current == 100)
+                if (current == ordinar)
                 {
                     break;
                 }

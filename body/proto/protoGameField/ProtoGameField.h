@@ -31,6 +31,7 @@ public:
     virtual void fieldClick();
     virtual void fieldClickRight();
     virtual void getPotentialWay(ProtoObj *unit);
+    virtual void getPotentialWay2(ProtoObj *unit){};
 
     double getMinCellsDis(ProtoObj *cell, ProtoObj *cell2);
 
@@ -75,7 +76,11 @@ public:
     int offsetStep = 10;
     bool init = false;
     double createCount = 0.0;
+    double createCount2 = 0.0;
     double procCurr = 0.0;
+    double procCurr2 = 0.0;
+
+      
 
     // this->miniMap, 0, 0, this->gabarit, this->gabarit, 732, 100, 285, 285
     ////////////////////////////// => miniMap
@@ -98,6 +103,7 @@ public:
     FieldClick *fieldClickPoint = nullptr;
 
     Array<ProtoObj *> openArr;
+    Array<ProtoObj *> openArr2;
     Array<Array<ProtoObj *>> exp;
 
     virtual void exploreNewCellAndAddToOpenArr(ProtoObj *unit, ProtoObj *fatherCell, ProtoObj *potentialCell) {};
@@ -108,6 +114,16 @@ public:
     ProtoObj *globalMin_H_cell = nullptr;
     // bool isQuick = false;
     virtual void potentialWayCreate(ProtoObj *unit, ProtoObj *finalCell) {};
+        virtual void potentialWayCreate2(ProtoObj *unit, ProtoObj *finalCell) {};
+
+    virtual void exploreNewCellAndAddToOpenArr2(ProtoObj *unit, ProtoObj *fatherCell, ProtoObj *potentialCell) {};
+    virtual int get_G2(ProtoObj *cell, ProtoObj *potentialCell) { return 0; };
+    virtual int get_H2(ProtoObj *potentialCell, ProtoObj *finishCell) { return 0; };
+    // Array<ProtoObj*> quickArr;
+    ProtoObj *min_F_cell2 = nullptr;
+    ProtoObj *globalMin_H_cell2 = nullptr;
+    // bool isQuick = false;
+  //  virtual void potentialWayCreate2(ProtoObj *unit, ProtoObj *finalCell) {};
 
 private:
 };
