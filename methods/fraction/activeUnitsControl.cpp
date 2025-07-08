@@ -7,7 +7,7 @@ void Fraction::activeUnitsControl()
                                   { building->activeProg(); });
     this->activeBuildings.filterSelf([](ProtoObj *building)
                                      {
-        if (!building->clients.length && 
+        if (!building->clients.length &&   // pers function will here
         !building->potentialClients.length &&
         !building->outClients.length &&
         building->isComplite &&
@@ -22,7 +22,7 @@ void Fraction::activeUnitsControl()
     for (int i = 0; i < this->activeUnits.length; i++)
     {
         ProtoObj *unit = this->activeUnits.getItem(i);
-        if (unit &&
+        if (unit && // pers function will here
             unit->cell &&
             (//unit->enemys.length ||
              unit->potentialWay.length ||

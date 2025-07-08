@@ -14,4 +14,5 @@ class GroundUnit : public ProtoObj {
     bool isGetTarget() override;
     bool isTargetObjValide() override;
     bool isBlockedd(ProtoObj *unit) override;
+    void iAmHere() override;
 };

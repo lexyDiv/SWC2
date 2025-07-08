@@ -22,6 +22,7 @@ void GroundUnit::goWay()
                 this->cell = nextCell;
                 this->cell->groundUnit = this;
                 this->isGetMyCell = false;
+                this->iAmHere();
                 if (saveSpeedTale)
                 {
                     this->x += cos(this->conor) * saveSpeedTale;

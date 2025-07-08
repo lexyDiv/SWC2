@@ -315,7 +315,11 @@ public:
     bool focus = false;
     int noIsCompliteTimer = 0;
     bool frashWay = false;
-    bool closed = false;
+   // bool closed = false;
+    bool isAnimyCheckNeeded = true;
+    virtual void iAmHere() {};
+    virtual void iSeeYou(ProtoObj *unit) {};
+
 
 private:
 };

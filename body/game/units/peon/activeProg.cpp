@@ -2,6 +2,9 @@
 
 void Peon::activeProg()
 {
+  // if (this->focus) {
+  //   console.log(this->profession);
+  // }
 
   if (!this->isPotentialWayComplite)
   {
@@ -48,11 +51,17 @@ void Peon::activeProg()
     // // }
   }
 
+  if (this->isAnimyCheckNeeded) {
+    this->isAnimyCheckNeeded = false;
+    this->iAmHere();
+  }
+
   if (this->outHoldTimer)
   {
     this->outHoldTimer--;
     if (!this->outHoldTimer && this->orderOnWay->isComplite)
     {
+      this->iAmHere();
       if (this->profession == "g")
       {
         if (this->gold > 0)
