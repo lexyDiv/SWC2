@@ -31,7 +31,7 @@ ProtoObj *Peon::getAnyTree()
                                                         Delta delta = getDeltas(&pointThis, &pointLM);
                                                         double dis = !item->lesorub && item->hp > 0 ? getDis(&delta) : 10000000;
                                                         return dis; });
-        ProtoObj *minDisTree = md.cell->hp > 0 && !md.cell->lesorub ? md.cell : nullptr;
+        ProtoObj *minDisTree = md.cell && md.cell->hp > 0 && !md.cell->lesorub ? md.cell : nullptr;
         return minDisTree;
     }
    // this->plane->trees.clear();

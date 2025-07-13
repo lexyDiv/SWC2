@@ -82,7 +82,7 @@ void GameField::getPotentialWay(ProtoObj *unit)
                 this->exploreNewCellAndAddToOpenArr(unit, this->min_F_cell, pc);
             }
 
-            if (this->openArr.length && iter < 10000)
+            if (this->openArr.length && iter < 5000)
             {
                 int index = this->openArr.length - 1;
                 md.cell = this->openArr.getItem(this->openArr.length - 1);
@@ -223,7 +223,7 @@ void GameField::getPotentialWay2(ProtoObj *unit)
                 this->exploreNewCellAndAddToOpenArr2(unit, this->min_F_cell2, pc);
             }
 
-            if (this->openArr2.length && iter < 10000)
+            if (this->openArr2.length && iter < 5000)
             {
                 int index = this->openArr2.length - 1;
                 md.cell = this->openArr2.getItem(this->openArr2.length - 1);

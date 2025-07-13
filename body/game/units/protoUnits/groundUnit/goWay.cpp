@@ -48,31 +48,36 @@ void GroundUnit::goWay()
                     else
                     {
                         this->stendOnCell();
-                        // this->getHandTarget(this->preTargetCell);
-                        // this->orderOnWay->isComplite = true;
-                        if (this->targetObj.unit &&
-                            this->targetObj.unit->name == "tree")
-                        {
-                            ProtoObj *tree = this->getAnyTree();
-                            if (tree)
-                            {
-                                this->getHandTarget(tree->cell);
-                                this->orderOnWay->isComplite = true;
-                            }
-                            else
-                            {
-                                this->targetObj.unit = nullptr;
-                                this->profession = "";
 
-                                console.log("no tree 3");
-                            }
-                        }
-                        else
-                        {
+                
                             this->targetObj.unit = nullptr;
                             this->getHandTarget(this->preTargetCell);
                             this->orderOnWay->isComplite = true;
-                        }
+                    
+
+                        // if (this->targetObj.unit &&
+                        //     this->targetObj.unit->name == "tree")
+                        // {
+                        //     ProtoObj *tree = this->getAnyTree();
+                        //     if (tree)
+                        //     {
+                        //         this->getHandTarget(tree->cell);
+                        //         this->orderOnWay->isComplite = true;
+                        //     }
+                        //     else
+                        //     {
+                        //         this->targetObj.unit = nullptr;
+                        //         this->profession = "";
+
+                        //         console.log("no tree 3");
+                        //     }
+                        // }
+                        // else
+                        // {
+                        //     this->targetObj.unit = nullptr;
+                        //     this->getHandTarget(this->preTargetCell);
+                        //     this->orderOnWay->isComplite = true;
+                        // }
                     }
 
                     // if (this->fraction->control == "human")
@@ -92,7 +97,9 @@ void GroundUnit::goWay()
                     //         this->orderOnWay->isComplite = true;
                     //     }
                     // }
-                    return;
+                   // return;
+                } else {
+                    console.log("no pre target cell");
                 }
             }
         }

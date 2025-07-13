@@ -34,6 +34,9 @@ public:
     {
         return nullptr;
     };
+    virtual ProtoObj *getAnyShaht() {
+        return nullptr;
+    };
     int persNum = 0;
     ////////
     // int deleteTimer = 0;

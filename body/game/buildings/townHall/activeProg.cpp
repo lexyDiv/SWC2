@@ -13,16 +13,16 @@ void TownHall::activeProg()
         if (!this->createTimer)
         {
             //  console.log("create peon");
-            if (this->fraction->peons.length < 100) // 6000 crash
+            if (this->fraction->peons.length < 500) // 6000 crash
             {
-                this->createTimer = 100; // this->createTimerMax;
+                this->createTimer = 10; // this->createTimerMax;
             }
             this->fraction->unitCount ++;
             ProtoObj *peon = new Peon;
             peon->persNum = this->fraction->unitCount;
             peon->fraction = this->fraction;
             peon->createInside(this->cell);
-            peon->profession = "w";
+            peon->profession = this->fraction->unitCount % 2 == 0 ? "w" : "g";
             this->fraction->peons.push(peon);
             this->outClients.push(peon);
             if (this->fraction->unitCount % 2 == 0) {

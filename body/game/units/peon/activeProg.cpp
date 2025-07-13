@@ -51,7 +51,8 @@ void Peon::activeProg()
     // // }
   }
 
-  if (this->isAnimyCheckNeeded) {
+  if (this->isAnimyCheckNeeded)
+  {
     this->isAnimyCheckNeeded = false;
     this->iAmHere();
   }
@@ -75,7 +76,12 @@ void Peon::activeProg()
         }
         else
         {
-          console.log("i need shaht");
+          ProtoObj *base = this->getAnyShaht();
+          if (base)
+          {
+            this->orderOnWay->isComplite = false;
+            this->orderOnWay->cell = base->cell;
+          }
         }
       }
       else if (this->profession == "w")
@@ -102,7 +108,7 @@ void Peon::activeProg()
 
   ///////////////////////////////////////////////////////////////
   if (!this->wayTakts &&
-       this->wayIndex <= 5 &&
+      this->wayIndex <= 5 &&
       this->isPotentialWayComplite &&
       this->orderOnWay->isComplite &&
       this->potentialWay.length &&
@@ -119,22 +125,45 @@ void Peon::activeProg()
         {
           this->targetCell = nullptr;
           this->preTargetCell = nullptr;
+          this->targetObj.unit = nullptr;
           this->stendOnCell();
-          if (to->name == "tree")
-          {
-            ProtoObj *newTree = this->getAnyTree();
-            if (newTree)
-            {
-              this->orderOnWay->isComplite = false;
-              this->orderOnWay->cell = newTree->cell;
-            }
-            else
-            {
-              this->profession = "";
-              this->targetObj.unit = nullptr;
-              console.log("no tree 2");
-            }
-          }
+          // if (to->name == "tree")
+          // {
+          //   ProtoObj *newTree = this->getAnyTree();
+          //   if (newTree)
+          //   {
+          //     this->orderOnWay->isComplite = false;
+          //     this->orderOnWay->cell = newTree->cell;
+          //   }
+          //   else
+          //   {
+          //     this->profession = "";
+          //     this->targetObj.unit = nullptr;
+          //     console.log("no tree 2");
+          //   }
+          // }
+          // else if (to->name == "shaht")
+          // {
+          //   ProtoObj *newShaht = this->getAnyShaht();
+          //   if (newShaht)
+          //   {
+          //     this->orderOnWay->isComplite = false;
+          //     this->orderOnWay->cell = newShaht->cell;
+          //   }
+          //   else
+          //   {
+          //     this->profession = "";
+          //     this->targetObj.unit = nullptr;
+          //     console.log("no shaht");
+          //   }
+          // }
+          // else
+          // {
+
+          //  // this->profession = "";
+          //         console.log(this->targetObj.unit->name);
+          //   this->targetObj.unit = nullptr;
+          // }
           // this->targetObj.unit = nullptr;
         }
       }

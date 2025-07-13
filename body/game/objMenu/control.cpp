@@ -13,6 +13,10 @@ void ObjMenu::control()
         this->unit = nullptr;
     }
 
+    // if (u) {
+    //     console.log(u->profession);
+    // }
+
     if (this->needUpdate)
     {
         this->needUpdate = false;

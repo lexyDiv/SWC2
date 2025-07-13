@@ -21,6 +21,7 @@ public:
 
 
     ProtoObj* getAnyTree() override;
+    ProtoObj *getAnyShaht() override;
     ProtoObj* getTreeNear() override;
     ProtoObj* getBaseForUnloading() override;
     ProtoObj* getBaseForUnloadingGold() override;
