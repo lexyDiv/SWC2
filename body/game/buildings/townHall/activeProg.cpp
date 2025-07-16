@@ -1,11 +1,10 @@
 #include "getPeonOutCell.cpp"
 
 bool ok = false;
-//int tt = 0;
+// int tt = 0;
 
 void TownHall::activeProg()
 {
-
 
     if (this->createTimer)
     {
@@ -15,9 +14,9 @@ void TownHall::activeProg()
             //  console.log("create peon");
             if (this->fraction->peons.length < 500) // 6000 crash
             {
-                this->createTimer = 10; // this->createTimerMax;
+                this->createTimer = 10;
             }
-            this->fraction->unitCount ++;
+            this->fraction->unitCount++;
             ProtoObj *peon = new Peon;
             peon->persNum = this->fraction->unitCount;
             peon->fraction = this->fraction;
@@ -25,13 +24,14 @@ void TownHall::activeProg()
             peon->profession = this->fraction->unitCount % 2 == 0 ? "w" : "g";
             this->fraction->peons.push(peon);
             this->outClients.push(peon);
-            if (this->fraction->unitCount % 2 == 0) {
+            if (this->fraction->unitCount % 2 == 0)
+            {
                 this->cell->game->allPeons.push(peon);
-            } else {
+            }
+            else
+            {
                 this->cell->game->allPeons2.push(peon);
             }
-            //    delete peon;
-            //    peon = nullptr;
         }
     }
 
@@ -64,7 +64,6 @@ void TownHall::activeProg()
                                            }
                                            peon->wood = 0;
                                            peon->gold = 0;
-                                        //  console.log(to_string(peon->animMashtab));
                                        } });
     this->potentialClients.filterSelf([](ProtoObj *peon)
                                       {
@@ -88,7 +87,6 @@ void TownHall::activeProg()
         }
         return false; });
 
-    // this->outClients.forEach([this](ProtoObj *peon)
     for (int i = 0; i < this->outClients.length; i++)
     {
         ProtoObj *peon = this->outClients.getItem(i);
@@ -116,23 +114,16 @@ void TownHall::activeProg()
             else
             {
                 MinData md = this->getPeonExtrimeOutCell();
-                // index = md.index;
                 ProtoObj *oc = md.cell;
-                // MinData md = this->wellComeCells.getItem(index);
                 peon->cell = oc;
-                peon->inOutCount = 0; // ceil(md.min / peon->unitMenu->speed);
+                peon->inOutCount = 0;
                 peon->x = peon->cell->x;
                 peon->y = peon->cell->y;
                 peon->drawIndexY = peon->y;
-                // peon->unitMenu->getDeltasXY(peon, oc);
-                // peon->cell = oc;
-                peon->inOutMashtabCount = 1; // (1 - peon->inOutMashtabMin) / peon->inOutCount;
+                peon->inOutMashtabCount = 1;
                 peon->image = peon->fraction->nation.peon;
                 oc->groundUnit = peon;
-                // console.log("no exit cell 2");
-                // return;
             }
-            //   }
         }
 
         if (peon->inOutTimer < peon->inOutCount)
@@ -154,10 +145,6 @@ void TownHall::activeProg()
             peon->outHoldTimer = 30;
             peon->isActive = true;
             peon->fraction->activeUnits.push(peon);
-            //// experement
-            // ProtoObj *base = peon->getBase
-            // peon->orderOnWay->isComplite = false;
-            // peon->orderOnWay->cell = peon
         }
     };
 

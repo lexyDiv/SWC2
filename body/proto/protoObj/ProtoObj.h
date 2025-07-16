@@ -34,7 +34,8 @@ public:
     {
         return nullptr;
     };
-    virtual ProtoObj *getAnyShaht() {
+    virtual ProtoObj *getAnyShaht()
+    {
         return nullptr;
     };
     int persNum = 0;
@@ -171,7 +172,7 @@ public:
     double explored = 0.0;
     double explored2 = 0.0;
     virtual void getCurrentTargetCell();
-    virtual void getCurrentTargetCell2(){};
+    virtual void getCurrentTargetCell2() {};
     double procCurr = 0;
     double procCurr2 = 0;
     int wayIndex = 0;
@@ -289,10 +290,10 @@ public:
     virtual void goWayAnimation() {};
     virtual void inFightAnimation() {};
     virtual void goWay() {};
-    virtual bool isNextCellFreeToGoWay(ProtoObj *nextCell) {return true;};
-    virtual bool isNeedHoldGoWay(ProtoObj *nextCell) {return true;};
-    virtual bool isGetTarget() {return true;};
-    virtual bool isTargetObjValide() {return true;};
+    virtual bool isNextCellFreeToGoWay(ProtoObj *nextCell) { return true; };
+    virtual bool isNeedHoldGoWay(ProtoObj *nextCell) { return true; };
+    virtual bool isGetTarget() { return true; };
+    virtual bool isTargetObjValide() { return true; };
     virtual ProtoObj *getBaseForUnloading() { return nullptr; };
     virtual ProtoObj *getBaseForUnloadingGold() { return nullptr; };
     virtual void preDraw() {};
@@ -307,9 +308,24 @@ public:
     virtual MinData getPeonExtrimeOutCell()
     {
         MinData md;
+        md.cell = nullptr;
+        md.index = -1;
+
+        int ol = this->exitCells.length;
+        for (int i = 0; i < ol; i++)
+        {
+            ProtoObj *cell = this->exitCells.getItem(i);
+            if (!cell->groundUnit)
+            {
+                md.cell = cell;
+                md.index = i;
+                return md;
+            }
+        }
+
         return md;
     };
-    ;
+    
 
     Array<ProtoObj *> interUnits;
 
@@ -318,11 +334,10 @@ public:
     bool focus = false;
     int noIsCompliteTimer = 0;
     bool frashWay = false;
-   // bool closed = false;
+    // bool closed = false;
     bool isAnimyCheckNeeded = true;
     virtual void iAmHere() {};
     virtual void iSeeYou(ProtoObj *unit) {};
-
 
 private:
 };
