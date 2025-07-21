@@ -123,48 +123,48 @@ void Peon::activeProg()
         bool isTOValide = this->isTargetObjValide();
         if (!isTOValide)
         {
-          this->targetCell = nullptr;
-          this->preTargetCell = nullptr;
-          this->targetObj.unit = nullptr;
-          this->stendOnCell();
-          // if (to->name == "tree")
-          // {
-          //   ProtoObj *newTree = this->getAnyTree();
-          //   if (newTree)
-          //   {
-          //     this->orderOnWay->isComplite = false;
-          //     this->orderOnWay->cell = newTree->cell;
-          //   }
-          //   else
-          //   {
-          //     this->profession = "";
-          //     this->targetObj.unit = nullptr;
-          //     console.log("no tree 2");
-          //   }
-          // }
-          // else if (to->name == "shaht")
-          // {
-          //   ProtoObj *newShaht = this->getAnyShaht();
-          //   if (newShaht)
-          //   {
-          //     this->orderOnWay->isComplite = false;
-          //     this->orderOnWay->cell = newShaht->cell;
-          //   }
-          //   else
-          //   {
-          //     this->profession = "";
-          //     this->targetObj.unit = nullptr;
-          //     console.log("no shaht");
-          //   }
-          // }
-          // else
-          // {
-
-          //  // this->profession = "";
-          //         console.log(this->targetObj.unit->name);
-          //   this->targetObj.unit = nullptr;
-          // }
+          // this->targetCell = nullptr;
+          // this->preTargetCell = nullptr;
           // this->targetObj.unit = nullptr;
+          this->stendOnCell();
+          if (this->profession == "w")
+          {
+            ProtoObj *newTree = this->getAnyTree();
+            if (newTree)
+            {
+              this->orderOnWay->isComplite = false;
+              this->orderOnWay->cell = newTree->cell;
+            }
+            else
+            {
+              this->profession = "";
+              this->targetObj.unit = nullptr;
+              console.log("no tree 2");
+            }
+          }
+          else if (this->profession == "g")
+          {
+            ProtoObj *newShaht = this->getAnyShaht();
+            if (newShaht)
+            {
+              this->orderOnWay->isComplite = false;
+              this->orderOnWay->cell = newShaht->cell;
+            }
+            else
+            {
+              this->profession = "";
+              this->targetObj.unit = nullptr;
+              console.log("no shaht");
+            }
+          }
+          else
+          {
+
+            this->profession = "";
+            console.log(this->targetObj.unit->name);
+            this->targetObj.unit = nullptr;
+          }
+        
         }
       }
 

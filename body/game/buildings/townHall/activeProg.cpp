@@ -12,7 +12,7 @@ void TownHall::activeProg()
         if (!this->createTimer)
         {
             //  console.log("create peon");
-            if (this->fraction->peons.length < 500) // 6000 crash
+            if (this->fraction->peons.length < 6000) // 6000 crash
             {
                 this->createTimer = 10;
             }
@@ -21,7 +21,8 @@ void TownHall::activeProg()
             peon->persNum = this->fraction->unitCount;
             peon->fraction = this->fraction;
             peon->createInside(this->cell);
-            peon->profession = this->fraction->unitCount % 2 == 0 ? "w" : "g";
+          //  peon->profession = this->fraction->unitCount % 2 == 0 ? "w" : "g";
+          peon->profession = "w";
             this->fraction->peons.push(peon);
             this->outClients.push(peon);
             if (this->fraction->unitCount % 2 == 0)
