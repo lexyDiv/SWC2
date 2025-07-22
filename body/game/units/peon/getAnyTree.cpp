@@ -3,14 +3,19 @@
 ProtoObj *Peon::getAnyTree()
 {
 
-    ProtoObj* t = this->getTreeNear();
-    if (t) {
+    ProtoObj *t = this->getTreeNear();
+    if (t)
+    {
         return t;
     }
 
     ProtoObj *base = this->getBaseForUnloading();
     if (base)
     {
+        if (this->wood)
+        {
+            return base;
+        }
         for (int i = 0; i < base->orderedTrees.length; i++)
         {
             ProtoObj *tree = base->orderedTrees.getItem(i);
@@ -34,6 +39,6 @@ ProtoObj *Peon::getAnyTree()
         ProtoObj *minDisTree = md.cell && md.cell->hp > 0 && !md.cell->lesorub ? md.cell : nullptr;
         return minDisTree;
     }
-   // this->plane->trees.clear();
+    // this->plane->trees.clear();
     return nullptr;
 }
