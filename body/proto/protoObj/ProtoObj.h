@@ -102,7 +102,7 @@ public:
     void getContactCells();
     virtual ProtoObj *getTreeNear() { return nullptr; };
     // units
-
+    virtual void updateCurrentTarget() {};
     Image *menuImage = nullptr;
     string titleName = "";
 

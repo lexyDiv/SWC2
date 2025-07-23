@@ -26,7 +26,7 @@ public:
     ProtoObj* getBaseForUnloading() override;
     ProtoObj* getBaseForUnloadingGold() override;
         void preDraw() override;
-
+        void updateCurrentTarget() override;
     // void orderOnWayControl() override;
     //  void goWayAnimation() override;
     // void goWay() override;

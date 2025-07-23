@@ -12,7 +12,7 @@ void TownHall::activeProg()
         if (!this->createTimer)
         {
             //  console.log("create peon");
-            if (this->fraction->peons.length < 3000) // 6000 crash
+            if (this->fraction->peons.length < 6000) // 6000 crash
             {
                 this->createTimer = 10;
             }

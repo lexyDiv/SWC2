@@ -5,9 +5,9 @@ void Fraction::controller()
     // if (this->control == "human")
     // {
     // this->orderControl();
-    int ordinar = 1000;
+    int ordinar = 100;
     this->controlTimer++;
-    if (this->controlTimer == 100)
+    if (this->controlTimer == 10)
     {
         this->controlTimer = 0;
 

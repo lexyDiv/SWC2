@@ -39,7 +39,7 @@ void Peon::fightControl()
                 this->targetObj.unit = nullptr;
                 this->inFight = false;
                 this->animY = 0;
-                this->profession = "";
+               // this->profession = "";
                 gu->lesorub = nullptr;
             }
         }

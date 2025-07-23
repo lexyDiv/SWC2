@@ -48,12 +48,14 @@ void GroundUnit::goWay()
                     else
                     {
                         this->stendOnCell();
-
-                
-                            this->targetObj.unit = nullptr;
-                            this->getHandTarget(this->preTargetCell);
-                            this->orderOnWay->isComplite = true;
-                    
+                        this->targetObj.unit = nullptr;
+                        if (this->profession != "")
+                        {
+                            this->updateCurrentTarget();
+                            return;
+                        }
+                         this->getHandTarget(this->preTargetCell);
+                         this->orderOnWay->isComplite = true;
 
                         // if (this->targetObj.unit &&
                         //     this->targetObj.unit->name == "tree")
@@ -97,9 +99,7 @@ void GroundUnit::goWay()
                     //         this->orderOnWay->isComplite = true;
                     //     }
                     // }
-                   // return;
-                } else {
-                    console.log("no pre target cell");
+                    // return;
                 }
             }
         }
