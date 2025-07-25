@@ -13,8 +13,6 @@ void GroundUnit::orderOnWayControl()
             (finishCell == oCell) ||
             (tarObj && tarObj == oCell->groundUnit && this->potentialWay.length)
             || this->isBlockedd(this)
-            //  ||
-            // (this->preTargetCell && this->preTargetCell == oCell)
             )
         {
               

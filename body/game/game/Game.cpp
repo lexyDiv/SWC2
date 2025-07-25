@@ -24,7 +24,7 @@ Game::~Game()
 
 void Game::create()
 {
-    this->gf = new GameField(&this->pathes[1], 1);
+    this->gf = new GameField(&this->pathes[0], 1);
     this->gf->game = this;
     this->gf->create();
 

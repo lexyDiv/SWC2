@@ -5,7 +5,7 @@ ProtoObj *Peon::getAnyShaht()
     ProtoObj *th = this->getBaseForUnloadingGold();
     if (th)
     {
-        if (this->gold)
+        if (this->gold > 0)
         {
             return th;
         }

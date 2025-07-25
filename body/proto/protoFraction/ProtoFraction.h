@@ -72,6 +72,7 @@ class ProtoFraction {
     int controlTimer = 0;
     int unitCount = 0;
     int hold = 0;
+   // int persNumber = 1;
 
    // Nation nation = nationsHub.
 };

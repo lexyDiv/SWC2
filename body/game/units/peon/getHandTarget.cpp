@@ -18,10 +18,18 @@ void Peon::getHandTarget(ProtoObj *cell)
         this->targetObj.unit = cell->groundUnit;
         this->targetObj.bornCount = cell->groundUnit->bornCount;
 
+        if (this->fraction->control == "human" &&
+        &this->fraction->nation == &targetObj.unit->fraction->nation)
+        {
+            this->profession = this->gold > 0 && this->targetObj.unit->name == "greatHall" ? "g" : this->profession;
+            this->profession = this->wood > 0 && (this->targetObj.unit->name == "greatHall" || this->targetObj.unit->name == "mill") ? "w" : this->profession;
+        }
+
         // this->handTargetTimer = this->handTargetMaxTime;
 
         if (cell->groundUnit->name == "tree")
         {
+            this->profession = "w";
             if (this->wood)
             {
                 ProtoObj *base = this->getBaseForUnloading();
@@ -31,7 +39,6 @@ void Peon::getHandTarget(ProtoObj *cell)
                     return;
                 }
             }
-            // this->profession = "lesorub";
             this->targetObjControl = this->fraction->control == "" ? this->unitMenu->targetObjControlWoodComp : this->unitMenu->targetObjControlWood;
             this->isOnGetPotentialWayGetTarget = [this](ProtoObj *cell)
             {
@@ -87,7 +94,7 @@ void Peon::getHandTarget(ProtoObj *cell)
         {
             if (cell->groundUnit->name == "shaht")
             {
-                //  this->profession = "shahter";
+                this->profession = "g";
                 if (this->gold > 0)
                 {
                     ProtoObj *base = this->getBaseForUnloadingGold();
@@ -151,6 +158,10 @@ void Peon::getHandTarget(ProtoObj *cell)
     }
     else
     {
+        if (this->fraction->control == "human")
+        {
+            this->profession = "";
+        }
         this->isOnGetPotentialWayGetTarget = [this](ProtoObj *cell)
         {
             if (cell == this->targetCell)
