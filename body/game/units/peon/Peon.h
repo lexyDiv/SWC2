@@ -27,6 +27,11 @@ public:
     ProtoObj* getBaseForUnloadingGold() override;
         void preDraw() override;
         void updateCurrentTarget() override;
+        void takeDamage(int damage) override;
+        void trupCreate() override;
+       // void trupCreate() override;
+
+
     // void orderOnWayControl() override;
     //  void goWayAnimation() override;
     // void goWay() override;

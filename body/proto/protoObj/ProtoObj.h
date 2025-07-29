@@ -217,7 +217,8 @@ public:
     Array<ProtoObj *> ripUnits; // trupy
     virtual void trupCreate() {};
     int deleteTimer = 0;
-    virtual void drawTrup() {};
+    virtual void drawTrup() { console.log("trup draw"); };
+    virtual void takeDamage(int damage) {};
     /////// <= trupy
     Array<MinData> wellComeCells;
     virtual void getWellComeCells();
