@@ -122,7 +122,7 @@ public:
     int mana = 0;
     int sight = 1;
     int animTimer = 0;
-    int alpha = 255;
+    float alpha = 255;
     double startAnimMashtab = 0.456000;
 
     int stress = 0;                  // for tree

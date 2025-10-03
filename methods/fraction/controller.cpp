@@ -21,7 +21,8 @@ void Fraction::controller()
             // current++;
             this->hold = i;
             ProtoObj *peon = this->peons.getItem(i);
-            if (!peon->inSave &&
+            if (peon->hp &&
+                !peon->inSave &&
                 !peon->isActive &&
                 peon->profession != "" &&
                 !peon->isBlockedd(peon))

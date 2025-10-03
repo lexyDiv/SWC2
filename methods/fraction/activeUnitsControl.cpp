@@ -23,7 +23,7 @@ void Fraction::activeUnitsControl()
     {
         ProtoObj *unit = this->activeUnits.getItem(i);
         if (unit && // pers function will here
-            unit->cell &&
+            unit->cell && unit->hp &&
             (//unit->enemys.length ||
              unit->potentialWay.length ||
              !unit->isPotentialWayComplite ||

@@ -13,10 +13,10 @@ void ObjMenu::control()
         this->unit = nullptr;
     }
 
-    if (u) {
-       // console.log(u->profession);
-       u->takeDamage(1);
-    }
+    // if (u) {
+    //    // console.log(u->profession);
+    //    u->takeDamage(1);
+    // }
 
     if (this->needUpdate)
     {

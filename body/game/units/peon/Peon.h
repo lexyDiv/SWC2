@@ -29,6 +29,7 @@ public:
         void updateCurrentTarget() override;
         void takeDamage(int damage) override;
         void trupCreate() override;
+        void drawTrup() override;
        // void trupCreate() override;
 
 
