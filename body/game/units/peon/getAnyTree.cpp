@@ -2,10 +2,29 @@
 
 ProtoObj *Peon::getAnyTree()
 {
+
+    ProtoObj *t = this->getTreeNear();
+    if (t)
+    {
+        return t;
+    }
+
     ProtoObj *base = this->getBaseForUnloading();
     if (base)
     {
-        console.log("logic for scan optimal tree");
+        if (this->wood)
+        {
+            return base;
+        }
+        for (int i = 0; i < base->orderedTrees.length; i++)
+        {
+            ProtoObj *tree = base->orderedTrees.getItem(i);
+            if (tree->hp > 0 &&
+                !tree->lesorub)
+            {
+                return tree;
+            }
+        }
     }
     else
     {
@@ -17,8 +36,9 @@ ProtoObj *Peon::getAnyTree()
                                                         Delta delta = getDeltas(&pointThis, &pointLM);
                                                         double dis = !item->lesorub && item->hp > 0 ? getDis(&delta) : 10000000;
                                                         return dis; });
-        ProtoObj *minDisTree = md.cell->hp > 0 && !md.cell->lesorub ? md.cell : nullptr;
+        ProtoObj *minDisTree = md.cell && md.cell->hp > 0 && !md.cell->lesorub ? md.cell : nullptr;
         return minDisTree;
     }
+    // this->plane->trees.clear();
     return nullptr;
 }

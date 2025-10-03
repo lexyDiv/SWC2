@@ -93,14 +93,18 @@ public:
     void fieldClickRight() override;
     /////////// => get potential Way methods
     void getPotentialWay(ProtoObj* unit) override;
-    void exploreNewCellAndAddToOpenArr(ProtoObj *unit, ProtoObj* fatherCell, ProtoObj *potentialCell);
-    int get_G(ProtoObj *cell, ProtoObj *potentialCell);
-    int get_H(ProtoObj *potentialCell, ProtoObj* finishCell);
+    void exploreNewCellAndAddToOpenArr(ProtoObj *unit, ProtoObj* fatherCell, ProtoObj *potentialCell) override;
+    int get_G(ProtoObj *cell, ProtoObj *potentialCell) override;
+    int get_H(ProtoObj *potentialCell, ProtoObj* finishCell) override;
+
+        void getPotentialWay2(ProtoObj* unit) override;
+    void exploreNewCellAndAddToOpenArr2(ProtoObj *unit, ProtoObj* fatherCell, ProtoObj *potentialCell) override;
+    int get_G2(ProtoObj *cell, ProtoObj *potentialCell) override;
+    int get_H2(ProtoObj *potentialCell, ProtoObj* finishCell) override;
     //Array<ProtoObj*> quickArr;
-    ProtoObj *min_F_cell = nullptr;
-    ProtoObj *globalMin_H_cell = nullptr;
    // bool isQuick = false;
-    void potentialWayCreate(ProtoObj *unit, ProtoObj *finalCell);
+    void potentialWayCreate(ProtoObj *unit, ProtoObj *finalCell) override;
+        void potentialWayCreate2(ProtoObj *unit, ProtoObj *finalCell) override;
     //////////////// <= get potential Way methods
 
     void trupsControl() override;

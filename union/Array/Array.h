@@ -37,7 +37,7 @@ struct MinData
     double min = 0;
     int i = 0;
     int k = 0;
-   // double dis = 0;
+    // double dis = 0;
     ProtoObj *cell = nullptr;
 };
 
@@ -98,7 +98,7 @@ inline Array<T>::~Array()
 template <typename T>
 inline T Array<T>::getItem(int i)
 {
-    return this->vec.at(i);
+        return this->vec.at(i);
 }
 
 template <typename T>
@@ -197,8 +197,8 @@ inline void Array<T>::forEachDel(function<bool(T item, int index, vector<T> vec)
 template <typename T>
 inline void Array<T>::forEach(function<void(T item, int index, vector<T> vec)> fn)
 {
-    int size = this->vec.size();
-    for (int i = 0; i < size; i++)
+    // int size = this->vec.size();
+    for (int i = 0; i < this->vec.size(); i++)
     {
         T item = this->vec[i];
         fn(item, i, this->vec);
@@ -208,8 +208,8 @@ inline void Array<T>::forEach(function<void(T item, int index, vector<T> vec)> f
 template <typename T>
 inline void Array<T>::forEach(function<void(T item, int index)> fn)
 {
-    int size = this->vec.size();
-    for (int i = 0; i < size; i++)
+    // int size = this->vec.size();
+    for (int i = 0; i < this->vec.size(); i++)
     {
         T item = this->vec[i];
         fn(item, i);
@@ -219,8 +219,8 @@ inline void Array<T>::forEach(function<void(T item, int index)> fn)
 template <typename T>
 inline void Array<T>::forEach(function<void(T item)> fn)
 {
-    int size = this->vec.size();
-    for (int i = 0; i < size; i++)
+    // int size = this->vec.size();
+    for (int i = 0; i < this->vec.size(); i++)
     {
         T item = this->vec[i];
         fn(item);

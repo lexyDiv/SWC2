@@ -35,5 +35,6 @@ void Shaht::create(ProtoObj *cell)
     this->animY = 0;
     this->hpMax = 1000;
     this->hp = 1000;
+    this->isComplite = true;
     cell->plane->shahts.push(this);
 };

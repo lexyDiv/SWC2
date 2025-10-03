@@ -7,6 +7,6 @@ public:
     ~Order();
     ProtoObj *cell = nullptr;
     ProtoObj *unit = nullptr;
-    bool isComplite = false;
+    bool isComplite = true;
     int deleteTimer = 0;
 };

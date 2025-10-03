@@ -2,33 +2,59 @@
 
 void GameField::potentialWayCreate(ProtoObj *unit, ProtoObj *finalCell)
 {
-    if (unit->cell &&
-        unit->cell != finalCell)
+    ProtoObj *uc = unit->cell;
+    if (uc &&
+        uc != finalCell)
     {
         ProtoObj *nextCell = finalCell;
-        unit->potentialWay.push(nextCell);
+        unit->pw.push(nextCell);
         int large = 0;
         while (true)
         {
             if (nextCell->wayFather &&
-                nextCell->wayFather != unit->cell)
+                nextCell->wayFather != uc)
             {
                 nextCell = nextCell->wayFather;
-                unit->potentialWay.push(nextCell);
-              //  large += this->get_G(nextCell, nextCell->wayFather);
-                // console.log("process");
+                unit->pw.push(nextCell);
             }
             else
             {
-                //  console.log("fin");
-              //  unit->isPotentialWayComplite = true;
+                unit->isPotentialWayComplite = true;
                 break;
             }
         }
-       // console.log("large = " + to_string(large));
     }
-    ///////
-      unit->targetObjControl(unit);
-      unit->wayIndex = unit->potentialWay.length;
+
+      unit->wayIndex = unit->pw.length;
+      unit->isPotentialWayComplite = true;
+}
+
+
+void GameField::potentialWayCreate2(ProtoObj *unit, ProtoObj *finalCell)
+{
+    ProtoObj *uc = unit->cell;
+    if (uc &&
+        uc != finalCell)
+    {
+        ProtoObj *nextCell = finalCell;
+        unit->pw.push(nextCell);
+        int large = 0;
+        while (true)
+        {
+            if (nextCell->wayFather2 &&
+                nextCell->wayFather2 != uc)
+            {
+                nextCell = nextCell->wayFather2;
+                unit->pw.push(nextCell);
+            }
+            else
+            {
+                unit->isPotentialWayComplite = true;
+                break;
+            }
+        }
+    }
+
+      unit->wayIndex = unit->pw.length;
       unit->isPotentialWayComplite = true;
 }

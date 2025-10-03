@@ -1,4 +1,4 @@
-#include "getBaseForUnloading.cpp"
+#include "drawTrup.cpp"
 
 void Peon::draw()
 {
@@ -36,6 +36,11 @@ void Peon::draw()
         this->y + drawDeltaY - 25,
         100,
         100);
+
+    // ctx.DrawText(this->x + drawDeltaX + 10,
+    //              this->y + drawDeltaY + 20,
+    //              14,
+    //              to_string(this->persNum));
   }
   else
   {
@@ -56,6 +61,6 @@ void Peon::draw()
         cy - gabY / 2,
         gabX,
         gabY);
-       // ctx.FillRect(cx, cy, 3, 3, "blue");
+    // ctx.FillRect(cx, cy, 3, 3, "blue");
   }
 };

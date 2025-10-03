@@ -1,4 +1,4 @@
-#include "ProtoObj.h"
+#include "get4x4myCells.cpp"
 
 void ProtoObj::get2x2myCells(ProtoObj *cell) {
     cell->groundUnit = this;

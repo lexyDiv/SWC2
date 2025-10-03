@@ -22,6 +22,7 @@ public:
 
     /////////
     virtual void create(ProtoObj *cell);
+    virtual void createInside(ProtoObj *c) {};
     virtual int getLevel();
     virtual void createUnitMenu();
     virtual void getHandTarget(ProtoObj *cell);
@@ -29,7 +30,15 @@ public:
     virtual void stendOnCell();
     virtual void stendOnCellWait();
     virtual void selectAnAction();
-
+    virtual ProtoObj *getAnyTree()
+    {
+        return nullptr;
+    };
+    virtual ProtoObj *getAnyShaht()
+    {
+        return nullptr;
+    };
+    int persNum = 0;
     ////////
     // int deleteTimer = 0;
     // all
@@ -86,12 +95,14 @@ public:
     Array<ProtoObj *> clients;
     Array<ProtoObj *> potentialClients;
     Array<ProtoObj *> outClients;
+    void get4x4myCells(ProtoObj *cell);
     void get3x3myCells(ProtoObj *cell);
     void get2x2myCells(ProtoObj *cell);
     void getContactAndExitCells(ProtoObj *cell, ProtoObj *exitCell, ProtoObj *centerCell);
     void getContactCells();
+    virtual ProtoObj *getTreeNear() { return nullptr; };
     // units
-
+    virtual void updateCurrentTarget() {};
     Image *menuImage = nullptr;
     string titleName = "";
 
@@ -111,7 +122,8 @@ public:
     int mana = 0;
     int sight = 1;
     int animTimer = 0;
-    int alpha = 255;
+    float alpha = 255;
+    double startAnimMashtab = 0.456000;
 
     int stress = 0;                  // for tree
     virtual void stressControl() {}; // tree
@@ -132,12 +144,20 @@ public:
     Array<ProtoObj *> enemys;
     Array<ProtoObj *> way;
     Array<ProtoObj *> potentialWay;
+    Array<ProtoObj *> pw;
     //////////////////// =>  way
     bool isPotentialWayComplite = true;
     int G = 0;
     int F = 0;
     int H = 0;
     ProtoObj *wayFather = nullptr;
+
+    int G2 = 0;
+    int F2 = 0;
+    int H2 = 0;
+    ProtoObj *wayFather2 = nullptr;
+    double createCountData2 = 0.0;
+
     bool isNeedReturnGetPotentialWay = false; // ???
                                               // virtual bool isOnGetPotentialWayGetTarget(ProtoObj *cell);
                                               //  virtual bool isNewCellOnGetWayValide(ProtoObj *cell);
@@ -150,15 +170,19 @@ public:
         return false;
     };
     double explored = 0.0;
+    double explored2 = 0.0;
     virtual void getCurrentTargetCell();
+    virtual void getCurrentTargetCell2() {};
     double procCurr = 0;
+    double procCurr2 = 0;
     int wayIndex = 0;
     bool isGetMyCell = true;
     int ordersOnWayCurrent = 0;
     Order *orderOnWay = nullptr;
     function<void(ProtoObj *unit)> targetObjControl = [](ProtoObj *unit) {};
     bool iNeedFreeWay = false;
-    virtual bool isIValideOnWay(ProtoObj *unit) {
+    virtual bool isIValideOnWay(ProtoObj *unit)
+    {
         return true;
     };
     ////////////////////////// <= way
@@ -182,11 +206,19 @@ public:
     Array<double> maxAroundCellsDis;
     Array<ProtoObj *> drawCells;
     Array<Array<ProtoObj *>> cellsOnDraw;
+    Array<ProtoObj *> orderedTrees;
+    Array<ProtoObj *> orderedShahts;
+    int createTimer = 0;
+    int createTimerMax = 100;
+    int updateTimer = 0;
+    int updateTimerMax = 1000;
+    int level = 1;
     /////// => trupy
     Array<ProtoObj *> ripUnits; // trupy
     virtual void trupCreate() {};
     int deleteTimer = 0;
-    virtual void drawTrup() {};
+    virtual void drawTrup() { console.log("trup draw"); };
+    virtual void takeDamage(int damage) {};
     /////// <= trupy
     Array<MinData> wellComeCells;
     virtual void getWellComeCells();
@@ -211,6 +243,7 @@ public:
     double wayDeltaY = 0;
     double conor = 0;
     int holdWayCount = 0;
+    int outHoldTimer = 0;
     //////////////////////// <= go way
     // ProtoObj *gettingTarget = nullptr;
 
@@ -247,15 +280,65 @@ public:
     ProtoObj *bornCell = nullptr;
     int bornCount = 0;
     // land objects
-    // 
+    //
     int inOutTimer = 0;
     bool inSave = false;
     ////////////////// => remove
     // void reMove() {};
     // int reMoveTimer = 0;
     ///////////////// <= remove
+    virtual void orderOnWayControl() {};
+    virtual void goWayAnimation() {};
+    virtual void inFightAnimation() {};
+    virtual void goWay() {};
+    virtual bool isNextCellFreeToGoWay(ProtoObj *nextCell) { return true; };
+    virtual bool isNeedHoldGoWay(ProtoObj *nextCell) { return true; };
+    virtual bool isGetTarget() { return true; };
+    virtual bool isTargetObjValide() { return true; };
+    virtual ProtoObj *getBaseForUnloading() { return nullptr; };
+    virtual ProtoObj *getBaseForUnloadingGold() { return nullptr; };
+    virtual void preDraw() {};
+    virtual void getTrees() {};
+    virtual void getShahts() {};
+    // bool isIValideOnWay(ProtoObj *unit) override;
+    virtual MinData getPeonOutCell()
+    {
+        MinData md;
+        return md;
+    };
+    virtual MinData getPeonExtrimeOutCell()
+    {
+        MinData md;
+        md.cell = nullptr;
+        md.index = -1;
+
+        int ol = this->exitCells.length;
+        for (int i = 0; i < ol; i++)
+        {
+            ProtoObj *cell = this->exitCells.getItem(i);
+            if (!cell->groundUnit)
+            {
+                md.cell = cell;
+                md.index = i;
+                return md;
+            }
+        }
+
+        return md;
+    };
+    
+
+    Array<ProtoObj *> interUnits;
 
     // wall
+    ///// test
+    bool focus = false;
+    int noIsCompliteTimer = 0;
+    bool frashWay = false;
+    // bool closed = false;
+    bool isAnimyCheckNeeded = true;
+    virtual void iAmHere() {};
+    virtual void iSeeYou(ProtoObj *unit) {};
 
 private:
 };

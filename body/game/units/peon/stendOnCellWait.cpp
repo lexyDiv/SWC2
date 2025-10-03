@@ -1,4 +1,4 @@
-#include "getCurrentTargetCell.cpp"
+#include "takeDamage.cpp"
 
 void Peon::stendOnCellWait()
 {

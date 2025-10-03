@@ -12,4 +12,5 @@ class Game : public ProtoGame {
     void fonMenuDraw() override;
     void fractionsControl() override;
     void getPotentialWayControl() override;
+    void getPotentialWayControl2() override;
 };

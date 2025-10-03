@@ -52,6 +52,7 @@ class ProtoFraction {
     Array<ProtoObj *> units;
    // Array<Order*> orders;
     Array<ProtoObj*> activeUnits;
+    Array<ProtoObj *> activeBuildings;
     ProtoGame *game = nullptr;
     Array<ProtoObj *> peons;
     Array<ProtoObj *> peonsOnWood;
@@ -65,6 +66,13 @@ class ProtoFraction {
     Nation nation = Nation();
 
     int unionCase = 0;
+    int gold = 0;
+    int oil = 0;
+    int wood = 0;
+    int controlTimer = 0;
+    int unitCount = 0;
+    int hold = 0;
+   // int persNumber = 1;
 
    // Nation nation = nationsHub.
 };

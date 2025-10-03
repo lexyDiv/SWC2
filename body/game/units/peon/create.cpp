@@ -1,4 +1,4 @@
-#include "isGetTarget.cpp"
+#include "createInside.cpp"
 
 void Peon::create(ProtoObj *cell)
 {
@@ -18,7 +18,7 @@ void Peon::create(ProtoObj *cell)
 
   this->name = "peon";
   this->type = "life";
-  this->mapColor = {R : 255, G : 255, B : 255};
+  this->mapColor = this->fraction->nation.mapColor;
   this->image = this->fraction->nation.peon;
   this->x = cell->x;
   this->y = cell->y;
@@ -35,4 +35,5 @@ void Peon::create(ProtoObj *cell)
   this->animY = 0;
   this->hpMax = 50;
   this->hp = 50;
+  this->orderOnWay = new Order;
 };

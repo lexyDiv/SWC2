@@ -8,8 +8,8 @@ public:
     void create(ProtoObj *cell) override;
     void draw() override;
     void getHandTarget(ProtoObj *cell) override;
-    void preDraw();
     void getCurrentTargetCell() override;
+    void getCurrentTargetCell2() override;
     void activeProg() override;
     void stendOnCell() override;
     void stendOnCellWait() override;
@@ -17,10 +17,21 @@ public:
     bool isTargetObjValide() override;
     void selectAnAction() override;
     void fightControl() override;
+    void createInside(ProtoObj* c) override; 
 
-    ProtoObj* getAnyTree();
-    ProtoObj* getBaseForUnloading();
-    ProtoObj* getBaseForUnloadingGold();
+
+    ProtoObj* getAnyTree() override;
+    ProtoObj *getAnyShaht() override;
+    ProtoObj* getTreeNear() override;
+    ProtoObj* getBaseForUnloading() override;
+    ProtoObj* getBaseForUnloadingGold() override;
+        void preDraw() override;
+        void updateCurrentTarget() override;
+        void takeDamage(int damage) override;
+        void trupCreate() override;
+        void drawTrup() override;
+       // void trupCreate() override;
+
 
     // void orderOnWayControl() override;
     //  void goWayAnimation() override;

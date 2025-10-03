@@ -9,6 +9,9 @@ ProtoObj *Peon::getBaseForUnloading()
                                                 { mix.push(th); });
     if (mix.length)
     {
+        mix.filterSelf([this](ProtoObj * base){
+            return base->isBlockedd(this);
+        });
         MinData md = mix.getMinData([this](ProtoObj *item)
                                     {
                                                         PointF pointThis = {x : this->cell->x, y : this->cell->y};

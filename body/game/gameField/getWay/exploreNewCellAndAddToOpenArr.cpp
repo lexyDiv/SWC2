@@ -48,3 +48,36 @@ void GameField::exploreNewCellAndAddToOpenArr(ProtoObj *unit, ProtoObj *fatherCe
     }
   }
 }
+
+void GameField::exploreNewCellAndAddToOpenArr2(ProtoObj *unit, ProtoObj *fatherCell, ProtoObj *potentialCell)
+{
+  if (potentialCell->explored2 != this->createCount2)
+  {
+    if (potentialCell->createCountData2 == this->createCount2)
+    {
+      int G2 = this->get_G2(fatherCell, potentialCell) + fatherCell->G2;
+      int F2 = G2 + potentialCell->H2;
+      if (potentialCell->F2 > F2)
+      {
+        potentialCell->wayFather2 = fatherCell;
+        potentialCell->G2 = G2;
+        potentialCell->F2 = F2;
+      }
+    }
+    else if (
+        unit->isNewCellOnGetWayValide(potentialCell))
+    {
+      potentialCell->wayFather2 = fatherCell;
+
+      potentialCell->createCountData2 = this->createCount2;
+      int G2 = this->get_G2(fatherCell, potentialCell);
+      int H2 = this->get_H2(potentialCell, unit->targetCell);
+
+      potentialCell->G2 = fatherCell ? G2 + fatherCell->G2 : G2;
+      potentialCell->H2 = H2;
+      potentialCell->F2 = potentialCell->G2 + potentialCell->H2;
+
+      this->openArr2.push(potentialCell);
+    }
+  }
+}

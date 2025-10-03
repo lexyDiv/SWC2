@@ -41,55 +41,72 @@ void Shaht::activeProg()
         }
         return false; });
 
-    this->outClients.forEach([this](ProtoObj *peon)
-                             {
-                                 if (!peon->inOutTimer)
-                                 {
-                                     peon->inOutCount = 0;
-                                     MinData md = this->getPeonOutCell();
-                                     int index = md.index;
-                                     ProtoObj *oc = md.cell;
-                                     if (!oc)
-                                     {
-                                         console.log("no exit cell");
-                                     }
-                                     else
-                                     {
-                                         if (index != -1)
-                                         {
-                                            MinData md = this->wellComeCells.getItem(index);
-                                            peon->cell = md.cell;
-                                            peon->inOutCount = ceil(md.min / peon->unitMenu->speed);
-                                            peon->x = peon->cell->x;
-                                            peon->y = peon->cell->y;
-                                            peon->drawIndexY = peon->y;
-                                            peon->unitMenu->getDeltasXY(peon, oc);
-                                            peon->cell = oc;
-                                            peon->inOutMashtabCount = (1 - peon->inOutMashtabMin) / peon->inOutCount;
-                                            peon->image = peon->fraction->nation.peonWithGold;
-                                            oc->groundUnit = peon;
-                                         }
-                                         else
-                                         {
-                                         }
-                                     }
-                                 }
+            for (int i = 0; i < this->outClients.length; i++)
+    {
+        ProtoObj *peon = this->outClients.getItem(i);
+        if (!peon->inOutTimer)
+        {
+            peon->inOutCount = 0;
+            MinData md = this->getPeonOutCell();
+            int index = md.index;
 
-                                 if (peon->inOutTimer < peon->inOutCount) {
-                                           peon->x += peon->wayDeltaX;
-                                           peon->y += peon->wayDeltaY;
-                                           peon->drawIndexY = peon->y;
-                                           peon->animMashtab += peon->inOutMashtabCount;
+            if (index != -1)
+            {
+                ProtoObj *oc = md.cell;
+                MinData md = this->wellComeCells.getItem(index);
+                peon->cell = md.cell;
+                peon->inOutCount = ceil(md.min / peon->unitMenu->speed);
+                peon->x = peon->cell->x;
+                peon->y = peon->cell->y;
+                peon->drawIndexY = peon->y;
+                peon->unitMenu->getDeltasXY(peon, oc);
+                peon->cell = oc;
+                peon->inOutMashtabCount = (1 - peon->inOutMashtabMin) / peon->inOutCount;
+                peon->image = peon->fraction->nation.peon;
+                oc->groundUnit = peon;
+                peon->gold = 100;
+                peon->profession = "g";
+                peon->image = peon->fraction->nation.peonWithGold;
+            }
+            else
+            {
+                MinData md = this->getPeonExtrimeOutCell();
+                ProtoObj *oc = md.cell;
+                peon->cell = oc;
+                peon->inOutCount = 0; 
+                peon->x = peon->cell->x;
+                peon->y = peon->cell->y;
+                peon->drawIndexY = peon->y;
+                peon->inOutMashtabCount = 1; 
+                peon->image = peon->fraction->nation.peon;
+                oc->groundUnit = peon;
+                                peon->gold = 100;
+                peon->profession = "g";
+                peon->image = peon->fraction->nation.peonWithGold;
+            }
+        }
 
-                                 peon->inOutTimer++;
-                                 }
-                                 else {
-                                    peon->inOutTimer = 0;
-                                    peon->animMashtab = 1;
-                                    peon->inSave = false;                                  
-                                    peon->targetObj.unit = nullptr;                                   
-                                    peon->stendOnCell();
-                                 } });
+        if (peon->inOutTimer < peon->inOutCount)
+        {
+            peon->x += peon->wayDeltaX;
+            peon->y += peon->wayDeltaY;
+            peon->drawIndexY = peon->y;
+            peon->animMashtab += peon->inOutMashtabCount;
+
+            peon->inOutTimer++;
+        }
+        else
+        {
+            peon->inOutTimer = 0;
+            peon->animMashtab = 1;
+            peon->inSave = false;
+            peon->targetObj.unit = nullptr;
+            peon->stendOnCell();
+            peon->outHoldTimer = 30;
+            peon->isActive = true;
+            peon->fraction->activeUnits.push(peon);
+        }
+    };
 
     this->outClients.filterSelf([](ProtoObj *peon)
                                 {
@@ -97,6 +114,4 @@ void Shaht::activeProg()
             return true;
         }
         return false; });
-
-    //  console.log(to_string(this->outClients.length));
 };

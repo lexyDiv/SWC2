@@ -11,6 +11,7 @@ public:
     virtual void fonMenuDraw();
     virtual void fractionsControl();
     virtual void getPotentialWayControl();
+    virtual void getPotentialWayControl2(){};
 
     vector<string> pathes{
         "levels/test_1.txt",
@@ -24,7 +25,9 @@ public:
     Array<ProtoObj *> unitsOnWay;
 
     Array<ProtoObj *> AllUnits;
-
+Array<ProtoObj *> allPeons;
+Array<ProtoObj *> allPeons2;
+int scanIndex = 0;
     // bool isAllOrdersPushed = false;
     // bool isAllUnitsPusedOnGetPotentialWay = false;
 };

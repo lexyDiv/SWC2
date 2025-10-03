@@ -2,17 +2,36 @@
 
 void Fraction::activeUnitsControl()
 {
+
+    this->activeBuildings.forEach([](ProtoObj *building)
+                                  { building->activeProg(); });
+    this->activeBuildings.filterSelf([](ProtoObj *building)
+                                     {
+        if (!building->clients.length &&   // pers function will here
+        !building->potentialClients.length &&
+        !building->outClients.length &&
+        building->isComplite &&
+        building->hp == building->hpMax &&
+        !building->createTimer &&
+        !building->updateTimer) {
+            building->isActive = false;
+            return true;
+        }
+        return false; });
+
     for (int i = 0; i < this->activeUnits.length; i++)
     {
         ProtoObj *unit = this->activeUnits.getItem(i);
-        if (unit &&
-            unit->cell &&
-            (unit->enemys.length ||
+        if (unit && // pers function will here
+            unit->cell && unit->hp &&
+            (//unit->enemys.length ||
              unit->potentialWay.length ||
              !unit->isPotentialWayComplite ||
              (unit->orderOnWay && !unit->orderOnWay->isComplite) ||
              !unit->isGetMyCell ||
-             unit->inFight))
+             unit->inFight ||
+             unit->outHoldTimer ||
+             unit->pw.length))
         {
             unit->activeProg();
         }
@@ -26,5 +45,5 @@ void Fraction::activeUnitsControl()
     }
     this->activeUnits.filterSelf([](ProtoObj *unit)
                                  { return !unit; });
-                             //    console.log(to_string(this->activeUnits.length));
+     //   console.log(to_string(this->activeUnits.length));
 }

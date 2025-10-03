@@ -14,29 +14,102 @@ void Fraction::create(ProtoGame *game, Nation &nation)
    peon2->fraction = this;
    peon2->create(game->gf->field.getItem(10).getItem(6));
 
-  // this->game->AllUnits.push(peon);
-  // this->game->AllUnits.push(peon2);
-
-   //////////////////////////
-   // for (int i = 0; i < 10; i++)
-   // {
-   //    ProtoObj *unit = new Peon;
-   //    unit->name = to_string(i) + " peon";
-   //    UnitPack up;
-   //    up.unit = unit;
-   //    peon->enemys.push(up);
-   // }
-
-   // int index = peon->enemys.indexOf2([](UnitPack up)
-   //                                   {
-   //    if (up.unit->name == "50 peon") {
-   //       return true;
-   //    }
-   //    return false; });
-
-   // console.log(to_string(index));
-   ////////////////////////////
-
    this->peons.push(peon);
    this->peons.push(peon2);
+   this->game->allPeons.push(peon);
+    this->game->allPeons.push(peon2);
+
+   ////////////////// townHall
+
+   ProtoObj *townHall = new TownHall;
+   townHall->fraction = this;
+   townHall->create(game->gf->field.getItem(2).getItem(20));
+   this->fTownHoll.level_1_townHollsCount++;
+   this->fTownHoll.townHolls.push(townHall);
+   townHall->isComplite = true;
+   ////////////////////
+   townHall->createTimer = 100;
+   townHall->isActive = true;
+   this->activeBuildings.push(townHall);
+   ////////////////// townHall
+
+//     townHall = new TownHall;
+//    townHall->fraction = this;
+//    townHall->create(game->gf->field.getItem(2).getItem(120));
+//    this->fTownHoll.level_1_townHollsCount++;
+//    this->fTownHoll.townHolls.push(townHall);
+//    townHall->isComplite = true;
+//    ////////////////////
+
+//    townHall->createTimer = 100;
+//    townHall->isActive = true;
+//    this->activeBuildings.push(townHall);
+
+
+
+//     townHall = new TownHall;
+//    townHall->fraction = this;
+//    townHall->create(game->gf->field.getItem(2).getItem(220));
+//    this->fTownHoll.level_1_townHollsCount++;
+//    this->fTownHoll.townHolls.push(townHall);
+//    townHall->isComplite = true;
+//    ////////////////////
+
+//    townHall->createTimer = 100;
+//    townHall->isActive = true;
+//    this->activeBuildings.push(townHall);
+
+
+//        townHall = new TownHall;
+//    townHall->fraction = this;
+//    townHall->create(game->gf->field.getItem(220).getItem(120));
+//    this->fTownHoll.level_1_townHollsCount++;
+//    this->fTownHoll.townHolls.push(townHall);
+//    townHall->isComplite = true;
+//    ////////////////////
+
+//    townHall->createTimer = 100;
+//    townHall->isActive = true;
+//    this->activeBuildings.push(townHall);
+
+
+//           townHall = new TownHall;
+//    townHall->fraction = this;
+//    townHall->create(game->gf->field.getItem(220).getItem(20));
+//    this->fTownHoll.level_1_townHollsCount++;
+//    this->fTownHoll.townHolls.push(townHall);
+//    townHall->isComplite = true;
+//    ////////////////////
+
+//    townHall->createTimer = 100;
+//    townHall->isActive = true;
+//    this->activeBuildings.push(townHall);
+
+
+//              townHall = new TownHall;
+//    townHall->fraction = this;
+//    townHall->create(game->gf->field.getItem(220).getItem(220));
+//    this->fTownHoll.level_1_townHollsCount++;
+//    this->fTownHoll.townHolls.push(townHall);
+//    townHall->isComplite = true;
+//    ////////////////////
+
+//    townHall->createTimer = 100;
+//    townHall->isActive = true;
+//    this->activeBuildings.push(townHall);
+
+
+//        townHall = new TownHall;
+//    townHall->fraction = this;
+//    townHall->create(game->gf->field.getItem(110).getItem(20));
+//    this->fTownHoll.level_1_townHollsCount++;
+//    this->fTownHoll.townHolls.push(townHall);
+//    townHall->isComplite = true;
+//    ////////////////////
+
+//    townHall->createTimer = 100;
+//    townHall->isActive = true;
+//    this->activeBuildings.push(townHall);
+
+
 };
