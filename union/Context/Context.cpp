@@ -62,6 +62,9 @@ Context::Context(int SCREEN_WIDTH, int SCREEN_HEIGHT)
                     printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
                     success = false;
                 }
+               // SDL_SetRenderLogicalPresentation(rer, width, height, SDL_LOGICAL_PRESENTATION_STRETCH);
+               SDL_RenderSetLogicalSize(this->gRenderer, this->SCREEN_WIDTH, this->SCREEN_HEIGHT); // ok
+              // SDL_RenderSetScale(this->gRenderer, 1.5f, 1.0f);
             }
         }
     }
