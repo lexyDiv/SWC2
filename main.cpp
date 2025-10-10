@@ -98,8 +98,12 @@ void goWork()
 //    ProtoObj *j = nullptr;
 // };
 
+
 int main()
 {
+
+
+
 
   // Hz hz;
   // HH hh;
@@ -183,7 +187,6 @@ int main()
 
   while (true)
   {
-
     if (!quit)
     {
       lock2.lock();

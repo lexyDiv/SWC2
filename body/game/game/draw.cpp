@@ -2,11 +2,16 @@
 
 void Game::draw()
 {
-    ctx.CreateDrawZone(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT);
-    ctx.FillRect(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT, "white");
+
+    
+
+   // ctx.CreateDrawZone(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT);
+  //  ctx.FillRect(0, 0, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT, "black");
 
     ctx.CreateDrawZone(this->gf->x, this->gf->y, this->gf->screenWidth, this->gf->screenHeight);
 
+
+ctx.FillRect(-500, -500, ctx.SCREEN_WIDTH, ctx.SCREEN_HEIGHT, "blue");
     if (this->gf->drawCell != nullptr)
     {
         float drawDeltaX = this->gf->drawDeltaX;

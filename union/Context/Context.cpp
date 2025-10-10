@@ -27,10 +27,9 @@ Context::Context(int SCREEN_WIDTH, int SCREEN_HEIGHT)
                                          SDL_WINDOWPOS_UNDEFINED,
                                          this->SCREEN_WIDTH,
                                          this->SCREEN_HEIGHT,
-                                       //  SDL_WINDOW_OPENGL 
-                                        // |
-                                          SDL_WINDOW_FULLSCREEN
-        );
+                                         //  SDL_WINDOW_OPENGL
+                                         // |
+                                         SDL_WINDOW_FULLSCREEN);
         if (this->gWindow == NULL)
         {
             printf("Window could not be created! SDL Error: %s\n", SDL_GetError());
@@ -62,9 +61,13 @@ Context::Context(int SCREEN_WIDTH, int SCREEN_HEIGHT)
                     printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
                     success = false;
                 }
-               // SDL_SetRenderLogicalPresentation(rer, width, height, SDL_LOGICAL_PRESENTATION_STRETCH);
-               SDL_RenderSetLogicalSize(this->gRenderer, this->SCREEN_WIDTH, this->SCREEN_HEIGHT); // ok
-              // SDL_RenderSetScale(this->gRenderer, 1.5f, 1.0f);
+                // SDL_SetRenderLogicalPresentation(rer, width, height, SDL_LOGICAL_PRESENTATION_STRETCH);
+                SDL_RenderSetLogicalSize(this->gRenderer, this->SCREEN_WIDTH, this->SCREEN_HEIGHT); // ok
+                       // SDL_RenderSetScale(this->gRenderer, 1.5f, 1.0f);
+                       int w, h;
+                SDL_GetRendererOutputSize(this->gRenderer, &w, &h);
+                string res = "width : " + to_string(w);
+                std::cout << res << std::endl;
             }
         }
     }
@@ -494,4 +497,3 @@ Context::~Context()
 
 Context ctx(1024, 768);
 SDL_Renderer *Image::gRenderer = ctx.getRenderer();
-
